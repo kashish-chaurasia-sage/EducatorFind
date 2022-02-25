@@ -30,8 +30,7 @@ class Forgot extends CI_Controller {
 	public function password()
 	{ 
 	$this->load->model('CommonMdl');
-          $to= $this->input->post('email');
-            $this->form_validation->set_rules('email', 'Email', 'required|valid_email'); 
+    $to= $this->input->post('email');
              
             if($this->form_validation->run() == true){ 
                 $con = array( 
@@ -54,8 +53,7 @@ class Forgot extends CI_Controller {
 	
 	        $from_email = "info@starsboard.in"; 
          $to_email = $this->input->post('email'); 
-        $msg='Reset your STARSBOARD Password
-
+   
 Hi
  
 We received a request to reset the password to access STARSBOARD with your email address (axx@gmxx.com).
