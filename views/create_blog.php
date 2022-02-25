@@ -1,0 +1,100 @@
+
+
+ <?php $this->load->view('layout/header');?>
+ <!--PRICING DETAILS-->
+<section class=" login-reg">
+    <div class="container">
+        <div class="row">
+            <div class="login-main add-list">
+                <div class="log-bor">&nbsp;</div>
+                <span class="steps">Add new Blog post</span>
+                <div class="log">
+                    <div class="login add-list-off">
+
+                        <h4>Create Blog Post</h4>
+                        <form action="<?php echo base_url('my-blog/create-blog-submit');?>" class="blog_form" id="blog_form" name="blog_form"
+                              method="post" enctype="multipart/form-data">
+                            <ul>
+                                <li>
+                                    <!--FILED START-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" name="blog_title" required="required"
+                                                       class="form-control"
+                                                       placeholder="Post Name*" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--FILED END-->
+                                    <!--FILED START-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea name="blog_description" value="" id="blog_description"
+                                                          required="required" class="form-control"
+                                                          placeholder="Post Details"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--FILED END-->
+                                    <!--FILED START-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Choose banner image</label>
+                                                <input type="file" name="blog_image" required="required"
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--FILED END-->
+                                 
+                                </li>
+                            </ul>
+                            <!--FILED START-->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" name="blog_submit"
+                                            class="btn btn-primary">Submit</button>
+                                </div>
+                                <div class="col-md-12">
+                                    <a href="dashboard" class="skip">Go to user dashboard                                        >></a>
+                                </div>
+                            </div>
+                            <!--FILED END-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--END PRICING DETAILS-->
+<script>
+$(document).ready(function () { 
+
+
+  
+  $("#review_form").submit(function (e) { 
+	  e.preventDefault();
+    var senddata = $(this).serializeArray();
+    var sendto = $(this).attr("action");
+
+    $.ajax({
+        url: sendto,
+        type: 'POST',
+        data: senddata,
+        success: function () {
+          $('#reviewResponseId').html(data);
+		  $("#review_form").trigger("reset");
+		 
+        },
+        error: function (error) {
+           alert('error');
+        }
+    });
+  });
+});
+</script>
+	 <?php $this->load->view('layout/footer');?>
