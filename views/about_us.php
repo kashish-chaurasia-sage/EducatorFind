@@ -9,7 +9,7 @@
 <!-- END --><!-- START -->
 <section class=" abou-pg">
    <div class="about-ban">
-      <h1>About us</h1>
+      <h1>About Us</h1>
       <p>injected humourThere are many variations of passages of Lorem Ipsum available now</p>
    </div>
    <div class="container">
