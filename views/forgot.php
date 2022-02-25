@@ -62,12 +62,12 @@ if(email == ''){
         type: 'POST',
         data: senddata,
         success: function (data) {
-			if(data =='1'){
+			// if(data =='1'){
 				swal("Success!", "Reset link has been sent on your registered email address.", "success");
 				
-			}else{
-         	swal("Oops!", "Please try after sometime", "error");
-			}
+			// }else{
+         	// swal("Oops!", "Please try after sometime", "error");
+			// }
         }
     });
   });

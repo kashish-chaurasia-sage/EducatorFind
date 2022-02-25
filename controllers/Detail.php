@@ -74,33 +74,52 @@ class Detail extends CI_Controller {
 			
 			$data = $this->security->xss_clean($data);
 			$response =  $this->CommonMdl->insertRow($data,'lead');
-			        $from_email = "info@starsboard.in"; 
-			        
+			error_log("test188888s");
+
+		$from_email = "info@starsboard.in"; 
+		error_log("80");
+
          $to_email = $this->input->post('enquiry_email'); 
-        $msg="New Student Enquiry
+		 error_log("83");
 
-Hi 
+//         $msg="New Student Enquiry
+
+// Hi 
  
-A New Enquiry has been received on STARSBOARD. For reference, here's your enquiry information:
+// A New Enquiry has been received on STARSBOARD. For reference, here's your enquiry information:
  
-Enquiry informations:
-Enquirer name: '.$this->input->post('enquiry_name').'
-Mobile Number : '.$this->input->post('enquiry_mobile').'
-Email Id : '.$this->input->post('enquiry_email').'
-Message :'.$this->input->post('enquiry_message').'
+// Enquiry informations:
+// Enquirer name: '.$this->input->post('enquiry_name').'
+// Mobile Number : '.$this->input->post('enquiry_mobile').'
+// Email Id : '.$this->input->post('e	nquiry_email').'
+// Message :'.$this->input->post('enquiry_message').'
  
 
-Best Regards,
-STARSBOARD Education
-Flat Iamage (Whatsapp) -7977476239";
+// Best Regards,
+// STARSBOARD Education
+// Flat Iamage (Whatsapp) -7977476239";
+error_log("101");
+
          //Load email library 
-         $this->load->library('email'); 
+        //  $this->load->library('email'); 
    
-         $this->email->from($from_email, 'Starsboard'); 
-         $this->email->to($to_email);
-         $this->email->subject('Enquiry'); 
-         $this->email->message($msg); 
-   
+        //  $this->email->from($from_email, 'Starsboard'); 
+        //  $this->email->to($to_email);
+        //  $this->email->subject('Enquiry'); 
+        //  $this->email->message($msg); 
+		error_log("test00001s");
+
+
+		$receipents = array(array("email"=>$to_email,"name"=>$this->input->post('name')));
+		$params["name"] =$this->session->userdata('name');
+		$params["e_name"] =$this->input->post('enquiry_name');
+		$params["phone"] =$this->input->post('enquiry_mobile');
+		$params["email"] =$this->input->post('enquiry_email');
+		$params["message"] =$this->input->post('enquiry_message');
+
+		$mailResponse = $this->sendMail($receipents, 7, $params);
+		error_log("test1s");
+
 			if($response){
 				echo $message = '<div class="alert alert-success" role="alert">Your Enquiry Is Submitted Successfully!!!</div>';
 			
@@ -208,10 +227,20 @@ Flat Iamage (Whatsapp) -7977476239';
          //Load email library 
          $this->load->library('email'); 
    $from_email = "info@starsboard.in"; 
-         $this->email->from($from_email, 'Starsboard'); 
-         $this->email->to($to_email);
-         $this->email->subject('Enquiry'); 
-         $this->email->message($msg);
+        //  $this->email->from($from_email, 'Starsboard'); 
+        //  $this->email->to($to_email);
+        //  $this->email->subject('Enquiry'); 
+        //  $this->email->message($msg);
+
+		$receipents = array(array("email"=>$to_email,"name"=>$this->input->post('name')));
+		$params["name"] =$this->session->userdata('name');
+		$params["e_name"] =$this->input->post('enquiry_name');
+		$params["phone"] =$this->input->post('enquiry_mobile');
+		$params["email"] =$this->input->post('enquiry_email');
+		$params["message"] =$this->input->post('enquiry_message');
+
+		$mailResponse = $this->sendMail($receipents, 7, $params);
+		error_log("test2");
 			if($response){
 				echo $message = 'Your Enquiry has been submiited successfuly!!!';
 			
@@ -222,4 +251,50 @@ Flat Iamage (Whatsapp) -7977476239';
 		
 			
 	}
+	public function sendMail($receipts,$templateId,$params){
+		error_log("PARAMS -------------------------sendMail : ".json_encode($receipts));
+
+		$fields = array();
+		$fields["to"] = $receipts;
+		
+		$fields["templateId"] = $templateId;
+		$fields["params"] = $params;
+		$fields["headers"] = array(
+			"X-Mailin-custom"=>"custom_header_1:custom_value_1|custom_header_2:custom_value_2|custom_header_3:custom_value_3",
+			"charset"=>"iso-8859-1"
+		);
+		$curl = curl_init();
+		$fields_string = json_encode($fields);
+		// error_log($fields_string);
+
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => "https://api.sendinblue.com/v3/smtp/email",
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => "",
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 30,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS => $fields_string,
+		CURLOPT_HTTPHEADER => array(
+			"accept: application/json",
+			"api-key: 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",
+			"content-type: application/json"
+		),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+            error_log("error ".json_encode($receipts));
+
+			return "cURL Error #:" . $err;
+		} else {
+			return $response;
+		}
+	}
+	
 }

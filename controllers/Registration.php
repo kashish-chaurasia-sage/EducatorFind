@@ -59,15 +59,21 @@ class Registration extends CI_Controller {
          $this->email->message($msg); 
         
        
+        //sendinblue mail config
         $receipents = array(array("email"=>$to_email,"name"=>$this->input->post('name')));
         $params["name"] =$this->input->post('name');
-        $mailResponse = $this->sendMail($receipents, 1, $params);
+        if($this->input->post('user_type') == "learner"){
+            $mailResponse = $this->sendMail($receipents, 2, $params);
+        }else{
+            $mailResponse = $this->sendMail($receipents, 1, $params);
+
+        }
 
         //  Send mail 
-         if($this->email->send()) 
-         $this->session->set_flashdata("email_sent","Email sent successfully."); 
-         else 
-         $this->session->set_flashdata("email_sent","Error in sending Email."); 
+        //  if($this->email->send()) 
+        //  $this->session->set_flashdata("email_sent","Email sent successfully."); 
+        //  else 
+        //  $this->session->set_flashdata("email_sent","Error in sending Email."); 
                  
                 if($insert){ 
                     $con = array( 

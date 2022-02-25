@@ -403,11 +403,34 @@ Flat Iamage (Whatsapp) -7977476239";
          $this->email->from($from_email, 'Starsboard'); 
          $this->email->to($to_email);
          $this->email->subject('Become Educator'); 
-         $this->email->message($msg); 
+         $this->email->message($msg);
+         
+        $receipents = array(array("email"=>$to_email,"name"=>$this->input->post('name')));
+        $params["name"] = $this->session->userdata('edu_name');
+        error_log("CATEGORY : >>>>>>>>>>".json_encode($this->session->userdata('category')));
+        $category = $this->session->userdata('category');
+        $categoryString = " ";
+        if (in_array("1", $category)){
+            $categoryString =   $categoryString . "|Academic| " ;
+        }
+        if (in_array("2", $category)){
+            $categoryString =  $categoryString . "|Career Counselling| " ;
+        }
+        if (in_array("3", $category)){
+            $categoryString =  $categoryString ."|Professional Training| " ;
+        }
+        
+        $params["category"] =  $categoryString;
+        $params["email"] =$this->session->userdata('useremail');
+        $params["phone"] =$this->session->userdata('edu_mobile');
+        
+        $mailResponse = $this->sendMail($receipents, 4, $params);
+        echo 'You are our now our verified educator';
+
    
-                if ($this->email->send()) {
-                    echo 'You are our now our verified educator';
-                }
+                // if ($this->email->send()) {
+                //     echo 'You are our now our verified educator';
+                // }
             }
             redirect('become_educator/finish');
         } else {
@@ -418,5 +441,51 @@ Flat Iamage (Whatsapp) -7977476239";
     public function finish() {
         $this->load->view('become-educator-finish');
     }
+
+    public function sendMail($receipts,$templateId,$params){
+		error_log("PARAMS -------------------------sendMail : ".json_encode($receipts));
+
+		$fields = array();
+		$fields["to"] = $receipts;
+		
+		$fields["templateId"] = $templateId;
+		$fields["params"] = $params;
+		$fields["headers"] = array(
+			"X-Mailin-custom"=>"custom_header_1:custom_value_1|custom_header_2:custom_value_2|custom_header_3:custom_value_3",
+			"charset"=>"iso-8859-1"
+		);
+		$curl = curl_init();
+		$fields_string = json_encode($fields);
+		// error_log($fields_string);
+
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => "https://api.sendinblue.com/v3/smtp/email",
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => "",
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 30,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS => $fields_string,
+		CURLOPT_HTTPHEADER => array(
+			"accept: application/json",
+			"api-key: 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",
+			"content-type: application/json"
+		),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+            error_log("error ".json_encode($receipts));
+
+			return "cURL Error #:" . $err;
+		} else {
+			return $response;
+		}
+	}
 
 }
