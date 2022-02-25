@@ -100,7 +100,7 @@
                 </div>
                 <!--    //Total Point Section Ends-->
 
-                <div class="ud-rhs-pay">
+                <!-- <div class="ud-rhs-pay">
                     <div class="ud-rhs-pay-inn">
                         <h3>Payment Information</h3>
                         <ul>
@@ -122,7 +122,7 @@
 
                         <a href="db-payment" class="btn btn2">Pay Now</a>
                     </div>
-                </div>
+                </div> -->
                 <div class="ud-rhs-pay ud-rhs-status">
                     <div class="ud-rhs-pay-inn">
                         <h3>Listing open & close status</h3>

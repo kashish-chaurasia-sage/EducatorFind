@@ -43,12 +43,12 @@
                             <a href="" class=""><img src="<?php echo base_url('assets/public/images/sidebar/dbl18.png');?>" alt="" />Followings</a>
                         </li>
                        
-                        <li>
+                        <!-- <li>
                             <a href="<?php echo base_url('plan');?>" class=""><img src="<?php echo base_url('assets/public/images/sidebar/dbl9.png');?>" alt="">Payment & plan</a>
                         </li>
                         <li>
                             <a href="" class=""><img src="<?php echo base_url('assets/public/images/sidebar/dbl16.png');?>" alt=""/>Payment invoice</a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="<?php echo base_url('notification');?>" class=""><img src="<?php echo base_url('assets/public/images/sidebar/dbl19.png');?>" alt="" />Notifications</a>
                         </li>

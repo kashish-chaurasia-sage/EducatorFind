@@ -10,7 +10,9 @@
                     <div class="log log-1">
                         <div class="login">
                             <h4>Create an account</h4>
-                            <p>Don't have an account? Create your account. It's take less then a minutes</p>
+                            <center><h8>Don't have an account?</h8> <br>
+                               <h8>It's take less then a 5 minutes</h8></center>
+                            <br>
                            		   <?php  
                                     if(!empty($success_msg)){ 
                                              echo '<p class="status-msg success">'.$success_msg.'</p>'; 
@@ -18,7 +20,8 @@
 											 elseif(!empty($error_msg)){ 
                                               echo '<p class="status-msg error">'.$error_msg.'</p>'; 
                                        } 
-    ?>
+                                    
+                                    ?>
 						   <form name="register_form" id="register_form" method="POST" action="<?php echo base_url('registration'); ?>">
                                
                               
@@ -34,6 +37,23 @@
                                            required>
 										   <?php echo form_error('email','<p class="help-block">','</p>'); ?>
                                 </div>
+                                <div class="form-group">
+                                    <input type="phone" autocomplete="off" name="phone" id="phone"
+                                           class="form-control" placeholder="Phone Number*" value=""
+                                           required>
+										   <?php echo form_error('phone','<p class="help-block">','</p>'); ?>
+                                </div>
+
+                                <div class="form-group">
+
+                                    <select name="user_type" id="user_type" class="form-control" required>
+                                    <option value="" selected="selected">---Select user type*---</option>
+                                        <option value="educator">Educator</option>
+                                        <option value="learner">Learner</option>
+                                        
+                                    </select>
+                                </div>
+
                                 <div class="form-group">
                                     <input type="password" name="password" id="password" class="form-control"
                                            placeholder="Password*" value="" required>

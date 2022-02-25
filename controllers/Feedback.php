@@ -30,17 +30,17 @@ class Feedback extends CI_Controller {
          $from_email = "info@starsboard.in"; 
          $to_email = 'vivekpaswan624@gmail.com'; 
          $msg="SUB - 	Welcome to Starsboard Education !
-Dear User
- 
-Your Sign up has been successfully for STARSBOARD. We're thrilled to have you on board. To get the most out of STARSBOARD. , do this primary next step:
- 
-Access dashboard and Once you login into your dashboard then Select Become Educator and complete your registration.
- 
-BECOME EDUCATOR
- 
-Best Regards,
-STARSBOARD Education
-Flat Iamage (Whatsapp) -7977476239";
+			Dear User
+			
+			Your Sign up has been successfully for STARSBOARD. We're thrilled to have you on board. To get the most out of STARSBOARD. , do this primary next step:
+			
+			Access dashboard and Once you login into your dashboard then Select Become Educator and complete your registration.
+			
+			BECOME EDUCATOR
+			
+			Best Regards,
+			STARSBOARD Education
+			Flat Iamage (Whatsapp) -7977476239";
    
          //Load email library 
          $this->load->library('email'); 

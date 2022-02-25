@@ -27,16 +27,23 @@ class Registration extends CI_Controller {
 		
             $this->form_validation->set_rules('name', 'Name', 'required'); 
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback_email_check'); 
+            $this->form_validation->set_rules('phone', 'Phone', 'required'); 
             $this->form_validation->set_rules('password', 'password', 'required'); 
             $this->form_validation->set_rules('conf_password', 'confirm password', 'required|matches[password]'); 
+            $this->form_validation->set_rules('user_type', 'user_type', 'required'); 
+
  
             $userData = array( 
                 'name' => strip_tags($this->input->post('name')), 
                 'email' => strip_tags($this->input->post('email')), 
+                'phone' => strip_tags($this->input->post('phone')), 
                 'password' => md5($this->input->post('password')), 
+                'user_type' => ($this->input->post('user_type')), 
+
             ); 
  
             if($this->form_validation->run() == true){ 
+            echo $userData;
             $insert = $this->user->insert($userData); 
                  
           $from_email = "info@starsboard.in"; 
@@ -50,19 +57,44 @@ class Registration extends CI_Controller {
          $this->email->to($to_email);
          $this->email->subject('Registration'); 
          $this->email->message($msg); 
-   
-         //Send mail 
+        
+       
+        $receipents = array(array("email"=>$to_email,"name"=>$this->input->post('name')));
+        $params["name"] =$this->input->post('name');
+        $mailResponse = $this->sendMail($receipents, 1, $params);
+
+        //  Send mail 
          if($this->email->send()) 
          $this->session->set_flashdata("email_sent","Email sent successfully."); 
          else 
          $this->session->set_flashdata("email_sent","Error in sending Email."); 
-   
-                 
-                 
                  
                 if($insert){ 
-                    $this->session->set_userdata('success_msg', 'Your account registration has been successful. Please login to your account.'); 
-                    redirect('login'); 
+                    $con = array( 
+                        'returnType' => 'single', 
+                        'conditions' => array( 
+                            'email'=> $this->input->post('email'), 
+                            'password' => md5($this->input->post('password')), 
+                            'status' => 1 
+                        ) 
+                    ); 
+                    $checkLogin = $this->user->getRows($con);
+                    $this->isUserLoggedIn = $this->session->userdata('isUserLoggedIn'); 
+
+                    if($checkLogin){ 
+                        $this->session->set_userdata('isUserLoggedIn', TRUE); 
+                        $this->session->set_userdata('userId', $checkLogin['id']); 
+                        $this->session->set_userdata('username', $checkLogin['name']);
+                        $this->session->set_userdata('useremail', $checkLogin['email']);
+                        $this->session->set_userdata('usercreated', $checkLogin['created']);
+                        $this->session->set_userdata('user_type', $checkLogin['user_type']);
+                        if($checkLogin['user_type'] == "educator"){
+                            redirect('become_educator'); 
+                        }else{
+                            redirect('dashboard'); 
+                        }
+                        
+                    }
                 }else{ 
                     $data['error_msg'] = 'Some problems occured, please try again.'; 
                 } 
@@ -99,4 +131,50 @@ class Registration extends CI_Controller {
             return TRUE; 
         } 
     } 
+
+    public function sendMail($receipts,$templateId,$params){
+		error_log("PARAMS -------------------------sendMail : ".json_encode($receipts));
+
+		$fields = array();
+		$fields["to"] = $receipts;
+		
+		$fields["templateId"] = $templateId;
+		$fields["params"] = $params;
+		$fields["headers"] = array(
+			"X-Mailin-custom"=>"custom_header_1:custom_value_1|custom_header_2:custom_value_2|custom_header_3:custom_value_3",
+			"charset"=>"iso-8859-1"
+		);
+		$curl = curl_init();
+		$fields_string = json_encode($fields);
+		// error_log($fields_string);
+
+		curl_setopt_array($curl, array(
+		CURLOPT_URL => "https://api.sendinblue.com/v3/smtp/email",
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING => "",
+		CURLOPT_MAXREDIRS => 10,
+		CURLOPT_TIMEOUT => 30,
+		CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS => $fields_string,
+		CURLOPT_HTTPHEADER => array(
+			"accept: application/json",
+			"api-key: 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",
+			"content-type: application/json"
+		),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+            error_log("error ".json_encode($receipts));
+
+			return "cURL Error #:" . $err;
+		} else {
+			return $response;
+		}
+	}
 }

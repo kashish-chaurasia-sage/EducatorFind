@@ -892,7 +892,7 @@ font-size: 14px;
                                       <div class="flip-card-inner">
                                         <div class="flip-card-front">
                                           <img src="<?=base_url('assets/public/images/landing/1.png');?>" alt=""class="animation-jump heading">
-                                          <h4>10k Educators</h4>
+                                          <h4>25,000 Educators</h4>
                                           <a href="">Explore Now</a>
                                         </div>
                                         <div class="flip-card-back">
@@ -934,11 +934,11 @@ font-size: 14px;
                                       <div class="flip-card-inner">
                                         <div class="flip-card-front">
                                           <img src="<?=base_url('assets/public/images/landing/4.png');?>" alt=""class="animation-jump heading">
-                                          <h4>2k+ Premium Users</h4>
+                                          <h4>10,000 Students</h4>
                                           <a href="">Explore Now</a>
                                         </div>
                                         <div class="flip-card-back">
-                                          <p>2k+ Premium Educators have trusted us to get found </p>
+                                          <p>10,000 Students have trusted us to get found </p>
                                         </div>
                                       </div>
                                     </div>
@@ -1190,7 +1190,7 @@ font-size: 14px;
                                       <div class="flip-card-inner">
                                         <div class="flip-card-front">
                                           <img src="<?=base_url('assets/public/images/landing/1.png');?>" alt=""class="animation-jump heading">
-                                          <h4>10k Educators</h4>
+                                          <h4>300k Educators</h4>
                                           <a href="">Explore Now</a>
                                         </div>
                                         <div class="flip-card-back">
@@ -1232,11 +1232,11 @@ font-size: 14px;
                                       <div class="flip-card-inner">
                                         <div class="flip-card-front">
                                           <img src="<?=base_url('assets/public/images/landing/4.png');?>" alt=""class="animation-jump heading">
-                                          <h4>2k+ Premium Users</h4>
+                                          <h4>10,000 Students</h4>
                                           <a href="">Explore Now</a>
                                         </div>
                                         <div class="flip-card-back">
-                                          <p>2k+ Premium Educators have trusted us to get found </p>
+                                          <p>10,000 Students have trusted us to get found </p>
                                         </div>
                                       </div>
                                     </div>

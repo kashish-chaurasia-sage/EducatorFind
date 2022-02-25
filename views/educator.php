@@ -498,7 +498,7 @@
 <?php }?>
  </ul>
 
-                        <!--ADS-->
+                        <!-- ADS-->
                         <div class="ban-ati-com ads-all-list">
                                        
 <!-- horizontal ads -->
@@ -512,8 +512,10 @@
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
                         </div>
-                        <!--ADS-->
-                        <div id="all-list-pagination-container"></div>
+                        <!--ADS -->
+                        <div id="all-list-pagination-container">
+                            
+                        </div>
                     </div>
                 </div>
             </div>

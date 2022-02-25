@@ -212,7 +212,7 @@
                 </div>
                 <!--    //Total Point Section Ends-->
 
-                <div class="ud-rhs-pay">
+                <!-- <div class="ud-rhs-pay">
                     <div class="ud-rhs-pay-inn">
                         <h3>Payment Information</h3>
                         <ul>
@@ -223,7 +223,7 @@
 
                         <a href="" class="btn btn2">Pay Now</a>
                     </div>
-                </div>
+                </div> -->
 				<?php if(!empty($educator)){?>
                 <div class="ud-rhs-pay ud-rhs-status">
                     <div class="ud-rhs-pay-inn">
@@ -368,20 +368,20 @@
     <!-- START -->
     <?php  	if($user_data[0]->educator != '1'){?>
 
-<div class="star_board_wpop welcome_pop">
+<!-- <div class="star_board_wpop welcome_pop">
    <div class="modal-dialog">
       <div class="modal-content">
          <button type="button" class="closed-btn"><span></span></button>
          <div class="modal-body">
-            <div class="welcome-cta">
+            <!-- <div class="welcome-cta">
                <a href="https://starsboard.in/become-educator">
                <img src="<?=base_url('assets/public/images/star-add-welcome.jpeg');?>" alt="" srcset="">
                </a>
-            </div>
+            </div> -->
          </div>
       </div>
    </div>
-</div>
+</div> -->
 <?php }?>
 <?php $this->load->view('layout/footer');?>
 
