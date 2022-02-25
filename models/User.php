@@ -68,4 +68,24 @@ class User extends CI_Model{
         } 
         return false; 
     } 
+
+    public function userInfo($userID) { 
+        error_log("Testing Inside DB");
+        $sql = "SELECT * FROM users where id=".$userID."";
+		$query = $this->db->query($sql);
+        error_log("query data".json_encode($query));
+		return $query->row;
+    }
+
+    public function getEducatorInfo($educatorID) { 
+        $this->db->select('*');
+		$this->db->from('tbl_educator');
+		$this->db->where('Eid',$educatorID);
+		$query=$this->db->get();
+        // error_log("query data".json_encode($query));
+
+		return $result = $query->result();
+		// return $query->row;
+    }
+
 }

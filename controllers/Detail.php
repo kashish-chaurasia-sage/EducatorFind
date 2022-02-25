@@ -59,6 +59,8 @@ class Detail extends CI_Controller {
 	}
 	}
 	public function enquiry(){
+		$this->load->model('User');
+		$this->load->model('CommonMdl');
 		if($this->session->userdata('userId') != $this->input->post('listing_user_id')){
 			
 		
@@ -74,14 +76,20 @@ class Detail extends CI_Controller {
 			
 			$data = $this->security->xss_clean($data);
 			$response =  $this->CommonMdl->insertRow($data,'lead');
-			error_log("test188888s");
 
 		$from_email = "info@starsboard.in"; 
-		error_log("80");
+		error_log("User data 1----> ".json_encode($this->input->post('listing_educator_id')));
+	    $educator_details= $this->User->getEducatorInfo($this->input->post('listing_educator_id'));
+		$longJsonInfo=$educator_details[0]->LongJsonInfo;
+			//echo '<pre>';   print_r($educator);die;
+			$personInfo = json_decode($longJsonInfo,true);
+			$Edudata=$personInfo[0];
 
-         $to_email = $this->input->post('enquiry_email'); 
-		 error_log("83");
+		// $userInfo = $this->User->userInfo( $this->input->post('listing_educator_id'));
+		error_log("Educator data2 ----> ".json_encode($Edudata["edu_email"]));
+		// error_log("User data ----> ".json_encode($this->input->post('listing_educator_id')));
 
+        $to_email = $Edudata["edu_email"]; 
 //         $msg="New Student Enquiry
 
 // Hi 
@@ -98,7 +106,6 @@ class Detail extends CI_Controller {
 // Best Regards,
 // STARSBOARD Education
 // Flat Iamage (Whatsapp) -7977476239";
-error_log("101");
 
          //Load email library 
         //  $this->load->library('email'); 
@@ -107,7 +114,6 @@ error_log("101");
         //  $this->email->to($to_email);
         //  $this->email->subject('Enquiry'); 
         //  $this->email->message($msg); 
-		error_log("test00001s");
 
 
 		$receipents = array(array("email"=>$to_email,"name"=>$this->input->post('name')));
