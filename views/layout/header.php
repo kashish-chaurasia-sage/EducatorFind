@@ -728,10 +728,17 @@ font-size: 14px;
                                <!--<ul class="bla" >-->
                                <!--     <li><a href="https://starsboard.in/become-educator">Become Educator</a></li>-->
                                <!-- </ul>-->
-                               <ul class="bl right-btn"><li style="
+                               <?php
+                                    if($user_data[0]->user_type == 'educator'){
+                                                    ?>
+                                            
+                                            
+                                            <ul class="bl right-btn"><li style="
 "><a href="https://starsboard.in/become-educator" style="
     margin: 0 auto;
 ">Become Educator</a></li></ul>
+                                                    <?php }?>
+                               
                                     <div class="al">
                                     
                                         <div class="head-pro">
@@ -743,9 +750,22 @@ font-size: 14px;
                                         </div>
                                         <div class="db-menu">
                                             <ul>
+                                            <?php  
+                                                // error_log("in sidebar".json_encode($user_data[0]->user_type));
+                                                if($user_data[0]->user_type == 'learner'){
+                                                    ?>
+                                            
+                                            <li>
+                                                    <a href="<?php echo base_url('learner_dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/navigation/dbl1.png');?>" alt=""/> My Dashboard</a></li>
                                                 <li>
+                                                    <?php }else{?>
+                                                        <li>
                                                     <a href="<?php echo base_url('dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/navigation/dbl1.png');?>" alt=""/> My Dashboard</a></li>
                                                 <li>
+                                                        <?php  }?>
+                                                <!-- <li>
+                                                    <a href="<?php echo base_url('dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/navigation/dbl1.png');?>" alt=""/> My Dashboard</a></li>
+                                                <li> -->
                                                 <li>
                                                     <a href="<?php echo base_url('Lead');?>"><img src="<?php echo base_url('assets/public/images/navigation/dbl14.png');?>" alt=""/>Lead enquiry</a>
                                                 </li>
@@ -1103,7 +1123,14 @@ font-size: 14px;
                                     <li><a href="<?php echo base_url('registration');?>">Create an account</a></li>
                                     
                                     <li><a href="<?php echo base_url('login');?>">Sign in</a></li>
-                                    <li><a href="<?= base_url('become-educator');?>">Become Educator</a></li>
+                                    <?php
+                                    if($user_data[0]->user_type == 'educator'){
+                                                    ?>
+                                            
+                                            <li>
+                                            <li><a href="<?= base_url('become-educator');?>">Become Educator</a></li>
+                                                <li>
+                                                    <?php }?>
                                 </ul>
                                 <!--MOBILE MENU-->
                                 <div class="mob-menu">

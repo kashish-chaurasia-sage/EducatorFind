@@ -9,9 +9,23 @@
                 </div>
                 <div class="ud-lhs-s2">
                     <ul>
+                    <?php  
+					// error_log("in sidebar".json_encode($user_data[0]->user_type));
+                    if($user_data[0]->user_type == 'learner'){
+                        ?>
+                   
                     <li>
-                            <a href="<?php echo base_url('dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/sidebar/dbl1.png');?>" alt="" /> My Dashboard</a>
+                            <a href="<?php echo base_url('learner_dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/sidebar/dbl1.png');?>" alt="" /> Learner's Dashboard</a>
                         </li>
+                        <?php }else{?>
+                            <li>
+                            <a href="<?php echo base_url('dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/sidebar/dbl1.png');?>" alt="" /> Educator's Dashboard</a>
+                        </li>
+                            <?php  }?>
+                            <?php  
+					// error_log("in sidebar".json_encode($user_data[0]->user_type));
+                    if($user_data[0]->user_type == 'educator'){
+                        ?>
 						<?php  
 					
 						if($user_data[0]->educator == '1'){?>
@@ -23,6 +37,7 @@
                             <a href="<?php echo base_url('become_educator');?>"><img src="<?php echo base_url('assets/public/images/sidebar/dbl3.png');?>" alt=""/>Become Educator</a>
                         </li>
 						<?php  }?>
+                        <?php }?>
 						<li>
                             <a href="<?php echo base_url('lead');?>"><img src="<?php echo base_url('assets/public/images/sidebar/tick.png');?>" alt=""/>Lead</a>
                         </li>

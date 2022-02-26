@@ -97,7 +97,7 @@ class Registration extends CI_Controller {
                         if($checkLogin['user_type'] == "educator"){
                             redirect('become_educator'); 
                         }else{
-                            redirect('dashboard'); 
+                            redirect('become_learner'); 
                         }
                         
                     }
