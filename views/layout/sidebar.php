@@ -9,7 +9,10 @@
                 </div>
                 <div class="ud-lhs-s2">
                     <ul>
-                    <?php  
+                    <li>
+                            <a href="<?php echo base_url('dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/sidebar/dbl1.png');?>" alt="" /> My Dashboard</a>
+                        </li>
+                    <!-- <?php  
 					// error_log("in sidebar".json_encode($user_data[0]->user_type));
                     if($user_data[0]->user_type == 'learner'){
                         ?>
@@ -21,7 +24,7 @@
                             <li>
                             <a href="<?php echo base_url('dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/sidebar/dbl1.png');?>" alt="" /> Educator's Dashboard</a>
                         </li>
-                            <?php  }?>
+                            <?php  }?> -->
                             <?php  
 					// error_log("in sidebar".json_encode($user_data[0]->user_type));
                     if($user_data[0]->user_type == 'educator'){

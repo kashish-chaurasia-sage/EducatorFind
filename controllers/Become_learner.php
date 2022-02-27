@@ -180,7 +180,7 @@ class Become_learner extends CI_Controller {
                 $params["email"] =$this->session->userdata('useremail');
                 $params["phone"] =$this->session->userdata('edu_mobile');
         
-                $mailResponse = $this->sendMail($receipents, 4, $params);
+                // $mailResponse = $this->sendMail($receipents, 4, $params);
                 echo 'You are our now our verified educator';
             }
             redirect('become_learner/finish');

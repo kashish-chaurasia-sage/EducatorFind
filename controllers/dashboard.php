@@ -21,7 +21,13 @@ class Dashboard extends CI_Controller {
 	   
 	  $data['blog']= $this->CommonMdl->getResult('blog', '*', array('blog_user_id' => $this->session->userdata('userId')));
 	  $data['educator']= $this->CommonMdl->getResult('tbl_educator', '*', array('Eid' => $this->session->userdata('userId')));
-	   
+	 if( $data['user_data'][0]->user_type == 'learner'){
+		$this->load->view('learner_dashboard',$data);
+
+	  }else{
 		$this->load->view('dashboard',$data);
+
+	  }
+		// $this->load->view('dashboard',$data);
 	}
 }

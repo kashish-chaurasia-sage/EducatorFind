@@ -729,7 +729,7 @@ font-size: 14px;
                                <!--     <li><a href="https://starsboard.in/become-educator">Become Educator</a></li>-->
                                <!-- </ul>-->
                                <?php
-                                    if($user_data[0]->user_type == 'educator'){
+                                    if( (isset($user_data))&& ($user_data[0]->user_type == 'educator')){
                                                     ?>
                                             
                                             
@@ -750,22 +750,22 @@ font-size: 14px;
                                         </div>
                                         <div class="db-menu">
                                             <ul>
-                                            <?php  
+                                            <!-- <?php  
                                                 // error_log("in sidebar".json_encode($user_data[0]->user_type));
-                                                if($user_data[0]->user_type == 'learner'){
+                                                if((isset($user_data)) && ($user_data[0]->user_type == 'learner')){
                                                     ?>
                                             
                                             <li>
-                                                    <a href="<?php echo base_url('learner_dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/navigation/dbl1.png');?>" alt=""/> My Dashboard</a></li>
+                                                    <a href="<?php echo base_url('learner_dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/navigation/dbl1.png');?>" alt=""/> My Learner's Dashboard</a></li>
                                                 <li>
                                                     <?php }else{?>
                                                         <li>
                                                     <a href="<?php echo base_url('dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/navigation/dbl1.png');?>" alt=""/> My Dashboard</a></li>
                                                 <li>
-                                                        <?php  }?>
-                                                <!-- <li>
+                                                        <?php  }?> -->
+                                                <li>
                                                     <a href="<?php echo base_url('dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/navigation/dbl1.png');?>" alt=""/> My Dashboard</a></li>
-                                                <li> -->
+                                                <li>
                                                 <li>
                                                     <a href="<?php echo base_url('Lead');?>"><img src="<?php echo base_url('assets/public/images/navigation/dbl14.png');?>" alt=""/>Lead enquiry</a>
                                                 </li>
@@ -1124,13 +1124,25 @@ font-size: 14px;
                                     
                                     <li><a href="<?php echo base_url('login');?>">Sign in</a></li>
                                     <?php
-                                    if($user_data[0]->user_type == 'educator'){
+                                    if(isset($user_data))
+                                    {
+                                        if($user_data[0]->user_type == 'educator'){
                                                     ?>
-                                            
                                             <li>
                                             <li><a href="<?= base_url('become-educator');?>">Become Educator</a></li>
                                                 <li>
-                                                    <?php }?>
+                                        <?php }else{
+                                            
+                                            ?>
+                                            <li>
+                                            
+                                       <?php  
+                                    }}else{?>
+                                                        <li>
+                                            <!-- <li><a href="<?= base_url('become-educator');?>">Become Educator</a></li>
+                                                <li> -->
+                                                <?php }?>
+
                                 </ul>
                                 <!--MOBILE MENU-->
                                 <div class="mob-menu">
