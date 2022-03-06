@@ -53,20 +53,21 @@ if(email == ''){
 		return false;
 			
 }
-	  e.preventDefault();
+	e.preventDefault();
     var senddata = $(this).serializeArray();
     var sendto = $(this).attr("action");
-
+    
     $.ajax({
         url: sendto,
         type: 'POST',
         data: senddata,
         success: function (data) {
-			if(data =='1'){
+            alert(JSON.stringify(data));
+			if(data == " 1"){
 				swal("Success!", "Reset link has been sent on your registered email address.", "success");
 				
 			}else{
-         	swal("Oops!", "Please try after sometime", "error");
+         	    swal("Oops!", "This Email Id Doesn't exists", "error");
 			}
         }
     });
