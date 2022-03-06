@@ -734,7 +734,7 @@ font-size: 14px;
                                             
                                             
                                             <ul class="bl right-btn"><li style="
-"><a href="https://starsboard.in/become-educator" style="
+"><a href="<?php echo base_url('become_educator');?>" style="
     margin: 0 auto;
 ">Become Educator</a></li></ul>
                                                     <?php }?>
@@ -930,7 +930,7 @@ font-size: 14px;
                                           <a href="">Explore Now</a>
                                         </div>
                                         <div class="flip-card-back">
-                                          <p>over 100 different education services offered</p>
+                                          <p>over 170 different education services offered</p>
                                         </div>
                                       </div>
                                     </div>
@@ -1247,7 +1247,7 @@ font-size: 14px;
                                           <a href="">Explore Now</a>
                                         </div>
                                         <div class="flip-card-back">
-                                          <p>over 100 different education services offered</p>
+                                          <p>over 170 different education services offered</p>
                                         </div>
                                       </div>
                                     </div>
