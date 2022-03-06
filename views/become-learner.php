@@ -130,8 +130,8 @@
                                 <div class="col-md-6">
                                         <div class="form-group">
                                         <label>Select Your Difficult Subjects :</label>
-                                            <select onChange="dropDown(event);" class="menu-btn" multiple name="subjects[]"
-                                                    id="subject_id"  >
+                                            <select onChange="getSubjects(this.value);"  multiple name="subjects[]"
+                                                    id="subject_id" class="chosen-select  form-control"  >
                                                     <!-- class="chosen-select  form-control" -->
                                                     <?php
                                                 foreach ($edu_sub as $key => $value) {
