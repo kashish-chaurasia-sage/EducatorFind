@@ -67,8 +67,10 @@
 										   <?php echo form_error('conf_password','<p class="help-block">','</p>'); ?>
                                 </div>
 
-
-
+                                <div>
+                                By creating an account you agree to our <a href="<?php echo base_url('/privacy-policy');?>" target="_blank" style="color:dodgerblue">Privacy Policy</a> and <a href="<?php echo base_url('/terms-and-conditions');?>" target="_blank" style="color:dodgerblue">Terms & Conditions</a>.
+                                    </div>
+<br>
                                 <input type="submit" name="signupSubmit"
                                         class="btn btn-primary" value="Register Now">
                             <!-- SOCIAL MEDIA LOGIN -->
