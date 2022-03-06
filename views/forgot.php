@@ -62,7 +62,7 @@ if(email == ''){
         type: 'POST',
         data: senddata,
         success: function (data) {
-            alert(JSON.stringify(data));
+            // alert(JSON.stringify(data));
 			if(data == " 1"){
 				swal("Success!", "Reset link has been sent on your registered email address.", "success");
 				
