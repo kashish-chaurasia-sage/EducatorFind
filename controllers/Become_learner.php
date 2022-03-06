@@ -29,7 +29,8 @@ class Become_learner extends CI_Controller {
 
         if ($this->input->post('lrn_per_submit')) {
             $user_id = $this->session->userdata('userId');
-            
+            $userInfo= $this->CommonMdl->getResult('users', '*', ['id' => $this->session->userdata('userId')]);
+            // error_log("userinfo".json_encode($userInfo[0]->name));
             // if (!empty($_FILES['edu_image']['name'])) {
             //     if (!file_exists('uploads/' . $user_id . '/')) {
             //         mkdir('uploads/' . $user_id, 0777, TRUE);
@@ -162,7 +163,7 @@ class Become_learner extends CI_Controller {
                 $to_email = $this->session->userdata('useremail'); 
                 // $this->email->to($to_email);
                 $receipents = array(array("email"=>$to_email,"name"=>$this->input->post('name')));
-                $params["name"] = $this->session->userdata('edu_name');
+                $params["name"] = $userInfo[0]->name;
                 error_log("CATEGORY : >>>>>>>>>>".json_encode($this->session->userdata('category')));
                 $category = $this->session->userdata('category');
                 $categoryString = " ";
@@ -176,11 +177,11 @@ class Become_learner extends CI_Controller {
                     $categoryString =  $categoryString ."|Professional Training| " ;
                 }
                 
-                $params["category"] =  $categoryString;
-                $params["email"] =$this->session->userdata('useremail');
-                $params["phone"] =$this->session->userdata('edu_mobile');
+                // $params["category"] =  $categoryString;
+                // $params["email"] =$this->session->userdata('useremail');
+                // $params["phone"] =$this->session->userdata('edu_mobile');
         
-                // $mailResponse = $this->sendMail($receipents, 4, $params);
+                $mailResponse = $this->sendMail($receipents, 8, $params);
                 echo 'You are our now our verified educator';
             }
             redirect('become_learner/finish');
