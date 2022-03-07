@@ -21,7 +21,7 @@
                             <li>
                                 <a href="add-listing-step-3" class="act">
                                     <span>Step 3</span>
-                                    <b>offers</b>
+                                    <b>Offers</b>
                                 </a>
                             </li>
 
@@ -36,7 +36,7 @@
                     <div class="log">
                         <div class="login add-list-off">
 
-                            <h4>Special offers</h4>
+                            <h4>Any Special offers</h4>
                             <span class="add-list-add-btn lis-add-off" title="add new offer">+</span>
                             <span class="add-list-rem-btn lis-add-rem" title="remove offer">-</span>
                             <form action="<?php echo base_url('become_educator/offer');?>" class="listing_form_3" id="listing_form_3"
@@ -49,7 +49,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <input type="text" name="offer_name" class="form-control"
-                                                           placeholder="Offer name*" value="">
+                                                           placeholder="Offer name" value="">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -57,7 +57,7 @@
                                                     <input type="text" name="offers_price"
                                                            onkeypress="return isNumber(event)"
                                                            class="form-control"
-                                                           placeholder="Price" value="">
+                                                           placeholder="Price offered" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -76,7 +76,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label>Choose offer image</label>
+                                                    <label>Choose offer banner/image</label>
                                                     <input type="file" name="offers_image"
                                                            class="form-control">
                                                 </div>
@@ -89,7 +89,7 @@
                                                 <div class="form-group">
                                                     <input type="text" name="offer_link"
                                                            class="form-control"
-                                                           placeholder="View More Link" value="">
+                                                           placeholder="Your Website or Social Media Page Link" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -97,7 +97,7 @@
                                     </li>
                                 </ul>
                                 <!--FILED START-->
-                                <div class="row">
+                                <!-- <div class="row">
                                     <div class="col-md-6">
                                         <a href="add-listing-step-2">
                                             <button type="button"
@@ -110,7 +110,22 @@
                                     <div class="col-md-12">
                                         <a href="add-listing-step-4" class="skip">Skip this                                        >></a>
                                     </div>
+                                </div> -->
+                                <div class="row">
+                                <div class="col-sm-10">
+                                      <input type="submit" name="edu_per_submit"
+                                            class="btn btn-primary" name="Previous" Value="Previous">
+                                  
                                 </div>
+                                <div class="col-sm-1">
+                                    <input type="submit" name="edu_offer_submit"
+                                            class="btn btn-primary" name="Next" Value="Next">
+                                </div>
+                                <div class="col-md-12">
+                                        <a href="add-listing-step-4" class="skip">Skip this                                        >></a>
+                                    </div>
+                               
+                            </div>
                                 <!--FILED END-->
                             </form>
                         </div>

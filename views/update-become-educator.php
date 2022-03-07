@@ -72,7 +72,7 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" name="edu_whatsapp" class="form-control"
+                                        <input type="text" name="edu_whatsapp" class="form-control" 
                                                value="<?= ($this->session->userdata('edu_whatsapp'))? $this->session->userdata('edu_whatsapp'):$educator['edu_whatsapp'];?>"
                                                placeholder="Whatsapp Number (e.g. 9876*****0)">
                                     </div>
@@ -84,9 +84,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <input type="text" name="edu_address" class="form-control"
-                                               value="<?= ($this->session->userdata('edu_address'))? $this->session->userdata('edu_address'):'';?>"
-                                               placeholder="Address">
+                                        <input type="number" name="edu_pincode" class="form-control" required="required"
+                                               value="<?= ($this->session->userdata('edu_pincode'))? $this->session->userdata('edu_pincode'):'';?>"
+                                               placeholder="Pincode*">
                                     </div>
                                 </div>
                             </div>

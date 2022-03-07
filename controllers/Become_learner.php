@@ -401,9 +401,9 @@ class Become_learner extends CI_Controller {
 //             if (!empty($this->session->userdata('lang_prof'))) {
 //                 $prof_lang = implode(",", $this->session->userdata('lang_prof'));
 //             }
-//             $concelling_lang = '';
+//             $career_lang = '';
 //             if (!empty($this->session->userdata('lang_coun'))) {
-//                 $concelling_lang = implode(",", $this->session->userdata('lang_coun'));
+//                 $career_lang = implode(",", $this->session->userdata('lang_coun'));
 //             }
             
 //             $tech_courseKeyword = '';
@@ -451,7 +451,7 @@ class Become_learner extends CI_Controller {
 //                 'prof_course' => $tech_course2 ? $tech_course2 : '',
 //                 'art' => $art ? $art : '',
 //                 'prof_lang' => $prof_lang ? $prof_lang : '',
-//                 'concelling_lang' => $concelling_lang ? $concelling_lang : '',
+//                 'career_lang' => $career_lang ? $career_lang : '',
 //                 'academic_lang' => $lang_academic ? $lang_academic : '',
 //             );
             

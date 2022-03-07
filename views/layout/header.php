@@ -4,7 +4,7 @@
 
 <head>
 
-    <title><?php echo ($title)?$title :'Starsboard | Educator|Online Teacher|Student|Online class'?></title>
+    <title>S T A R S B O A R D</title>
     <!--== META TAGS ==-->
    
     <meta charset="utf-8">

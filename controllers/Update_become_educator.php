@@ -51,7 +51,7 @@ public function __construct(){
 		 $this->session->set_userdata('edu_mobile', $this->input->post('edu_mobile')); 
 		 $this->session->set_userdata('edu_email', $this->input->post('edu_email')); 
 		 $this->session->set_userdata('edu_whatsapp', $this->input->post('edu_whatsapp'));
-		 $this->session->set_userdata('edu_address', $this->input->post('edu_address')); 
+		 $this->session->set_userdata('edu_pincode', $this->input->post('edu_pincode')); 
 		 $this->session->set_userdata('edu_city', $this->input->post('edu_city')); 
 		 $this->session->set_userdata('edu_country', $this->input->post('edu_country')); 
 		 $this->session->set_userdata('category', $this->input->post('category'));		 
@@ -178,7 +178,7 @@ public function __construct(){
 	 $educator_class=implode(",",$this->session->userdata('class'));
 	 $prof_course=implode(",",$this->session->userdata('tech_course'));
 	 $prof_lang=implode(",",$this->session->userdata('lang_prof'));
-	 $concelling_lang=implode(",",$this->session->userdata('lang_coun'));
+	 $career_lang=implode(",",$this->session->userdata('lang_coun'));
 	 
         $searchString=array(
 		);
@@ -186,10 +186,10 @@ public function __construct(){
 		                    'user_id' => $this->session->userdata('userId'),
 							'LongJsonInfo' => $LongJsonInfoData,
 							'edu_name' => $this->session->userdata('edu_name'),
-							'edu_address' => $this->session->userdata('edu_address'),
+							'edu_pincode' => $this->session->userdata('edu_pincode'),
 							'edu_city' => $this->session->userdata('edu_city'),
 							'edu_state' => $this->session->userdata('edu_city'),
-						     'searchString' => 'educator,'.'teacher,'.'tutor,'.$this->session->userdata('edu_city').','.$this->session->userdata('edu_address').','.$this->session->userdata('country').','.$this->session->userdata('academic').','.$this->session->userdata('counselling').','.$this->session->userdata('training').','.$keyword.','.$this->session->userdata('servicecity'),
+						     'searchString' => 'educator,'.'teacher,'.'tutor,'.$this->session->userdata('edu_city').','.$this->session->userdata('edu_pincode').','.$this->session->userdata('country').','.$this->session->userdata('academic').','.$this->session->userdata('counselling').','.$this->session->userdata('training').','.$keyword.','.$this->session->userdata('servicecity'),
 							//'searchString' =>$keyword,
 							'edu_image' => $this->session->userdata('edu_image'),
 							'cover_imag  e' => $this->session->userdata('cover_image'),
@@ -203,7 +203,7 @@ public function __construct(){
 							'career_path'=>$career_path,
 							'prof_course'=>$prof_course,
 							'prof_lang'=>$prof_lang,
-							'concelling_lang'=>$concelling_lang,
+							'career_lang'=>$career_lang,
 							'academic_lang'=>$lang_academic,
 							);
 						 

@@ -350,7 +350,7 @@
                             <!--POPULAR LISTINGS: CONTENT-->
                             <div class="col-md-9">
                                 <h3><?= $isFeaturedAVal->edu_name;?></h3>
-                                <h4><?= $isFeaturedAVal->edu_address;?></h4>
+                                <h4><?= $isFeaturedAVal->edu_pincode;?></h4>
                                 <p><?= $isFeaturedAVal->edu_city;?></p>
                              <span class="rat-sh">5.0</span>
                                      </div>
@@ -370,7 +370,7 @@
                             <!--POPULAR LISTINGS: CONTENT-->
                             <div class="col-md-9">
                                 <h3><?= $isFeaturedAVal->edu_name;?></h3>
-                                <h4><?= $isFeaturedBVal->edu_address;?></h4>
+                                <h4><?= $isFeaturedBVal->edu_pincode;?></h4>
                                 <p><?= $isFeaturedBVal->edu_city;?></p>
                                                                     <span class="rat-sh">5.0</span>
                                                             </div>
