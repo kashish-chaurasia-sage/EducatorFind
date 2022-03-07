@@ -55,13 +55,25 @@
                             </div>
                             <!--FILED END-->
                             <!--FILED START-->
-                            <div class="row">
+                            <!-- <div class="row">
                                 <div class="col-md-12">
                                     <a href="<?php echo base_url('dashboard');?>"
                                        class="btn btn-primary">Go to user dashboard</a>
+                                </div> -->
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="<?php echo base_url('dashboard');?>"
+                                        class="btn btn-primary">Go to user dashboard</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a target="_blank"
+                                        href="<?php echo base_url('/detail/educator/'.$eid)?>"
+                                        class="btn btn-primary">Listing preview</a>
+                                    </div>
                                 </div>
                                
-                            </div>
+                            <!-- </div> -->
                             <!--FILED END-->
                         </form>
                     </div>

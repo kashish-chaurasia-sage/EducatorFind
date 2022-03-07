@@ -501,7 +501,12 @@ Flat Iamage (Whatsapp) -7977476239";
     }
 
     public function finish() {
-        $this->load->view('become-educator-finish');
+        $user_id=$this->session->userdata('userId');
+		$dataEid= $this->CommonMdl->getResult('tbl_educator', 'Eid', ['user_id' => $this->session->userdata('userId')]);
+		$eid =  $dataEid[0]->Eid;
+		$data['eid'] = $eid;
+		error_log("BECOME EDUCATOR FINISH".json_encode($data));
+        $this->load->view('become-educator-finish',$data);
     }
 
     public function sendMail($receipts,$templateId,$params){

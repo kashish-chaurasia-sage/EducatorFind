@@ -56,7 +56,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <a target="_blank"
-                                       href=""
+                                       href="<?php echo base_url('/detail/educator/'.$eid)?>"
                                        class="btn btn-primary">Listing preview</a>
                                 </div>
                             </div>
