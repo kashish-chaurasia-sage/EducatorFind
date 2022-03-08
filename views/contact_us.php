@@ -31,8 +31,8 @@
                 <div class="con-pg-info">
                     <h4>Contact info:</h4>
                     <ul>
-                        <li class="ic-pho">Support: +91 98924 60821</li>
-                        <li class="ic-pho">Enquiry: +91 98924 60821</li>
+                        <li class="ic-pho">Support: +91 79774 76239</li>
+                        <li class="ic-pho">Enquiry: +91 79774 76239</li>
                         <li class="ic-eml">Email: Info@starsboard.in</li>
                     </ul>
                 </div>

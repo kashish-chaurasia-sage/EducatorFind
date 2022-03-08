@@ -93,7 +93,7 @@
 
                     <div class="container">
                         <div class="row foot-supp">
-                            <h2><span>Free support:</span> +91 98924 60821 &nbsp;&nbsp;|&nbsp;&nbsp; <span>Email:</span> info@starsboard.in</h2>
+                            <h2><span>Free support:</span> +91 79774 76239 &nbsp;&nbsp;|&nbsp;&nbsp; <span>Email:</span> info@starsboard.in</h2>
                         </div>
                         <div class="row wed-foot-link">
                             <div class="col-md-4 foot-tc-mar-t-o">
@@ -177,7 +177,7 @@
                             <div class="col-md-4">
                                 <h4>Get In Touch</h4>
                                 <p>Address: S T A R S  B O A R D Education, Opp.  Maharashtra Nature Park, PMGP Colony, Sion West, Mumbai, Maharashtra 400017</p>
-                                <p>Phone: <a href="tel:+01 98924 60821">+91 98924 60821</a></p>
+                                <p>Phone: <a href="tel:+01 79774 76239">+91 79774 76239</a></p>
                                 <p>Email: <a href="mailto:info@starsboard.in">info@starsboard.in</a></p>
                             </div>
                             <div class="col-md-4 fot-app">
