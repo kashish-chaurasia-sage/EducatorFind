@@ -229,14 +229,14 @@
                 <!-- START -->
                 <div class="fqui-menu">
                     <ul>
-                        <li><a href="<?php echo base_url();?>"><img src="images/icon/home.png">Home</a></li>
-                        <li><span class="mob-sear"><img src="images/icon/search1.png">Search</span></li>
-                        <li><a href=""><img src="images/icon/calendar.png">Academic</a></li>
-                        <li><a href=""><img src="images/icon/cart.png">Professional</a></li>
-                        <li><a href=""><img src="images/icon/coupons.png">Couselling</a></li>
-                        <li><a href=""><img src="images/icon/blog1.png">Blogs</a></li>
-                        <li><a href=""><img src="images/icon/11.png">Community</a></li>
-                        <li><span class="btn-ser-need-ani"><img src="images/icon/how1.png">Support</span></li>
+                        <li><a href="<?php echo base_url();?>">Home</a></li>
+                        <li><span class="mob-sear">Search</span></li>
+                        <li><a href="">Academic</a></li>
+                        <li><a href="">Professional</a></li>
+                        <li><a href="">Couselling</a></li>
+                        <li><a href="">Blogs</a></li>
+                        <li><a href="">Community</a></li>
+                        <li><span class="btn-ser-need-ani">Support</span></li>
                     </ul>
                 </div>
                 <!-- END -->

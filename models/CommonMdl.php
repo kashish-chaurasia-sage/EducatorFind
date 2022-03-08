@@ -273,6 +273,17 @@ public function getLeadList(){
 		return $result = $query->result();
 	}
 
+	public function get_count($table) {
+        return $this->db->count_all($table);
+    }
+
+    public function get_paginatedRows($limit, $start, $table) {
+        $this->db->limit($limit, $start);
+        $query = $this->db->get($table);
+
+        return $query->result();
+    }
+
 	
 	
 }

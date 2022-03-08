@@ -12,7 +12,7 @@
     <meta name="description" content="">
     <meta name="keyword" content="">
     <!--== FAV ICON(BROWSER TAB ICON) ==-->
-    <link rel="shortcut icon" href="../images/fav.ico" type="image/x-icon">
+    <!-- <link rel="shortcut icon" href="../images/fav.ico" type="image/x-icon"> -->
     <!--== GOOGLE FONTS ==-->
     <link href="https://fonts.googleapis.com/css?family=Oswald:700|Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet">
     <!--== CSS FILES ==-->

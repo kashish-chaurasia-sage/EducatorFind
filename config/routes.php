@@ -56,3 +56,4 @@ $route['educator/(:any)'] = 'educator/index';
 $route['resetpassword/(:any)'] = 'resetpassword/index';
 $route['404_override'] = 'Custom404';
 $route['translate_uri_dashes'] = TRUE;
+$route['educator/(:any)/(:num)'] = 'educator/index';
