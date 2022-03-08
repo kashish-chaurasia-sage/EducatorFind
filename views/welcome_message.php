@@ -120,7 +120,7 @@
                               class="dir-ho-cat">Show All (<?php echo ($math ? $math :'0');?>)</span>
                            </h4>
                         </div>
-                        <a href="<?php echo base_url('educator/math');?>"
+                        <a href="<?php echo urlencode(base_url('educator/math'));?>"
                            class="land-pack-grid-btn">View all listings</a>
                      </div>
                   </li>
@@ -254,7 +254,7 @@
                            <div class="list-rat-all">
                            </div>
                         </div>
-                        <a href="<?echo base_url('educator/academic');?>"
+                        <a href="<?php echo base_url('educator/academic');?>"
                            class="fclick">&nbsp;</a>
                      </div>
                   </li>
@@ -271,7 +271,7 @@
                            <div class="list-rat-all">
                            </div>
                         </div>
-                        <a href="<?echo base_url('educator/exam');?>"
+                        <a href="<?php echo base_url('educator/exam');?>"
                            class="fclick">&nbsp;</a>
                      </div>
                   </li>
@@ -288,7 +288,7 @@
                            <div class="list-rat-all">
                            </div>
                         </div>
-                        <a href="<?echo base_url('educator/training');?>"
+                        <a href="<?php echo base_url('educator/training');?>"
                            class="fclick">&nbsp;</a>
                      </div>
                   </li>
@@ -305,7 +305,7 @@
                            <div class="list-rat-all">
                            </div>
                         </div>
-                        <a href="<?echo base_url('educator/counselling');?>"
+                        <a href="<?php echo base_url('educator/counselling');?>"
                            class="fclick">&nbsp;</a>
                      </div>
                   </li>
@@ -322,7 +322,7 @@
                            <div class="list-rat-all">
                            </div>
                         </div>
-                        <a href="<?echo base_url('educator/art');?>"
+                        <a href="<?php echo base_url('educator/art');?>"
                            class="fclick">&nbsp;</a>
                      </div>
                   </li>

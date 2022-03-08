@@ -49,7 +49,7 @@
                                 <div class="filt-com lhs-cate">
                                     <h4>Cities</h4>
                                     <div class="dropdown">
-                                        <select name="city" id="cat" class="chosen-select">
+                                        <select name="city_check" id="cat" class="chosen-select">
                                             <option value=""><?php echo "Select City"; ?></option>
                                             <?php
                                             foreach ($cities as $key =>$city) {
@@ -66,7 +66,7 @@
                                 <div class="filt-com lhs-cate">
                                     <h4>Teaching Mode</h4>
                                     <div class="dropdown">
-                                        <select name="city" id="cat" class="chosen-select">
+                                        <select name="mode_check" id="cat" class="chosen-select">
                                             <option value=""><?php echo "Select Mode"; ?></option>
                                             <option value="1"><?php echo "Online"; ?></option>
                                             <option value="2"><?php echo "Offline"; ?></option>
@@ -80,7 +80,7 @@
                                     <h4>Experience Range</h4>
                                     <p><i> More than : <span id="demo"></span> years of experience</i></p>
 
-                                        <input type="range" min="0" max="25" value="0" class="slider" id="myRange">
+                                        <input type="range" name="experience_check" min="0" max="25" value="0" class="slider" id="myRange">
                                 </div>
 
                                  <!--START-->
