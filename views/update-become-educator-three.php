@@ -49,7 +49,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <input type="text" name="offer_name" class="form-control"
-                                                       placeholder="Offer name" value="">
+                                                       placeholder="Offer name" value="<?= ($educator['offer_name'])? $educator['offer_name']:'';?>">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -57,7 +57,7 @@
                                                 <input type="text" name="offers_price"
                                                        onkeypress="return isNumber(event)"
                                                        class="form-control"
-                                                       placeholder="Price offered" value="">
+                                                       placeholder="Price offered" value="<?= ($educator['offers_price'])? $educator['offers_price']:'';?>">
                                             </div>
                                         </div>
                                     </div>
@@ -67,7 +67,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                         <textarea name="offer_detials" class="form-control"
-                                                                  placeholder="Details about this offer" value=""></textarea>
+                                                                  placeholder="Details about this offer" ><?= ($educator['offer_detials'])? $educator['offer_detials']:'';?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -78,8 +78,11 @@
                                             <div class="form-group">
                                                 <label>Choose offer banner/image</label>
                                                 <input type="file" name="offers_image"
-                                                       class="form-control">
-                                            </div>
+                                                       class="form-control" >
+                                                        </br>
+                                                       <img src="<?= base_url('uploads/'.$user_id.'/'.$educator['offers_image'].''); ?>" width="100" height="100">
+
+                                                    </div>
                                         </div>
                                     </div>
                                     <!--FILED END-->
@@ -89,7 +92,7 @@
                                             <div class="form-group">
                                                 <input type="text" name="offer_link"
                                                        class="form-control"
-                                                       placeholder="Your Website or Social Media Page Link" value="">
+                                                       placeholder="Your Website or Social Media Page Link" value="<?= ($educator['offer_link'])? $educator['offer_link']:'';?>">
                                             </div>
                                         </div>
                                     </div>
@@ -121,9 +124,9 @@
                                 <input type="submit" name="edu_offer_submit"
                                         class="btn btn-primary" name="Next" Value="SUBMIT">
                             </div>
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                     <a href="add-listing-step-4" class="skip">Skip this                                        >></a>
-                                </div>
+                                </div> -->
                            
                         </div>
                             <!--FILED END-->

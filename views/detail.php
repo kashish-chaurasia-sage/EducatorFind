@@ -261,11 +261,11 @@
                                      </ul>
                                 </div>
 									<?php }?>
-									<?php if($detail['lang_academic'] != ''){?>
+									<?php if($detail['academic_lang'] != ''){?>
 								<h5>Language</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
-                                       <?php foreach($detail['lang_academic'] as $lang_academic){?>
+                                       <?php foreach($detail['academic_lang'] as $lang_academic){?>
                                        <li><span><?php echo $lang_academic;?></span></li>
 									<?php }?>
                                     </ul>

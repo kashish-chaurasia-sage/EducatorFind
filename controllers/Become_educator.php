@@ -292,17 +292,17 @@ class Become_educator extends CI_Controller {
                 'offers_image' => $filename_offer,
                 'offer_link' => $this->input->post('offer_link'),
             ];
-            if ($this->session->userdata('academic') != '') {
+            if ($this->session->userdata('academic_cost') != '') {
                 $academic = '1';
             } else {
                 $academic = '0';
             }
-            if ($this->session->userdata('counselling') != '') {
+            if ($this->session->userdata('career_cost') != '') {
                 $counselling = '1';
             } else {
                 $counselling = '0';
             }
-            if ($this->session->userdata('training') != '') {
+            if ($this->session->userdata('prof_cost') != '') {
                 $training = '1';
             } else {
                 $training = '0';
@@ -452,13 +452,13 @@ Flat Iamage (Whatsapp) -7977476239";
         error_log("CATEGORY : >>>>>>>>>>".json_encode($this->session->userdata('category')));
         $category = $this->session->userdata('category');
         $categoryString = " ";
-        if (in_array("1", $category)){
+        if ($academic == '1'){
             $categoryString =   $categoryString . "|Academic| " ;
         }
-        if (in_array("2", $category)){
+        if ($counselling == '1'){
             $categoryString =  $categoryString . "|Career Counselling| " ;
         }
-        if (in_array("3", $category)){
+        if ($training == '1'){
             $categoryString =  $categoryString ."|Professional Training| " ;
         }
         

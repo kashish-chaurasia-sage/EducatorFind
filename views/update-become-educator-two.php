@@ -58,6 +58,7 @@
                                                         <p>Select the following classes : </p>
                                                             <select data-placeholder="Select your Cities" name="class[]" id="city_id" multiple 
                                                                     class="chosen-select form-control">
+                                                                    
                                                                 <!-- <option value="">Class </option> -->
                                                                <?php foreach ($edu_class as $key => $value) {?>
                                                                     <option value="<?=$value->edu_class_id;?>"><?=$value->edu_class_title;?> </option>
@@ -69,7 +70,7 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                         <p>Select the following Subjects : </p>
-                                                            <select data-placeholder="Select your Cities" name="subject[]" id="city_id" multiple 
+                                                            <select data-placeholder="Select your Subjects" name="subject[]" id="city_id" multiple 
                                                                     class="chosen-select form-control">
                                                                 <!-- <option value="">Subject</option> -->
                                                                <?php foreach ($edu_sub as $key => $value) {?>

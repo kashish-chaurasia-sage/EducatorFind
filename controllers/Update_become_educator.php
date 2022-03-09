@@ -9,6 +9,7 @@ public function __construct(){
 			redirect('login');
 		}
 		$this->load->model('CommonMdl');
+        $this->load->model('User');
 	}
 	public function index()
 	{  
@@ -102,37 +103,37 @@ public function __construct(){
             $this->session->set_userdata('lang_prof', $this->input->post('lang_prof'));
             $this->session->set_userdata('prof_cost', $this->input->post('prof_cost'));
             				redirect('Update_become_educator/offer'); 
-	}elseif ($this->input->post('edu_per_submit')) {
-		$this->session->set_userdata('edu_name', $this->input->post('edu_name'));
-		$this->session->set_userdata('edu_mobile', $this->input->post('edu_mobile'));
-		$this->session->set_userdata('edu_email', $this->input->post('edu_email'));
-		$this->session->set_userdata('edu_whatsapp', $this->input->post('edu_whatsapp'));
-		$this->session->set_userdata('edu_pincode', $this->input->post('edu_pincode'));
-		$this->session->set_userdata('edu_city', $this->input->post('edu_city'));
-		$this->session->set_userdata('edu_country', $this->input->post('edu_country'));
-		// $this->session->set_userdata('category', $this->input->post('category'));
-		$this->session->set_userdata('servicecity', $this->input->post('servicecity'));
-		$this->session->set_userdata('description', $this->input->post('description'));
-		$this->session->set_userdata('edu_experience', $this->input->post('edu_experience'));
-		$this->session->set_userdata('edu_mode', $this->input->post('edu_mode'));
-		$this->session->set_userdata('edu_slot', $this->input->post('edu_slot'));
-		$this->session->set_userdata('edu_image', $filename);
-		$this->session->set_userdata('cover_image', $filename_banner);
-		redirect('Update_become_educator');
-	}else{
-		$data['Eid']= $this->CommonMdl->getResult('tbl_educator', 'Eid', ['user_id' => $this->session->userdata('userId')]);
-	    $data['educator_data']= $this->CommonMdl->getResult('tbl_educator', '*', ['Eid' => $data['Eid'][0]->Eid]);
-		$data['edu_class'] = $this->CommonMdl->getResult('edu_class', '*');
-		$data['edu_sub'] = $this->CommonMdl->getResult('edu_sub', '*');
-		$data['edu_board'] = $this->CommonMdl->getResult('edu_board', '*');
-		$data['edu_exams'] = $this->CommonMdl->getResult('edu_exams', '*');
-		$data['edu_career'] = $this->CommonMdl->getResult('edu_career', '*');
-		$data['edu_course'] = $this->CommonMdl->getResult('edu_course', '*');
-		$data['edu_art'] = $this->CommonMdl->getResult('edu_art', '*');
-		$data['edu_lang'] = $this->CommonMdl->getResult('edu_lang', '*');
-		error_log("SERVICE FUNCTION data".json_encode($data));
-		$this->load->view('update-become-educator-two',$data);
-	}
+        }elseif ($this->input->post('edu_per_submit')) {
+            $this->session->set_userdata('edu_name', $this->input->post('edu_name'));
+            $this->session->set_userdata('edu_mobile', $this->input->post('edu_mobile'));
+            $this->session->set_userdata('edu_email', $this->input->post('edu_email'));
+            $this->session->set_userdata('edu_whatsapp', $this->input->post('edu_whatsapp'));
+            $this->session->set_userdata('edu_pincode', $this->input->post('edu_pincode'));
+            $this->session->set_userdata('edu_city', $this->input->post('edu_city'));
+            $this->session->set_userdata('edu_country', $this->input->post('edu_country'));
+            // $this->session->set_userdata('category', $this->input->post('category'));
+            $this->session->set_userdata('servicecity', $this->input->post('servicecity'));
+            $this->session->set_userdata('description', $this->input->post('description'));
+            $this->session->set_userdata('edu_experience', $this->input->post('edu_experience'));
+            $this->session->set_userdata('edu_mode', $this->input->post('edu_mode'));
+            $this->session->set_userdata('edu_slot', $this->input->post('edu_slot'));
+            $this->session->set_userdata('edu_image', $filename);
+            $this->session->set_userdata('cover_image', $filename_banner);
+            redirect('Update_become_educator');
+        }else{
+            $data['Eid']= $this->CommonMdl->getResult('tbl_educator', 'Eid', ['user_id' => $this->session->userdata('userId')]);
+            $data['educator_data']= $this->CommonMdl->getResult('tbl_educator', '*', ['Eid' => $data['Eid'][0]->Eid]);
+            $data['edu_class'] = $this->CommonMdl->getResult('edu_class', '*');
+            $data['edu_sub'] = $this->CommonMdl->getResult('edu_sub', '*');
+            $data['edu_board'] = $this->CommonMdl->getResult('edu_board', '*');
+            $data['edu_exams'] = $this->CommonMdl->getResult('edu_exams', '*');
+            $data['edu_career'] = $this->CommonMdl->getResult('edu_career', '*');
+            $data['edu_course'] = $this->CommonMdl->getResult('edu_course', '*');
+            $data['edu_art'] = $this->CommonMdl->getResult('edu_art', '*');
+            $data['edu_lang'] = $this->CommonMdl->getResult('edu_lang', '*');
+            error_log("SERVICE FUNCTION data".json_encode($data));
+            $this->load->view('update-become-educator-two',$data);
+        }
 	}
 	
 	public function offer()
@@ -140,6 +141,15 @@ public function __construct(){
 		$educatorData=[];
 		if($this->input->post('edu_offer_submit')){
 			$user_id=$this->session->userdata('userId');
+            $data['Eid']= $this->CommonMdl->getResult('tbl_educator', 'Eid', ['user_id' => $this->session->userdata('userId')]);
+			// $educator = $this->CommonMdl->getResult('tbl_educator', '*', ['Eid' => $data['Eid'][0]->Eid]);
+            $eid =  $data['Eid'][0]->Eid;
+            $educator_details= $this->User->getEducatorInfo($eid);
+		    $longJsonInfo=$educator_details[0]->LongJsonInfo;
+			//echo '<pre>';   print_r($educator);die;
+			$personInfo = json_decode($longJsonInfo,true);
+			$Edudata=$personInfo[0];
+
 			// Set preference 
 			$config['upload_path'] = 'uploads/'.$user_id.'/'; 
 			$config['allowed_types'] = 'jpg|jpeg|png|gif'; 
@@ -154,8 +164,22 @@ public function __construct(){
 				// Get data about the file
 				$uploadData_edu_image = $this->upload->data(); 
 				$filename_offer = $uploadData_edu_image['file_name']; 
-			}
-		
+			}else{
+                $filename_offer = $Edudata['offers_image'];
+            }
+
+            $edu_image = $this->session->userdata('edu_image');
+            $cover_image = $this->session->userdata('cover_image');
+
+            if(empty($this->session->userdata('edu_image'))){
+                $edu_image =  $Edudata['edu_image'];
+            }
+            if(empty( $this->session->userdata('cover_image'))){
+                $cover_image =  $Edudata['cover_image'];
+            }
+            
+           
+
 			$edu_class = [];
 
             $postedClass = $this->session->userdata('class');
@@ -276,8 +300,8 @@ public function __construct(){
                 'edu_experience' =>  $this->session->userdata('edu_experience'),
                 'edu_mode' =>  $this->session->userdata('edu_mode'),
                 'edu_slot' =>  $this->session->userdata('edu_slot'),
-                'edu_image' => $this->session->userdata('edu_image'),
-                'cover_image' => $this->session->userdata('cover_image'),
+                'edu_image' => $edu_image,
+                'cover_image' => $cover_image,
                 'academic' => $this->session->userdata('academic'),
                 'class' => $edu_class ? $edu_class : '',
                 'subject' => $edu_sub ? $edu_sub : '',
@@ -397,8 +421,8 @@ public function __construct(){
 				'edu_country' => $this->session->userdata('edu_country'),
 				'edu_address' => $this->session->userdata('servicecity'),
 				'searchString' => 'educator,' . 'teacher,' . 'tutor,' . $this->session->userdata('edu_city') . ',' . $this->session->userdata('edu_pincode') . ',' . $this->session->userdata('country') . ',' . $this->session->userdata('academic') . ',' . $this->session->userdata('counselling') . ',' . $this->session->userdata('training') . ',' . $keyword . ',' . $this->session->userdata('servicecity'). ',' . $career_pathKeyword. ',' .$tech_courseKeyword ,
-				'edu_image' => $this->session->userdata('edu_image'),
-				'cover_image' => $this->session->userdata('cover_image'),
+				'edu_image' => $edu_image,
+				'cover_image' => $cover_image,
 				'edu_experience' =>  $this->session->userdata('edu_experience'),
 				'edu_mode' =>  $this->session->userdata('edu_mode'),
 				'edu_slot' =>  $this->session->userdata('edu_slot'),
@@ -446,10 +470,20 @@ public function __construct(){
             
         }else{
 			$data['Eid']= $this->CommonMdl->getResult('tbl_educator', 'Eid', ['user_id' => $this->session->userdata('userId')]);
-			$data['educator_data']= $this->CommonMdl->getResult('tbl_educator', '*', ['Eid' => $data['Eid'][0]->Eid]);
-			error_log("SERVICE FUNCTION data".json_encode($data));
+			$educator_d = $this->CommonMdl->getResult('tbl_educator', '*', ['Eid' => $data['Eid'][0]->Eid]);
+            $eid =  $data['Eid'][0]->Eid;
+            $educator_details= $this->User->getEducatorInfo($eid);
+		    $longJsonInfo=$educator_details[0]->LongJsonInfo;
+			//echo '<pre>';   print_r($educator);die;
+			$personInfo = json_decode($longJsonInfo,true);
+			$Edudata=$personInfo[0];
+            $data['educator_d'] = $educator_details;
+            $data['user_id'] = $this->session->userdata('userId');
+			$data['educator'] = $Edudata;
+            error_log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..........");
+            error_log("Offer FUNCTION data>>>".json_encode($educator_d));
 
-			$this->load->view('update-become-educator-three');
+			$this->load->view('update-become-educator-three', $data);
 		}
 	}
 	

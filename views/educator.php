@@ -161,14 +161,14 @@
                                 </div>
                                
                                 <!--START-->
-                                <div class="filt-com lhs-ads">
+                                <!-- <div class="filt-com lhs-ads">
                                     <ul>
                                         <li>
                                         <div class="ads-box">            
                                             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7381950378620686"
-                                            crossorigin="anonymous"></script>
+                                            crossorigin="anonymous"></script> -->
                                         <!-- starboard_details_ads -->
-                                        <ins class="adsbygoogle"
+                                        <!-- <ins class="adsbygoogle"
                                             style="display:block"
                                             data-ad-client="ca-pub-7381950378620686"
                                             data-ad-slot="2286171500"
@@ -181,7 +181,7 @@
                                         </li>
                                     
                                     </ul>
-                                </div>
+                                </div> -->
                                 <!--END-->
                                 <!-- START -->
                                 <div class="all-list-filt-form">
@@ -248,7 +248,13 @@
                     <div class="col-md-9">
                     <div class = "list-ser-cnt">
                                                 Showing Educators List
-                                        </div>         
+                                        </div> 
+                                        <div>      
+                                        </br>
+                                        </br> 
+                                        </br>
+                                       
+                                        </div> 
                         <!-- START LISTING TOPBAR FILTER -->
                         <!-- <div class="list-filt-v2">
                         <ul>
@@ -295,10 +301,10 @@
                         <!-- END LISTING TOPBAR FILTER -->
 
                         <!--ADS-->
-                        <div class="ban-ati-com ads-all-list">
+                        <!-- <div class="ban-ati-com ads-all-list"> -->
 
                             <!-- horizontal ads -->
-                            <ins class="adsbygoogle"
+                            <!-- <ins class="adsbygoogle"
                                 style="display:block"
                                 data-ad-client="ca-pub-7381950378620686"
                                 data-ad-slot="2707470180"
@@ -306,14 +312,14 @@
                                 data-full-width-responsive="true"></ins>
                             <script>
                                 (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
-                        </div>
+                            </script> -->
+                        <!-- </div> -->
                         <!--ADS-->
                         
                         <!-- Loader Image -->
-                        <div id="loadingmessage" style="display:none">
+                        <!-- <div id="loadingmessage" style="display:none">
                             <div id="loadingmessage1">&nbsp;</div>
-                        </div>
+                        </div> -->
                         <!-- Loader Image -->
                         
                         <div class="all-list-sh all-listing-total">
@@ -419,19 +425,19 @@
                             <!-- ADS-->
                             <div class="ban-ati-com ads-all-list">
                             <div>
-                            <p><?php echo $links; ?></p>
+                            <p align="center"><?php echo $links; ?></p>
                                 </div>
                                 <!-- horizontal ads -->
-                                <ins class="adsbygoogle"
+                                <!-- <ins class="adsbygoogle"
                                     style="display:block"
                                     data-ad-client="ca-pub-7381950378620686"
                                     data-ad-slot="2707470180"
                                     data-ad-format="auto"
                                     data-full-width-responsive="true">
-                                </ins>
-                                <script>
+                                </ins> -->
+                                <!-- <script>
                                     (adsbygoogle = window.adsbygoogle || []).push({});
-                                </script>
+                                </script> -->
                             </div>
                             <!--ADS -->
 
