@@ -67,7 +67,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                             <textarea name="offer_detials" class="form-control"
-                                                                      placeholder="Details about this offer" value=""></textarea>
+                                                                      placeholder="Incase you want to give any discount to student, you can add your offer here." value=""></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -114,7 +114,7 @@
                                 <div class="row">
                                 <div class="col-sm-10">
                                       <input type="submit" name="edu_per_submit"
-                                            class="btn btn-primary" name="Previous" Value="Previous">
+                                            class="btn btn-primary" name="Previous" Value="Back">
                                   
                                 </div>
                                 <div class="col-sm-1">

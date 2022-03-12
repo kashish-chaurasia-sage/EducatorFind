@@ -67,7 +67,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                         <textarea name="offer_detials" class="form-control"
-                                                                  placeholder="Details about this offer" ><?= ($educator['offer_detials'])? $educator['offer_detials']:'';?></textarea>
+                                                                  placeholder="Incase you want to give any discount to student, you can add your offer here." ><?= ($educator['offer_detials'])? $educator['offer_detials']:'';?></textarea>
                                             </div>
                                         </div>
                                     </div>
