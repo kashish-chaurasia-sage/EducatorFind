@@ -263,7 +263,7 @@ public function selectSum($tbl,$clms='*',$whr=''){
 	   	} 
 	 }
 	 
-public function getLeadList(){
+	public function getLeadList(){
 		$this->db->select('lead.*');
 		$this->db->from('lead');
 		$this->db->join('tbl_educator', 'tbl_educator.Eid = lead.listing_educator_id');
@@ -284,6 +284,25 @@ public function getLeadList(){
         return $query->result();
     }
 
+	// Get subCategories based on categoryID
+	public function getSubCategorybyCategoryId($category_id){
+
+		$sql="Select * from custom_sub_category where category_id=".$category_id. " and status = 1 order by sort_order desc";    
+		$query = $this->db->query($sql);
+		return $query->result_array();
+		
+	}
+
+	// Get location data by pincode search
+	public function getLocationbyPincode($pincode){
+
+		$sql="Select * from custom_location where pincode=".$pincode. "";    
+		$query = $this->db->query($sql);
+		return $query->result_array();
+		
+	}
+
 	
 	
+
 }

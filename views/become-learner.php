@@ -1,10 +1,12 @@
 
  <?php $this->load->view('layout/header');?>
+ 
 <section class=" login-reg">
     <div class="container">
         <div class="row">
             <div class="add-list-ste">
                 <div class="add-list-ste-inn">
+                    
                     <ul>
                         <li>
                             <a  class="act">
@@ -38,9 +40,9 @@
 						
                         <form action="<?php echo base_url('become_learner');?>" class="listing_form_1" id="listing_form_1"
                               name="listing_form_1" method="post" enctype="multipart/form-data">
-                            
                             <!--FILED START-->
                             <div class="row">
+                                
                                 <div class="col-md-6">
                                     <div class="form-group">
                                     <select onChange="getGender(this.value);" name="lrn_gender" required="required" id="gender_id"
@@ -79,17 +81,51 @@
                                                 id="edu_class_id" class="chosen-select form-control">
                                             <option value="">Select Your Class*</option>
                                             <?php
-                                            foreach ($edu_class as $key => $value) {
+                                            foreach ($custom_class as $key => $value) {
                                                 ?>
                                                 <option 
                                                 
-                                                    value="<?php echo $value->edu_class_id; ?>"><?php echo $value->edu_class_title; ?></option>
+                                                    value="<?php echo $value->class_id; ?>"><?php echo $value->class_name; ?></option>
                                                 <?php
                                             }
                                             ?>
                                         </select>
                                     </div>
                                 </div>
+                            </div>
+                            <!--FILED END-->
+
+                            <!--FILED START-->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="pincode" class="form-control" id="pincode" onkeyup="showLocation(this.value,$custom_location)"
+                                               value="<?= ($this->session->userdata('lrn_primary_language'))? $this->session->userdata('lrn_primary_language'):'';?>"
+                                               placeholder="Enter Pincode">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="city" class="form-control"  value="<?php if(!empty($locations)){$locations['city_name']? $locations['city_name']:'';}?>" id="city" disabled placeholder="City">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="state" class="form-control" id="state" disabled
+                                               value="<?= ($this->session->userdata('lrn_primary_language'))? $this->session->userdata('lrn_primary_language'):'';?>"
+                                               placeholder="State">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="country" class="form-control" id="country" disabled
+                                               value="<?= ($this->session->userdata('lrn_primary_language'))? $this->session->userdata('lrn_primary_language'):'';?>"
+                                               placeholder="Country">
+                                    </div>
+                                </div>
+
+                                
                             </div>
                             <!--FILED END-->
 
@@ -109,11 +145,11 @@
                                                 id="edu_class_id" class="chosen-select form-control">
                                             <option value="">Select Your Educational Board*</option>
                                             <?php
-                                            foreach ($edu_board as $key => $value) {
+                                            foreach ($custom_board as $key => $value) {
                                                 ?>
                                                 <option 
                                                 
-                                                    value="<?php echo $value->edu_board_id; ?>"><?php echo $value->edu_board_title; ?></option>
+                                                    value="<?php echo $value->board_id; ?>"><?php echo $value->board_name; ?></option>
                                                 <?php
                                             }
                                             ?>
@@ -134,11 +170,11 @@
                                                     id="subject_id" class="chosen-select  form-control"  >
                                                     <!-- class="chosen-select  form-control" -->
                                                     <?php
-                                                foreach ($edu_sub as $key => $value) {
+                                                foreach ($subjects as $subject) {
                                                     ?>
                                                     <option 
                                                     
-                                                        value="<?php echo $value->edu_sub_id; ?>"><?php echo $value->edu_sub_title; ?></option>
+                                                        value="<?php echo $subject['sub_category_id']; ?>"><?php echo $subject['sub_category_name']; ?></option>
                                                     <?php
                                                 }
                                                 ?>
@@ -152,11 +188,11 @@
                                             <select onChange="getExam(this.value);" multiple name="exam[]"
                                                     id="exam_id" class="chosen-select  form-control">
                                                     <?php
-                                                foreach ($edu_exams as $key => $value) {
+                                                foreach ($exams as $exam) {
                                                     ?>
                                                     <option 
                                                     
-                                                        value="<?php echo $value->edu_exams_id; ?>"><?php echo $value->edu_exams_title; ?></option>
+                                                        value="<?php echo $exam['sub_category_id']; ?>"><?php echo  $exam['sub_category_name']; ?></option>
                                                     <?php
                                                 }
                                                 ?>
@@ -173,11 +209,11 @@
                                                 <select onChange="getCourse(this.value);" multiple name="course[]"
                                                         id="course_id" class="chosen-select  form-control">
                                                         <?php
-                                                    foreach ($edu_course as $key => $value) {
+                                                    foreach ($courses as $course) {
                                                         ?>
                                                         <option 
                                                         
-                                                            value="<?php echo $value->edu_course_id; ?>"><?php echo $value->edu_course_title; ?></option>
+                                                            value="<?php echo $course['sub_category_id']; ?>"><?php echo $course['sub_category_name']; ?></option>
                                                         <?php
                                                     }
                                                     ?>
@@ -190,11 +226,11 @@
                                                 <select onChange="getArt(this.value);" multiple name="art[]"
                                                         id="art_id" class="chosen-select  form-control">
                                                         <?php
-                                                    foreach ($edu_art as $key => $value) {
+                                                    foreach ($art as $hobby) {
                                                         ?>
                                                         <option 
                                                         
-                                                            value="<?php echo $value->edu_art_id; ?>"><?php echo $value->edu_art_title; ?></option>
+                                                            value="<?php echo $hobby['sub_category_id']; ?>"><?php echo $hobby['sub_category_name']; ?></option>
                                                         <?php
                                                     }
                                                     ?>
@@ -211,11 +247,11 @@
                                         <select onChange="getLang(this.value);" multiple name="lang[]"
                                                 id="lang_id" class="chosen-select  form-control">
                                                 <?php
-                                            foreach ($edu_lang as $key => $value) {
+                                            foreach ($lang as $language) {
                                                 ?>
                                                 <option 
                                                 
-                                                    value="<?php echo $value->edu_lang_id; ?>"><?php echo $value->edu_lang_title; ?></option>
+                                                    value="<?php echo $language['sub_category_id']; ?>"><?php echo $language['sub_category_name']; ?></option>
                                                 <?php
                                             }
                                             ?>
@@ -228,11 +264,11 @@
                                                 <select onChange="getCarrer(this.value);" multiple name="career[]"
                                                         id="career_id" class="chosen-select  form-control">
                                                         <?php
-                                                    foreach ($edu_career as $key => $value) {
+                                                    foreach ($career as $path) {
                                                         ?>
                                                         <option 
                                                         
-                                                            value="<?php echo $value->edu_career_id; ?>"><?php echo $value->edu_career_title; ?></option>
+                                                            value="<?php echo $path['sub_category_id'];?>"><?php echo $path['sub_category_name']; ?></option>
                                                         <?php
                                                     }
                                                     ?>
@@ -321,4 +357,41 @@
 
     CKEDITOR.replace('job_description');
 </script>
+
+    <script>
+function showLocation(str) {
+    console.log(str);
+    if (str.length == 6) {
+        
+        $.ajax({
+                type: 'POST',
+                url: "become_learner",
+                cache: false,
+                data: {  pincode: str},
+                success: function (response) {
+                    // var eventArray = JSON.parse(response);
+                    console.log(response);
+
+                }
+            });
+        $("#city").val()'Delhi';
+        $("#state").val('DELHI');
+        $("#country").val('India');
+    
+    } else {
+        // $("#city").val('');
+    return;
+  }
+}
+
+
+</script>
+
+<?php $CI =& get_instance(); ?>
+<script> 
+    var csrf_name = '<?php echo $CI->security->get_csrf_token_name(); ?>';
+    var csrf_hash = '<?php echo $CI->security->get_csrf_hash(); ?>';
+</script>
+
+
 <?php $this->load->view('layout/footer');?>

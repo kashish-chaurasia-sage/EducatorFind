@@ -1,7 +1,6 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 class Become_learner extends CI_Controller {
 
     public function __construct() {
@@ -13,19 +12,28 @@ class Become_learner extends CI_Controller {
     }
 
     public function index() {
-         $data=array();
+        $data=array();
+        // $post_pincode = $this->input->post('pincode');
+        // error_log("BEFORE SUBMIT POST>>>>>>>>>>>".json_encode( $this->input->post()));
+        // error_log("BEFORE SUBMIT GET>>>>>>>>>>>".json_encode( $this->input->get()));
+
      	$data['title']='Starsboard | Become Learner';
-        $data['edu_class'] = $this->CommonMdl->getResult('edu_class', '*');
-        $data['edu_board'] = $this->CommonMdl->getResult('edu_board', '*');
-        $data['edu_sub'] = $this->CommonMdl->getResult('edu_sub', '*');
-        $data['edu_exams'] = $this->CommonMdl->getResult('edu_exams', '*');
-        $data['edu_career'] = $this->CommonMdl->getResult('edu_career', '*');
-        $data['edu_course'] = $this->CommonMdl->getResult('edu_course', '*');
-        $data['edu_art'] = $this->CommonMdl->getResult('edu_art', '*');
-        $data['edu_lang'] = $this->CommonMdl->getResult('edu_lang', '*');
-        $data['city'] = $this->CommonMdl->getResult('city', '*');
-        $data['state'] = $this->CommonMdl->getResult('state', '*');
-        $data['country'] = $this->CommonMdl->getResult('country', '*');
+        $data['custom_class'] = $this->CommonMdl->getResult('custom_class', '*');
+        $data['custom_board'] = $this->CommonMdl->getResult('custom_board', '*');
+        $data['subjects'] = $this->CommonMdl->getSubCategorybyCategoryId(1);
+        $data['exams'] =$this->CommonMdl->getSubCategorybyCategoryId(2);
+        $data['career'] = $this->CommonMdl->getSubCategorybyCategoryId(3);
+        $data['courses'] = $this->CommonMdl->getSubCategorybyCategoryId(6);
+        $data['art'] =$this->CommonMdl->getSubCategorybyCategoryId(4);
+        $data['lang'] = $this->CommonMdl->getSubCategorybyCategoryId(5);
+        $data['custom_location'] =$this->CommonMdl->getResult('custom_location', '*');
+        // if($post_pincode){
+        //     $data['locations'] = $this->CommonMdl->getLocationbyPincode($post_pincode);
+        //     $data['pincode'] = $post_pincode;
+        //      echo $data['locations'];
+        // }
+        // $data['state'] = $this->CommonMdl->getResult('state', '*');
+        // $data['country'] = $this->CommonMdl->getResult('country', '*');
 
         if ($this->input->post('lrn_per_submit')) {
             $user_id = $this->session->userdata('userId');
