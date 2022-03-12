@@ -280,3 +280,156 @@ INSERT INTO sub_category(sub_category_title, Cid) VALUES
  ('Class',1),('Subjects',1),('Boards',1),('Exams',1),('Career',2),('Professional Courses',3),('Art',3);
 
 --------------------------------------------version-2.0------------------------------------------------------------------
+-- 1
+CREATE TABLE custom_category (
+  category_id int(11) not null AUTO_INCREMENT,
+  category_name varchar(1024) not null,
+  category_image varchar(512) ,
+  sort_order int(11) DEFAULT 0 NOT NULL,
+  status int(1) DEFAULT 1 not null,
+  date_added datetime not null default now(),
+  PRIMARY KEY (category_id)
+  
+);
+
+-- 2
+CREATE TABLE custom_sub_category (
+  sub_category_id int(11) not null AUTO_INCREMENT,
+  sub_category_name varchar(1024) not null,
+  sub_category_image varchar(512) ,
+  category_id int(11) NOT NULL,
+  sort_order int(11) DEFAULT 0 NOT NULL,
+  status int(1) DEFAULT 1 not null,
+  date_added datetime not null default now(),
+  PRIMARY KEY (sub_category_id)
+  
+);
+
+-- 3
+CREATE TABLE custom_location (
+  location_id int(11) not null AUTO_INCREMENT,
+  pincode int(11) not null,
+  city_id int(11) not null,
+  city_name varchar(1024) not null,
+  state_id int(11) not null,
+  state_name varchar(1024) not null,
+  country_id int(11) not null, 
+  country_name varchar(1024) not null,
+  date_added datetime not null default now(),
+  PRIMARY KEY (location_id)
+  
+);
+
+-- 4
+CREATE TABLE custom_language (
+  language_id int(11) not null AUTO_INCREMENT,
+  language_name varchar(1024) not null,
+  sort_order int(11) DEFAULT 0 NOT NULL,
+  status int(1) DEFAULT 1 not null,
+  date_added datetime not null default now(),
+  PRIMARY KEY (language_id)
+  
+);
+
+-- 5
+CREATE TABLE custom_educator (
+  educator_id int(11) not null AUTO_INCREMENT,
+  edu_name varchar(1024) not null,
+  edu_number int(12) not null,
+  edu_email varchar(1024) not null,
+  edu_whatsapp int(12) not null,
+  edu_mode int (4) default 1,
+  edu_location_id int (4) ,
+  edu_address varchar(1024) not null,
+  search_string varchar(1024) not null,
+  edu_image varchar(1024) not null,
+  edu_cover_image varchar(1024) not null,
+  edu_isfeatured int(1) DEFAULT 0 not null,
+  edu_experience int(10),
+  edu_dob datetime not null,
+  edu_slot varchar(1024) ,
+  sort_order int(11) DEFAULT 0 NOT NULL,
+  status int(1) DEFAULT 1 not null,
+  date_added datetime not null default now(),
+  date_modified datetime not null default now(),
+  PRIMARY KEY (educator_id)
+  
+);
+
+-- 6
+CREATE TABLE custom_educator_sub_category (
+  edu_sub_id int(11) not null AUTO_INCREMENT,
+  educator_id int(11) not null,
+  sub_category_id int(11) not null,
+  language_id int(11) not null,
+  cost int(200) not null,
+  date_added datetime not null default now(),
+  date_modified datetime not null default now(),
+  PRIMARY KEY (edu_sub_id)
+  
+);
+
+-- 7
+CREATE TABLE custom_educator_offer (
+  edu_offer_id int(11) not null AUTO_INCREMENT,
+  educator_id int(11) not null,
+  offer_name varchar(1024) ,
+  offer_price int(11) ,
+  offer_description varchar(1024) ,
+  offer_image varchar(1024) ,
+  offer_link varchar(1024) ,
+  date_added datetime not null default now(),
+  date_modified datetime not null default now(),
+  PRIMARY KEY (edu_offer_id)
+
+);
+
+-- 8
+CREATE TABLE custom_learner (
+  learner_id int(11) not null AUTO_INCREMENT,
+  user_id int(20) NOT NULL,
+  gender int(11) NOT NULL,
+  dob datetime not null,
+  location_id int (11) default 1,
+  language_id int(11) not null,
+  school varchar(1024) not null,
+  date_added datetime not null default now(),
+  date_modified datetime not null default now(),
+  PRIMARY KEY (learner_id)
+  
+);
+
+-- 9
+CREATE TABLE custom_learner_sub_category (
+  learner_sub_id int(11) not null AUTO_INCREMENT,
+  learner_id int(20) NOT NULL,
+  sub_category_id int(11) not null,
+  date_added datetime not null default now(),
+  date_modified datetime not null default now(),
+  PRIMARY KEY (learner_sub_id)
+  
+);
+
+-- 10
+CREATE TABLE custom_liked (
+  liked_id int(11) not null AUTO_INCREMENT,
+  educator_id int(20) NOT NULL,
+  user_id int(11) not null,
+  date_added datetime not null default now(),
+  PRIMARY KEY (liked_id)
+  
+);
+
+-- 11
+CREATE TABLE custom_review (
+  review_id int(11) not null AUTO_INCREMENT,
+  educator_id int(20) NOT NULL,
+  user_id int(11) not null,
+  rating int(11) not null,
+  message  varchar(1024) ,
+  date_added datetime not null default now(),
+  date_modified datetime not null default now(),
+  PRIMARY KEY (review_id)
+  
+);
+
