@@ -437,3 +437,330 @@ CREATE TABLE custom_review (
   
 );
 
+--12
+CREATE TABLE custom_class (
+  class_id int(11) not null AUTO_INCREMENT,
+  class_name varchar(1024) not null,
+  date_added datetime not null default now(),
+  PRIMARY KEY (class_id)
+  
+);
+
+--13
+CREATE TABLE custom_board (
+  board_id int(11) not null AUTO_INCREMENT,
+  board_name varchar(1024) not null,
+  date_added datetime not null default now(),
+  PRIMARY KEY (board_id)
+  
+);
+
+alter table custom_educator add board_id int(11);
+alter table custom_educator add class_id int(11);
+alter table custom_learner add class_id int(11);
+alter table custom_learner add board_id int(11);
+
+
+INSERT INTO custom_category(category_name) VALUES
+  ('Academics')
+,('Competetive Exams')
+,('Career Counselling')
+,('Art')
+,('Language Learning')
+,('Professional Course');
+
+-- custom_class table insertion
+INSERT INTO custom_class(class_name) VALUES ('Pre Primary');
+INSERT INTO custom_class(class_name) VALUES ('V - X');
+INSERT INTO custom_class(class_name) VALUES ('XI - XII');
+INSERT INTO custom_class(class_name) VALUES ('Undergraduate');
+INSERT INTO custom_class(class_name) VALUES ('Postgraduate');
+INSERT INTO custom_class(class_name) VALUES ('Other');
+
+--custom_board table insertion
+INSERT INTO custom_board(board_name) VALUES ('andhra pradesh');
+INSERT INTO custom_board(board_name) VALUES ('CBSE');
+INSERT INTO custom_board(board_name) VALUES ('goa');
+INSERT INTO custom_board(board_name) VALUES ('gujarat');
+INSERT INTO custom_board(board_name) VALUES ('ICSE');
+INSERT INTO custom_board(board_name) VALUES ('karnataka');
+INSERT INTO custom_board(board_name) VALUES ('kerala');
+INSERT INTO custom_board(board_name) VALUES ('madhya pradesh');
+INSERT INTO custom_board(board_name) VALUES ('maharashtra');
+INSERT INTO custom_board(board_name) VALUES ('national institute of open schooling');
+INSERT INTO custom_board(board_name) VALUES ('punjab');
+INSERT INTO custom_board(board_name) VALUES ('rajasthan');
+INSERT INTO custom_board(board_name) VALUES ('tamil nadu');
+INSERT INTO custom_board(board_name) VALUES ('telangana');
+INSERT INTO custom_board(board_name) VALUES ('west bengal');
+INSERT INTO custom_board(board_name) VALUES ('assam');
+INSERT INTO custom_board(board_name) VALUES ('bihar');
+INSERT INTO custom_board(board_name) VALUES ('chandigarh');
+INSERT INTO custom_board(board_name) VALUES ('chhattisgarh');
+INSERT INTO custom_board(board_name) VALUES ('delhi');
+INSERT INTO custom_board(board_name) VALUES ('haryana');
+INSERT INTO custom_board(board_name) VALUES ('jammu and kashmir');
+INSERT INTO custom_board(board_name) VALUES ('jharkhand');
+INSERT INTO custom_board(board_name) VALUES ('manipur');
+INSERT INTO custom_board(board_name) VALUES ('meghalaya');
+INSERT INTO custom_board(board_name) VALUES ('mizoram');
+INSERT INTO custom_board(board_name) VALUES ('nagaland');
+INSERT INTO custom_board(board_name) VALUES ('odisha');
+INSERT INTO custom_board(board_name) VALUES ('sikkim');
+INSERT INTO custom_board(board_name) VALUES ('tripura');
+INSERT INTO custom_board(board_name) VALUES ('uttar pradesh');
+INSERT INTO custom_board(board_name) VALUES ('other');
+
+--custom_language insertion
+INSERT INTO custom_language(language_name) VALUES ('Bengali');
+INSERT INTO custom_language(language_name) VALUES ('English');
+INSERT INTO custom_language(language_name) VALUES ('French');
+INSERT INTO custom_language(language_name) VALUES ('German');
+INSERT INTO custom_language(language_name) VALUES ('Gujarati');
+INSERT INTO custom_language(language_name) VALUES ('Hindi');
+INSERT INTO custom_language(language_name) VALUES ('Japanese');
+INSERT INTO custom_language(language_name) VALUES ('Kannada');
+INSERT INTO custom_language(language_name) VALUES ('Konkani');
+INSERT INTO custom_language(language_name) VALUES ('Malayalam');
+INSERT INTO custom_language(language_name) VALUES ('Marathi');
+INSERT INTO custom_language(language_name) VALUES ('Punjabi');
+INSERT INTO custom_language(language_name) VALUES ('Sanskrit');
+INSERT INTO custom_language(language_name) VALUES ('Sign Language');
+INSERT INTO custom_language(language_name) VALUES ('Spanish');
+INSERT INTO custom_language(language_name) VALUES ('Tamil');
+INSERT INTO custom_language(language_name) VALUES ('Telugu');
+
+
+--custom_sub_category insertion
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Biology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Chemistry',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Commerce',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('History',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Mathematics',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Physics',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Algebra',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('English',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('geography',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Geology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('geometry',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Applied Maths',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Home Science',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Mental Ability',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Organization of Commerce and Management',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Science & Technology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Social Science',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Social Studies',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Sociology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Law',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Management',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Science',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Medical',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering  Aeronautical',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Aerospace',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Automotive',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Chemical',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Civil',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Computer Hardware',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Electrical',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering electronic',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Environmental',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Health and Safety',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Industrial',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Marine',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Materials',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Mechanical',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Mining and Geological',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Petroleum',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Engineering Robotics',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Anthropology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Archaeology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Biochemistry',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Biotechnology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Dermatology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Microbiology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('philosophy',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Physiology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Psychology',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Nursing',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Pediatrics',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Computer Science',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Health Sciences',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Life Sciences',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Earth Sciences',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Political Science',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Systems Science',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Space Sciences',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Forensic Science',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Finance',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Statistics',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Telecom',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Media and Entertainment',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Logistic AND Supply Chain',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Environmental Studies and Forestry',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('literature',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Human Physical Performance and Recreation',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Journalism',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Library and Museum Studies',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Religion and Religious studies',1);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Cultural and Ethnic Studies',1);
+
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Airline Transport Pilot License (ATPL)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Banks',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Railways',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Civil Services',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Commercial Pilot License (CPL)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Common Admission Test (CAT)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Common Law Admission Test (CLAT)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Defense',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('CDS/AFCAT/CAPF',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Services Selection Board (SSB)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Airforce/Navy/Coast Guard',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('NDA',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Graduate Management Admission Test (GMAT)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Institute of Chartered Accountants of India (ICAI) Exam',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('International English Language Testing System (IELTS)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Joint Entrance Examination (Main)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Judiciary - PCS (J)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Maharashtra Public Service Commission (MPSC)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('National Eligibility-cum-Entrance Test (NEET)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Educator Eligibility Test (TET)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('UNION PUBLIC SERVICE COMMISSION (UPSC)',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('State PSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('BPSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('CGPSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('WBPSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('MPSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('TNPSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Kerala PSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('GPSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('OPSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('JPSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Karnataka PSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('UPPSC & UPSSSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('MPPSC & VYAPAM',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('APPSC & TSPSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('RPSC',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Maharashtra Bharti',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('RPSC Grade I Educator',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('UPSSSC VDO',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('RPSC Grade II Educator',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Maharashtra Group C Services',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Gujarat Class 3',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Gujarat Class 3',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Karnataka Teaching',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('WBP & Gen Combined',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Kerala Administrative Services',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Odisha Teaching',2);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('TNPSC Group 4 and VAO',2);
+
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Aviation',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Banking',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in BPO/KPO',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career In corporates',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career In Defence',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Engineering',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Fitness',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Government Jobs',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Healthcare/Pharma',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career In Import Export',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Information Technology',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Manufacturing',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Real estate',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Retail',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Shipping',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Teaching',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Career in Telecom',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('How to get Scholarships',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Studies in Arts',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Studies in Commerce',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Studies in engineering',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Studies in Medical',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Studies Management',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Study abroad',3);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Entrepreneurship',3);
+
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Acting',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Crafting',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Drama',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Drawing',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Drum',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Embroidery',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Flute',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Guitar',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Meditation',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Music',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Painting',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Performing arts',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Photography',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Piano',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Saxophone',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Sitar',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Trumpet',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Videography',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Violin',4);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Visual arts',4);
+
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Arabic',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Bengali',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('English',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('French',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('German',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Gujarati',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Hindi',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Japanese',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Kannada',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Konkani',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Malayalam',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Marathi',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Punjabi',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Sanskrit',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Sign Language',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Spanish',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Tamil',5);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Telugu',5);
+
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('3D + Animation',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Accounting',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Airline Transport Pilot Licence',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Airport Ground Services',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Architecture and Design',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Artificial Intelligence',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Blockchain',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Cabin Crew',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Cloud Computing',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Commercial Pilot License',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Computer Basics',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Corporate Training',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Cyber Security',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Data Science',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Data Visualization',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('DevOps',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Digital Marketing',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Entrepreneurship',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Ethical Hacking',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Game Development',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Graphic Desgning',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Health and Beauty',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Hospitality Management',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('IATA',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Information Technology',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Internet of Things',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('ITIL',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Kids Coding',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Lean Six Sigma',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Logo Design',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Machine Learning',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Marketing',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Microsoct Excel',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Mobile App Development',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Nutrition',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('PMP',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Sales and Marketing',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('SAP',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Soft Skill and Image Building',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('SQL',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Tableau',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Travel & Tourism',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('UX / UI',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Voice and Accent',6);
+INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Website Development',6);
