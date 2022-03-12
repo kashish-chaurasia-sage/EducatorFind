@@ -1,5 +1,10 @@
 --
--- Generated at https://bwdmedia.co.nz/resource/sql-generator-for-indian-pincodes/
+-- =============================================
+-- Author:    < Kashish Chaurasia >
+-- Create date:  < 12.03.2022 >
+-- Description:  < version2.0 location table - database script file for new database design and management >
+-- =============================================
+
 --
 
 INSERT INTO `custom_location` (`pincode`,`city_id`,`city_name`,`state_id`,`state_name`,`country_id`,`country_name`) VALUES ("110001",135,"Delhi",10,"Delhi",1,"India");
