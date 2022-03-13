@@ -1,6 +1,7 @@
 
  <?php $this->load->view('layout/header');?>
- 
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <section class=" login-reg">
     <div class="container">
         <div class="row">
@@ -67,14 +68,30 @@
                             <!--FILED END-->
                             <!--FILED START-->
                             <div class="row">
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <input type="text" name="lrn_primary_language" class="form-control"
                                                value="<?= ($this->session->userdata('lrn_primary_language'))? $this->session->userdata('lrn_primary_language'):'';?>"
                                                placeholder="Primary Language Spoken">
                                     </div>
+                                </div> -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select  name="lrn_primary_language"
+                                                id="language_id" class="chosen-select form-control">
+                                            <option value="">Select you primary language*</option>
+                                            <?php
+                                            foreach ($custom_language as $key => $value) {
+                                                ?>
+                                                <option 
+                                                
+                                                    value="<?php echo $value->language_id; ?>"><?php echo $value->language_name; ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
                                 </div>
-
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <select onChange="getClass(this.value);" name="lrn_class"
@@ -96,32 +113,35 @@
                             <!--FILED END-->
 
                             <!--FILED START-->
+                          
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="text" name="pincode" class="form-control" id="pincode" onkeyup="showLocation(this.value,$custom_location)"
-                                               value="<?= ($this->session->userdata('lrn_primary_language'))? $this->session->userdata('lrn_primary_language'):'';?>"
-                                               placeholder="Enter Pincode">
+                                        <input type="text" class="textbox" name="lrn_pincode" required="required" id="pincode" placeholder="Enter Pincode*" 
+                                        value="<?= ($this->session->userdata('lrn_location'))? $this->session->userdata('lrn_location'):'';?>"
+ 
+                                        autocomplete="new-password"  onkeyup="get_details()">
                                     </div>
                                 </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="text" name="city" class="form-control"  value="<?php if(!empty($locations)){$locations['city_name']? $locations['city_name']:'';}?>" id="city" disabled placeholder="City">
+                                    <input type="text" class="textbox" name="lrn_city" id="city" disabled placeholder="City">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="text" name="state" class="form-control" id="state" disabled
-                                               value="<?= ($this->session->userdata('lrn_primary_language'))? $this->session->userdata('lrn_primary_language'):'';?>"
-                                               placeholder="State">
+                                    <input type="text" class="textbox" id="state" name="lrn_state" disabled placeholder="State">    
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <div class="form-group">
-                                        <input type="text" name="country" class="form-control" id="country" disabled
-                                               value="<?= ($this->session->userdata('lrn_primary_language'))? $this->session->userdata('lrn_primary_language'):'';?>"
-                                               placeholder="Country">
+                                    <input type="text" class="textbox" id="district" name="lrn_district" disabled placeholder="District">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                    <input type="text" class="textbox" id="country" name="lrn_country" disabled placeholder="Country">
                                     </div>
                                 </div>
 
@@ -277,64 +297,14 @@
                                     </div>
                         
                             </div>
-                            <!--FILED END-->
-                            <!--FILED START-->
-                            <div class="row">
-                            <div class="col-md-4">
-                                    <div class="form-group">
-                                        <select onChange="getCity(this.value);" name="lrn_city"
-                                                id="state_id" class="chosen-select form-control">
-                                            <option value="">Select Your City*</option>
-                                            <?php
-                                            foreach ($city as $key => $value) {
-                                                ?>
-                                                <option 
-                                                
-                                                    value="<?php echo $value->city_id; ?>"><?php echo $value->city_title; ?></option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <select onChange="getState(this.value);" name="lrn_state"
-                                                id="state_id" class="chosen-select form-control">
-                                            <option value="">Select Your State*</option>
-                                            <?php
-                                            foreach ($state as $key => $value) {
-                                                ?>
-                                                <option 
-                                                
-                                                    value="<?php echo $value->state_id; ?>"><?php echo $value->state_title; ?></option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <select onChange="getCountry(this.value);" name="lrn_country"
-                                                id="country_id" class="chosen-select form-control">
-                                            <option value="">Select Your Country*</option>
-                                            <?php
-                                            foreach ($country as $key => $value) {
-                                                ?>
-                                                <option 
-                                                
-                                                    value="<?php echo $value->country_id; ?>"><?php echo $value->country_title; ?></option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--FILED END-->
-
-                            <input type="submit" name="lrn_per_submit" class="btn btn-primary" value="Submit">
+                            <!--FILED END-->   
+                            <div class="row">                      
+                            <div class="col-md-8">
+                                                </div>
+                                                <div class="col-md-1">
+                            <input type="submit" name="lrn_per_submit" class="btn btn-primary" value="Submit the Learner's Form">
+                                                </div>
+                                                </div>
                         </form>
                     </div>
                 </div>
@@ -358,7 +328,7 @@
     CKEDITOR.replace('job_description');
 </script>
 
-    <script>
+    <!-- <script>
 function showLocation(str) {
     console.log(str);
     if (str.length == 6) {
@@ -385,6 +355,42 @@ function showLocation(str) {
 }
 
 
+</script> -->
+<script>
+function get_details(){
+    // console.log("In Details function");
+	var pincode=jQuery('#pincode').val();
+    console.log(pincode);
+
+	if(pincode==''){
+		jQuery('#city').val('');
+		jQuery('#state').val('');
+	}else{
+		jQuery.ajax({
+			url:'application/views/get.php',
+			type:'post',
+			data:'pincode='+pincode,
+			success:function(data){
+				if(data=='no'){
+					// alert('Wrong Pincode');
+					jQuery('#city').val('');
+					jQuery('#state').val('');
+                    jQuery('#country').val('');
+                    jQuery('#district').val('')
+
+				}else{
+					var getData=$.parseJSON(data);
+					jQuery('#city').val(getData.city);
+					jQuery('#state').val(getData.state);
+                    jQuery('#country').val(getData.country);
+                    jQuery('#district').val(getData.district);
+
+
+				}
+			}
+		});
+	}
+}
 </script>
 
 <?php $CI =& get_instance(); ?>

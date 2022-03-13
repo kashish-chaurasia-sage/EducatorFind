@@ -338,10 +338,11 @@ CREATE TABLE custom_language (
 -- 5
 CREATE TABLE custom_educator (
   educator_id int(11) not null AUTO_INCREMENT,
+  user_id int(11) not null,
   edu_name varchar(1024) not null,
-  edu_number int(12) not null,
+  edu_number varchar(50) not null,
   edu_email varchar(1024) not null,
-  edu_whatsapp int(12) not null,
+  edu_whatsapp varchar(50)  not null,
   edu_mode int (4) default 1,
   edu_location_id int (4) ,
   edu_address varchar(1024) not null,
@@ -352,6 +353,7 @@ CREATE TABLE custom_educator (
   edu_experience int(10),
   edu_dob datetime not null,
   edu_slot varchar(1024) ,
+  edu_description varchar(1024) ,
   sort_order int(11) DEFAULT 0 NOT NULL,
   status int(1) DEFAULT 1 not null,
   date_added datetime not null default now(),
@@ -364,8 +366,8 @@ CREATE TABLE custom_educator (
 CREATE TABLE custom_educator_sub_category (
   edu_sub_id int(11) not null AUTO_INCREMENT,
   educator_id int(11) not null,
-  sub_category_id int(11) not null,
-  language_id int(11) not null,
+  sub_category_id varchar(1024) not null,
+  language_id varchar(1024) not null,
   cost int(200) not null,
   date_added datetime not null default now(),
   date_modified datetime not null default now(),
@@ -376,14 +378,14 @@ CREATE TABLE custom_educator_sub_category (
 -- 7
 CREATE TABLE custom_educator_offer (
   edu_offer_id int(11) not null AUTO_INCREMENT,
-  educator_id int(11) not null,
+  educator_id int(11) ,
   offer_name varchar(1024) ,
   offer_price int(11) ,
   offer_description varchar(1024) ,
-  offer_image varchar(1024) ,
+  offer_image varchar(1024) default null,
   offer_link varchar(1024) ,
-  date_added datetime not null default now(),
-  date_modified datetime not null default now(),
+  date_added datetime  default now(),
+  date_modified datetime  default now(),
   PRIMARY KEY (edu_offer_id)
 
 );
@@ -407,7 +409,7 @@ CREATE TABLE custom_learner (
 CREATE TABLE custom_learner_sub_category (
   learner_sub_id int(11) not null AUTO_INCREMENT,
   learner_id int(20) NOT NULL,
-  sub_category_id int(11) not null,
+  sub_category_id varchar(1024) not null,
   date_added datetime not null default now(),
   date_modified datetime not null default now(),
   PRIMARY KEY (learner_sub_id)
@@ -764,3 +766,4 @@ INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Travel &
 INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('UX / UI',6);
 INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Voice and Accent',6);
 INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Website Development',6);
+

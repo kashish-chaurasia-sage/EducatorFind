@@ -13,10 +13,7 @@ class Become_learner extends CI_Controller {
 
     public function index() {
         $data=array();
-        // $post_pincode = $this->input->post('pincode');
-        // error_log("BEFORE SUBMIT POST>>>>>>>>>>>".json_encode( $this->input->post()));
-        // error_log("BEFORE SUBMIT GET>>>>>>>>>>>".json_encode( $this->input->get()));
-
+        
      	$data['title']='Starsboard | Become Learner';
         $data['custom_class'] = $this->CommonMdl->getResult('custom_class', '*');
         $data['custom_board'] = $this->CommonMdl->getResult('custom_board', '*');
@@ -26,14 +23,9 @@ class Become_learner extends CI_Controller {
         $data['courses'] = $this->CommonMdl->getSubCategorybyCategoryId(6);
         $data['art'] =$this->CommonMdl->getSubCategorybyCategoryId(4);
         $data['lang'] = $this->CommonMdl->getSubCategorybyCategoryId(5);
+        $data['custom_language'] = $this->CommonMdl->getResult('custom_language', '*');
         $data['custom_location'] =$this->CommonMdl->getResult('custom_location', '*');
-        // if($post_pincode){
-        //     $data['locations'] = $this->CommonMdl->getLocationbyPincode($post_pincode);
-        //     $data['pincode'] = $post_pincode;
-        //      echo $data['locations'];
-        // }
-        // $data['state'] = $this->CommonMdl->getResult('state', '*');
-        // $data['country'] = $this->CommonMdl->getResult('country', '*');
+        
 
         if ($this->input->post('lrn_per_submit')) {
             $user_id = $this->session->userdata('userId');
@@ -85,6 +77,15 @@ class Become_learner extends CI_Controller {
             $this->session->set_userdata('lrn_city', $this->input->post('lrn_city'));
             $this->session->set_userdata('lrn_state', $this->input->post('lrn_state'));
             $this->session->set_userdata('lrn_country', $this->input->post('lrn_country'));
+            error_log("STATE : --".json_encode($this->input->post('lrn_state')) );
+            error_log("CITY : --".json_encode($this->input->post('lrn_city')) );
+            error_log("DISTRICT : --".json_encode($this->input->post('lrn_district')) );
+            error_log("PINCODE : --".json_encode($this->input->post('lrn_pincode')) );
+
+            $locationInfo =  $this->CommonMdl->getResult('custom_location', '*', ['pincode' => $this->input->post('lrn_pincode')]);
+            // error_log("LocationInfo : --".json_encode($locationInfo) );
+            $location_id = $locationInfo[0]->location_id;
+            // error_log("LocationId : --".json_encode($location_id) );
 
             // redirect('become_educator/service');
             // error_log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
@@ -105,23 +106,28 @@ class Become_learner extends CI_Controller {
             // if (!empty($this->session->userdata('lrn_board'))) {
             //     $board = implode(",", $this->session->userdata('lrn_board'));
             // }
-           
+           $sub_category_id = '';
             $lang = '';
             if (!empty($this->session->userdata('lang'))) {
                 $lang = implode(",", $this->session->userdata('lang'));
+                $sub_category_id =  $sub_category_id .",". implode(",", $this->session->userdata('lang'));
             }
 
             $exam = '';
             if (!empty($this->session->userdata('exam'))) {
                 $exam = implode(",", $this->session->userdata('exam'));
+                $sub_category_id =  $sub_category_id .",". implode(",", $this->session->userdata('exam'));
+
             }
 
             $course = '';
             if (!empty($this->session->userdata('course'))) {
                 $course = implode(",", $this->session->userdata('course'));
+                $sub_category_id =  $sub_category_id . "," .implode(",", $this->session->userdata('course'));
+
             }
             
-            // $class = '';
+            // $class = '' ;
             // if (!empty($this->session->userdata('lrn_class'))) {
             //     $class = implode(",", $this->session->userdata('lrn_class'));
             // }
@@ -129,45 +135,63 @@ class Become_learner extends CI_Controller {
             $art = '';
             if (!empty($this->session->userdata('art'))) {
                 $art = implode(",", $this->session->userdata('art'));
+                $sub_category_id =  $sub_category_id . "," .implode(",", $this->session->userdata('art'));
+
             }
             
             $career = '';
             if (!empty($this->session->userdata('career'))) {
                 $career = implode(",", $this->session->userdata('career'));
+                $sub_category_id =  $sub_category_id. "," .implode(",", $this->session->userdata('career'));
+ 
             }
             
             $subject = '';
             if (!empty($this->session->userdata('subjects'))) {
                 $subject = implode(",", $this->session->userdata('subjects'));
-            }
+                $sub_category_id = $sub_category_id .",". implode(",", $this->session->userdata('subjects'));
 
+            }
+            error_log("SubcategoryIDs ------> ".json_encode($sub_category_id));
             $LongJsonInfo = array(
                 'user_id' => $this->session->userdata('userId'),
                 'gender' => $this->input->post('lrn_gender'),
                 'dob' => $this->input->post('lrn_dob'),
-                'primary_language' => $this->input->post('lrn_primary_language'),
-                'lrn_class' => $this->input->post('lrn_class'),
+                'language_id' => $this->input->post('lrn_primary_language'),
+                'class_id' => $this->input->post('lrn_class'),
                 'school' =>$this->input->post('lrn_school'),
-
-                'city_id' => $this->session->userdata('lrn_city'),
-                'state_id' => $this->session->userdata('lrn_state'),
-                'country_id' => $this->session->userdata('lrn_country'),
+                'board_id' => $this->input->post('lrn_board'),
+                'location_id' => $location_id,
+                // 'city_id' => $this->session->userdata('lrn_city'),
+                // 'state_id' => $this->session->userdata('lrn_state'),
+                // 'country_id' => $this->session->userdata('lrn_country'),
 
             
                 // 'lrn_class' => $class ? $class : '',
-                'lrn_subject' => $subject ? $subject : '',
-                'lrn_board' => $this->input->post('lrn_board'),
-                'lrn_exam' => $exam ? $exam : '',
-                'lrn_career' => $career ? $career : '',
-                'lrn_course' => $course ? $course : '',
-                'lrn_art' => $art ? $art : '',
-                'lrn_lang' => $lang ? $lang : '',
+                // 'lrn_subject' => $subject ? $subject : '',
+                // 'lrn_exam' => $exam ? $exam : '',
+                // 'lrn_career' => $career ? $career : '',
+                // 'lrn_course' => $course ? $course : '',
+                // 'lrn_art' => $art ? $art : '',
+                // 'lrn_lang' => $lang ? $lang : '',
                 
             );
+            
 
-            $checkLearner = $this->CommonMdl->getResult('tbl_learner', 'Lid', ['user_id' => $this->session->userdata('userId')]);
+
+            $checkLearner = $this->CommonMdl->getResult('custom_learner', 'user_id', ['user_id' => $this->session->userdata('userId')]);
             if (empty($checkLearner)) {
-                $insetLearner = $this->CommonMdl->insertRow($LongJsonInfo, 'tbl_learner');
+                $insertLearner = $this->CommonMdl->insertRow($LongJsonInfo, 'custom_learner');
+                $LearnerInfo = $this->CommonMdl->getResult('custom_learner', 'learner_id', ['user_id' => $this->session->userdata('userId')]);
+
+                error_log("LearnerInfo".json_encode($LearnerInfo[0]->learner_id));
+                $LongLearnerJsonInfo = array(
+                    'learner_id' => $LearnerInfo[0]->learner_id,
+                    'sub_category_id' => $sub_category_id,
+                    
+                );
+                $insertLearnerSubCategory = $this->CommonMdl->insertRow($LongLearnerJsonInfo, 'custom_learner_sub_category');
+
                 $to_email = $this->session->userdata('useremail'); 
                 // $this->email->to($to_email);
                 $receipents = array(array("email"=>$to_email,"name"=>$this->input->post('name')));
@@ -175,14 +199,20 @@ class Become_learner extends CI_Controller {
                 error_log("CATEGORY : >>>>>>>>>>".json_encode($this->session->userdata('category')));
                 $category = $this->session->userdata('category');
                 $categoryString = " ";
-                if (in_array("1", $category)){
+                if (!empty($subject)){
                     $categoryString =   $categoryString . "|Academic| " ;
                 }
-                if (in_array("2", $category)){
-                    $categoryString =  $categoryString . "|Career Counselling| " ;
+                if (!empty($exam)){
+                    $categoryString =  $categoryString . "|Competetive Exams| " ;
                 }
-                if (in_array("3", $category)){
-                    $categoryString =  $categoryString ."|Professional Training| " ;
+                if (!empty($career)){
+                    $categoryString =  $categoryString ."|Career Counselling| " ;
+                }
+                if (!empty($art)){
+                    $categoryString =  $categoryString ."|Art| " ;
+                }
+                if (!empty($course)){
+                    $categoryString =  $categoryString ."|Professional Courses| " ;
                 }
                 
                 // $params["category"] =  $categoryString;
@@ -190,7 +220,7 @@ class Become_learner extends CI_Controller {
                 // $params["phone"] =$this->session->userdata('edu_mobile');
         
                 $mailResponse = $this->sendMail($receipents, 8, $params);
-                echo 'You are our now our verified educator';
+                echo 'You are our now our verified learner';
             }
             redirect('become_learner/finish');
         }

@@ -6,24 +6,24 @@
                 <div class="add-list-ste">
                     <div class="add-list-ste-inn">
                         <ul>
-                            <li>
-                                <a href="add-listing-step-1">
-                                    <span>Step 1</span>
-                                    <b>Basic Info</b>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="add-listing-step-2">
-                                    <span>Step 2</span>
-                                    <b>Services</b>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="add-listing-step-3" class="act">
-                                    <span>Step 3</span>
-                                    <b>Offers</b>
-                                </a>
-                            </li>
+                           <li>
+                            <a href="#" >
+                                <span>Step 1</span>
+                                <b>Basic Info</b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!">
+                                <span>Step 2</span>
+                                <b>Services</b>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!"class="act" >
+                                <span>Step 3</span>
+                                <b>Offers</b>
+                            </a>
+                        </li>
 
                         </ul>
                     </div>
@@ -36,9 +36,10 @@
                     <div class="log">
                         <div class="login add-list-off">
 
-                            <h4>Any Special offers</h4>
-                            <span class="add-list-add-btn lis-add-off" title="add new offer">+</span>
-                            <span class="add-list-rem-btn lis-add-rem" title="remove offer">-</span>
+                            <h4>Any Special offers for Learners</h4>
+                            <label class = "skip">Optional step</label>
+                            <!-- <span class="add-list-add-btn lis-add-off" title="add new offer">+</span>
+                            <span class="add-list-rem-btn lis-add-rem" title="remove offer">-</span> -->
                             <form action="<?php echo base_url('become_educator/offer');?>" class="listing_form_3" id="listing_form_3"
                                   name="listing_form_3" method="post" enctype="multipart/form-data">
                               
@@ -67,7 +68,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                             <textarea name="offer_detials" class="form-control"
-                                                                      placeholder="Incase you want to give any discount to student, you can add your offer here." value=""></textarea>
+                                                                      placeholder="Incase you want to give any discount to student, you can add your offer detais here." value=""></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -89,7 +90,7 @@
                                                 <div class="form-group">
                                                     <input type="text" name="offer_link"
                                                            class="form-control"
-                                                           placeholder="Your Website or Social Media Page Link" value="">
+                                                           placeholder="Your Website or Social Media Page Link (Optional)" value="">
                                                 </div>
                                             </div>
                                         </div>
@@ -112,20 +113,20 @@
                                     </div>
                                 </div> -->
                                 <div class="row">
-                                <div class="col-sm-10">
+                                <div class="col-sm-9">
                                       <input type="submit" name="edu_per_submit"
                                             class="btn btn-primary" name="Previous" Value="Back">
                                   
                                 </div>
                                 <div class="col-sm-1">
                                     <input type="submit" name="edu_offer_submit"
-                                            class="btn btn-primary" name="Next" Value="Next">
+                                            class="btn btn-primary" name="Next" Value="Submit the form">
                                 </div>
-                                <div class="col-md-12">
+                                <!-- <div class="col-md-12">
                                         <a href="add-listing-step-4" class="skip">Skip this                                        >></a>
                                     </div>
                                
-                            </div>
+                            </div> -->
                                 <!--FILED END-->
                             </form>
                         </div>
