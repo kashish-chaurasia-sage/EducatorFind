@@ -66,7 +66,7 @@ class CommonMdl extends CI_Model
 		return $query->result();
 	}
 	
-		public function asPerFillter($tbl,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr){
+	public function asPerFillter_old($tbl,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr){
 			$this->db->select('*');
 			$this->db->from($tbl);
 
@@ -99,7 +99,49 @@ class CommonMdl extends CI_Model
 			$query = $this->db->get();
 			return $query->result();
 	}
-	
+
+	public function asPerFillter($limit, $start,$tbl,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr){
+		$this->db->select('*');
+		$this->db->from('custom_educator e' );
+		$this->db->join('custom_location l', 'e.edu_location_id=l.location_id', 'left');
+		if(!empty($edu_classArr)){
+		$this->db->like('educator_class', $edu_classArr);
+		}
+		if(!empty($edu_subjectArr)){
+		$this->db->like('edu_subject',$edu_subjectArr);
+		}
+
+		if(!empty($edu_boardArr)){
+		$this->db->like('edu_board', $edu_boardArr);
+		}
+		if(!empty($edu_examArr)){
+		$this->db->like('edu_exam', $edu_examArr);
+		}
+		
+		if(!empty($edu_carrerArr)){
+		$this->db->like('career_path', $edu_carrerArr);
+		}
+		if(!empty($edu_courseArr)){
+		$this->db->like('prof_course', $edu_courseArr);
+		}
+		if(!empty($edu_artArr)){
+		$this->db->like('art', $edu_artArr);
+		}
+		if(!empty($edu_langArr)){
+		$this->db->like('prof_lang',$edu_langArr);
+		}
+
+		$this->db->where('status', 1);
+
+		$this->db->order_by('edu_isfeatured','desc');
+		$this->db->order_by('sort_order','asc');
+		$this->db->order_by('sort_order','asc');
+		$this->db->order_by('edu_experience','desc');
+		$this->db->order_by('edu_name','asc');
+		$this->db->limit($limit, $start);
+		$query = $this->db->get();
+		return $query->result();
+}
 	public function asPerCategory($tbl,$cat){
 			$this->db->select('*');
 			$this->db->from($tbl);
@@ -189,13 +231,13 @@ class CommonMdl extends CI_Model
 	   		return true;
 	   	} 
 	 }
-public function select_avg($tbl,$clms='*',$whr=''){
-$this->db->select_avg($clms);
-$this->db->from($tbl);
-$this->db->where($whr);
-$query = $this->db->get();
-return $query->result();
-}	
+	public function select_avg($tbl,$clms='*',$whr=''){
+		$this->db->select_avg($clms);
+		$this->db->from($tbl);
+		$this->db->where($whr);
+		$query = $this->db->get();
+		return $query->result();
+	}	
 public function select_dynamic_columns($tbl,$clms='*',$condArr){
 	$this->db->select($clms);
 	$this->db->from($tbl);
@@ -302,7 +344,13 @@ public function selectSum($tbl,$clms='*',$whr=''){
 		
 	}
 
-	
-	
+	public function getAvgRating($educator_id){
+		$this->db->select_avg('rating');
+		$this->db->from('custom_review');
+		$this->db->where('educator_id',$educator_id);
+		$query = $this->db->get();
+		return $query->result();
 
+	}
+	
 }

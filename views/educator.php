@@ -335,8 +335,9 @@
                             <ul class="all-list-wrapper" id="fiitered_educator">
 						        <?php if(!empty($listed)){ 
                                     
-                                    foreach($listed as $educatorKey => $educatorVal){
-                                    $data=json_decode($educatorVal->LongJsonInfo,true);
+                                    foreach($listed as $list){
+                                        error_log("FROM EDUCATOR VIEW***** ".json_encode($list->edu_name));
+                                    // $data=json_decode($educatorVal->LongJsonInfo,true);
 
                                 ?>
 
@@ -349,8 +350,8 @@
                                         <!-- <span class="ver"><i class="material-icons" title="Verified expert">verified_user</i></span> -->
 
                                             <!-- <span class="open-stat">Verified</span> -->
-                                            <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($educatorVal->edu_name)).'/'.$educatorVal->Eid);?>">
-                                                <img src="<?=base_url('uploads/'.$educatorVal->user_id.'/'.$data[0]['edu_image']);?>">
+                                            <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($list->edu_name)).'/'.$list->educator_id);?>">
+                                                <img src="<?=base_url('uploads/'.$list->user_id.'/'.$list->edu_image);?>">
                                             </a>
 
                                         </div>
@@ -361,18 +362,18 @@
                                         <div style="padding :0px 0px 0px 10px">
                                             <h4>
 
-                                                <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($educatorVal->edu_name)).'/'.$educatorVal->Eid);?>"><?= $educatorVal->edu_name;?></a>
+                                                <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($list->edu_name)).'/'.$list->educator_id);?>"><?= $list->edu_name;?></a>
                                             </h4>
                                             
-                                            <span class="addr"><?= $educatorVal->edu_city?$educatorVal->edu_city: 'No Location';?></span>
+                                            <span class="addr"><?= $list->city_name?$list->city_name: 'No Location';?></span>
                                             <!-- <div class = "edu"> -->
-                                                <span class="eduData"><?php echo $educatorVal->edu_experience; ?> <?php echo "years"; ?><?php echo "Exp."; ?></span>
+                                                <span class="eduData"><?php echo $list->edu_experience; ?> <?php echo "years"; ?><?php echo "Exp."; ?></span>
                                                 
                                                 <span class="eduData">
                                                     <?php
-                                                        if ($educatorVal->edu_mode == "1") {
+                                                        if ($list->edu_mode == "1") {
                                                             echo "Online";
-                                                        }elseif($educatorVal->edu_mode == "2"){
+                                                        }elseif($list->edu_mode == "2"){
                                                             echo "Offline";
                                                         }else{
                                                             echo "Hybrid";
@@ -388,7 +389,7 @@
                                             
                                             <!-- <span class="pho">
                                                 <?php    
-                                                    $number=$data[0]['edu_mobile'];
+                                                    $number=$list->edu_number;
                                                     $maskedMobile =  str_pad(substr($number, -4), strlen($number), '*', STR_PAD_LEFT);
                                                     echo $maskedMobile; 
                                                 ?>
@@ -396,17 +397,17 @@
 
                                             <!-- <span class="mail">
                                                 <?php 
-                                                    $email=$data[0]['edu_email'];
+                                                    $email=$list->edu_email;
                                                     $maskedEmail=substr($email, 0, 3).'****'.substr($email, strpos($email, "@"));
                                                     echo $maskedEmail;
                                                 ?> 
                                             </span> -->
 
                                             <div class="links">
-                                                <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($educatorVal->edu_name)).'/'.$educatorVal->Eid);?>">view more</a>
-                                                <a href="Tel: <?= $data[0]['edu_mobile'];?>">Call Now</a>
+                                                <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($list->edu_name)).'/'.$list->educator_id);?>">view more</a>
+                                                <a href="Tel: <?= $list->edu_number;?>">Call Now</a>
                                                 <!-- <span class="">whatsapp </span> -->
-                                                <a href="https://wa.me/<?= $data[0]['edu_whatsapp'];?>" class="what" target="_blank">WhatsApp</a>
+                                                <a href="https://wa.me/<?= $list->edu_whatsapp;?>" class="what" target="_blank">WhatsApp</a>
                                             </div>
                                             
 
@@ -423,7 +424,7 @@
                                              <div class="text-center">
                                                         <!-- <h4>Rating Overview</h4> -->
                                                         <!-- <br> -->
-                                                        <h1 class="rating-number">4.3<small>/5</small></h1>
+                                                        <h1 class="rating-number"><?= $list->avg_rating?$list->avg_rating: '4';?><small>/5</small></h1>
                                                         <div class="rating-stars d-inline-block position-relative mr-2">
                                                             <img src="<?=base_url('assets/public/images/grey-star.svg');?>" alt="">
                                                             <div class="filled-star" style="width:86%"></div>

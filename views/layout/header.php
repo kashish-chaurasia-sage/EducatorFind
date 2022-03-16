@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>S T A R S B O A R D</title>
+    <title>Starsboard | Online Educator | Find Educator</title>
     <!--== META TAGS ==-->
    
     <meta charset="utf-8">

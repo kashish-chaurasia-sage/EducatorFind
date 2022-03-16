@@ -445,19 +445,77 @@ class Become_educator extends CI_Controller {
 
                 $insertOffer = $this->CommonMdl->insertRow($offerData, 'custom_educator_offer');
 
-                $academicSC = implode(",", $this->session->userdata('subject'));
-                $artSC = implode(",", $this->session->userdata('art'));
-                $examSC = implode(",", $this->session->userdata('exam'));
-                $careerSC = implode(",", $this->session->userdata('career_path'));
-                $langSC = implode(",", $this->session->userdata('language'));
-                $profSC = implode(",", $this->session->userdata('tech_course'));
+                $academicSC = "";
+                $artSC = "";
+                $examSC = "";
+                $careerSC = "";
+                $langSC = "";
+                if(!empty($this->session->userdata('subject'))){
+                    $academicSC = implode(",", $this->session->userdata('subject'));
 
-                $academicSCL = implode(",", $this->session->userdata('lang_academic'));
-                $artSCL = implode(",", $this->session->userdata('lang_art'));
-                $examSCL = implode(",", $this->session->userdata('lang_exam'));
-                $careerSCL = implode(",", $this->session->userdata('lang_career'));
-                $langSCL = implode(",", $this->session->userdata('lang_language'));
-                $profSCL = implode(",", $this->session->userdata('lang_prof'));
+                }
+
+                if(!empty($this->session->userdata('art'))){
+                    $artSC = implode(",", $this->session->userdata('art'));
+
+                }
+
+                if(!empty($this->session->userdata('exam'))){
+                    $examSC = implode(",", $this->session->userdata('exam'));
+
+                }
+                
+                if(!empty($this->session->userdata('career_path'))){
+                    $careerSC = implode(",", $this->session->userdata('career_path'));
+
+                }
+                
+                if(!empty($this->session->userdata('language'))){
+                    $langSC = implode(",", $this->session->userdata('language'));
+
+                }
+                $profSC = "";
+                if(!empty($this->session->userdata('tech_course'))){
+                    $profSC = implode(",", $this->session->userdata('tech_course'));
+
+                }
+                $academicSCL = "";
+
+                if(!empty($this->session->userdata('lang_academic'))){
+                    $academicSCL = implode(",", $this->session->userdata('lang_academic'));
+
+                }
+                $artSCL = "";
+
+                if(!empty($this->session->userdata('lang_art'))){
+                    $artSCL = implode(",", $this->session->userdata('lang_art'));
+
+                }
+                $examSCL = "";
+
+                if(!empty($this->session->userdata('lang_exam'))){
+                    $examSCL = implode(",", $this->session->userdata('lang_exam'));
+
+                }
+                $careerSCL = "";
+
+                if(!empty($this->session->userdata('lang_career'))){
+                    $careerSCL = implode(",", $this->session->userdata('lang_career'));
+
+                }
+                $langSCL = "";
+
+                if(!empty($this->session->userdata('lang_language'))){
+                    $langSCL = implode(",", $this->session->userdata('lang_language'));
+
+                }
+                $profSCL = "";
+
+                if(!empty($this->session->userdata('lang_prof'))){
+                    $profSCL = implode(",", $this->session->userdata('lang_prof'));
+
+                }
+
 
                 //CUSTOM EDUCATOR SUBCATEGORY TABLE
                 $eduAcademicSubCategoryData = array(

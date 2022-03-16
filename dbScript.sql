@@ -289,7 +289,7 @@ CREATE TABLE custom_category (
   category_id int(11) not null AUTO_INCREMENT,
   category_name varchar(1024) not null,
   category_image varchar(512) ,
-  sort_order int(11) DEFAULT 0 NOT NULL,
+  sort_order int(11) DEFAULT 9999 NOT NULL,
   status int(1) DEFAULT 1 not null,
   date_added datetime not null default now(),
   PRIMARY KEY (category_id)
@@ -302,7 +302,7 @@ CREATE TABLE custom_sub_category (
   sub_category_name varchar(1024) not null,
   sub_category_image varchar(512) ,
   category_id int(11) NOT NULL,
-  sort_order int(11) DEFAULT 0 NOT NULL,
+  sort_order int(11) DEFAULT 9999 NOT NULL,
   status int(1) DEFAULT 1 not null,
   date_added datetime not null default now(),
   PRIMARY KEY (sub_category_id)
@@ -328,7 +328,7 @@ CREATE TABLE custom_location (
 CREATE TABLE custom_language (
   language_id int(11) not null AUTO_INCREMENT,
   language_name varchar(1024) not null,
-  sort_order int(11) DEFAULT 0 NOT NULL,
+  sort_order int(11) DEFAULT 9999 NOT NULL,
   status int(1) DEFAULT 1 not null,
   date_added datetime not null default now(),
   PRIMARY KEY (language_id)
@@ -354,7 +354,7 @@ CREATE TABLE custom_educator (
   edu_dob datetime not null,
   edu_slot varchar(1024) ,
   edu_description varchar(1024) ,
-  sort_order int(11) DEFAULT 0 NOT NULL,
+  sort_order int(11) DEFAULT 9999 NOT NULL,
   status int(1) DEFAULT 1 not null,
   date_added datetime not null default now(),
   date_modified datetime not null default now(),
