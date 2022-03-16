@@ -1,6 +1,13 @@
 <?php $this->load->view('layout/header');?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/public/css/style.css">
+<link rel="stylesheet/scss" type="text/css"  href="/assets/public/scss/style.scss" />
+<script src="less.js" type="text/javascript"></script>
+
+<!-- <link rel="stylesheet" type="text/scss" href="/assets/public/scss/style.scss"> -->
+
+
  <!-- START SECTION 1-->
 <section>
     <div class="all-listing all-listing-pg">
@@ -347,18 +354,20 @@
                                             </a>
 
                                         </div>
+                                        
                                         <!---END LISTING IMAGE--->
 
                                         <!---LISTING NAME--->
-                                        <div>
+                                        <div style="padding :0px 0px 0px 10px">
                                             <h4>
 
                                                 <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($educatorVal->edu_name)).'/'.$educatorVal->Eid);?>"><?= $educatorVal->edu_name;?></a>
                                             </h4>
-
-                                            <span class="addr"><?= $educatorVal->edu_city;?></span>
+                                            
+                                            <span class="addr"><?= $educatorVal->edu_city?$educatorVal->edu_city: 'No Location';?></span>
                                             <!-- <div class = "edu"> -->
                                                 <span class="eduData"><?php echo $educatorVal->edu_experience; ?> <?php echo "years"; ?><?php echo "Exp."; ?></span>
+                                                
                                                 <span class="eduData">
                                                     <?php
                                                         if ($educatorVal->edu_mode == "1") {
@@ -369,7 +378,9 @@
                                                             echo "Hybrid";
                                                         }
                                                     ?>
+                                                    
                                                 </span>
+                                                
                                                     
                                                     
 
@@ -397,22 +408,37 @@
                                                 <!-- <span class="">whatsapp </span> -->
                                                 <a href="https://wa.me/<?= $data[0]['edu_whatsapp'];?>" class="what" target="_blank">WhatsApp</a>
                                             </div>
+                                            
 
                                             <span class="enq-sav" data-toggle="tooltip"
-                                          title="">
-                                          <span ><i class="material-icons" title="Verified expert">verified_user</i></span>
-
-                                        <!-- <i class="l-like Animatedheartfunc299 "
-                                           data-for="0"
-                                           data-section="1"
-                                           data-num="206"
-                                           data-item=""
-                                           data-id='299'><img
-                                                src="https://bizbookdirectorytemplate.com/images/icon/svg/like.svg"></i></span> -->
+                                                title="">
+                                                
+                                             <span ><i class="material-icons" title="Verified expert">verified_user</i></span>
+                                             
+                                             </span>
+                                             
+                                                <span class="enq-sav2" data-toggle="tooltip"
+                                                title="">
+                                             <span ></span>
+                                             <div class="text-center">
+                                                        <!-- <h4>Rating Overview</h4> -->
+                                                        <!-- <br> -->
+                                                        <h1 class="rating-number">4.3<small>/5</small></h1>
+                                                        <div class="rating-stars d-inline-block position-relative mr-2">
+                                                            <img src="<?=base_url('assets/public/images/grey-star.svg');?>" alt="">
+                                                            <div class="filled-star" style="width:86%"></div>
+                                                        </div>
+                                                        <!-- <div class="text-muted">2,145 ratings</div> -->
+                                                </div>
+                                            <!-- <div > -->
+                                                
+                                            <!-- </div> -->
+                                            
 
                                         </div>
+                                        
                                         <!---END LISTING NAME--->
-
+                                        
    
                                     </div>
                                 </li>

@@ -261,7 +261,7 @@
                                      </ul>
                                 </div>
 									<?php }?>
-									<?php if($detail['academic_lang'] != ''){?>
+									<!-- <?php if($detail['academic_lang'] != ''){?>
 								<h5>Language</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
@@ -270,7 +270,7 @@
 									<?php }?>
                                     </ul>
                                 </div>
-									<?php }?>
+									<?php }?> -->
                             </div>
                             </div>
 							  <?php }?>
