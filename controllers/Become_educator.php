@@ -383,7 +383,7 @@ class Become_educator extends CI_Controller {
             );
 
            
-            if ($this->session->userdata('academic_cost') != '') {
+            if ($this->session->userdata('exam_cost') != '') {
                 $exam = '1';
             } else {
                 $exam = '0';
@@ -393,7 +393,7 @@ class Become_educator extends CI_Controller {
             } else {
                 $art = '0';
             }
-            if ($this->session->userdata('exam_cost') != '') {
+            if ($this->session->userdata('academic_cost') != '') {
                 $academic = '1';
             } else {
                 $academic = '0';
@@ -520,49 +520,55 @@ class Become_educator extends CI_Controller {
                 //CUSTOM EDUCATOR SUBCATEGORY TABLE
                 $eduAcademicSubCategoryData = array(
                     'educator_id' =>  $lastEid,
-                    'sub_category_id' => $academicSC ? $academicSC : '',
+                    'sub_category_id' => $academicSC ? ",".$academicSC."," : '',
                     'language_id' => $academicSCL ? $academicSCL : '',
                     'cost' => $this->session->userdata('academic_cost'),
+                    'category_id' => '1',
                     
                 );
 
                 $eduExamSubCategoryData = array(
                     'educator_id' =>  $lastEid,
-                    'sub_category_id' =>  $examSC ? $examSC : '',
+                    'sub_category_id' =>  $examSC ?",". $examSC .",": '',
                     'language_id' => $examSCL ? $examSCL : '',
                     'cost' => $this->session->userdata('exam_cost'),
+                    'category_id' => '2',
                     
                 );
                 $eduCareerSubCategoryData = array(
                     'educator_id' =>  $lastEid,
-                    'sub_category_id' => $careerSC ? $careerSC : '',
+                    'sub_category_id' => $careerSC ?",". $careerSC."," : '',
                     'language_id' => $careerSCL ? $careerSCL : '',
                     'cost' => $this->session->userdata('career_cost'),
+                    'category_id' => '3',
                     
                 );
                 $eduArtSubCategoryData = array(
                     'educator_id' => $lastEid,
-                    'sub_category_id' => $artSC ? $artSC : '',
+                    'sub_category_id' => $artSC ?",". $artSC .",": '',
                     'language_id' => $artSCL ? $artSCL : '',
                     'cost' => $this->session->userdata('art_cost'),
+                    'category_id' => '4',
                     
                 );
                 $eduLanguageSubCategoryData = array(
                     'educator_id' =>  $lastEid,
-                    'sub_category_id' => $langSC ? $langSC : '',
+                    'sub_category_id' => $langSC ? ",".$langSC."," : '',
                     'language_id' => $langSCL ? $langSCL : '',
                     'cost' => $this->session->userdata('language_cost'),
+                    'category_id' => '5',
                     
                 );
                 $eduCoursesSubCategoryData = array(
                     'educator_id' =>  $lastEid,
-                    'sub_category_id' => $profSC ? $profSC : '',
+                    'sub_category_id' => $profSC ? ",".$profSC .",": '',
                     'language_id' => $profSCL ? $profSCL : '',
                     'cost' => $this->session->userdata('prof_cost'),
+                    'category_id' => '6',
                     
                 );
-                error_log("prof errorlog".json_encode($eduCoursesSubCategoryData));
-                error_log("prof errorlog2".json_encode($course));
+                // error_log("prof errorlog".json_encode($eduCoursesSubCategoryData));
+                // error_log("prof errorlog2".json_encode($course));
 
 
                 if (!empty($subject)){

@@ -1,7 +1,7 @@
-<script src="https://apps.elfsight.com/p/platform.js" defer></script>
-<div class="elfsight-app-72929cdc-cc51-4428-9331-a21f408f4a37"></div>
-<script src="https://apps.elfsight.com/p/platform.js" defer></script>
-<div class="elfsight-app-639714e2-b5f4-422b-a39e-66b1adec129b"></div>
+<!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> -->
+<!-- <div class="elfsight-app-72929cdc-cc51-4428-9331-a21f408f4a37"></div> -->
+<!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> -->
+<!-- <div class="elfsight-app-639714e2-b5f4-422b-a39e-66b1adec129b"></div> -->
     <span class="btn-ser-need-ani">Help & Support</span>
 
     <div class="ani-quo-form">

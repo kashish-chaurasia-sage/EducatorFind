@@ -1,5 +1,6 @@
 <?php $this->load->view('layout/header');?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="/assets/public/css/style.css">
 <link rel="stylesheet/scss" type="text/css"  href="/assets/public/scss/style.scss" />
@@ -39,29 +40,196 @@
                                 <div class="filt-com lhs-cate">
                                     <h4>Categories</h4>
                                     <div class="dropdown">
-                                        <select name="cat_check" id="cat" class="chosen-select">
-                                            <option value=""><?php echo "Select Category"; ?></option>
+                                        <select class="cat_check cat edu_category" name="cat_check" id="cat" class="chosen-select ">
+                                            <option value="9999"><?php echo "All Categories"; ?></option>
                                             <?php
                                                 foreach ($categories as $key =>$category) {
                                             ?>
-                                            <option value="<?php echo $category->Cid; ?>"><?php echo $category->category_title; ?></option>
+                                            <option value="<?php echo $category->category_id; ?>"><?php echo $category->category_name; ?></option>
                                                 <?php
                                             }
                                             ?>
                                         </select>
                                     </div>
+                                 </div>
+                                <!-- <div class="filt-com lhs-cate">
+                                    <h4>Categories</h4>
+                                    <div class="dropdown">
+                                        <select  class="cat_check cat edu_category"
+                                                name="cat_check" id="cat" class="chosen-select ">
+                                            <option selected value="Academic">Academic</option>
+                                               <option value="Career Counselling">Career Counselling</option>
+                                                 <option  value="Professional">Professional</option>
+                                                                                             </select>
+                                    </div>
+                                </div> -->
+
+                                 <!--START-->
+                                <div id="academicFillter" style="display:none;">
+                               
+                                    <!-- class filter -->
+                                    <div class="sub_cat_section filt-com lhs-sub">
+                                        <h4>Class</h4>
+                                        <ul>
+                                            <?php foreach ($edu_class as $key => $value) {?>
+                                                                    
+                                                <li>
+                                                    <div class="chbox">
+                                                        <input type="checkbox" class="edu_class" name="edu_class" value="<?=$value->class_id;?>"  id="<?=$value->class_name;?>"/>
+                                                        <label  for="<?=$value->class_name;?>"><?=$value->class_name;?></label>
+                                                    </div>
+                                                </li>
+                                            <?php }?>
+                            
+                                        </ul>
+                                    </div>
+
+                                    <!-- subject filter -->
+                                    <div class="filt-com lhs-featu">
+                                        <h4>Subject</h4>
+                                        <ul>
+                                          <?php foreach ($subjects as $subject) {?>
+                                            <li>
+                                                    <div class="chbox">
+                                                        <input type="checkbox" name="edu_sub"
+                                                            value="<?= $subject['sub_category_id'];?>"
+                                                            class="edu_sub"
+                                                            id="<?=$subject['sub_category_name'];?>"/>
+                                                        <label
+                                                            for="<?=$subject['sub_category_name'];?>"><?=$subject['sub_category_name'];?></label>
+                                                    </div>
+                                                </li>
+                                            <?php }?>
+                                        </ul>
+                                    </div>
+                                    <!-- Borad filter -->
+                                    <div class="filt-com lhs-featu">
+                                        <h4>Board</h4>
+                                        <ul>
+                                            
+                                            <?php foreach ($custom_board as $key => $value) {?>		
+                                            <li>
+                                                    <div class="chbox">
+                                                        <input type="checkbox" name="edu_board"
+                                                            value="<?=$value->board_id;?>"
+                                                            class="edu_board"
+                                                            id="<?=$value->board_name;?>"/>
+                                                        <label
+                                                            for="<?=$value->board_name;?>"><?=$value->board_name;?></label>
+                                                    </div>
+                                                </li>
+                                            <?php }?>
+                                        </ul>
+                                    </div>
+
+                                </div>
+
+                                <div id="examFillter" style="display:none;">
+                                    <div class="filt-com lhs-featu">
+                                        <h4>Competitive Exams</h4>
+                                        <ul>
+                                            
+                                                <?php foreach ($exams as $exam) {?> 
+                                            <li>
+                                                    <div class="chbox">
+                                                        <input  type="checkbox" name="edu_exam"
+                                                            value="<?=$exam['sub_category_id'];?>"
+                                                            class="edu_exam"
+                                                            id="<?=$exam['sub_category_name'];?>"/>
+                                                        <label
+                                                            for="<?=$exam['sub_category_name'];?>"><?=$exam['sub_category_name'];?></label>
+                                                    </div>
+                                                </li>
+                                                        <?php }?>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="careerFillter"  style="display:none;">
+                                    <div class="sub_cat_section filt-com lhs-sub">
+                                        <h4>Career Path</h4>
+                                        <ul>
+                                            <?php foreach ($career as $path) {?>
+                                            <li>
+                                                    <div class="chbox">
+                                                        <input type="checkbox" class="edu_carrer" name="edu_carrer"
+                                                            value="<?=$path['sub_category_id'];?>"  id="<?=$path['sub_category_name'];?>"/>
+                                                        <label
+                                                            for="<?=$path['sub_category_name'];?>"><?=$path['sub_category_name'];?></label>
+                                                    </div>
+                                                </li>
+                                            <?php }?>
+                                                                
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="artFillter"  style="display:none;">
+                                    <div class="sub_cat_section filt-com lhs-sub">
+                                        <h4>Art</h4>
+                                        <ul>
+                                            <?php foreach ($art as $hobby) {?>
+                                                <li>
+                                                    <div class="chbox">
+                                                        <input type="checkbox" class="edu_art" name="edu_art"
+                                                            value="<?=$hobby['sub_category_id'];?>"   id="<?=$hobby['sub_category_name'];?>"/>
+                                                        <label
+                                                            for="<?=$hobby['sub_category_name'];?>"><?=$hobby['sub_category_name'];?></label>
+                                                    </div>
+                                                </li>
+                                            <?php }?>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="languageFillter"  style="display:none;">
+                                    <div class="sub_cat_section filt-com lhs-sub">
+                                        <h4>Language Learning</h4>
+                                        <ul>
+                                            <?php foreach ($lang as $language) {?>
+                                                <li>
+                                                    <div class="chbox">
+                                                        <input type="checkbox" class="edu_lang" name="edu_lang"
+                                                            value="<?=$language['sub_category_id'];?>"
+                                                                                                                    id="<?=$language['sub_category_name'];?>"/>
+                                                        <label
+                                                            for="<?=$language['sub_category_name'];?>"><?=$language['sub_category_name'];?> </label>
+                                                    </div>
+                                                </li>
+                                                <?php }?>
+
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="profFillter"  style="display:none;">
+                                    <div class="sub_cat_section filt-com lhs-sub">
+                                        <h4>Professional Course</h4>
+                                        <ul>
+                                            <?php foreach ($courses as $course) {?>
+                                                <li>
+                                                    <div class="chbox">
+                                                        <input type="checkbox" class="edu_course" name="edu_course"
+                                                            value="<?=$course['sub_category_id'];?>" id="<?=$course['sub_category_name'];?>"/>
+                                                        <label
+                                                            for="<?=$course['sub_category_name'];?>"><?=$course['sub_category_name'];?></label>
+                                                    </div>
+                                                </li>
+                                                        <?php }?>       
+                                        </ul>
+                                    </div>
                                 </div>
 
                                <!--START-->
-                                <div class="filt-com lhs-cate">
+                                <div class="filt-com lhs-cate" >
                                     <h4>Cities</h4>
                                     <div class="dropdown">
-                                        <select name="city_check" id="cat" class="chosen-select">
-                                            <option value=""><?php echo "Select City"; ?></option>
+                                        <select name="city" id="city" class="chosen-select">
+                                            <option value="999999"><?php echo "All Cities"; ?></option>
                                             <?php
-                                            foreach ($cities as $key =>$city) {
+                                            foreach ($cities as $city) {
                                                 ?>
-                                                <option value="<?php echo $city->city_id; ?>"><?php echo $city->city_title; ?></option>
+                                                <option value="<?php echo $city['city_id']; ?>"><?php echo $city['city_name']; ?></option>
                                                 <?php
                                             }
                                             ?>
@@ -73,8 +241,8 @@
                                 <div class="filt-com lhs-cate">
                                     <h4>Teaching Mode</h4>
                                     <div class="dropdown">
-                                        <select name="mode_check" id="cat" class="chosen-select">
-                                            <option value=""><?php echo "Select Mode"; ?></option>
+                                        <select name="mode" id="mode" class="chosen-select">
+                                            <option value="999999"><?php echo "All Modes"; ?></option>
                                             <option value="1"><?php echo "Online"; ?></option>
                                             <option value="2"><?php echo "Offline"; ?></option>
                                             <option value="3"><?php echo "Hybrid"; ?></option>
@@ -336,7 +504,7 @@
 						        <?php if(!empty($listed)){ 
                                     
                                     foreach($listed as $list){
-                                        error_log("FROM EDUCATOR VIEW***** ".json_encode($list->edu_name));
+                                        // error_log("FROM EDUCATOR VIEW***** ".json_encode($list->edu_name));
                                     // $data=json_decode($educatorVal->LongJsonInfo,true);
 
                                 ?>
@@ -366,7 +534,7 @@
                                             </h4>
                                             
                                             <span class="addr"><?= $list->city_name?$list->city_name: 'No Location';?></span>
-                                            <!-- <div class = "edu"> -->
+                                            <div>
                                                 <span class="eduData"><?php echo $list->edu_experience; ?> <?php echo "years"; ?><?php echo "Exp."; ?></span>
                                                 
                                                 <span class="eduData">
@@ -381,11 +549,59 @@
                                                     ?>
                                                     
                                                 </span>
-                                                
-                                                    
+
+                                               <?php if(!empty($list->categories)){ 
+                                    
+                                                    foreach($list->categories as $category){
+                                                        // error_log("Category***** ".json_encode($category));
+                                                        if(!empty($category->category_id) && $category->category_id == 1){
+                                                            ?>
+
+                                                            <span class="eduData"> <?php echo "Academics"; ?></span>
+
+                                                        <?php   
+
+                                                        }
+                                                        if(!empty($category->category_id) && $category->category_id == 2){
+                                                            ?>
+                                                            <span class="eduData"> <?php echo "Competetive Exams"; ?></span>
+
+                                                            <?php
+                                                        }
+                                                        if(!empty($category->category_id) && $category->category_id == 3){
+                                                            ?>
+                                                            <span class="eduData"> <?php echo "Career Counselling"; ?></span>
+
+                                                            <?php
+                                                        }
+                                                        if(!empty($category->category_id) && $category->category_id == 4){
+                                                            ?>
+                                                            
+                                                            <span class="eduData"> <?php echo "Art"; ?></span>
+
+                                                            <?php
+                                                        }
+                                                        if(!empty($category->category_id) && $category->category_id == 5){
+                                                            ?>
+                                                            
+                                                            <span class="eduData"> <?php echo "Language Learning"; ?></span>
+
+                                                            <?php
+                                                        }
+                                                        if(!empty($category->category_id) && $category->category_id == 6){
+                                                            ?>
+                                                            
+                                                            <span class="eduData"> <?php echo "Professional Courses"; ?></span>
+
+                                                            <?php
+                                                        }
+                                                    }
+                                                }
                                                     
 
-                                                <!-- </div> -->
+                                                ?>
+
+                                                </div>
                                             
                                             <!-- <span class="pho">
                                                 <?php    
@@ -406,7 +622,6 @@
                                             <div class="links">
                                                 <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($list->edu_name)).'/'.$list->educator_id);?>">view more</a>
                                                 <a href="Tel: <?= $list->edu_number;?>">Call Now</a>
-                                                <!-- <span class="">whatsapp </span> -->
                                                 <a href="https://wa.me/<?= $list->edu_whatsapp;?>" class="what" target="_blank">WhatsApp</a>
                                             </div>
                                             
@@ -480,6 +695,107 @@
 <!-- START SECTION 2-->
 <section>
     <script>
+$(document).on('change', '.cat,.mode,.city', function() {
+    // $( ".cat" ).change(function() {
+        var cat=$('#cat').val();
+        var city=$('#city').val();
+      
+        // var mode=$('#mode').val();
+        
+        if(cat == "1"){
+            $('#academicFillter').show();
+            $('#examFillter').hide();
+            $('#careerFillter').hide();
+            $('#artFillter').hide();
+            $('#languageFillter').hide();
+            $('#profFillter').hide();    
+        }else if(cat =='2'){
+            $('#examFillter').show();
+            $('#academicFillter').hide();
+            $('#careerFillter').hide();
+            $('#artFillter').hide();
+            $('#languageFillter').hide();
+            $('#profFillter').hide();   
+        }else if(cat =='3'){
+            $('#careerFillter').show();
+            $('#examFillter').hide();
+            $('#academicFillter').hide();
+            $('#artFillter').hide();
+            $('#languageFillter').hide();
+            $('#profFillter').hide();   
+        }else if(cat =='4'){
+            $('#artFillter').show();
+            $('#academicFillter').hide();
+            $('#careerFillter').hide();
+            $('#examFillter').hide();
+            $('#languageFillter').hide();
+            $('#profFillter').hide();   
+        }else if(cat =='5'){
+            $('#languageFillter').show();
+            $('#academicFillter').hide();
+            $('#careerFillter').hide();
+            $('#artFillter').hide();
+            $('#examFillter').hide();
+            $('#profFillter').hide();   
+        }else if(cat =='6'){
+            $('#profFillter').show();
+            $('#academicFillter').hide();
+            $('#careerFillter').hide();
+            $('#artFillter').hide();
+            $('#languageFillter').hide();
+            $('#examFillter').hide();   
+        }else if(cat =='9999'){
+            $('#profFillter').hide();
+            $('#academicFillter').hide();
+            $('#careerFillter').hide();
+            $('#artFillter').hide();
+            $('#languageFillter').hide();
+            $('#examFillter').hide();  
+        }
+
+        $.ajax({
+            method: 'POST',
+            url: '<?=base_url('welcome/fromcat');?>',
+            dataType: 'JSON',
+            data:{"cat": cat,"city": city},
+            success:function(res){
+            
+            $("#fiitered_educator").html(res['_html']);
+                //successToast(res.success, 4000);
+            },
+            error:function(res){
+                console.log(res);
+                errorToast("Something went wrong!", 4000);
+            }
+        });
+    });
+
+    </script>
+<script>
+
+$( ".mode" ).change(function() {
+    var mode=$('#mode').val();
+    
+    
+    $.ajax({
+        method: 'POST',
+        url: '<?=base_url('welcome/fromcat');?>',
+        dataType: 'JSON',
+        data:{mode:mode},
+        success:function(res){
+        
+        $("#fiitered_educator").html(res['_html']);
+            //successToast(res.success, 4000);
+        },
+        error:function(res){
+            console.log(res);
+            errorToast("Something went wrong!", 4000);
+        }
+    });
+});
+
+</script>
+    <script>
         var slider = document.getElementById("myRange");
         var output = document.getElementById("demo");
         output.innerHTML = slider.value;
@@ -493,9 +809,12 @@
 			applyFilters();
 			
 		});
-	
+        
         /****** applyFilters function check all apply casses   ******/
 		function applyFilters(){
+            var cat=$('#cat').val();
+            var city=$('#city').val();
+            var mode=$('#mode').val();
 			var edu_class = [];
 			$.each($("input[name='edu_class']:checked"), function(){
 				edu_class.push($(this).val());
@@ -539,9 +858,9 @@
 			//if(cat_slug!=''){  
 				$.ajax({
 				method: 'POST',
-				url: '<?=base_url('educator/index');?>',
+				url: '<?=base_url('welcome/fromcat');?>',
 				dataType: 'JSON',
-				data:{edu_class: edu_class,edu_sub:edu_sub,edu_board:edu_board,edu_exam:edu_exam,edu_carrer:edu_carrer,edu_course:edu_course,edu_art:edu_art,edu_lang:edu_lang},
+				data:{cat:cat,city:city,mode:mode,edu_class: edu_class,edu_sub:edu_sub,edu_board:edu_board,edu_exam:edu_exam,edu_carrer:edu_carrer,edu_course:edu_course,edu_art:edu_art,edu_lang:edu_lang},
 				success:function(res){
 					
 				$("#fiitered_educator").html(res['_html']);
@@ -557,44 +876,7 @@
 		}
     </script>
 
-    <script>
-
-        $( ".cat" ).change(function() {
-            var cat=$('#cat').val();
-        
-            if(cat =='Academic'){
-            $('#academicFillter').show();
-            $('#counselling').hide();
-            $('#professional').hide();
-            
-            }else if(cat =='Career Counselling'){
-            $('#counselling').show();
-            $('#academicFillter').hide();
-            $('#professional').hide();
-            }else if(cat =='Professional'){
-            $('#professional').show();
-            $('#counselling').hide();
-            $('#academicFillter').hide();
-        }
-  
-        $.ajax({
-            method: 'POST',
-            url: '<?=base_url('welcome/fromcat');?>',
-            dataType: 'JSON',
-            data:{cat:cat},
-            success:function(res){
-            
-            $("#fiitered_educator").html(res['_html']);
-                //successToast(res.success, 4000);
-            },
-            error:function(res){
-                console.log(res);
-                errorToast("Something went wrong!", 4000);
-            }
-            });
-        });
-
-    </script>
+ 
 
 </section>
 <!-- END SECTION 2-->

@@ -767,3 +767,5 @@ INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('UX / UI'
 INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Voice and Accent',6);
 INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Website Development',6);
 
+alter table custom_educator_sub_category add category_id int(11);
+
