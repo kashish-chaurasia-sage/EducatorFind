@@ -145,7 +145,7 @@ class Welcome extends CI_Controller {
 				$avg_rating=(round($rating[0]->rating,2));
 				$educator->avg_rating = $avg_rating;
 			}else{
-				$educator->avg_rating = '4';
+				$educator->avg_rating = '3.5';
 			}
 			
 			$teachingCategories= $this->CommonMdl->getTeachingCategories($educator->educator_id);

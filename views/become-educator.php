@@ -9,13 +9,13 @@
                 <div class="add-list-ste-inn">
                     <ul>
                         <li>
-                            <a href="#" >
+                            <a href="#" class="act">
                                 <span>Step 1</span>
                                 <b>Basic Info</b>
                             </a>
                         </li>
                         <li>
-                            <a href="#!" class="act">
+                            <a href="#!" >
                                 <span>Step 2</span>
                                 <b>Services</b>
                             </a>

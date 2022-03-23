@@ -35,6 +35,7 @@ class Become_educator extends CI_Controller {
                     $uploadData_edu_image = $this->upload->data();
                     $filename = $uploadData_edu_image['file_name'];
                 }
+
             }
 
             if (!empty($_FILES['cover_image']['name'])) {
@@ -48,6 +49,14 @@ class Become_educator extends CI_Controller {
                     $filename_banner = $uploadData['file_name'];
                 }
             }
+            
+            $ProfileData= array(
+                'user_image' => $filename ?$filename :'',
+                'updated_date' => date("Y-m-d H:i:s"),
+            );
+
+            $profile_pic = $this->CommonMdl->updateData($ProfileData,['id'=>$this->session->userdata('userId')],'users');
+            error_log("Profile pic sql updation : ".json_encode( $profile_pic));
             $this->session->set_userdata('edu_name', $this->input->post('edu_name'));
             $this->session->set_userdata('edu_mobile', $this->input->post('edu_mobile'));
             $this->session->set_userdata('edu_email', $this->input->post('edu_email'));
@@ -424,6 +433,7 @@ class Become_educator extends CI_Controller {
            $checkEducator = $this->CommonMdl->getResult('custom_educator', 'educator_id', ['user_id' => $this->session->userdata('userId')]);
             if (empty($checkEducator)) {
                 $insertEducator = $this->CommonMdl->insertRow($LongJsonInfo, 'custom_educator');
+                
                 $UpdateUserData = array(
                     'educator' => '1',
                 );
@@ -637,8 +647,7 @@ class Become_educator extends CI_Controller {
                 
                 $mailResponse = $this->sendMail($receipents, 4, $params);
                 echo 'You are our now our verified educator';
-
-   
+               
                 // if ($this->email->send()) {
                 //     echo 'You are our now our verified educator';
                 // }

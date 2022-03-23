@@ -14,50 +14,276 @@ class Detail extends CI_Controller {
 	public function educator()
 	{   
 	
-	if(empty($this->uri->segment(3))){
+		if(empty($this->uri->segment(3))){
 		
 			redirect('/');
 		}else{
-			 $data=array();
-     	$data['title']=$this->uri->segment(2).' | Educator | Starsboard';
+			$data=array();
+     		$data['title']=$this->uri->segment(2).' | Educator | Starsboard';
 			$educator_id=$this->uri->segment(3);
+
 			$educator = $this->CommonMdl->getResult('tbl_educator', '*', ['Eid' => $educator_id]);
-			$longJsonInfo=$educator[0]->LongJsonInfo;
-			//echo '<pre>';   print_r($educator);die;
-			$personInfo = json_decode($longJsonInfo,true);
-			$data['detail']=$personInfo[0];
-			$data['Eid']=$educator[0]->Eid;
-			$data['user_id']=$educator[0]->user_id;
-	     	//echo '<pre>';   print_r($data['detail']);die;
-			 $data['isFeaturedA']= $this->CommonMdl->getResult('tbl_educator', '*', ['isFeatured' => '1']);
-			//echo '<pre>';   print_r($data['isFeaturedA']);die;
+
+			// $longJsonInfo=$educator[0]->LongJsonInfo;
+			// $personInfo = json_decode($longJsonInfo,true);
+			// $data['detail']=$personInfo[0];
+			$isFeatured= $this->CommonMdl->getResult('custom_educator', '*', ['edu_isfeatured' => '0']);
+			$data['isFeatured'] = $isFeatured;
+						// echo '<pre>';   print_r($isFeatured);die;
+
 			$review=$this->CommonMdl->getReviewFront($educator_id);
-	   //	echo '<pre>';	print_r($review); die;
 			$total_review=count($review);
+			$average_review = "4";
+			$avg = 3.5;
 			if($total_review != '0'){
-			$average[]='';
-			foreach($review as $key =>$val){
-				if(!empty($val->price_rating) && is_numeric($val->price_rating)){
-				$average[] = $val->price_rating;
+				$average[]='';
+				foreach($review as $key =>$val){
+					if(!empty($val->price_rating) && is_numeric($val->price_rating)){
+					$average[] = $val->price_rating;
+					}
 				}
-			}
-			$average_review = array_sum($average);
+				$average_review = array_sum($average);
 			
-			
-			$data['average_review']= round($average_review/$total_review, 2); 
+				$avg= round($average_review/$total_review, 2); 
+
+				
 			}
+			$data['average_review'] = $avg;
+			$data['percentage_review'] = ($avg/5)*100 ."%";
+
 			$data['review']= $review;
-				$data['total_review']= $total_review;
+			$data['total_review']= $total_review;
 			
-				//echo '<pre>';   print_r($data['review']);die;
-				$liked = $this->CommonMdl->getResult('liked', '*', ['listing_educator_id' => $educator_id]);
+			$liked = $this->CommonMdl->getResult('liked', '*', ['listing_educator_id' => $educator_id]);
 			$total_liked=count($liked);
 			$data['total_liked']= $total_liked;
+
+			$educatorInfo= $this->CommonMdl->getResult('custom_educator', '*', ['educator_id' => $educator_id]);
+			$base_fare = $this->CommonMdl->getBaseFareEducator( $educator_id);
+			// $data['base_fare'] = $base_fare[0];
+			$data['base_fare'] = $base_fare[0]->basefare;
+			// echo '<pre>';   print_r($base_fare[0]->basefare);die;
+
+			$locationInfo  = $this->CommonMdl->getResult('custom_location', '*', ['location_id' => $educatorInfo[0]->edu_location_id]);
+			$educatorInfo[0]->pincode = $locationInfo[0]->pincode;
+			$educatorInfo[0]->city = $locationInfo[0]->city_name;
+			$educatorInfo[0]->state = $locationInfo[0]->state_name;
+            $educatorInfo[0]->country = $locationInfo[0]->country_name;
+			$data['Eid']=$educatorInfo[0]->educator_id;
+			$data['user_id']=$educatorInfo[0]->user_id;
+			$data['educator']= $educatorInfo[0];
+
+			$offerInfo = $this->CommonMdl->getResult('custom_educator_offer', '*', ['educator_id' => $educator_id]);
+			$data['offerInfo'] = $offerInfo[0];
+			$enquiry=$this->CommonMdl->getResult('lead', '*', ['listing_educator_id' =>$educatorInfo[0]->educator_id]);
+			$total_enquiry=count($enquiry);
+			$data['enquiry'] = $total_enquiry;
+
 			
+			// echo '<pre>';   print_r($total_enquiry);die;
+
+			//Kashish: Arrays for Educator Category
+			$classArray = array();
+			$boardsArray = array();
+			
+			if(!empty($educatorInfo[0]->class_id) || $educatorInfo[0]->class_id!=0 ){
+				$classIDs =  (explode(",",$educatorInfo[0]->class_id));
+			}
+			if($educatorInfo[0]->class_id!=0){
+				foreach ($classIDs as $class_id){
+					if($class_id){
+						$classInfo  = $this->CommonMdl->getClassName($class_id);
+						array_push($classArray,$classInfo[0]['class_name']);
+
+					}	
+				}
+			}
+
+			if(!empty($educatorInfo[0]->board_id)|| $educatorInfo[0]->board_id!=0){
+				$boardIDs =  (explode(",",$educatorInfo[0]->board_id));
+			}
+			if($educatorInfo[0]->board_id!=0){
+				foreach ($boardIDs as $board_id){
+					if($board_id){
+						$boardsInfo  = $this->CommonMdl->getBoardName($board_id);
+						array_push($boardsArray,$boardsInfo[0]['board_name']);
+
+					}	
+				}
+			}
+
+			$subjects = array();
+			$subjectsLang = array();
+			$subjectsData = array();
+			
+			$exams = array();
+			$examsLang = array();
+			$examsData = array();
+
+			$career = array();
+			$careerLang = array();
+			$careerData = array();
+
+			$art = array();
+			$artLang = array();
+			$artData = array();
+
+			$language = array();
+			$languageLang = array();
+			$languageData = array();
+
+			$profCourses = array();
+			$profCoursesLang = array();
+			$profCoursesData = array();
+
+			$CategoryIDs = array(1, 2, 3, 4, 5, 6);
+			$base_fare = "0";
+			foreach ($CategoryIDs as $CategoryID){
+				$subCategoryInfo = $this->CommonMdl->getEducatorCategorySubCategories($educator_id, $CategoryID);
+				if(!empty($subCategoryInfo)){
+					if(!empty($subCategoryInfo[0]['sub_category_id'])){
+						$subIds =  (explode(",",$subCategoryInfo[0]['sub_category_id']));
+					}
+
+					foreach ($subIds as $subId){
+
+						if($subId){
+
+							$subCategoryNameInfo = $this->CommonMdl->getSubCategoryNamebySubID($subId);
+							if($subCategoryNameInfo[0]['sub_category_name']){
+								if($CategoryID == 1){
+									array_push($subjects,$subCategoryNameInfo[0]['sub_category_name']);
+									
+								}elseif($CategoryID == 2){
+									array_push($exams,$subCategoryNameInfo[0]['sub_category_name']);
+
+								}elseif($CategoryID == 3){
+									array_push($career,$subCategoryNameInfo[0]['sub_category_name']);
+
+								}elseif($CategoryID == 4){
+									array_push($art,$subCategoryNameInfo[0]['sub_category_name']);
+
+								}elseif($CategoryID == 5){
+									array_push($language,$subCategoryNameInfo[0]['sub_category_name']);
+
+								}else{
+									array_push($profCourses,$subCategoryNameInfo[0]['sub_category_name']);
+
+								}
+							}
+
+
+						}
+					}
+
+					if(!empty($subCategoryInfo[0]['cost'])){
+						if($CategoryID == 1){
+							array_push($subjectsData,$subCategoryInfo[0]['cost']);
+							
+						}elseif($CategoryID == 2){
+							array_push($examsData,$subCategoryInfo[0]['cost']);
+
+						}elseif($CategoryID == 3){
+							array_push($careerData,$subCategoryInfo[0]['cost']);
+
+						}elseif($CategoryID == 4){
+							array_push($artData,$subCategoryInfo[0]['cost']);
+
+						}elseif($CategoryID == 5){
+							array_push($languageData,$subCategoryInfo[0]['cost']);
+
+						}else{
+							array_push($profCoursesData,$subCategoryInfo[0]['cost']);
+
+						}
+
+					}
+
+					if(!empty($subCategoryInfo[0]['language_id'])){
+						$langIds =  (explode(",",$subCategoryInfo[0]['language_id']));
+					}
+
+					foreach ($langIds as $langId){
+						if($langId){
+
+							$languageInfo = $this->CommonMdl->getLanguageInfoByLanguageID($langId);
+							// echo '<pre>';   print_r($languageInfo[0]['language_name']);die;
+							if($languageInfo[0]['language_name']){
+								if($CategoryID == 1){
+									array_push($subjectsLang,$languageInfo[0]['language_name']);
+									
+								}elseif($CategoryID == 2){
+									array_push($examsLang,$languageInfo[0]['language_name']);
+
+								}elseif($CategoryID == 3){
+									array_push($careerLang,$languageInfo[0]['language_name']);
+
+								}elseif($CategoryID == 4){
+									array_push($artLang,$languageInfo[0]['language_name']);
+
+								}elseif($CategoryID == 5){
+									array_push($languageLang,$languageInfo[0]['language_name']);
+
+								}else{
+									array_push($profCoursesLang,$languageInfo[0]['language_name']);
+
+								}
+							}
+						}
+					}
+				}
+			}
+			if(!empty($subjectsData[0])){
+				array_push($subjectsData,$subjects,$subjectsLang);
+			}
+			if(!empty($examsData[0])){
+				array_push($examsData,$exams,$examsLang);
+			}
+			if(!empty($careerData[0])){
+				array_push($careerData,$career,$careerLang);
+			}
+			if(!empty($artData[0])){
+				array_push($artData,$art,$artLang);
+			}
+			if(!empty($languageData[0])){
+				array_push($languageData,$language,$languageLang);
+			}
+			if(!empty($profCoursesData[0])){
+				array_push($profCoursesData,$profCourses,$profCoursesLang);
+			}
+
+
+			$data['classArray'] = $classArray;
+			$data['boardsArray'] = $boardsArray;
+			$data['subjectsArray'] = $subjectsData;
+			$data['examsArray'] = $examsData;
+			$data['careerArray'] = $careerData;
+			$data['artArray'] = $artData;
+			$data['languageArray'] = $languageData;
+			$data['profCoursesArray'] = $profCoursesData;
+			
+			// echo '<pre>';   print_r(($subjectsData));die;
+
+			// $examInfo = $this->CommonMdl->getEducatorCategorySubCategories($educator_id, 2);
+			// $careerInfo = $this->CommonMdl->getEducatorCategorySubCategories($educator_id, 3);
+			// $artInfo = $this->CommonMdl->getEducatorCategorySubCategories($educator_id, 4);
+			// $languageInfo = $this->CommonMdl->getEducatorCategorySubCategories($educator_id, 5);
+			// $profInfo = $this->CommonMdl->getEducatorCategorySubCategories($educator_id, 6);
+			// $data['academic'] = 1;
+			// $data['competetive_exams'] =1;
+			// $data['career_counselling'] =1;
+			// $data['art'] =1;
+			// $data['language_learning'] =1;
+			// $data['prof_courses'] =1;
+			// $academicsInfo
+			
+			// echo '<pre>';   print_r($boardsArray );die;
+
 		
 		$this->load->view('detail',$data);
+		}
 	}
-	}
+
 	public function enquiry(){
 		$this->load->model('User');
 		$this->load->model('CommonMdl');
@@ -79,17 +305,20 @@ class Detail extends CI_Controller {
 
 		$from_email = "info@starsboard.in"; 
 		error_log("User data 1----> ".json_encode($this->input->post('listing_educator_id')));
-	    $educator_details= $this->User->getEducatorInfo($this->input->post('listing_educator_id'));
-		$longJsonInfo=$educator_details[0]->LongJsonInfo;
+	    // $educator_details= $this->User->getEducatorInfo($this->input->post('listing_educator_id'));
+		$educator_details= $this->CommonMdl->getResult('custom_educator', '*', ['educator_id' => $this->input->post('listing_educator_id')]);
+
+		// $longJsonInfo=$educator_details[0]->LongJsonInfo;
 			//echo '<pre>';   print_r($educator);die;
-			$personInfo = json_decode($longJsonInfo,true);
-			$Edudata=$personInfo[0];
+			// $personInfo = json_decode($longJsonInfo,true);
+			
 
 		// $userInfo = $this->User->userInfo( $this->input->post('listing_educator_id'));
-		error_log("Educator data2 ----> ".json_encode($Edudata["edu_email"]));
+		// error_log("Educator data2 ----> ".json_encode($Edudata["edu_email"]));
 		// error_log("User data ----> ".json_encode($this->input->post('listing_educator_id')));
 
-        $to_email = $Edudata["edu_email"]; 
+        $to_email = $educator_details[0]->edu_email;
+		// $to_email = "Kashish.chaurasia10@gmail.com"; 
 //         $msg="New Student Enquiry
 
 // Hi 

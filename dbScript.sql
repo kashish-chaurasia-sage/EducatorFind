@@ -457,10 +457,10 @@ CREATE TABLE custom_board (
   
 );
 
-alter table custom_educator add board_id int(11);
-alter table custom_educator add class_id int(11);
-alter table custom_learner add class_id int(11);
-alter table custom_learner add board_id int(11);
+alter table custom_educator add board_id varchar(1024) not null,;
+alter table custom_educator add class_idvarchar(1024) not null,;
+alter table custom_learner add class_id varchar(1024) not null,;
+alter table custom_learner add board_id varchar(1024) not null,;
 
 
 INSERT INTO custom_category(category_name) VALUES

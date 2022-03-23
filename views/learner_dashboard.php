@@ -54,7 +54,7 @@
                         <div class="pay-lhs">
                             <div class="lis-pro-badg">
                                 <div>
-                               <img src="<?php echo base_url('uploads/users/'.$user_data[0]->id.'/'.$user_data[0]->user_image);?>" alt="" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';">
+                               <img src="<?php echo base_url('uploads/'.$user_data[0]->id.'/'.$user_data[0]->user_image);?>" alt="" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';">
 								                                      
 								   <h4><?php echo $this->session->userdata('username');?></h4>
                                     <p>Member since <?php echo $this->session->userdata('usercreated');?></p>
@@ -86,7 +86,7 @@
                             <div class="lis-pro-badg">
                                 <div>
                                     <img
-                                        src="<?php echo base_url('uploads/users/'.$user_data[0]->id.'/'.$user_data[0]->user_image);?>" alt="">
+                                        src="<?php echo base_url('uploads/'.$user_data[0]->id.'/'.$user_data[0]->user_image);?>" alt="">
                                     <h4><?php echo $this->session->userdata('username');?></h4>
                                     <p>Member since <?php echo $this->session->userdata('usercreated');?></p>
                                 </div>

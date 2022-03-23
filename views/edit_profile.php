@@ -40,7 +40,7 @@
 								</tr>
                                 <tr>
                                     <td>Profile Picture</td>
-									<td>	  <img src="<?php echo base_url('uploads/users/'.$user_data[0]->id.'/'.$user_data[0]->user_image);?>" alt="" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';">
+									<td>	  <img src="<?php echo base_url('uploads/'.$user_data[0]->id.'/'.$user_data[0]->user_image);?>" alt="" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';">
 							
                                    
                                         <div class="form-group">

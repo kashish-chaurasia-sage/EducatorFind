@@ -32,11 +32,11 @@ class Profile extends CI_Controller {
             
                $user_id=$this->session->userdata('userId');
 		if(!empty($_FILES['blog_image']['name'])){ 
-			if (!file_exists('uploads/users/'.$user_id.'/')) {
-			mkdir('uploads/users/' . $user_id, 0777, TRUE);
+			if (!file_exists('uploads/'.$user_id.'/')) {
+			mkdir('uploads/' . $user_id, 0777, TRUE);
 			}
          // Set preference 
-         $config['upload_path'] = 'uploads/users/'.$user_id.'/'; 
+         $config['upload_path'] = 'uploads/'.$user_id.'/'; 
          $config['allowed_types'] = 'jpg|jpeg|png|gif'; 
          $config['max_size'] = '5000'; // max_size in kb 
         
@@ -64,6 +64,7 @@ class Profile extends CI_Controller {
 						);
 						
 			$approval_status = $this->CommonMdl->updateData($ProfileData,['id'=>$this->session->userdata('userId')],'users');
+			error_log("Profile DAtA log ::: ".json_encode($ProfileData));
 	if($approval_status){
 		redirect('profile');
 	}

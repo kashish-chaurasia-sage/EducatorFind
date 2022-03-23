@@ -1,7 +1,7 @@
  <!--LEFT SECTION-->
             <div class="ud-lhs">
                 <div class="ud-lhs-s1">
-                    <img src="<?php echo base_url('uploads/users/'.$user_data[0]->id.'/'.$user_data[0]->user_image);?>" alt="" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';">
+                    <img src="<?php echo base_url('uploads/'.$user_data[0]->id.'/'.$user_data[0]->user_image);?>" alt="" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';">
                     <h4><?php echo $this->session->userdata('username');?></h4>
                     <b>Join on <?php echo $this->session->userdata('usercreated');?></b>
                     <a class="ud-lhs-view-pro"  href="<?php echo base_url('profile');?>">My Profile</a>

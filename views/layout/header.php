@@ -742,8 +742,19 @@ font-size: 14px;
                                     <div class="al">
                                     
                                         <div class="head-pro">
-                                            <img
+                                        <?php
+                                           if( (isset($user_data)) ){
+                                               ?>
+                                                    <img src="<?php echo base_url('uploads/'.$user_data[0]->id.'/'.$user_data[0]->user_image);?>" alt="" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';">
+
+                                                    <?php   }else{
+                                                        ?>
+                                                <img
                                                 src="" alt="" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';">
+                                                
+                                                <?php  }
+                                                ?>
+
                                             <b>Profile by</b><br>
                                             <h4><?php echo $this->session->userdata('username');?></h4>
                                             <a  href="" class="fclick"></a>

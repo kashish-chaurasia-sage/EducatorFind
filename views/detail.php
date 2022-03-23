@@ -1,10 +1,13 @@
 
 
- <?php $this->load->view('layout/header');
+ <?php 
+ $this->load->view('layout/header');
  
  
  ?>
+
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="/assets/public/css/style.css">
 
 <section>
     <div class="v3-list-ql">
@@ -35,31 +38,41 @@
 
 <!-- START -->
 <section>
+<section>
     <div class="list-det-fix">
         <div class="container">
             <div class="row">
                 <div class="list-det-fix-inn">
                     <div class="list-fix-pro">
-                        <img src="https://bizbookdirectorytemplate.com/images/listings/21604photo-of-a-boy-with-curly-hair-2929036.jpg" alt="">
+                    <img src="<?=base_url('uploads/'.$user_id.'/'.$educator->edu_cover_image);?>" alt="">
                     </div>
                     <div class="list-fix-tit">
-                        <h3>William Chil care Hospital</h3>
-                        <p><b>Address:</b> No:2, 4th Avenue,  Newyork, USA, Near to Airport</p>
+                        <h3><?php echo $detail['edu_name']; ?></h3>
+                        <p><b><?php echo "ADDRESS"; ?>:</b> <?php echo "listing_address"; ?></p>
                     </div>
-                    <div class="list-fix-btn">
-                        <span data-toggle="modal" data-target="#quote" class="pulse">Send an enquiry</span>
-                    </div>
+                    <!-- <div class="list-fix-btn">
+                        <span data-toggle="modal" data-target="#quote"
+                              class="pulse"><?php echo $BIZBOOK['SEND_AN_ENQIRY']; ?></span>
+                    </div> -->
                 </div>
             </div>
         </div>
     </div>
-</section>
-<!-- END -->
+<!-- </section>
+    <div class="list-bann">
+        <img src="<?=base_url('uploads/'.$user_id.'/'.$educator->edu_cover_image);?>" alt="">
+    </div>
+</section> -->
+<!-- <section>
+    <div class="list-bann">
+    <img src="<?=base_url('uploads/'.$user_id.'/'.$educator->edu_cover_image);?>" alt="">
 
-<!-- START -->
+    </div>
+</section> -->
 <section>
     <div class="list-bann">
-        <img src="<?=base_url('uploads/'.$user_id.'/'.$detail['cover_image']);?>" alt="">
+    <img src="<?=base_url('uploads/'.$user_id.'/'.$educator->edu_cover_image);?>" alt="">
+
     </div>
 </section>
 <!-- END -->
@@ -71,59 +84,78 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="pg-list-1-pro">
-                    <img src="<?=base_url('uploads/'.$user_id.'/'.$detail['edu_image']);?>" alt="">
-                                            <span class="stat"><i class="material-icons">verified_user</i></span>
+                    <img src="<?=base_url('uploads/'.$user_id.'/'.$educator->edu_image);?>" alt="">
+                                            <!-- <span class="stat"><i class="material-icons">verified_user</i></span> -->
                                         </div>
                 <div class="pg-list-1-left">
-                    <h3><?php echo $detail['edu_name'] ? $detail['edu_name'] :'';?></h3>
-                   
-												<div class="list-rat-all">
-												<?php if($total_review !='0'){?>
-                                                    <b><?=$average_review ? $average_review :'';?></b>
-                                                             <label class="rat">
-																									<?php for ($x = 1; $x <= $average_review; $x++) {?>
-                                                                                                                    <i class="material-icons">star</i>
-																													<?php } ?>
-                                                                                                                       
-																					</label>
-                                                        <span><?php echo $total_review ? $total_review :'';?> Reviews</span>
-												<?php }else{?>
-														 <span>No Reviews Yet</span>
-												<?php }?>
-														 
-                                                    
-                                                </div>
+                    <h3><?php echo $educator->edu_name ? $educator->edu_name :'';?></h3>
+                        
+                    <!-- <div class="list-rat-all">
+                    <b><center><?php echo $average_review; ?></center></b> 
+                            <label class="rat">
+                            
+                                <?php
+                                for ($i = 1; $i <= ceil($average_review); $i++) {
+                                    ?>
+                                    <i class="material-icons">star</i>
+                                    <?php
+                                }
+                                $bal_star_rate = abs(ceil($average_review) - 5);
 
-                    <p><b>Address:</b> <?php echo $detail['edu_city'] ? $detail['edu_city'] : '';?>,<?php echo $detail['edu_country'] ? $detail['edu_country'] : '';?></p>
+                                for ($i = 1; $i <= $bal_star_rate; $i++) {
+                                    ?>
+                                    <i class="material-icons ratstar">star</i>
+                                    <?php
+                                }
+                                ?>
+                            </label>
+                           
+                    </div> -->
+                    <div class="list-rat-all">
+                    <div class="text-center">
+                            <!-- <h4>Rating Overview</h4> -->
+                            <!-- <br> -->
+                            <h1 class="rating-number"><?php echo $average_review ?><small>/5</small></h1>
+                            <div class="rating-stars d-inline-block position-relative mr-2">
+                                <img src="<?=base_url('assets/public/images/grey-star.svg');?>" alt="">
+                                <div class="filled-star" style="width:<?php echo $percentage_review ?>"></div>
+                            </div>
+                            <!-- <div class="text-muted">2,145 ratings</div> -->
+                    </div>
+                            </div>
+                    <p>Address: <?php echo $educator->city ? $educator->city : '';?>, <?php echo $educator->state ? $educator->state : '';?>, <?php echo $educator->country ? $educator->country: '';?></p>
+                   
                     <div class="list-number pag-p1-phone">
                         <ul>
                              <li class="ic-php"><?php // echo $detail['edu_mobile'] ? $detail['edu_mobile'] : '';
-								$number=$detail['edu_mobile'];
-									            $maskedMobile =  str_pad(substr($number, -4), strlen($number), '*', STR_PAD_LEFT);
-										         echo $maskedMobile; 
+								
+										         echo $educator->edu_experience . " "."years of experience"; 
 												 
-								?>                                </li>
+								?>                       
+                             </li>
                             
-                               <li class="ic-mai"><?php 
-							            $email=$detail['edu_email'];
+                              <li class="ic-mai"><?php 
+							            $email=$educator->edu_email;
 										$maskedEmail=substr($email, 0, 3).'****'.substr($email, strpos($email, "@"));
 										echo $maskedEmail;
 							   ?>               
 								</li>
+                                
                            
                                                           <!--  <a target="_blank" href="http://www.royalspa.com">
                                     <li class="ic-web">www.royalspa.com</li>
                                 </a> -->
-                                                    </ul>
+                         </ul>
                     </div>
                 </div>
+
                 <div class="list-ban-btn">
                     <ul>
                         <li>
-                            <a href="tel:<?php echo $detail['edu_mobile'] ? $detail['edu_mobile'] : '';?>" class="cta cta-call">Call Now</a>
+                            <a href="tel:<?php echo $educator->edu_number ? $educator->edu_number : '';?>" class="cta cta-call">Call Now</a>
                         </li>
 						
-                        <li>
+                        <!-- <li>
 									
 						 <form class="col" name="liked_form" id="liked_form" method="post" action="<?php echo base_url('detail/liked');?>">
                                                 
@@ -141,10 +173,11 @@
                                                 </div>
                                             </form>
 								
-                        </li>
+                        </li> -->
 						 <li>
-                                <a href="https://wa.me/+91<?php echo $detail['edu_mobile'] ? $detail['edu_mobile'] : '';?>?text=I'm%20looking%20for%20a%20educator%20I'm%20from%20starsboard" class="cta cta-rev">WhatsApp</a>
-                           
+                                <a href="https://wa.me/+91<?php echo $educator->edu_whatsapp ? $educator->edu_whatsapp : '';?>?text=I'm%20looking%20for%20a%20educator%20I'm%20from%20starsboard" class="cta cta-rev">WhatsApp</a>
+                                <li><span class="share-new-top" data-toggle="modal" data-target="#sharepop"><i class="material-icons">share</i></span></li>
+
                     </ul>
                 </div>
             </div>
@@ -156,12 +189,77 @@
     <div class="container">
         <div class="row">
             <div class="com-padd">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="jb-pro-bio">
+                            <h4>Educator Details</h4>
+                            <ul>
+                                <li>
+                                    Services Done                                <span><center><?php echo $enquiry?><center></span>
+                                </li>
+                                <li>
+                                    Experience                                <span><?php echo $educator->edu_experience?> years</span>
+                                </li>
+                                <li>
+                                    Teaching Mode                                <span><?php if ($educator->edu_mode == 1){echo "Only Online";} elseif($educator->edu_mode == 2){ echo "Only Offline";}else{ echo "Hybrid";}  ?></span>
+                                </li>
+                                <li>
+                                    Base Fare                                <span><?php echo "Rs." .$base_fare ?></span>
+                                </li>
+                                <li>
+                                    Verified Educator                             <span><center>Yes</center></span>
+                                </li>
+                                <li>
+                                    Location                                <span><center><?php echo $educator->pincode .", ". $educator->city ?></center></span>
+                                </li>
+                                <li>
+                                    Join Date                             <span><center><?php echo date("d-m-Y", strtotime($educator->date_added))?></centre></span>
+                                </li>
+                                <!-- <li>
+                                    Available Slots                               <span><?php echo strtoupper($educator->edu_slot)?></span>
+                                </li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="jpro-bd-com">
+                            <h4>Slots</h4>
+                            <span><?php echo strtoupper($educator->edu_slot)?></span>
+                                <!-- <span>Competetive Exams</span>
+                                <span>Career Counselling</span>
+                                <span>Art</span>
+                                <span>Language Learning</span>
+                                <span>Professional Courses</span> -->
+                        </div>
+                        <div class="jpro-bd-com">
+                            <h4>Categories</h4>
+                                <?php if(isset($subjectsArray[0])){?>
+                                    <span>Academics</span>
+                                <?php }?>
+                                <?php if(isset($examsArray[0])){?>
+                                <span>Competetive Exams</span>
+                                <?php }?>
+                                <?php if(isset($careerArray[0])){?>
+                                <span>Career Counselling</span>
+                                <?php }?>
+                                <?php if(isset($artArray[0])){?>
+                                <span>Art</span>
+                                <?php }?>
+                                <?php if(isset($languageArray[0])){?>
+                                <span>Language Learning</span>
+                                <?php }?>
+                                <?php if(isset($profCoursesArray[0])){?>
+                                <span>Professional Courses</span>
+                                <?php }?>
+                        </div>
+                    </div>
+                </div>
                 <div id="ld-abo" class="list-pg-lt list-page-com-p">
                     
                         <!--LISTING DETAILS: LEFT PART 1-->
                         <div class="pglist-bg pglist-p-com">
                             <div class="pglist-p-com-ti">
-                                <h3><span>About</span> <?php echo $detail['edu_name'] ? $detail['edu_name'] :'';?></h3></div>
+                                <h3><span>About</span> <?php echo $educator->edu_name ? $educator->edu_name :'';?></h3></div>
                             <div class="list-pg-inn-sp list-pg-inn-abo">
                                 
                                     
@@ -169,214 +267,353 @@
 
 
                                         </div>
-                            <p><?php echo $detail['description'] ? $detail['description'] :'No data found';?></p>
+                            <p><?php echo $educator->edu_description ? $educator->edu_description :'No data found';?></p>
                                                                 </div>
                         </div>
-
-                        <!--END LISTING DETAILS: LEFT PART 1-->
-                        <!--LISTING DETAILS: LEFT PART 2-->
-                                                    <div id="ld-ser" class="pglist-bg pglist-p-com">
+<!-- 
+                        <div id="ld-ser" class="pglist-bg pglist-p-com">
                                 <div class="pglist-p-com-ti">
-                                    <h3><span>Services</span> Offered</h3></div>
+                                    <h3>
+                                        <span>Categories</span> Offered                                    </h3></div>
                                 <div class="list-pg-inn-sp">
                                     <div class="row pg-list-ser">
+                                        
                                         <ul>
-                                           <?php if($detail['academic'] =='academic') {?>     
-												<li class="col-md-3">
-                                                      <div class="pg-list-ser-p1"><img
-                                                            src="<?=base_url('assets/public/images/no-image.jpg');?>"
-                                                             alt=""/>
-                                                       </div>
-                                                       <div class="pg-list-ser-p2">
-                                                        <h4>Academic</h4></div>
-                                                      </li>
-										   <?php }?>
-										   <?php if($detail['counselling'] =='counselling') {?> 
-                                                   <li class="col-md-3">
-                                                    <div class="pg-list-ser-p1"><img
-                                                            src="<?=base_url('assets/public/images/no-image.jpg');?>"
-                                                            alt=""/>
+                                                                                            <li class="col-md-3">
+                                                    <div class="pg-list-ser-p1"><img src="<?=base_url('assets/public/images/academics.jpg');?>" alt="">
                                                     </div>
                                                     <div class="pg-list-ser-p2">
-                                                        <h4>Career Counselling</h4></div>
+                                                        <h4>Academics </h4></div>
                                                 </li>
-												  <?php }?>
-												<?php if($detail['training'] =='training') {?> 
-                                                    <li class="col-md-3">
-                                                    <div class="pg-list-ser-p1"><img
-                                                            src="<?=base_url('assets/public/images/no-image.jpg');?>"
-                                                            alt=""/>
+                                                                                                <li class="col-md-3">
+                                                    <div class="pg-list-ser-p1"><img src="<?=base_url('assets/public/images/exam.png');?>" alt="">
                                                     </div>
                                                     <div class="pg-list-ser-p2">
-                                                        <h4>Professional Training</h4></div>
+                                                        <h4>Exams</h4></div>
                                                 </li>
-                                                                         <?php }?>                     
-                                        </ul>
+                                                                                                <li class="col-md-3">
+                                                    <div class="pg-list-ser-p1"><img src="<?=base_url('assets/public/images/career.png');?>" alt="">
+                                                    </div>
+                                                    <div class="pg-list-ser-p2">
+                                                        <h4>Career</h4></div>
+                                                </li>
+                                                                                                <li class="col-md-3">
+                                                    <div class="pg-list-ser-p1"><img src="<?=base_url('assets/public/images/art.png');?>" alt="">
+                                                    </div>
+                                                    <div class="pg-list-ser-p2">
+                                                        <h4>Arts</h4></div>
+                                                </li>
+                                                <li class="col-md-3">
+                                                    <div class="pg-list-ser-p1"><img src="<?=base_url('assets/public/images/ll.jpg');?>" alt="">
+                                                    </div>
+                                                    <div class="pg-list-ser-p2">
+                                                        <h4>Language</h4></div>
+                                                </li>
+                                                <li class="col-md-3">
+                                                    <div class="pg-list-ser-p1"><img src="<?=base_url('assets/public/images/cc.jpg');?>" alt="">
+                                                    </div>
+                                                    <div class="pg-list-ser-p2">
+                                                        <h4>Professional Courses</h4></div>
+                                                </li>
+                                </ul>   
+                                        
                                     </div>
                                 </div>
-                            </div>
-							  <?php if($detail['academic'] ='academic' ) {?>     
-							<div id="ld-ser" class="pglist-bg pglist-p-com">
-
-                            <div class="pglist-p-com-ti">
-                                <h3><span>Academic</span> Details</h3></div>
+                            </div>            -->
+					     
+					<div id="ld-ser" class="pglist-bg pglist-p-com">
+                        <div class="pglist-p-com-ti">
+                            <br>
+                        <h6><center>Courses Offered By Educator<center></h6>
+                        <!-- ACADEMICS -->
+                            <?php if($subjectsArray[0] ) {?>
+                            <h3><span> Academic</span> Details</h3></div>
                             <div class="list-pg-inn-sp">
-							<?php if($detail['class'] != ''){?>
-							  <h5>Class</h5>
+							<?php if($classArray != ''){?>
+							  <h5>Classes</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
-									<?php foreach($detail['class'] as $class){?>
+									<?php foreach($classArray as $class){?>
                                        <li><span><?php echo $class;?></span></li>
 									<?php }?>
                                     </ul>
                                 </div>
 							<?php }?>
-	<?php if($detail['subject'] != ''){?>
-							  <h5>Subject</h5>
+	                        <?php if($subjectsArray[1] != ''){?>
+							  <h5>Subjects</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
-									<?php foreach($detail['subject'] as $subject){?>
+									<?php foreach($subjectsArray[1] as $subject){?>
                                        <li><span><?php echo $subject;?></span></li>
 									<?php }?>
                                     </ul>
                                 </div>
 							<?php }?>
-							<?php if($detail['board'] != ''){?>
-								<h5>Board</h5>
+							    <?php if($boardsArray != ''){?>
+								<h5>Boards</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
-                                        <?php foreach($detail['board'] as $board){?>
+                                        <?php foreach($boardsArray as $board){?>
                                        <li><span><?php echo $board;?></span></li>
 									<?php }?>
                                     </ul>
                                 </div>
 								<?php }?>
-									<?php if($detail['exam']  != ''){?>
-								<h5>Exam</h5>
+                                <?php if($subjectsArray[2] != ''){?>
+								<h5>Course offered in following languages</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
-                                        <?php foreach($detail['exam'] as $exam){?>
+                                        <?php foreach($subjectsArray[2] as $language){?>
+                                       <li><span><?php echo $language;?></span></li>
+									<?php }?>
+                                    </ul>
+                                </div>
+								<?php }?>
+                                <?php if($subjectsArray[0] != ''){?>
+								<h5>Cost for Academics per Lecture</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+                                      
+                                       <li><span><?php echo "Rs.".$subjectsArray[0];?></span></li>
+									
+                                    </ul>
+                                </div>
+                                <?php }?>
+								<?php }?>
+                                
+                                
+                                <!-- ------ -->
+                            <?php if(isset($examsArray[0])){?>
+                            <div class="pglist-p-com-ti">                           
+                            <h3><span>Competetive Exams</span> Details</h3></div>
+                            <div class="list-pg-inn-sp">
+							
+	                        <?php if(isset($examsArray[2])){?>
+							  <h5>Exams</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+									<?php foreach($examsArray[1] as $exam){?>
                                        <li><span><?php echo $exam;?></span></li>
 									<?php }?>
-                                     </ul>
+                                    </ul>
                                 </div>
-									<?php }?>
-									<!-- <?php if($detail['academic_lang'] != ''){?>
-								<h5>Language</h5>
+							<?php }?>
+							    
+                                <?php if(isset($examsArray[2])){?>
+								<h5>Course offered in following languages</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
-                                       <?php foreach($detail['academic_lang'] as $lang_academic){?>
-                                       <li><span><?php echo $lang_academic;?></span></li>
+                                        <?php foreach($examsArray[2] as $language){?>
+                                       <li><span><?php echo $language;?></span></li>
 									<?php }?>
                                     </ul>
                                 </div>
-									<?php }?> -->
-                            </div>
-                            </div>
-							  <?php }?>
-						    <?php if($detail['counselling'] =='counselling') {?> 
-							<div id="ld-ser" class="pglist-bg pglist-p-com">
+								<?php }?>
+                                <?php if(isset($examsArray[2])){?>
+								<h5>Cost per Lecture</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+                                      
+                                       <li><span><?php echo "Rs.".$examsArray[0];?></span></li>
+									
+                                    </ul>
+                                </div>
+								<?php }?>
 
+                        </div>
+                        <?php }?>
+                        
+
+                        <!-- Career Counselling -->
+                        <?php if(isset($careerArray[0])){?>
                             <div class="pglist-p-com-ti">
-                                <h3><span>Career Counselling</span> Details</h3></div>
+                            <h3><span>Career Counselling</span> Details</h3></div>
                             <div class="list-pg-inn-sp">
-                              <?php if($detail['career_path'] != ''){?>
-							  <h5>Career Path</h5>
+	                        <?php if(isset($careerArray[2])){?>
+							  <h5>Career Paths</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
-									<?php foreach($detail['career_path'] as $career_path){?>
-                                       <li><span><?php echo $career_path;?></span></li>
+									<?php foreach($careerArray[1] as $career){?>
+                                       <li><span><?php echo $career;?></span></li>
 									<?php }?>
                                     </ul>
                                 </div>
-							<?php }?>
-							  <?php if($detail['lang_coun'] != ''){?>
-							  <h5>Language </h5>
+							    <?php }?>
+                                <?php if(isset($careerArray[2])){?>
+								<h5>Course offered in following languages</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
-									<?php foreach($detail['lang_coun'] as $lang_coun){?>
-                                       <li><span><?php echo $lang_coun;?></span></li>
+                                        <?php foreach($careerArray[2] as $language){?>
+                                       <li><span><?php echo $language;?></span></li>
 									<?php }?>
                                     </ul>
                                 </div>
-							<?php }?>
-							
-							 <?php if($detail['price_coun'] != ''){?>
-							  <h5>Fee </h5>
-                               <b><?php echo $detail['price_coun'] ? $detail['price_coun'] : '' ;?></b>
-							<?php }?>
+								<?php }?>
+                                <?php if(isset($careerArray[2])){?>
+								<h5>Cost per Lecture</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+                                       <li><span><?php echo "Rs.".$careerArray[0];?></span></li>
+                                    </ul>
+                                </div>
+								<?php }?>
                             </div>
-                        </div>
-							  <?php }?>
-						<?php if($detail['training'] =='training') {?> 
-							<div id="ld-ser" class="pglist-bg pglist-p-com">
+                            <?php }?>
+                            
+                            <!-- Art -->
+                        <?php if(isset($artArray[0])){?>
+                            <div class="pglist-p-com-ti">
+                            <h3><span>Arts</span> Details</h3></div>
+                            <div class="list-pg-inn-sp">
+	                        <?php if(isset($artArray[2])){?>
+							  <h5>Arts</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+									<?php foreach($artArray[1] as $art){?>
+                                       <li><span><?php echo $art;?></span></li>
+									<?php }?>
+                                    </ul>
+                                </div>
+							    <?php }?>
+                                <?php if(isset($artArray[2])){?>
+								<h5>Course offered in following languages</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+                                        <?php foreach($artArray[2] as $language){?>
+                                       <li><span><?php echo $language;?></span></li>
+									<?php }?>
+                                    </ul>
+                                </div>
+								<?php }?>
+                                <?php if(isset($artArray[2])){?>
+								<h5>Cost per Lecture</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+                                       <li><span><?php echo "Rs.".$artArray[0];?></span></li>
+                                    </ul>
+                                </div>
+								<?php }?>
+                            </div>
+                            <?php }?>
 
-                                <div class="pglist-p-com-ti">
-                                <h3><span>Professional Training</span> Details</h3></div>
-                                <div class="list-pg-inn-sp">
-                                <?php if($detail['tech_course'] != ''){?>
-							    <h5>Professional Course</h5>
+                            
+
+                            <!-- Language Learning -->
+                        <?php if(isset($languageArray[0])){?>
+                            <div class="pglist-p-com-ti">
+                            <h3><span>Language Learning</span> Details</h3></div>
+                            <div class="list-pg-inn-sp">
+	                        <?php if(isset($languageArray[2])){?>
+							  <h5>Arts</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
-									<?php foreach($detail['tech_course'] as $tech_course){?>
-                                       <li><span><?php echo $tech_course;?></span></li>
+									<?php foreach($languageArray[1] as $language){?>
+                                       <li><span><?php echo $language;?></span></li>
 									<?php }?>
                                     </ul>
                                 </div>
-							<?php }?>
-							
-							 <?php if($detail['lang_prof'] != ''){?>
-							    <h5>Language</h5>
+							    <?php }?>
+                                <?php if(isset($languageArray[2])){?>
+								<h5>Course offered in following languages</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
-									<?php foreach($detail['lang_prof'] as $lang_prof){?>
-                                       <li><span><?php echo $lang_prof;?></span></li>
+                                        <?php foreach($languageArray[2] as $language){?>
+                                       <li><span><?php echo $language;?></span></li>
 									<?php }?>
                                     </ul>
                                 </div>
-							<?php }?>
-							
-							
-							<?php if($detail['price_prof'] != ''){?>
-							    <h5>Fee per sessions</h5>
-                                <b> <?php echo $detail['price_prof'] ?  $detail['price_prof'] :'';?></b>
-							<?php }?>
+								<?php }?>
+                                <?php if(isset($languageArray[2])){?>
+								<h5>Cost per Lecture</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+                                       <li><span><?php echo "Rs.".$languageArray[0];?></span></li>
+                                    </ul>
+                                </div>
+								<?php }?>
                             </div>
-                        </div>
-						<?php }?>
+                            <?php }?>
+
+                            
+
+                             <!-- Professional Courses -->
+                        <?php if(isset($profCoursesArray[0])){?>
+                            <div class="pglist-p-com-ti">
+                            <h3><span>Professional Courses</span> Details</h3></div>
+                            <div class="list-pg-inn-sp">
+	                        <?php if(isset($profCoursesArray[2])){?>
+							  <h5>Arts</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+									<?php foreach($profCoursesArray[1] as $prof){?>
+                                       <li><span><?php echo $prof;?></span></li>
+									<?php }?>
+                                    </ul>
+                                </div>
+							    <?php }?>
+                                <?php if(isset($profCoursesArray[2])){?>
+								<h5>Course offered in following languages</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+                                        <?php foreach($profCoursesArray[2] as $language){?>
+                                       <li><span><?php echo $language;?></span></li>
+									<?php }?>
+                                    </ul>
+                                </div>
+								<?php }?>
+                                <?php if(isset($profCoursesArray[2])){?>
+								<h5>Cost per Lecture</h5>
+                                <div class="row pg-list-ser-area">
+                                    <ul>
+                                       <li><span><?php echo "Rs.".$profCoursesArray[0];?></span></li>
+                                    </ul>
+                                </div>
+								<?php }?>
+                            </div>
+                            <?php }?>
+                        
+                        
+
+                    </div>
+					 </div>
+                     <div id="ld-off" class="pglist-bg pglist-off-last pglist-p-com">
+                                <div class="pglist-p-com-ti">
+                                    <h3>
+                                        <span>Special</span> Offers                                    </h3></div>
+                                                                    <div class="list-pg-inn-sp">
+                                        <div class="home-list-pop">
+                                            <!--LISTINGS IMAGE-->
+                                            <div class="col-md-3">
+                                            <img src="<?=base_url('uploads/'.$user_id.'/'.$offerInfo->offer_image);?>" alt=""></div>
+                                            <!--LISTINGS: CONTENT-->
+                                            <div class="col-md-9 home-list-pop-desc inn-list-pop-desc list-room-deta"><a href="#!"><h3><?php echo $offerInfo->offer_name?></h3></a>
+                                                <p><?php echo $offerInfo->offer_description?></p>
+                                                                                                    <span class="home-list-pop-rat list-rom-pric"><?php echo "Rs. ".$offerInfo->offer_price ?></span>
+                                                                                                    <div class="list-enqu-btn">
+                                                    <!-- <ul>
+                                                        <li>
+                                                            <a target="_blank" href="https://themeforest.net/item/bizbook-directory-listings-template/25391222?s_rank=1">view more</a>
+                                                        </li>
+                                                        <li><a href="#!" data-toggle="modal" data-target="#quote">Send enquiry</a>
+                                                        </li>
+                                                    </ul> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                            </div>
+                    
+                
+            
+            
                                                                 <!--END LISTING DETAILS: LEFT PART 2-->
                     
                    
                                                 <!--END LISTING DETAILS: LEFT PART 3-->
                                                 <!--LISTING DETAILS: LEFT PART 4-->
                           
-                          <?php if($detail['offers_price'] != ''){?>
-                            <div id="ld-off" class="pglist-bg pglist-off-last pglist-p-com">
-                                <div class="pglist-p-com-ti">
-                                    <h3><span>Special</span> Offers</h3></div>
-                                                                    <div class="list-pg-inn-sp">
-                                        <div class="home-list-pop">
-                                            <!--LISTINGS IMAGE-->
-                                            <div class="col-md-3"><img
-                                                    src="<?=base_url('uploads/'.$user_id.'/'.$detail['offers_image']);?>" alt=""></div>
-                                            <!--LISTINGS: CONTENT-->
-                                            <div class="col-md-9 home-list-pop-desc inn-list-pop-desc list-room-deta"><a
-                                                    href="<?php echo $detail['offer_link']? $detail['offer_link']:'';?>"><h3><?php echo $detail['offer_name'];?></h3></a>
-                                                <p><?php echo $detail['offer_detials'];?> </p>
-                                                         <span class="home-list-pop-rat list-rom-pric">₹ <?php echo $detail['offers_price'];?> </span>
-                                                      <div class="list-enqu-btn">
-                                                    <ul>
-                                                        <li>
-                                                            <a  href="<?php echo $detail['offer_link']? $detail['offer_link']:'';?>">view more</a></li>
-                                                       </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                              
-                                    
-                            </div>
-                            <?php }?>
+                           
                             <!--LISTING DETAILS: LEFT PART 6-->
                                                                                                 <span id="Review_Disable">Login And Write Your Review</span>
                                     
@@ -528,7 +765,7 @@
                                         <ul>
 										<?php foreach($review as $key =>$val){?>
                                                      <li>
-                                                    <div class="lr-user-wr-img"><img src="<?php echo base_url('uploads/users/');?><?=$val->review_by_id;?>/<?=$val->user_image;?>" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';" alt="">
+                                                    <div class="lr-user-wr-img"><img src="<?php echo base_url('uploads/');?><?=$val->review_by_id;?>/<?=$val->user_image;?>" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';" alt="">
                                                     </div>
                                                     <div class="lr-user-wr-con">
                                                         <h6><?= $val->review_name;?></h6>
@@ -549,6 +786,8 @@
                                 </div>
                             </div>
 						<?php }?>
+                        <br>
+                        <br><br>
                     <!--ADS-->
                     <div class="ban-ati-com ads-det-page">
                                         
@@ -594,11 +833,12 @@
                     <!--RELATED PREMIUM LISTINGS-->
 <?php }?>
                 </div>
+               
                 <div class="list-pg-rt">
-
+                
                     <!--LISTING DETAILS: LEFT PART 9-->
                     <div class="list-rhs-form pglist-bg pglist-p-com">
-
+                    
                         <div class="quote-pop">
                             <h3><span>Get</span> Quote</h3>
                            <div id="quoteResponseId"></div>
@@ -653,10 +893,74 @@
                         </div>
 
                     </div>
+                    <div class="ud-rhs-promo">
+
+                        <h3>Educator?</h3>
+                        <p>Register now and Reach Thousands of Learners.</p>
+
+                        <a href="https://bizbookdirectorytemplate.com/login">Register for free</a>
+                        <br>    
+                        <br><br>
+                    </div>
+                    <div class="hot-page2-hom-pre">
+                            <h4>Related profiles</h4>
+                            <ul>
+                                                                    <li>
+                                        <div class="hot-page2-hom-pre-1">
+                                            <img src="https://bizbookdirectorytemplate.com/images/user/970813.jpg" alt="">
+                                        </div>
+                                        <div class="hot-page2-hom-pre-2">
+                                            <h5>meeki</h5>
+                                            <span>Member since <b>21, Feb 2022</b></span>
+                                        </div>
+                                        <a href="https://bizbookdirectorytemplate.com/profile/meeki1" class="fclick"></a>
+                                    </li>
+                                                                        <li>
+                                        <div class="hot-page2-hom-pre-1">
+                                            <img src="https://bizbookdirectorytemplate.com/images/user/970813.jpg" alt="">
+                                        </div>
+                                        <div class="hot-page2-hom-pre-2">
+                                            <h5>test</h5>
+                                            <span>Member since <b>20, Feb 2022</b></span>
+                                        </div>
+                                        <a href="https://bizbookdirectorytemplate.com/profile/test1" class="fclick"></a>
+                                    </li>
+                                                                        <li>
+                                        <div class="hot-page2-hom-pre-1">
+                                            <img src="https://bizbookdirectorytemplate.com/images/user/970813.jpg" alt="">
+                                        </div>
+                                        <div class="hot-page2-hom-pre-2">
+                                            <h5>Reyansh</h5>
+                                            <span>Member since <b>13, Jan 2022</b></span>
+                                        </div>
+                                        <a href="https://bizbookdirectorytemplate.com/profile/reyansh" class="fclick"></a>
+                                    </li>
+                                                                        <li>
+                                        <div class="hot-page2-hom-pre-1">
+                                            <img src="https://bizbookdirectorytemplate.com/images/user/970813.jpg" alt="">
+                                        </div>
+                                        <div class="hot-page2-hom-pre-2">
+                                            <h5>Luis Clarke</h5>
+                                            <span>Member since <b>15, Dec 2021</b></span>
+                                        </div>
+                                        <a href="https://bizbookdirectorytemplate.com/profile/luis-clarke" class="fclick"></a>
+                                    </li>
+                                                                        <li>
+                                        <div class="hot-page2-hom-pre-1">
+                                            <img src="https://bizbookdirectorytemplate.com/images/user/970813.jpg" alt="">
+                                        </div>
+                                        <div class="hot-page2-hom-pre-2">
+                                            <h5>harshal</h5>
+                                            <span>Member since <b>02, Dec 2021</b></span>
+                                        </div>
+                                        <a href="https://bizbookdirectorytemplate.com/profile/harshal1" class="fclick"></a>
+                                    </li>
+                                                                </ul>
+                        </div>
                     <!--END LISTING DETAILS: LEFT PART 9-->
                                             <!--LISTING DETAILS: COMPANY BADGE-->
-                        <div class="ld-rhs-pro pglist-bg pglist-p-com">
-                            <div class="lis-comp-badg">
+                        <!-- <div class="ld-rhs-pro pglist-bg pglist-p-com"> -->
+                            <!-- <div class="lis-comp-badg">
                                 <div class="s1">
                                     <div>
                                         <span class="by">Created profile</span>
@@ -691,10 +995,10 @@
                                     <a target="_blank" href="" class="use-fol">View profile</a>
                                     <a target="_blank" href="">Get in touch with us</a>
                                 </div>
-                            </div>
-                        </div>
+                            </div> -->
+                        <!-- </div> -->
                         <!--END LISTING DETAILS: COMPANY BADGE-->
-                        <div class="lide-guar pglist-bg pglist-p-com">
+                        <!-- <div class="lide-guar pglist-bg pglist-p-com">
                             <div class="pglist-p-com-ti pglist-p-com-ti-right">
                                 <h3><span>Claim</span> Listing</h3></div>
                             <div class="list-pg-inn-sp">
@@ -708,7 +1012,7 @@
                                     </ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     
                                   
                                                                     <!--END LISTING DETAILS: LEFT PART 8-->
@@ -844,6 +1148,47 @@
         </div>
     </div>
 </section>
+<div class="modal fade sharepop" id="sharepop">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Share now</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <input type="text" value="" id="shareurl">
+                <div class="shareurltip">
+                    <button onclick="shareurl()" onmouseout="shareurlout()">
+                        <span class="shareurltxt" id="myTooltip">Copy to clipboard</span>
+                        Copy text                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    var _cururl = window.location.href;
+    $("#shareurl").val(_cururl);
+function shareurl() {
+  var copyText = document.getElementById("shareurl");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+  
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copied";
+}
+
+function shareurlout() {
+  var tooltip = document.getElementById("myTooltip");
+  tooltip.innerHTML = "Copy to clipboard";
+}
+    </script>
 <script>
 $(document).ready(function () { 
 

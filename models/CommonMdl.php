@@ -228,7 +228,7 @@ class CommonMdl extends CI_Model
 		$this->db->order_by('sort_order','asc');
 		$this->db->order_by('edu_experience','desc');
 		$this->db->order_by('edu_name','asc');
-		if(!empty($start)){
+		if(!empty($limit)){
 			
 			$this->db->limit($limit, $start);
 		}
@@ -300,8 +300,9 @@ class CommonMdl extends CI_Model
 		$this->db->order_by('sort_order','asc');
 		$this->db->order_by('edu_experience','desc');
 		$this->db->order_by('edu_name','asc');
-		$this->db->limit($limit, $start);
-		
+		if(!empty($limit)){
+			$this->db->limit($limit, $start);
+		}
 
 		$query = $this->db->get();
 		return $query->result();
@@ -468,7 +469,9 @@ public function selectSum($tbl,$clms='*',$whr=''){
     }
 
     public function get_paginatedRows($limit, $start, $table) {
-        $this->db->limit($limit, $start);
+		if(!empty($limit)){
+        	$this->db->limit($limit, $start);
+		}
         $query = $this->db->get($table);
 
         return $query->result();
@@ -521,6 +524,57 @@ public function selectSum($tbl,$clms='*',$whr=''){
 		$query = $this->db->get();
 		return $query->result();
 
+	}
+	
+	public function getEducatorCategorySubCategories($educator_id,$category_id){
+
+		$sql="Select * from custom_educator_sub_category where category_id=".$category_id. " and educator_id =".$educator_id."";    
+		$query = $this->db->query($sql);
+		return $query->result_array();
+		
+	}
+
+	public function getSubCategoryNamebySubID($sub_category_id){
+
+		$sql="Select sub_category_name from custom_sub_category where sub_category_id=".$sub_category_id. " and status =1 ";    
+		
+		$query = $this->db->query($sql);
+		return $query->result_array();
+		
+	}
+	public function getLanguageInfoByLanguageID($language_id){
+
+		$sql="Select language_name from custom_language where language_id=".$language_id. " and status =1 ";    
+		
+		$query = $this->db->query($sql);
+		return $query->result_array();
+		
+	}
+
+	public function getClassName($class_id){
+
+		$sql="Select class_name from custom_class where class_id=".$class_id. " ";    
+		
+		$query = $this->db->query($sql);
+		return $query->result_array();
+		
+	}
+
+	public function getBoardName($board_id){
+
+		$sql="Select board_name from custom_board where board_id=".$board_id. " ";    
+		
+		$query = $this->db->query($sql);
+		return $query->result_array();
+		
+	}
+	public function getBaseFareEducator($educator_id){
+
+		$sql="Select MIN(cost) as basefare from custom_educator_sub_category where educator_id=".$educator_id. " ";    
+		
+		$query = $this->db->query($sql);
+		return $query->result();
+		
 	}
 	
 }
