@@ -326,7 +326,7 @@
                             <br>
                         <h6><center>Courses Offered By Educator<center></h6>
                         <!-- ACADEMICS -->
-                            <?php if($subjectsArray[0] ) {?>
+                            <?php if(isset($subjectsArray[0] )) {?>
                             <h3><span> Academic</span> Details</h3></div>
                             <div class="list-pg-inn-sp">
 							<?php if($classArray != ''){?>
@@ -898,9 +898,8 @@
                         <h3>Educator?</h3>
                         <p>Register now and Reach Thousands of Learners.</p>
 
-                        <a href="https://bizbookdirectorytemplate.com/login">Register for free</a>
-                        <br>    
-                        <br><br>
+                        <a href="<?=base_url('/registration');?>">Register for free</a>
+                        
                     </div>
                     <div class="hot-page2-hom-pre">
                             <h4>Related profiles</h4>
