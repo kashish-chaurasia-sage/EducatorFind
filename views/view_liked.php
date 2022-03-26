@@ -98,11 +98,11 @@
                         <h4>Your points</h4>
                         <span class="count1">11</span>
                     </div>
-                    <div class="ud-rhs-poin2">
+                    <!-- <div class="ud-rhs-poin2">
                         <h3>Earn more credit points</h3>
                         <p>Use this poins to promote your listing. <a href="#">Click here</a> for demo</p>
                         <a href="buy-points" class="cta">Buy Points</a>
-                    </div>
+                    </div> -->
                 </div>
                 <!--    //Total Point Section Ends-->
 

@@ -3,7 +3,7 @@
   <style>
        
         @import "https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap";
-       .hom-head:before{background:#ffffff14}
+       /* .hom-head:before{background:#ffffff14} */
        .home-tit{margin-bottom:20px;padding-top:60px}
         .hom2-hom-ban{float:left;width:46%;background-size:cover;margin:0 2%;background:#e6f6fb;padding:30px 100px 30px 30px;border-radius:5px;position:relative;font-family:'Poppins',sans-serif}
         .hom2-hom-ban:hover a{background:#d6c607}
@@ -169,7 +169,7 @@
                                                 class="dir-ho-cat">Show All (00                                                    )</span>
                                         </h4>
                                     </div>
-                                    <a href="<?php echo base_url('educator/foreign-language');?>"
+                                    <a href="<?php echo base_url('educator/language');?>"
                                        class="land-pack-grid-btn">View all listings</a>
                                 </div>
                             </li>
@@ -202,7 +202,7 @@
                                 </div>
                             </li>
                         </ul>
-                        <a href="all-category" class="more">View all services</a>
+                        <a href="educator/educator" class="more">View all services</a>
                     </div>
                 </div>
             </div>
@@ -298,7 +298,7 @@
                                         </div>
                                        
                                     </div>
-                                    <a href="<?echo base_url('educator/career-counselling');?>"
+                                    <a href="<?echo base_url('educator/career');?>"
                                        class="fclick">&nbsp;</a>
                                 </div>
                             </li>

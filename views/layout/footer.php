@@ -78,7 +78,7 @@
                                     </div>
                                     <div class="col-md-7 bb-text">
                                         <h4 style="color: white !important;">The new Accelerating Educational Platform </h4>
-                                        <p style="color: white !important;"> Starsboard is a top notch educator directory that has begun and is rising with every step we take</p>
+                                        <p style="color: white !important;"> Starsboard is a top notch online learning platform that has begun and is rising with every step we take</p>
                                     </div>
                                     <div class="col-md-3 bb-link">
                                         <a href="<?=base_url('become-educator');?>">Add as Educator</a>
@@ -118,7 +118,7 @@
                                     <li><a href="<?php echo base_url('educator/music');?>">Music</a></li>
                                     <li><a href="<?php echo base_url('educator/digital');?>">Digital Marketing</a></li>
                                     <li><a href="<?php echo base_url('educator/photography');?>">Photography</a></li>
-                                    <li><a href="<?php echo base_url('educator/foreign');?>">Foreign Languages</a></li>
+                                    <li><a href="<?php echo base_url('educator/language');?>">Foreign Languages</a></li>
                                     <li><a href="<?php echo base_url('educator/dancing');?>">Dancing</a></li>
                                 </ul>
                             </div>
@@ -144,7 +144,7 @@
 
                       
                         <div class="row wed-foot-link-pop">
-                            <div class="col-md-12">
+                            <!-- <div class="col-md-12">
                                 <h4>Popular Tags</h4>
                                 <ul>
                                     <li><a href="<?php echo base_url('educator/aviation');?>">Career in Aviation</a></li>
@@ -168,7 +168,7 @@
                                     <li><a href="<?php echo base_url('educator/management');?>">Studies Management</a></li>
                                     <li><a href="<?php echo base_url('educator/law');?>">Studies In Laws</a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                        <!-- POPULAR TAGS  POPULAR TAGS -->
 
@@ -176,11 +176,11 @@
                         <div class="row wed-foot-link-1">
                             <div class="col-md-4">
                                 <h4>Get In Touch</h4>
-                                <p>Address: S T A R S  B O A R D Education, Opp.  Maharashtra Nature Park, PMGP Colony, Sion West, Mumbai, Maharashtra 400017</p>
+                                <p>Address: STARSBOARD  Education, Opp.  Maharashtra Nature Park, PMGP Colony, Sion West, Mumbai, Maharashtra 400017</p>
                                 <p>Phone: <a href="tel:+01 79774 76239">+91 79774 76239</a></p>
                                 <p>Email: <a href="mailto:info@starsboard.in">info@starsboard.in</a></p>
                             </div>
-                            <div class="col-md-4 fot-app">
+                            <!-- <div class="col-md-4 fot-app">
                                 <h4>DOWNLOAD OUR FREE MOBILE APPS</h4>
                                 <ul>
                                     <li><a href=""><img src="https://bizbookdirectorytemplate.com/images/gstore.png" alt=""></a>
@@ -188,7 +188,7 @@
                                     <li><a href=""><img src="https://bizbookdirectorytemplate.com/images/astore.png" alt=""></a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> -->
                             <div class="col-md-4 fot-soc">
                                 <h4>SOCIAL MEDIA</h4>
                                 <ul>
@@ -219,7 +219,7 @@
                     <div class="cr">
                         <div class="container">
                             <div class="row">
-                                <p>Copyright © 2020-2021 <a href="" target="_blank"></a>. Proudly powered by <a href="#" target="_blank"></a></p>
+                                <p>Copyright © 2022-23 <a href="" target="_blank"></a>. Proudly powered by Starsboad <a href="#" target="_blank"></a></p>
                             </div>
                         </div>
                     </div>
@@ -265,26 +265,26 @@
   
 
 	$( ".submitHeadSearch" ).click(function() { 
-	                    var url = '/';
+	                    var url = 'http://localhost/starsboard.in';
 	                    var tutorsearchBoxHead = $('#searchBoxhead').val().toLowerCase();
 	
                         if (tutorsearchBoxHead == '') {
                             swal("Empty!", "Please enter somethig!", "error");
                             return false;
                         }
-                        window.location.href = url + 'educator/' + tutorsearchBoxHead;
+                        window.location.href = url + '/educator/' + tutorsearchBoxHead;
 
 });
   
                     function validateSearch() {
 
-                        var url = '/';
+                        var url = 'http://localhost/starsboard.in';
                         var tutorsearchBox = $('#searchBox').val().toLowerCase();
                         if (tutorsearchBox == '') {
                            swal("Empty!", "Please enter somethig!", "error");
                             return false;
                         }
-                        window.location.href = url + 'educator/' + tutorsearchBox;
+                        window.location.href = url + '/educator/' + tutorsearchBox;
 
                     }
                 </script>

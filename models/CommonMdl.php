@@ -100,7 +100,7 @@ class CommonMdl extends CI_Model
 			return $query->result();
 	}
 
-	public function asPerFillter($limit, $start,$tbl,$cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr){
+	public function asPerFillter($limit, $start,$tbl,$cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString){
 		error_log("Filtered by category ID ---->>>>".json_encode($cat));
 		$this->db->select('*');
 		$this->db->from('custom_educator e' );
@@ -208,7 +208,12 @@ class CommonMdl extends CI_Model
 				$cd = ",".$edu_langArr.",";
 				$this->db->like('es.sub_category_id', $cd);
 			}	
-				}
+		}
+		if(!empty($searchString)){
+	
+			$this->db->like('e.search_string', $searchString);
+		}
+				
 		if(!empty($cat) && $cat!="9999"){
 			
 			$this->db->where('es.category_id', $cat);
@@ -233,6 +238,8 @@ class CommonMdl extends CI_Model
 			$this->db->limit($limit, $start);
 		}
 		$query = $this->db->get();
+		// echo '<pre>';print_r( $this->db); die;
+
 		error_log("QUERY".json_encode( $this->db));
 		return $query->result();
 }

@@ -165,6 +165,7 @@ class Become_educator extends CI_Controller {
     public function offer() {
         $educatorData = [];
         $offerData = [];
+        $categoryString = "";
         if ($this->input->post('edu_offer_submit')) {
             $user_id = $this->session->userdata('userId');
 
@@ -365,6 +366,44 @@ class Become_educator extends CI_Controller {
             $country = $locationInfo[0]->country_name;
 
             
+            if ($this->session->userdata('exam_cost') != '') {
+                $exam = '1';
+                $categoryString = $categoryString .", competetive exams";
+            } else {
+                $exam = '0';
+            }
+            if ($this->session->userdata('art_cost') != '') {
+                $art = '1';
+                $categoryString = $categoryString .", arts";
+            } else {
+                $art = '0';
+            }
+            if ($this->session->userdata('academic_cost') != '') {
+                $academic = '1';
+                $categoryString = $categoryString .", academics";
+            } else {
+                $academic = '0';
+            }
+            if ($this->session->userdata('career_cost') != '') {
+                $counselling = '1';
+                $categoryString = $categoryString .", career counselling";
+            } else {
+                $counselling = '0';
+            }
+            if ($this->session->userdata('prof_cost') != '') {
+                $training = '1';
+                $categoryString = $categoryString .", professional courses";
+            } else {
+                $training = '0';
+            }
+            if ($this->session->userdata('language_cost') != '') {
+                $language = '1';
+                $categoryString = $categoryString .", language leaning";
+            } else {
+                $language = '0';
+            }
+
+            
             $searchString = array();
             $LongJsonInfo = array(
                 'user_id' => $this->session->userdata('userId'),
@@ -375,7 +414,7 @@ class Become_educator extends CI_Controller {
                 'edu_whatsapp' => $this->session->userdata('edu_whatsapp'),
                 'edu_location_id' => $locationInfo[0]->location_id,
                 'edu_address' => $this->session->userdata('servicecity'),
-                'search_string' => 'educator,' . 'teacher,' . 'tutor,'.','. $city .','. $state .','. $country .',' . $keyword . ',' . $this->session->userdata('servicecity') . ',' . $this->session->userdata('edu_name') ,
+                'search_string' => 'educator,' . 'teacher,' . 'tutor,'.','. $city .','. $state .','. $country .',' . $keyword . ',' .$categoryString. ",".$this->session->userdata('servicecity') . ',' . $this->session->userdata('edu_name') ,
                 'edu_image' => $this->session->userdata('edu_image'),
                 'edu_cover_image' => $this->session->userdata('cover_image'),
                 'edu_experience' =>  $this->session->userdata('edu_experience'),
@@ -392,36 +431,6 @@ class Become_educator extends CI_Controller {
             );
 
            
-            if ($this->session->userdata('exam_cost') != '') {
-                $exam = '1';
-            } else {
-                $exam = '0';
-            }
-            if ($this->session->userdata('art_cost') != '') {
-                $art = '1';
-            } else {
-                $art = '0';
-            }
-            if ($this->session->userdata('academic_cost') != '') {
-                $academic = '1';
-            } else {
-                $academic = '0';
-            }
-            if ($this->session->userdata('career_cost') != '') {
-                $counselling = '1';
-            } else {
-                $counselling = '0';
-            }
-            if ($this->session->userdata('prof_cost') != '') {
-                $training = '1';
-            } else {
-                $training = '0';
-            }
-            if ($this->session->userdata('language_cost') != '') {
-                $language = '1';
-            } else {
-                $language = '0';
-            }
 
             // error_log("******************************************************************************************");
             // error_log("OFFER FUNCTION - eduExamSubCategoryData : >>>>>>>>>>".json_encode($eduExamSubCategoryData));

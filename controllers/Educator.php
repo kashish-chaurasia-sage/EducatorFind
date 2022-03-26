@@ -23,11 +23,11 @@ class Educator extends CI_Controller {
 		$cat=$this->input->post('cat');
 		$city=$this->input->post('city');
 		$mode=$this->input->post('mode');
-		error_log("EDUCATOR INDEC CAT".json_encode($cat));
-
+		// error_log("EDUCATOR INDEC CAT".json_encode($cat));
+		$uri2 = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
 		//Pagination
 		$config = array();
-		$config["base_url"] = base_url() . "educator/index/";
+		$config["base_url"] = base_url() . "educator/".$uri2."/";
 		$config["total_rows"] = $this->CommonMdl->get_count('custom_educator');
 		$config["per_page"] = 10;
 		$config["uri_segment"] = 3;
@@ -70,7 +70,8 @@ class Educator extends CI_Controller {
 
 		$paginated_educators =$this->CommonMdl->get_paginatedRows($config["per_page"], $page, 'tbl_educator');
 
-	
+		// error_log("get all educator -> uri".json_encode($this->uri->segment(2)));
+
 		if(empty($this->uri->segment(2))){
 			
 				redirect('/');
@@ -78,7 +79,8 @@ class Educator extends CI_Controller {
 				
 				$searchString=$this->uri->segment(2);
 
-				
+										
+
 				// $this->load->view('educator/index', $data);
 				
 				$data['title']=$searchString.' | Educator | Starsboard';
@@ -133,7 +135,7 @@ class Educator extends CI_Controller {
 					
 				if(!empty($edu_subjectArr)||!empty($edu_classArr)||!empty($edu_boardArr)||!empty($edu_examArr)||!empty($edu_carrerArr)||!empty($edu_courseArr)||!empty($edu_artArr)||!empty($edu_langArr)){
 					
-					$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr);
+					$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString);
 					$data['listed']=$educators;
 					// error_log("Paginated Educators -------------: ".json_Encode($educator));
 					//echo '<pre>';	print_r($data['listed']); die;
@@ -159,8 +161,9 @@ class Educator extends CI_Controller {
 			
 			}else{
 				// $educator= $this->CommonMdl->getliked('tbl_educator','searchString', $searchString);
-				$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr);
+				$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString);
 					// $data['listed']=$educator;
+					// echo '<pre>';print_r($educators); die;
 					error_log("Paginated Educators -ELSE------------: ".json_Encode($educators));
 					foreach ($educators as $educator) {
 						$rating= $this->CommonMdl->getAvgRating($educator->educator_id);

@@ -44,7 +44,7 @@
             <div class="row">
                 <div class="list-det-fix-inn">
                     <div class="list-fix-pro">
-                    <img src="<?=base_url('uploads/'.$user_id.'/'.$educator->edu_cover_image);?>" alt="">
+                    <img src="<?=base_url('assets/public/images/bannerPeople.jpg');?>" alt="">
                     </div>
                     <div class="list-fix-tit">
                         <h3><?php echo $detail['edu_name']; ?></h3>
@@ -60,7 +60,7 @@
     </div>
 <!-- </section>
     <div class="list-bann">
-        <img src="<?=base_url('uploads/'.$user_id.'/'.$educator->edu_cover_image);?>" alt="">
+        <img src="<?=base_url('assets/public/images/bannerPeople.jpg');?>" alt="">
     </div>
 </section> -->
 <!-- <section>
@@ -71,7 +71,7 @@
 </section> -->
 <section>
     <div class="list-bann">
-    <img src="<?=base_url('uploads/'.$user_id.'/'.$educator->edu_cover_image);?>" alt="">
+    <img src="<?=base_url('assets/public/images/bannerPeople.jpg');?>" alt="">
 
     </div>
 </section>
@@ -195,7 +195,7 @@
                             <h4>Educator Details</h4>
                             <ul>
                                 <li>
-                                    Services Done                                <span><center><?php echo $enquiry?><center></span>
+                                    Enquiries                               <span><center><?php echo $enquiry?><center></span>
                                 </li>
                                 <li>
                                     Experience                                <span><?php echo $educator->edu_experience?> years</span>
@@ -504,7 +504,7 @@
                             <h3><span>Language Learning</span> Details</h3></div>
                             <div class="list-pg-inn-sp">
 	                        <?php if(isset($languageArray[2])){?>
-							  <h5>Arts</h5>
+							  <h5>Language Learning</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
 									<?php foreach($languageArray[1] as $language){?>
@@ -542,7 +542,7 @@
                             <h3><span>Professional Courses</span> Details</h3></div>
                             <div class="list-pg-inn-sp">
 	                        <?php if(isset($profCoursesArray[2])){?>
-							  <h5>Arts</h5>
+							  <h5>Professional Courses</h5>
                                 <div class="row pg-list-ser-area">
                                     <ul>
 									<?php foreach($profCoursesArray[1] as $prof){?>
@@ -901,7 +901,7 @@
                         <a href="<?=base_url('/registration');?>">Register for free</a>
                         
                     </div>
-                    <div class="hot-page2-hom-pre">
+                    <!-- <div class="hot-page2-hom-pre">
                             <h4>Related profiles</h4>
                             <ul>
                                                                     <li>
@@ -955,7 +955,7 @@
                                         <a href="https://bizbookdirectorytemplate.com/profile/harshal1" class="fclick"></a>
                                     </li>
                                                                 </ul>
-                        </div>
+                </div> -->
                     <!--END LISTING DETAILS: LEFT PART 9-->
                                             <!--LISTING DETAILS: COMPANY BADGE-->
                         <!-- <div class="ld-rhs-pro pglist-bg pglist-p-com"> -->

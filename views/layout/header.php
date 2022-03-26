@@ -5,6 +5,7 @@
 <head>
 
     <title>Starsboard | Online Educator | Find Educator</title>
+    
     <!--== META TAGS ==-->
    
     <meta charset="utf-8">
@@ -37,7 +38,7 @@
    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
+    <!--[if lt IE 9]>
     <script src="<?=base_url('assets/public/js/html5shiv.js');?>"></script>
     <script src="<?=base_url('assets/public/js/respond.min.js');?>"></script>
     <![endif]-->
@@ -333,14 +334,31 @@ ul.bl.right-btn {
     margin-top: 19px;
 }
 .menu_social{
-    transition: width 3s, height 3s, transform 3s!important;
+    /* border-style: solid; */
+    /* border-width: 1px; */
+    display: block;
+    width: 200px;
+    height: 200px;
+    /* background-color: #0000FF; */
+    /* transition: width 2s, height 2s, background-color 2s, transform 2s; */
+  /* background: red; */
+  
+  transition: width 2s, height 2s, transform 2s;
+    /* transition: width 3s, height 3s, transform 3s!important; */
 }
 .menu_social:hover {
-    transform: rotate(360deg) !important;
+    width: 200px;
+    height: 200px;
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    transform: scale(1.5);
+    /* transform: rotate(-360deg); */
+    /* transform: rotate(-10deg) !important; */
+    /* transition: width 3s, height 3s !important; */
 }
-.how-wrks-inn ul li div {
+/* .how-wrks-inn ul li div {
     border: 1px solid #548aff !important;
-}
+} */
 .bot-book{
     background:linear-gradient(75deg, #9c27b0 25%, #0343ec 75%)!important;
 }
@@ -600,6 +618,79 @@ font-size: 14px;
     border-radius: 5px;
     margin-left: 10px;
 }
+
+.pmenu-cat ul li {
+    float: left;
+    width: 20%;
+    padding: 0px 10px 20px 20px;
+    position: relative;
+}
+
+.pmenu-cat ul li a {
+    /* color: #58677b; */
+    font-size: 15px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: pre;
+    display: inline-block;
+    width: 100%;
+}
+
+.pmenu-cat {
+    float: left;
+    width: 100%;
+    /* border-left: 1px solid #d6d6d6; */
+    margin-top: 15px;
+    color: #1b47bcc4;
+    /* padding-top: 12px; */
+    /* padding-left: 30px; */
+    padding: 0 0 0px 40px;
+}
+
+.hom-nav .bl li a {
+    color: #ffffff;
+    cursor: pointer;
+    /* font-weight: 800; */
+    font-size: 13.5px;
+    line-height: 30px;
+    /* padding: 6px 6px; */
+    /* border-radius: 5px; */
+}
+
+}
+.btn {
+    display: inline-block;
+    font-weight: 200;
+    color: #212529;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    /* border: 1px solid transparent; */
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.35rem;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.hom-nav .bl li a {
+    margin-top: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 13.5px;
+    line-height: 30px;
+    padding: 5px 15px;
+    border-radius: 8px;
+    /* background-color: #21218fc7; */
+}
+
+
 </style>
 
 <body>
@@ -615,7 +706,7 @@ font-size: 14px;
         <section>
             <div class="str">
               <?php if (!$this->uri->segment(1)): ?>
-            <div  class="hom-head" style=" background-image: url('assets/public/images/banner.jpg');" >
+            <div  class="hom-head" style=" background-image: url('assets/public/images/bannerO.jpg');" >
                 <?php else: ?>
                     <div>
                 <?php endif; ?>
@@ -633,51 +724,65 @@ font-size: 14px;
                                             <div class="row">
                                                 <i class="material-icons clopme">close</i>
                                                 <div class="pmenu-spri">
-                                                   <ul>
-                                                    <li><a href="<?=base_url('educator/educator');?>" class="act"><img src="<?=base_url('assets/public/images/navigation/all.png');?>">All Educator</a></li>
-                                                    <li><a href="<?=base_url('educator/academic');?>"><img src="<?=base_url('assets/public/images/navigation/academic.png');?>">Academic</a></li>
-                                                    <li><a href="<?=base_url('educator/counselling');?>"><img src="<?=base_url('assets/public/images/navigation/couselling.png');?>">Counselling</a></li>
-                                                    <li><a href="<?=base_url('educator/exam');?>"><img src="<?=base_url('assets/public/images/navigation/exam.png');?>">Exam</a></li>
-                                                    <li><a href="<?=base_url('educator/training');?>"><img src="<?=base_url('assets/public/images/navigation/professionals.png');?>">Professional training</a></li>
-                                                    <li><a href="<?=base_url('blog');?>"><img src="<?=base_url('assets/public/images/header/blog1.png');?>">Blogs</a></li>
-                                                    <li><a href="<?=base_url('community');?>"><img src="<?=base_url('assets/public/images/header/11.png');?>">Community</a></li>
-                                                 </ul>
+                                                   
                                                 </div>
+ 
                                                 <div class="pmenu-cat">
-                                                    <h4>All Categories</h4>
-                                                    <input type="text" id="pg-sear" placeholder="Search category">
-                                                   <ul id="pg-resu">
-                                                    <li><a href="<?php echo base_url('educator/study');?>">Study abroad</a></li>
-													<li><a href="<?php echo base_url('educator/math');?>">Math</a></li>
-													<li><a href="<?php echo base_url('educator/kids');?>">Kids Coding</a></li>
-													<li><a href="<?php echo base_url('educator/acting');?>">Acting</a></li>
-													<li><a href="<?php echo base_url('educator/cpl');?>">CPL</a></li>
-													<li><a href="<?php echo base_url('educator/banking');?>">Career in Banking</a></li>
-													<li><a href="<?php echo base_url('educator/commerce');?>">Commerce</a></li>
-													<li><a href="<?php echo base_url('educator/digital');?>">Digital Marketing</a></li>
-													<li><a href="<?php echo base_url('educator/music');?>">Music</a></li>
-													<li><a href="<?php echo base_url('educator/jee');?>">JEE (Main)</a></li>
-													<li><a href="<?php echo base_url('educator/government');?>">Career in Government Jobs</a></li>
-													<li><a href="<?php echo base_url('educator/law');?>">Law</a></li>
-													<li><a href="<?php echo base_url('educator/sql');?>">SQL</a></li>
-													<li><a href="<?php echo base_url('educator/photography');?>">Photography</a></li>
-													<li><a href="<?php echo base_url('educator/upsc');?>">UPSC</a></li>
-													<li><a href="<?php echo base_url('educator/export');?>">Career In Import Export</a></li>
-													<li><a href="<?php echo base_url('educator/management');?>">Management</a></li>
-													<li><a href="<?php echo base_url('educator/foreign');?>">Foreign Languages</a></li>
-													<li><a href="<?php echo base_url('educator/dancing');?>">Dancing</a></li>
-													<li><a href="<?php echo base_url('educator/neet');?>">NEET</a></li>
-                                                   </ul>
-												  
-                                                                           
-                                                </div>
+                                                <h4>All Categories</h4>
+                                                <!-- <input type="text" id="pg-sear" placeholder="Search category"> -->
+                                                <div class="pg-resu">
+                                                <ul>
+												    <li><a href="<?=base_url('educator/educator');?>" class="act" > <img src="<?php echo base_url('assets/public/images/navigation/all.png');?>" style="width: 25px;" title="allEdu">  All Educator</a></li>
+                                                    <li><a href="<?=base_url('blog');?>"><img src="<?php echo base_url('assets/public/images/header/blog1.png');?>" style="width: 25px;" title="blogs">  Blogs</a></li>
+                                                    <li><a href="<?=base_url('community');?>"><img src="<?php echo base_url('assets/public/images/header/11.png');?>" style="width: 25px;" title="com">  Community</a></li>
+                                                    
+                                                </ul>
+                                                
+                                                
+                                            </div>
+                                            </div>
+                                            
+                                            <div class="pmenu-cat">
+                                                <!--  -->
+                                                
+                                                <ul >
+                                                
+                                                    <li><a href="<?=base_url('educator/academic');?>"> <img src="<?php echo base_url('assets/public/images/navigation/academic.png');?>" style="width: 25px;" title="academics">Academic</a></li>
+                                                    <li><a href="<?=base_url('educator/language');?>"><img src="<?php echo base_url('assets/public/images/navigation/language.png');?>" style="width: 25px;" title="blogs"> Language Learning</a></li>
+                                                    <li><a href="<?=base_url('educator/professional');?>"><img src="<?php echo base_url('assets/public/images/navigation/professionals.png');?>" style="width: 25px;" title="professional"> Professional Traning</a></li>
+                                                    <li><a href="<?=base_url('educator/career');?>"><img src="<?php echo base_url('assets/public/images/navigation/career.png');?>" style="width: 25px;" title="career"> Career Counselling</a></li>
+                                                    <li><a href="<?=base_url('educator/art');?>"><img src="<?php echo base_url('assets/public/images/navigation/art.jpg');?>" style="width: 25px;" title="arts"> Arts</a></li>
+                                                    <li><a href="<?=base_url('educator/exam');?>"> <img src="<?php echo base_url('assets/public/images/navigation/exam.png');?>" style="width: 25px;" title="exams">Exam</a></li>
+                                                    
+                                                  </ul>
+                                            </div>
                                                 <div class="dir-home-nav-bot">
                                                     <ul>
-                                                        <li>A few reasons you’ll love Online educator search<span>Call us on: 8108000821</span> </li>
+                                                        <li>A few reasons you’ll love Online educator search<span>Call us on: 7977476239</span> </li>
                                                     <li><a href="<?= base_url('feedback');?>" class="waves-effect waves-light btn-large"><i class="material-icons">font_download</i> Advertise with us</a>
                                                     </li>
-                                                   <li><a href="<?= base_url('become-educator');?>" class="waves-effect waves-light btn-large"> <i class="material-icons">store</i> Become Educator</a>
-                                                    </li>
+                                                   <!-- <li> -->
+                                                   <?php
+                                    if(isset($user_data))
+                                    {
+                                        if($user_data[0]->educator == '0' && $user_data[0]->user_type == 'educator'){
+                                                    ?>
+                                            <li>
+                                            <li><a href="<?= base_url('become-educator');?>">Become Educator</a></li>
+                                                <li>
+                                        <?php }else{
+                                            
+                                            ?>
+                                            <li>
+                                            
+                                       <?php  
+                                    }}else{?>
+                                                        <li>
+                                            <!-- <li><a href="<?= base_url('become-educator');?>">Become Educator</a></li>
+                                                <li> -->
+                                                <?php }?>
+                                                       <!-- <a href="<?= base_url('become-educator');?>" class="waves-effect waves-light btn-large"> <i class="material-icons">store</i> Become Educator</a> -->
+                                                    <!-- </li> -->
                                                     </ul>
                                                 </div>
                                             </div>
@@ -688,12 +793,13 @@ font-size: 14px;
                                     <div class="top-ser">
                                        <form name="filter_form" id="filter_form" class="filter_form " method="post" >
                                             <ul>
-                                                <li class="sr-sea">
-                                                    <input type="text" autocomplete="off" id="searchBoxhead" value="" placeholder="Search ...">
+                                                <!-- <li class="sr-sea">
+                                                    <input type="text" autocomplete="off" id="searchBox" value="" placeholder="Search ...">
                                                     <ul id="tser-res1" class="tser-res tser-res2">
+                                                 </li> -->
                                                         
                                                         
-                                            <li>
+                                            <!-- <li>
                                                 <div>
                                                     <h4>Academic Educator</h4>
                                                     <span>Class I to XII | Hindi | English | Competetive Exams | Undergraduate | Postgraduate</span>
@@ -702,24 +808,38 @@ font-size: 14px;
                                             </li>
                                             <li>
                                                 <div>
+                                                    <h4>language learning Educator</h4>
+                                                    <span>Career in Banking | Career In corporates | Career In Defence | Career in Engineering | Career in Government Jobs</span>
+                                                    <a href="<?php echo base_url('educator/language');?>"></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <h4>Arts Educator</h4>
+                                                    <span>Career in Banking | Career In corporates | Career In Defence | Career in Engineering | Career in Government Jobs</span>
+                                                    <a href="<?php echo base_url('educator/art');?>"></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
                                                     <h4>Career Counselling Educator</h4>
                                                     <span>Career in Banking | Career In corporates | Career In Defence | Career in Engineering | Career in Government Jobs</span>
-                                                    <a href="<?php echo base_url('educator/career-counselling');?>"></a>
+                                                    <a href="<?php echo base_url('educator/career');?>"></a>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div>
                                                     <h4>Professional Educator</h4>
                                                     <span>Kids Coding | Digital Marketing | Accounting | Website  Development | Graphic Desgning</span>
-                                                    <a href="<?php echo base_url('educator/professional-educator');?>"></a>
+                                                    <a href="<?php echo base_url('educator/professional');?>"></a>
                                                 </div>
                                             </li>
-                                                    </ul>
+                                                    </ul> -->
                                                 </li>
 
-                                                <li class="sbtn">
+                                                <!-- <li class="sbtn">
                                                     <button type="button"  id=""><i class=" submitHeadSearch large material-icons">search</i></button>
-                                                </li>
+                                                </li> -->
                                                 
                                             </ul>
                                         </form>
@@ -729,14 +849,14 @@ font-size: 14px;
                                <!--     <li><a href="https://starsboard.in/become-educator">Become Educator</a></li>-->
                                <!-- </ul>-->
                                <?php
-                                    if( (isset($user_data))&& ($user_data[0]->user_type == 'educator')){
+                                    if( (isset($user_data))&& $user_data[0]->educator == '0' && ($user_data[0]->user_type == 'educator')){
                                                     ?>
                                             
                                             
                                             <ul class="bl right-btn"><li style="
-"><a href="<?php echo base_url('become_educator');?>" style="
-    margin: 0 auto;
-">Become Educator</a></li></ul>
+                                                "><a href="<?php echo base_url('become_educator');?>" style="
+                                                    margin: 0 auto;
+                                                ">Become Educator</a></li></ul>
                                                     <?php }?>
                                
                                     <div class="al">
@@ -838,7 +958,14 @@ font-size: 14px;
                                             <div class="mv-cate">
                                                 <h4>All Categories</h4>
                                                 <ul>
-                                                    
+                                                    <li><a href="<?=base_url('educator/educator');?>" class="act"><img src="<?=base_url('assets/public/images/navigation/all.png');?>">All Educator</a></li>
+                                                    <li><a href="<?=base_url('educator/academic');?>"><img src="<?=base_url('assets/public/images/navigation/academic.png');?>">Academic</a></li>
+                                                    <li><a href="<?=base_url('educator/counselling');?>"><img src="<?=base_url('assets/public/images/navigation/couselling.png');?>">Counselling</a></li>
+                                                    <li><a href="<?=base_url('educator/exam');?>"><img src="<?=base_url('assets/public/images/navigation/exam.png');?>">Exam</a></li>
+                                                    <li><a href="<?=base_url('educator/training');?>"><img src="<?=base_url('assets/public/images/navigation/professionals.png');?>">Professional training</a></li>
+                                                    <li><a href="<?=base_url('blog');?>"><img src="<?=base_url('assets/public/images/header/blog1.png');?>">Blogs</a></li>
+                                                    <li><a href="<?=base_url('community');?>"><img src="<?=base_url('assets/public/images/header/11.png');?>">Community</a></li>
+                                               
                                                    <li><a href="<?php echo base_url('educator/study-abroad');?>">Study abroad</a></li>
 													<li><a href="<?php echo base_url('educator/math');?>">Math</a></li>
 													<li><a href="<?php echo base_url('educator/kids');?>">Kids Coding</a></li>
@@ -884,28 +1011,50 @@ font-size: 14px;
                                         <input type="text" id="select-city" name="select-city" class="autocomplete" placeholder="City">
                                     </li>
                                     <li class="sr-sea">
-                                        <input type="text" autocomplete="off" id="searchBox" value="" name="searchBox" placeholder="search educator..." class="search-field">
+                                        <input type="text" autocomplete="off" id="searchBox" value="" name="searchBox" placeholder="Search Educators..." class="search-field">
                                         <ul id="tser-res" class="tser-res tser-res1">
 
                                             <li>
                                                 <div>
                                                     <h4>Academic Educator</h4>
-                                                    <span>Class I to XII | Hindi | English | Competetive Exams | Undergraduate | Postgraduate</span>
+                                                    <span>Class I to XII | Hindi | English | Competetive Exams | Undergraduate | Postgraduate| Many more...</span>
                                                     <a href="<?php echo base_url('educator/academic');?>"></a>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div>
-                                                    <h4>Career Counselling Educator</h4>
-                                                    <span>Career in Banking | Career In corporates | Career In Defence | Career in Engineering | Career in Government Jobs</span>
-                                                    <a href="<?php echo base_url('educator/career-counselling');?>"></a>
+                                                    <h4>Competetive Exams Educator</h4>
+                                                    <span>Banks | JEE | NDA | Competetive Exams | NEET | Civil Services | Many More...</span>
+                                                    <a href="<?php echo base_url('educator/exam');?>"></a>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div>
-                                                    <h4>Professional Educator</h4>
+                                                    <h4>Arts Educator</h4>
+                                                    <span>Acting | Drama | Guitar | Meditation | Violin | Many More...</span>
+                                                    <a href="<?php echo base_url('educator/art');?>"></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <h4>Language Educator</h4>
+                                                    <span>English | Hindi | English | French | German | Many More...</span>
+                                                    <a href="<?php echo base_url('educator/language');?>"></a>
+                                                </div>
+                                            </li>
+                                          
+                                            <li>
+                                                <div>
+                                                    <h4>Career Counselling Educator</h4>
+                                                    <span>Career in Banking | Career In corporates | Career In Defence | Career in Engineering | Career in Government Jobs</span>
+                                                    <a href="<?php echo base_url('educator/career');?>"></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <h4>Professional Courses Educator</h4>
                                                     <span>Kids Coding | Digital Marketing | Accounting | Website  Development | Graphic Desgning</span>
-                                                    <a href="<?php echo base_url('educator/professional-educator');?>"></a>
+                                                    <a href="<?php echo base_url('educator/professional');?>"></a>
                                                 </div>
                                             </li>
                                         </ul>
@@ -1025,7 +1174,7 @@ font-size: 14px;
     <section>
         <div class="str">
             <?php if (!$this->uri->segment(1)): ?>
-            <div  class="hom-head" style=" background-image: url(assets/public/images/banner.jpg);" >
+            <div  class="hom-head" style=" background-image: url(assets/public/images/bannerO.jpg);" >
                 <?php else: ?>
                     <div>
                 <?php endif; ?>
@@ -1041,50 +1190,64 @@ font-size: 14px;
                                     <div class="container">
                                         <div class="row">
                                             <i class="material-icons clopme">close</i>
-                                            <div class="pmenu-spri">
-                                                <ul>
-												  <li><a href="<?=base_url('educator/educator');?>" class="act"><img src="<?=base_url('assets/public/images/navigation/all.png');?>">All Educator</a></li>
-                                                    <li><a href="<?=base_url('educator/academic');?>"><img src="<?=base_url('assets/public/images/navigation/academic.png');?>">Academic</a></li>
-                                                    <li><a href="<?=base_url('educator/counselling');?>"><img src="<?=base_url('assets/public/images/navigation/couselling.png');?>">Counselling</a></li>
-                                                    <li><a href="<?=base_url('educator/exam');?>"><img src="<?=base_url('assets/public/images/navigation/exam.png');?>">Exam</a></li>
-                                                    <li><a href="<?=base_url('educator/training');?>"><img src="<?=base_url('assets/public/images/navigation/professionals.png');?>">Professional traning</a></li>
-                                                    <li><a href="<?=base_url('blog');?>"><img src="<?=base_url('assets/public/images/header/blog1.png');?>">Blogs</a></li>
-                                                    <li><a href="<?=base_url('community');?>"><img src="<?=base_url('assets/public/images/header/11.png');?>">Community</a></li>
-                                                  </ul>
-                                            </div>
+                                            
                                             <div class="pmenu-cat">
                                                 <h4>All Categories</h4>
-                                                <input type="text" id="pg-sear" placeholder="Search category">
-                                                <ul id="pg-resu">
-                                                    <li><a href="<?php echo base_url('educator/study');?>">Study abroad</a></li>
-													<li><a href="<?php echo base_url('educator/math');?>">Math</a></li>
-													<li><a href="<?php echo base_url('educator/kids');?>">Kids Coding</a></li>
-													<li><a href="<?php echo base_url('educator/acting');?>">Acting</a></li>
-													<li><a href="<?php echo base_url('educator/cpl');?>">CPL</a></li>
-													<li><a href="<?php echo base_url('educator/banking');?>">Career in Banking</a></li>
-													<li><a href="<?php echo base_url('educator/commerce');?>">Commerce</a></li>
-													<li><a href="<?php echo base_url('educator/digital');?>">Digital Marketing</a></li>
-													<li><a href="<?php echo base_url('educator/music');?>">Music</a></li>
-													<li><a href="<?php echo base_url('educator/jee');?>">JEE (Main)</a></li>
-													<li><a href="<?php echo base_url('educator/government');?>">Career in Government Jobs</a></li>
-													<li><a href="<?php echo base_url('educator/law');?>">Law</a></li>
-													<li><a href="<?php echo base_url('educator/sql');?>">SQL</a></li>
-													<li><a href="<?php echo base_url('educator/photography');?>">Photography</a></li>
-													<li><a href="<?php echo base_url('educator/upsc');?>">UPSC</a></li>
-													<li><a href="<?php echo base_url('educator/export');?>">Career In Import Export</a></li>
-													<li><a href="<?php echo base_url('educator/management');?>">Management</a></li>
-													<li><a href="<?php echo base_url('educator/foreign');?>">Foreign Languages</a></li>
-													<li><a href="<?php echo base_url('educator/dancing');?>">Dancing</a></li>
-													<li><a href="<?php echo base_url('educator/neet');?>">NEET</a></li>
-                                                   </ul>
+                                                <!-- <input type="text" id="pg-sear" placeholder="Search category"> -->
+                                                <div class="pg-resu">
+                                                <ul>
+												    <li><a href="<?=base_url('educator/educator');?>" class="act" > <img src="<?php echo base_url('assets/public/images/navigation/all.png');?>" style="width: 25px;" title="allEdu">  All Educator</a></li>
+                                                    <li><a href="<?=base_url('blog');?>"><img src="<?php echo base_url('assets/public/images/header/blog1.png');?>" style="width: 25px;" title="blogs">  Blogs</a></li>
+                                                    <li><a href="<?=base_url('community');?>"><img src="<?php echo base_url('assets/public/images/header/11.png');?>" style="width: 25px;" title="com">  Community</a></li>
+                                                    
+                                                </ul>
+                                                
+                                                
                                             </div>
+                                            </div>
+                                            
+                                            <div class="pmenu-cat">
+                                                <!--  -->
+                                                
+                                                <ul >
+                                                
+                                                    <li><a href="<?=base_url('educator/academic');?>"> <img src="<?php echo base_url('assets/public/images/navigation/academic.png');?>" style="width: 25px;" title="academics">Academic</a></li>
+                                                    <li><a href="<?=base_url('educator/academic');?>"><img src="<?php echo base_url('assets/public/images/navigation/language.png');?>" style="width: 25px;" title="blogs"> Language Learning</a></li>
+                                                    <li><a href="<?=base_url('educator/training');?>"><img src="<?php echo base_url('assets/public/images/navigation/professionals.png');?>" style="width: 25px;" title="professional"> Professional Traning</a></li>
+                                                    <li><a href="<?=base_url('educator/counselling');?>"><img src="<?php echo base_url('assets/public/images/navigation/career.png');?>" style="width: 25px;" title="career"> Career Counselling</a></li>
+                                                    <li><a href="<?=base_url('educator/academic');?>"><img src="<?php echo base_url('assets/public/images/navigation/art.jpg');?>" style="width: 25px;" title="arts"> Arts</a></li>
+                                                    <li><a href="<?=base_url('educator/exam');?>"> <img src="<?php echo base_url('assets/public/images/navigation/exam.png');?>" style="width: 25px;" title="exams">Exam</a></li>
+                                                    
+                                                  </ul>
+                                            </div>
+                                               
+                                            
                                             <div class="dir-home-nav-bot">
                                                 <ul>
-                                                    <li>A few reasons you’ll love Online educator search<span>Call us on: 79774 76239</span> </li>
+                                                    <li>A few reasons you’ll love Online educator search<span>Call us on: 7977476239</span> </li>
                                                     <li><a href="<?= base_url('feedback');?>" class="waves-effect waves-light btn-large"><i class="material-icons">font_download</i> Advertise with us</a>
                                                      </li>
-                                                    <li><a href="<?= base_url('become-educator');?>" class="waves-effect waves-light btn-large"> <i class="material-icons">store</i> Become Educator</a>
-                                                    </li>
+                                                     <?php
+                                    if(isset($user_data))
+                                    {
+                                        if( $user_data[0]->educator == '1' && $user_data[0]->user_type == 'educator'){
+                                                    ?>
+                                            <li>
+                                            <li><a href="<?= base_url('become-educator');?>">Become Educator</a></li>
+                                                <li>
+                                        <?php }else{
+                                            
+                                            ?>
+                                            <li>
+                                            
+                                       <?php  
+                                    }}else{?>
+                                                        <li>
+                                            <!-- <li><a href="<?= base_url('become-educator');?>">Become Educator</a></li>
+                                                <li> -->
+                                                <?php }?>
+                                                    <!-- <li><a href="<?= base_url('become-educator');?>" class="waves-effect waves-light btn-large"> <i class="material-icons">store</i> Become Educator</a>
+                                                    </li> -->
                                                 </ul>
                                             </div>
                                         </div>
@@ -1095,49 +1258,27 @@ font-size: 14px;
                                 <div class="top-ser">
                                         <form name="filter_form333" id="filter_form" class="filter_form " method="post" >
                                             <ul>
-                                                <li class="sr-sea">
-                                                    <input type="text" autocomplete="off" id="searchBoxhead" name="searchBoxhead"  value="" placeholder="Search ...">
+                                                <!-- <li class="sr-sea">
+                                                    <input type="text" autocomplete="off" id="searchBox" name="searchBox"  value="" placeholder="Search ...">
                                                     <ul id="tser-res1" class="tser-res tser-res2">
+                                                         -->
                                                         
-                                                        
-                                            <li>
-                                                <div>
-                                                    <h4>Academic Educator</h4>
-                                                    <span>Class I to XII | Hindi | English | Competetive Exams | Undergraduate | Postgraduate</span>
-                                                    <a href="<?php echo base_url('educator/academic');?>"></a>	
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <h4>Career Counselling Educator</h4>
-                                                    <span>Career in Banking | Career In corporates | Career In Defence | Career in Engineering | Career in Government Jobs</span>
-                                                    <a href="<?php echo base_url('educator/career-counselling');?>"></a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div>
-                                                    <h4>Professional Educator</h4>
-                                                    <span>Kids Coding | Digital Marketing | Accounting | Website  Development | Graphic Desgning</span>
-                                                    <a href="<?php echo base_url('educator/professional-educator');?>"></a>
-                                                </div>
-                                            </li>
+                                           
                                                     </ul>
                                                 </li>
 
-                                                <li class="sbtn">
-                                                    <button type="button"  id=""><i class=" submitHeadSearch large material-icons">search</i></button>
-                                                </li>
                                             </ul>
                                         </form>
                                 </div>
                                 <ul class="bl">
-                                    <li><a href="<?php echo base_url('registration');?>">Create an account</a></li>
+                                    <li><a href="<?php echo base_url('registration');?> "class="btn btn-primary">Create an account</a></li>
+
                                     
-                                    <li><a href="<?php echo base_url('login');?>">Sign in</a></li>
+                                    <li><a href="<?php echo base_url('login');?>"class="btn btn-primary">Sign in</a></li>
                                     <?php
                                     if(isset($user_data))
                                     {
-                                        if($user_data[0]->user_type == 'educator'){
+                                        if($user_data[0]->educator == '0' && $user_data[0]->user_type == 'educator'){
                                                     ?>
                                             <li>
                                             <li><a href="<?= base_url('become-educator');?>">Become Educator</a></li>
@@ -1204,29 +1345,50 @@ font-size: 14px;
                                         <input type="text" autocomplete="off" id="searchBox" value="" name="searchBox" placeholder="search educator..." class="search-field">
                                         <ul id="tser-res" class="tser-res tser-res1">
 
-                                            <li>
+                                        <li>
                                                 <div>
                                                     <h4>Academic Educator</h4>
-                                                    <span>Class I to XII | Hindi | English | Competetive Exams | Undergraduate | Postgraduate</span>
+                                                    <span>Class I to XII | Hindi | English | Competetive Exams | Undergraduate | Postgraduate| Many more...</span>
                                                     <a href="<?php echo base_url('educator/academic');?>"></a>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div>
-                                                    <h4>Career Counselling Educator</h4>
-                                                    <span>Career in Banking | Career In corporates | Career In Defence | Career in Engineering | Career in Government Jobs</span>
-                                                    <a href="<?php echo base_url('educator/career-counselling');?>"></a>
+                                                    <h4>Competetive Exams Educator</h4>
+                                                    <span>Banks | JEE | NDA | Competetive Exams | NEET | Civil Services | Many More...</span>
+                                                    <a href="<?php echo base_url('educator/exam');?>"></a>
                                                 </div>
                                             </li>
                                             <li>
                                                 <div>
-                                                    <h4>Professional Educator</h4>
-                                                    <span>Kids Coding | Digital Marketing | Accounting | Website  Development | Graphic Desgning</span>
-                                                    <a href="<?php echo base_url('educator/professional-educator');?>"></a>
+                                                    <h4>Arts Educator</h4>
+                                                    <span>Acting | Drama | Guitar | Meditation | Violin | Many More...</span>
+                                                    <a href="<?php echo base_url('educator/art');?>"></a>
                                                 </div>
                                             </li>
-                                        </ul>
-                                    </li>
+                                            <li>
+                                                <div>
+                                                    <h4>Language Educator</h4>
+                                                    <span>Tamil | Hindi | English | French | German | Many More...</span>
+                                                    <a href="<?php echo base_url('educator/language');?>"></a>
+                                                </div>
+                                            </li>
+                                          
+                                            <li>
+                                                <div>
+                                                    <h4>Career Counselling Educator</h4>
+                                                    <span>Career in Banking | Career In corporates | Career In Defence | Career in Engineering | Career in Government Jobs</span>
+                                                    <a href="<?php echo base_url('educator/career');?>"></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <h4>Professional Courses Educator</h4>
+                                                    <span>Kids Coding | Digital Marketing | Accounting | Website  Development | Graphic Desgning | And many more ...</span>
+                                                    <a href="<?php echo base_url('educator/professional');?>"></a>
+                                                </div>
+                                            </li>
+                            </ul>
                                     <li class="sr-btn">
                                         <input type="submit"  name="filter_submit"  value="Search" class="filter_submit">
                                     </li>

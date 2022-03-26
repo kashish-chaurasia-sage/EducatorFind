@@ -18,26 +18,57 @@ class Welcome extends CI_Controller {
 		//echo '<pre>';	print_r($data['academic']); die;
 			$data['counselling']= $this->CommonMdl->getResult('tbl_educator', '*', array('counselling' => '1'),array('col_name'=>'Eid','order'=>'desc'),'5');
 			$data['training']= $this->CommonMdl->getResult('tbl_educator', '*',  array('training' => '1'),array('col_name'=>'Eid','order'=>'desc'),'5');
-			$data['isFeaturedA']= $this->CommonMdl->getResult('tbl_educator', '*',array('isFeatured' => '1'),array('col_name'=>'Eid','order'=>'desc'),'5');
-			$data['isFeaturedB']= $this->CommonMdl->getResult('tbl_educator', '*', array('isFeatured' => '1'),array('col_name'=>'Eid','order'=>'asc'),'5');
-		
-		    $math= $this->CommonMdl->getliked('tbl_educator','searchString', 'math');
-		        $data['math']=count($math);
-			$kids_coding= $this->CommonMdl->getliked('tbl_educator','prof_course', '3');
+			$data['isFeaturedA']= $this->CommonMdl->getResult('custom_educator', '*',array('edu_isfeatured' => '0'),array('col_name'=>'edu_experience','order'=>'desc'),'5');
+			foreach ($data['isFeaturedA'] as $educator) {
+				$rating= $this->CommonMdl->getAvgRating($educator->educator_id);
+				if(!empty($rating[0]->rating)){
+					$avg_rating=(round($rating[0]->rating,2));
+					$educator->avg_rating = $avg_rating;
+				}else{
+					$educator->avg_rating = '3.5';
+				}
+				
+				$teachingCategories= $this->CommonMdl->getTeachingCategories($educator->educator_id);
+				if(!empty($teachingCategories)){
+					// error_log("Teaching Categories of Educator -----> ".json_encode($teachingCategories));
+					$educator->categories = $teachingCategories;
+				}
+
+			}
+			$data['isFeaturedB']= $this->CommonMdl->getResult('custom_educator', '*', array('edu_isfeatured' => '0'),array('col_name'=>'educator_id','order'=>'asc'),'5');
+			foreach ($data['isFeaturedB'] as $educator) {
+				$rating= $this->CommonMdl->getAvgRating($educator->educator_id);
+				if(!empty($rating[0]->rating)){
+					$avg_rating=(round($rating[0]->rating,2));
+					$educator->avg_rating = $avg_rating;
+				}else{
+					$educator->avg_rating = '3.5';
+				}
+				
+				$teachingCategories= $this->CommonMdl->getTeachingCategories($educator->educator_id);
+				if(!empty($teachingCategories)){
+					// error_log("Teaching Categories of Educator -----> ".json_encode($teachingCategories));
+					$educator->categories = $teachingCategories;
+				}
+
+			}
+		    $math= $this->CommonMdl->getliked('custom_educator','search_string', 'math');
+		    $data['math']=count($math);
+			$kids_coding= $this->CommonMdl->getliked('custom_educator','search_string', 'coding');
 			$data['kids_coding']=count($kids_coding); 
-			$upsc= $this->CommonMdl->getliked('tbl_educator','searchString', 'upsc');
+			$upsc= $this->CommonMdl->getliked('custom_educator','search_string', 'upsc');
 			$data['upsc']=count($upsc); 
-			$cpl= $this->CommonMdl->getliked('tbl_educator','searchString', 'cpl');
+			$cpl= $this->CommonMdl->getliked('custom_educator','search_string', 'cpl');
 			$data['cpl']=count($cpl); 
 			
-			$app= $this->CommonMdl->getliked('tbl_educator','prof_course', '15');
+			$app= $this->CommonMdl->getliked('custom_educator','search_string', 'app');
 			$data['app']=count($app);
            
-	   	    $foriegn_lang= $this->CommonMdl->getliked('tbl_educator','academic_lang', '1');
+	   	    $foriegn_lang= $this->CommonMdl->getliked('custom_educator','search_string', 'language');
 			$data['foriegn_lang']=count($foriegn_lang);	
-			$digital= $this->CommonMdl->getliked('tbl_educator','prof_course', '4');
+			$digital= $this->CommonMdl->getliked('custom_educator','search_string', 'digital');
 			$data['digital']=count($digital);
-			$arts= $this->CommonMdl->getliked('tbl_educator','searchString', 'art');
+			$arts= $this->CommonMdl->getliked('custom_educator','search_string', 'art');
 			$data['arts']=count($arts);			
 			
 			
@@ -47,8 +78,9 @@ class Welcome extends CI_Controller {
 	}
 	
 	public function fromcat(){
+		$searchString= ($this->uri->segment(2)) ? $this->uri->segment(2) : "";
 		error_log("_________________________________________________________________________________");
-		error_log("POST WELCOME *************************".json_Encode($this->input->post()));
+		error_log("POST WELCOME ----------------------------->".json_Encode($this->input->post()));
 		$config = array();
 		$config["base_url"] = base_url() . "welcome/fromcat";
 		$config["total_rows"] = $this->CommonMdl->get_count('custom_educator');
@@ -79,7 +111,7 @@ class Welcome extends CI_Controller {
 		$this->pagination->initialize($config);
 
 		$page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
-		$page = "";
+		// $page = "";
 		$cat='';
 		$city='';
 		$mode='';
@@ -132,11 +164,11 @@ class Welcome extends CI_Controller {
 			$edu_langArr=implode(",",$edu_lang);
 		}
 	
-		error_log("_________________________________________________________________________________");
+		
 		$cat=$this->input->post('cat');
 		$city=$this->input->post('city');
 		$mode=$this->input->post('mode');
-		$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr);
+		$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString);
 
 		// $educators= $this->CommonMdl->asPerCategory($config["per_page"], $page,'custom_educator', $cat);
 		foreach ($educators as $educator) {
@@ -158,9 +190,9 @@ class Welcome extends CI_Controller {
 		$data['listed']=$educators;
 		// $data["links"] = $this->pagination->create_links();
 
-		error_log("Welcome func. cat data".json_encode($cat));
+		// error_log("Welcome func. cat data".json_encode($cat));
 
-		error_log("Welcome func. Educator list".json_encode($educators));
+		// error_log("Welcome func. Educator list".json_encode($educators));
 		$html['_html'] = $this->load->view('filltered_educator',$data,true);
 		return $this->output->set_content_type('application/json')->set_output(json_encode($html));
    

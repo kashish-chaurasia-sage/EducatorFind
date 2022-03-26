@@ -35,6 +35,22 @@
                                         </ul>
                                     </div> -->
                                 </div>
+                                <!--START-->
+                                <div class="filt-com lhs-cate" >
+                                    <h4>Cities</h4>
+                                    <div class="dropdown">
+                                        <select class="cat_check cat edu_category" name="city_check" id="city" class="chosen-select">
+                                            <option value="999999"><?php echo "All Cities"; ?></option>
+                                            <?php
+                                            foreach ($cities as $city) {
+                                                ?>
+                                                <option value="<?php echo $city['city_id']; ?>"><?php echo $city['city_name']; ?></option>
+                                                <?php
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div> 
 
                                 <!--START-->
                                 <div class="filt-com lhs-cate">
@@ -220,25 +236,10 @@
                                     </div>
                                 </div>
 
-                               <!--START-->
-                                <div class="filt-com lhs-cate" >
-                                    <h4>Cities</h4>
-                                    <div class="dropdown">
-                                        <select name="city" id="city" class="chosen-select">
-                                            <option value="999999"><?php echo "All Cities"; ?></option>
-                                            <?php
-                                            foreach ($cities as $city) {
-                                                ?>
-                                                <option value="<?php echo $city['city_id']; ?>"><?php echo $city['city_name']; ?></option>
-                                                <?php
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div> 
+                               
 
                                 <!--START-->
-                                <div class="filt-com lhs-cate">
+                                <!-- <div class="filt-com lhs-cate">
                                     <h4>Teaching Mode</h4>
                                     <div class="dropdown">
                                         <select name="mode" id="mode" class="chosen-select">
@@ -248,18 +249,18 @@
                                             <option value="3"><?php echo "Hybrid"; ?></option>
                                         </select>
                                     </div>
-                                </div> 
+                                </div>  -->
 
                                  <!--START-->
-                                <div class="filt-com lhs-cate">
+                                <!-- <div class="filt-com lhs-cate">
                                     <h4>Experience Range</h4>
                                     <p><i> More than : <span id="demo"></span> years of experience</i></p>
 
                                         <input type="range" name="experience_check" min="0" max="25" value="0" class="slider" id="myRange">
-                                </div>
+                                </div> -->
 
                                  <!--START-->
-                                <div class="filt-com lhs-cate">
+                                <!-- <div class="filt-com lhs-cate">
                                     <h4>Ratings</h4>
                                     <ul>
                                         <li>
@@ -333,7 +334,7 @@
                                             </div>
                                         </li>
                                     </ul>
-                                </div>
+                                </div> -->
                                
                                 <!--START-->
                                 <!-- <div class="filt-com lhs-ads">
@@ -540,11 +541,11 @@
                                                 <span class="eduData">
                                                     <?php
                                                         if ($list->edu_mode == "1") {
-                                                            echo "Online";
+                                                            echo "Teaching Mode: Online";
                                                         }elseif($list->edu_mode == "2"){
-                                                            echo "Offline";
+                                                            echo "Teaching Mode: Offline";
                                                         }else{
-                                                            echo "Hybrid";
+                                                            echo "Teaching Mode: Hybrid";
                                                         }
                                                     ?>
                                                     
@@ -697,7 +698,7 @@
 <!-- START SECTION 2-->
 <section>
     <script>
-$(document).on('change', '.cat,.mode,.city', function() {
+$(document).on('change', '.cat,.city', function() {
     // $( ".cat" ).change(function() {
         var cat=$('#cat').val();
         var city=$('#city').val();
@@ -774,26 +775,24 @@ $(document).on('change', '.cat,.mode,.city', function() {
 
     </script>
 <script>
-
-$( ".mode" ).change(function() {
-    var mode=$('#mode').val();
-    
-    
+$(document).on('change', '.city', function() {
+    var city=$('#city').val();
+    console.log("---------------------------------");
     $.ajax({
-        method: 'POST',
-        url: '<?=base_url('welcome/fromcat');?>',
-        dataType: 'JSON',
-        data:{mode:mode},
-        success:function(res){
-        
-        $("#fiitered_educator").html(res['_html']);
-            //successToast(res.success, 4000);
-        },
-        error:function(res){
-            console.log(res);
-            errorToast("Something went wrong!", 4000);
-        }
-    });
+            method: 'POST',
+            url: '<?=base_url('welcome/fromcat');?>',
+            dataType: 'JSON',
+            data:{"city": city},
+            success:function(res){
+            
+            $("#fiitered_educator").html(res['_html']);
+                //successToast(res.success, 4000);
+            },
+            error:function(res){
+                console.log(res);
+                errorToast("Something went wrong!", 4000);
+            }
+        });
 });
 
 </script>

@@ -1,7 +1,7 @@
 <?php $this->load->view('layout/header');?>
 <style>
    @import "https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap";
-   .hom-head:before{background:#ffffff14}
+   /* .hom-head:before{background:#ffffff14} */
    .home-tit{margin-bottom:20px;padding-top:60px}
    .hom2-hom-ban{float:left;width:46%;background-size:cover;margin:0 2%;background:#e6f6fb;padding:30px 100px 30px 30px;border-radius:5px;position:relative;font-family:'Poppins',sans-serif}
    .hom2-hom-ban:hover a{background:#d6c607}
@@ -49,11 +49,16 @@
    @media screen and (max-width:550px) {
    .hom-head .ban-search ul li{width:100%;margin:0 0 15px}
    }
+  
 
 </style>
 <!-- START -->
 <section>
+   
+
+   
    <div class="str" style="margin-bottom: 5rem;">
+   
       <div class="container">
          <div class="row">
             <div class="home-tit">
@@ -106,7 +111,7 @@
       <div class="container">
          <div class="row">
             <div class="home-tit">
-               <h2><span>Popular </span> near you</h2>
+               <h2><span>Popular Courses </span> near you</h2>
             </div>
             <div class="land-pack">
                <ul>
@@ -116,11 +121,11 @@
                            <img src="<?php echo base_url('assets/public/images/extra/math_sub.jpg');?>" alt="">
                         </div>
                         <div class="land-pack-grid-text">
-                           <h4>Calculus                                                                                           <span
+                           <h4>Maths                                                                                           <span
                               class="dir-ho-cat">Show All (<?php echo ($math ? $math :'0');?>)</span>
                            </h4>
                         </div>
-                        <a href="<?php echo urlencode(base_url('educator/math'));?>"
+                        <a href="<?php echo (base_url('educator/maths'));?>"
                            class="land-pack-grid-btn">View all listings</a>
                      </div>
                   </li>
@@ -190,7 +195,7 @@
                               class="dir-ho-cat">Show All (<?php echo ($foriegn_lang ? $foriegn_lang :'0');?>)</span>
                            </h4>
                         </div>
-                        <a href="<?php echo base_url('educator/foreign');?>"
+                        <a href="<?php echo base_url('educator/language');?>"
                            class="land-pack-grid-btn">View all listings</a>
                      </div>
                   </li>
@@ -223,13 +228,195 @@
                      </div>
                   </li>
                </ul>
-               <a href="all-category" class="more">View all services</a>
+               <a href="educator/educator" class="more">View all services</a>
             </div>
          </div>
       </div>
    </div>
 </section>
 <!-- END -->
+<section>
+<div class="container">
+         
+         <div class="hom-mpop-main">
+            <div class="home-tit">
+               <h2>
+                  <span>Featured Educators</span> in STARSBOARD                     
+               </h2>
+            </div>
+            <div class="col-md-6">
+               <div>
+                  <?php if(!empty($isFeaturedA)){
+                     foreach($isFeaturedA as $isFeaturedAKey =>$isFeaturedAVal){ ?>  
+                  <div class="hom-mpop">
+                     <!--POPULAR LISTINGS IMAGE-->
+                     <div class="col-md-3"><img src="<?=base_url('uploads/'.$isFeaturedAVal->user_id.'/'.$isFeaturedAVal->edu_image);?>" alt="">
+                     </div>
+                     <!--POPULAR LISTINGS: CONTENT-->
+                     <div class="col-md-9">
+                        <h3><?= $isFeaturedAVal->edu_name;?></h3>
+                        <p><i><?= $isFeaturedAVal->edu_experience;?> years of experience</i></p>
+                        
+                        <p><?= $isFeaturedAVal->edu_address;?></p>
+                        <p><?php
+                                                        if ($isFeaturedAVal->edu_mode == "1") {
+                                                            echo "Teaching Mode: Online";
+                                                        }elseif($isFeaturedAVal->edu_mode == "2"){
+                                                            echo "Teaching Mode: Offline";
+                                                        }else{
+                                                            echo "Teaching Mode: Hybrid";
+                                                        }
+                                                    ?></p>
+                        <p>
+                        <?php if(!empty($isFeaturedAVal->categories)){ 
+                                    
+                                    foreach($isFeaturedAVal->categories as $category){
+                                        // error_log("Category***** ".json_encode($category));
+                                        if(!empty($category->category_id) && $category->category_id == 1){
+                                            ?>
+
+                                            <span class="eduData"> <?php echo "|Academics|"; ?></span>
+
+                                        <?php   
+
+                                        }
+                                        if(!empty($category->category_id) && $category->category_id == 2){
+                                            ?>
+                                            <span class="eduData"> <?php echo " |Competetive Exams|"; ?></span>
+
+                                            <?php
+                                        }
+                                        if(!empty($category->category_id) && $category->category_id == 3){
+                                            ?>
+                                            <span class="eduData"> <?php echo " |Career Counselling|"; ?></span>
+
+                                            <?php
+                                        }
+                                        if(!empty($category->category_id) && $category->category_id == 4){
+                                            ?>
+                                            
+                                            <span class="eduData"> <?php echo " |Arts|"; ?></span>
+
+                                            <?php
+                                        }
+                                        if(!empty($category->category_id) && $category->category_id == 5){
+                                            ?>
+                                            
+                                            <span class="eduData"> <?php echo " |Language Learning|"; ?></span>
+
+                                            <?php
+                                        }
+                                        if(!empty($category->category_id) && $category->category_id == 6){
+                                            ?>
+                                            
+                                            <span class="eduData"> <?php echo " |Professional Courses|"; ?></span>
+
+                                            <?php
+                                        }
+                                    }
+                                }
+                                    
+
+                                ?>
+
+                        </p>
+                        <span class="rat-sh"><?= $isFeaturedAVal->avg_rating;?></span>
+                     </div>
+                     <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($isFeaturedAVal->edu_name)).'/'.$isFeaturedAVal->educator_id);?>">&nbsp;</a>
+                  </div>
+                  <?php }}else{ echo 'No data found';}?>
+               </div>
+            </div>
+            <div class="col-md-6">
+               <div>
+                  <?php if(!empty($isFeaturedB)){
+                     foreach($isFeaturedB as $isFeaturedBKey =>$isFeaturedBVal){ ?> 
+                  <div class="hom-mpop">
+                     <!--POPULAR LISTINGS IMAGE-->
+                     <div class="col-md-3"><img src="<?=base_url('uploads/'.$isFeaturedBVal->user_id.'/'.$isFeaturedBVal->edu_image);?>" alt="">
+                     </div>
+                     <!--POPULAR LISTINGS: CONTENT-->
+                     <div class="col-md-9">
+                        <h3><?= $isFeaturedBVal->edu_name;?></h3>
+                        
+                        <p><i><?= $isFeaturedBVal->edu_experience;?> years of experience</i></p>
+                        
+                        <p><?= $isFeaturedBVal->edu_address;?></p>
+                        <p><?php
+                                                        if ($isFeaturedBVal->edu_mode == "1") {
+                                                            echo "Teaching Mode: Online";
+                                                        }elseif($isFeaturedBVal->edu_mode == "2"){
+                                                            echo "Teaching Mode: Offline";
+                                                        }else{
+                                                            echo "Teaching Mode: Hybrid";
+                                                        }
+                                                    ?></p>
+                        <p>
+                        <?php if(!empty($isFeaturedBVal->categories)){ 
+                                    
+                                    foreach($isFeaturedBVal->categories as $category){
+                                        // error_log("Category***** ".json_encode($category));
+                                        if(!empty($category->category_id) && $category->category_id == 1){
+                                            ?>
+
+                                            <span class="eduData"> <?php echo "|Academics|"; ?></span>
+
+                                        <?php   
+
+                                        }
+                                        if(!empty($category->category_id) && $category->category_id == 2){
+                                            ?>
+                                            <span class="eduData"> <?php echo " |Comp. Exams|"; ?></span>
+
+                                            <?php
+                                        }
+                                        if(!empty($category->category_id) && $category->category_id == 3){
+                                            ?>
+                                            <span class="eduData"> <?php echo " |Career Counselling|"; ?></span>
+
+                                            <?php
+                                        }
+                                        if(!empty($category->category_id) && $category->category_id == 4){
+                                            ?>
+                                            
+                                            <span class="eduData"> <?php echo " |Arts|"; ?></span>
+
+                                            <?php
+                                        }
+                                        if(!empty($category->category_id) && $category->category_id == 5){
+                                            ?>
+                                            
+                                            <span class="eduData"> <?php echo " |Language|"; ?></span>
+
+                                            <?php
+                                        }
+                                        if(!empty($category->category_id) && $category->category_id == 6){
+                                            ?>
+                                            
+                                            <span class="eduData"> <?php echo " |Prof. Courses|"; ?></span>
+
+                                            <?php
+                                        }
+                                    }
+                                }
+                                    
+
+                                ?>
+
+                        </p>
+
+                        <span class="rat-sh"><?= $isFeaturedBVal->avg_rating;?></span>
+                     </div>
+                     <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($isFeaturedBVal->edu_name)).'/'.$isFeaturedBVal->educator_id);?>">
+                     &nbsp;</a>
+                  </div>
+                  <?php }}else{ echo 'No data found';}?>   
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
 <!-- START -->
 <section>
    <div class="str">
@@ -333,61 +520,50 @@
    </div>
 </section>
 <!-- END -->
-<section>
+
+<!-- <section>
    <div class="hom-mpop-ser" style="background-image: url();background-color: #f1eeeecc;background-blend-mode: overlay;background-position: unset;">
-      <div class="container">
-         <div class="hom-mpop-main">
-            <div class="home-tit">
-               <h2>
-                  <span>Featured Services</span> in your city                        
-               </h2>
-            </div>
-            <div class="col-md-6">
-               <div>
-                  <?php if(!empty($isFeaturedA)){
-                     foreach($isFeaturedA as $isFeaturedAKey =>$isFeaturedAVal){ ?>  
-                  <div class="hom-mpop">
-                     <!--POPULAR LISTINGS IMAGE-->
-                     <div class="col-md-3"><img src="<?=base_url('uploads/'.$isFeaturedAVal->user_id.'/'.$isFeaturedAVal->edu_image);?>" alt="">
-                     </div>
-                     <!--POPULAR LISTINGS: CONTENT-->
-                     <div class="col-md-9">
-                        <h3><?= $isFeaturedAVal->edu_name;?></h3>
-                        
-                        <p><?= $isFeaturedAVal->edu_city;?></p>
-                        <span class="rat-sh">5.0</span>
-                     </div>
-                     <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($isFeaturedAVal->edu_name)).'/'.$isFeaturedAVal->Eid);?>">&nbsp;</a>
-                  </div>
-                  <?php }}else{ echo 'No data found';}?>
-               </div>
-            </div>
-            <div class="col-md-6">
-               <div>
-                  <?php if(!empty($isFeaturedB)){
-                     foreach($isFeaturedB as $isFeaturedBKey =>$isFeaturedBVal){ ?> 
-                  <div class="hom-mpop">
-                     <!--POPULAR LISTINGS IMAGE-->
-                     <div class="col-md-3"><img src="<?=base_url('uploads/'.$isFeaturedBVal->user_id.'/'.$isFeaturedBVal->edu_image);?>" alt="">
-                     </div>
-                     <!--POPULAR LISTINGS: CONTENT-->
-                     <div class="col-md-9">
-                        <h3><?= $isFeaturedBVal->edu_name;?></h3>
-                        <p><?= $isFeaturedBVal->edu_city;?></p>
-                        <span class="rat-sh">5.0</span>
-                     </div>
-                     <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($isFeaturedBVal->edu_name)).'/'.$isFeaturedBVal->Eid);?>">
-                     &nbsp;</a>
-                  </div>
-                  <?php }}else{ echo 'No data found';}?>   
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</section>
+   <div id="ld-gal" class="pglist-bg pglist-p-com">
+                                <div class="pglist-p-com-ti">
+                                    <h3>
+                                        <center><span>STARSBOARD   </span> Gallery</center></h3></div>
+                                <div class="home-pg-gallery">
+                                    <div id="demo" class="carousel slide" data-ride="carousel">
+                                        <ul class="carousel-indicators">
+                                                                                                <li data-target="#demo" data-slide-to="0" class=""></li>
+                                                                                                        <li data-target="#demo" data-slide-to="1" class=""></li>
+                                                                                                        <li data-target="#demo" data-slide-to="2" class=""></li>
+                                                                                                            <li data-target="#demo" data-slide-to="3" class=""></li>
+                                                                                                                <li data-target="#demo" data-slide-to="4" class="active"></li>
+                                                                                                </ul>
+
+                                        <div class="carousel-inner">
+                                                                                            <div class="carousel-item">
+                                                    <img src="<?=base_url('assets/public/images/banner.jpg');?>" alt="80411pexels-anna-shvets-3852148.jpg">
+                                                </div>
+                                                                                                <div class="carousel-item">
+                                                    <img src="<?=base_url('assets/public/images/banner.png');?>" alt="97277pexels-andrea-piacquadio-3757657.jpg">
+                                                </div>
+                                                                                                 
+                                                                                                        
+                                                      <div class="carousel-item viki active">
+                                                               <iframe width="560" height="315" src="https://www.youtube.com/embed/7VLDGjny9P0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                      </div> 
+                                                      
+                                            <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                                                <span class="carousel-control-prev-icon"></span>
+                                            </a>
+                                            <a class="carousel-control-next" href="#demo" data-slide="next">
+                                                <span class="carousel-control-next-icon"></span>
+                                            </a>
+                                                                                </div>
+                                </div>
+                            </div>
+                            
+  
+</section> -->
 <section>
-   <div class="container">
+   <!-- <div class="container">
       <div class="hlead-coll" style="padding-top: 58px;padding-bottom: 40px;">
          <div class="col-md-6">
             <div class="hom-cre-acc-left">
@@ -478,7 +654,7 @@
             </div>
          </div>
       </div>
-   </div>
+   </div> -->
 </section>
 <!-- END -->
 <!-- START -->
@@ -488,9 +664,9 @@
          <div class="row" style="padding-bottom: 60px;">
             <div class="home-tit">
                <h2>
-                  <span>Top Service Provider</span> in city                        
+                  <span>Top Educators</span> in your city                        
                </h2>
-               <p>lacinia viverra lectus. Fusce imperdiet ullamcorper metus eu fringilla.</p>
+               <!-- <p>lacinia viverra lectus. Fusce imperdiet ullamcorper metus eu fringilla.</p> -->
             </div>
             <div class="ho-popu-bod">
                <!--Top Branding Hotels-->
@@ -522,7 +698,7 @@
                </div>
                <div class="col-md-4">
                   <div class="hot-page2-hom-pre-head">
-                     <h4>Top  <span>Counsellor</span></h4>
+                     <h4>Top  <span>Arts</span></h4>
                   </div>
                   <div class="hot-page2-hom-pre">
                      <ul>
@@ -581,37 +757,37 @@
          <div class="row" style="padding-bottom: 6rem;">
             <div class="home-tit">
                <h2><span>How it</span> works  </h2>
-               <p>lacinia viverra lectus. Fusce imperdiet ullamcorper metus eu fringilla.</p>
+               <!-- <p>lacinia viverra lectus. Fusce imperdiet ullamcorper metus eu fringilla.</p> -->
             </div>
             <div class="how-wrks">
                <div class="how-wrks-inn">
                   <ul>
                      <li>
                         <div class="menu_social">
-                           <span>1</span>
+                           <!-- <span>1</span> -->
                            <img src="<?=base_url('assets/public/images/about-us/how1.png');?>" alt="" >
                            <h4>Create an account</h4>
                         </div>
                      </li>
                      <li>
                         <div class="menu_social">
-                           <span>2</span>
+                           <!-- <span>2</span> -->
                            <img src="<?=base_url('assets/public/images/about-us/how2.png');?>" alt="">
-                           <h4>Add your Listing</h4>
+                           <h4>Become Educator</h4>
                         </div>
                      </li>
                      <li>
                         <div class="menu_social">
-                           <span>3</span>
+                           <!-- <span>3</span> -->
                            <img src="<?=base_url('assets/public/images/about-us/how3.png');?>" alt="">
-                           <h4>Get more leads</h4>
+                           <h4>Get more students</h4>
                         </div>
                      </li>
                      <li>
                         <div class="menu_social">
-                           <span>4</span>
+                           <!-- <span>4</span> -->
                            <img src="<?=base_url('assets/public/images/about-us/how4.png');?>" alt="">
-                           <h4>Archive goles</h4>
+                           <h4>Archive your goals</h4>
                         </div>
                      </li>
                   </ul>
