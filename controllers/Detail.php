@@ -304,7 +304,7 @@ class Detail extends CI_Controller {
 			$response =  $this->CommonMdl->insertRow($data,'lead');
 
 		$from_email = "info@starsboard.in"; 
-		error_log("User data 1----> ".json_encode($this->input->post('listing_educator_id')));
+		// error_log("User data 1----> ".json_encode($this->input->post('listing_educator_id')));
 	    // $educator_details= $this->User->getEducatorInfo($this->input->post('listing_educator_id'));
 		$educator_details= $this->CommonMdl->getResult('custom_educator', '*', ['educator_id' => $this->input->post('listing_educator_id')]);
 
@@ -353,7 +353,6 @@ class Detail extends CI_Controller {
 		$params["message"] =$this->input->post('enquiry_message');
 
 		$mailResponse = $this->sendMail($receipents, 7, $params);
-		error_log("test1s");
 
 			if($response){
 				echo $message = '<div class="alert alert-success" role="alert">Your Enquiry Is Submitted Successfully!!!</div>';
@@ -475,7 +474,6 @@ Flat Iamage (Whatsapp) -7977476239';
 		$params["message"] =$this->input->post('enquiry_message');
 
 		$mailResponse = $this->sendMail($receipents, 7, $params);
-		error_log("test2");
 			if($response){
 				echo $message = 'Your Enquiry has been submiited successfuly!!!';
 			
@@ -487,7 +485,7 @@ Flat Iamage (Whatsapp) -7977476239';
 			
 	}
 	public function sendMail($receipts,$templateId,$params){
-		error_log("PARAMS -------------------------sendMail : ".json_encode($receipts));
+		// error_log("PARAMS -------------------------sendMail : ".json_encode($receipts));
 
 		$fields = array();
 		$fields["to"] = $receipts;

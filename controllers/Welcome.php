@@ -14,11 +14,17 @@ class Welcome extends CI_Controller {
 	{ 
 	    $data=array(); 
 	        $data['title']='Starsboard | Online Educator | Find Teacher';
-			$data['academic']= $this->CommonMdl->getResult('tbl_educator', '*', array('academic' => '1'),array('col_name'=>'Eid','order'=>'desc'),'5');
-		//echo '<pre>';	print_r($data['academic']); die;
-			$data['counselling']= $this->CommonMdl->getResult('tbl_educator', '*', array('counselling' => '1'),array('col_name'=>'Eid','order'=>'desc'),'5');
-			$data['training']= $this->CommonMdl->getResult('tbl_educator', '*',  array('training' => '1'),array('col_name'=>'Eid','order'=>'desc'),'5');
+			// $data['academic']= $this->CommonMdl->getResult('custom_educator', '*', array('status' => '1'),array('col_name'=>'edu_experience','order'=>'desc'),'5');
+
+			$data['academic']= $this->CommonMdl->getTop5Categories("1");
+			$data['counselling']= $this->CommonMdl->getTop5Categories("3");
+			$data['training']= $this->CommonMdl->getTop5Categories("6");
+
+		// echo '<pre>';	print_r($data['academic']); die;
+			// $data['counselling']= $this->CommonMdl->getResult('tbl_educator', '*', array('counselling' => '1'),array('col_name'=>'Eid','order'=>'desc'),'5');
+			// $data['training']= $this->CommonMdl->getResult('tbl_educator', '*',  array('training' => '1'),array('col_name'=>'Eid','order'=>'desc'),'5');
 			$data['isFeaturedA']= $this->CommonMdl->getResult('custom_educator', '*',array('edu_isfeatured' => '0'),array('col_name'=>'edu_experience','order'=>'desc'),'5');
+
 			foreach ($data['isFeaturedA'] as $educator) {
 				$rating= $this->CommonMdl->getAvgRating($educator->educator_id);
 				if(!empty($rating[0]->rating)){
@@ -81,11 +87,19 @@ class Welcome extends CI_Controller {
 		$searchString= ($this->uri->segment(2)) ? $this->uri->segment(2) : "";
 		error_log("_________________________________________________________________________________");
 		error_log("POST WELCOME ----------------------------->".json_Encode($this->input->post()));
+		error_log("_________________________________________________________________________________");
+
 		$config = array();
 		$config["base_url"] = base_url() . "welcome/fromcat";
 		$config["total_rows"] = $this->CommonMdl->get_count('custom_educator');
 		$config["per_page"] = "";
 		$config["uri_segment"] = 3;
+		if($searchString = "fromcat"){
+			$searchString = "";
+		}
+		error_log("_________________________________________________________________________________");
+		error_log("Search String ------>".json_Encode($searchString));
+		// echo '<pre>';	print_r($searchString); die;
 
 		//config for bootstrap pagination class integration
         $config['full_tag_open'] = '<ul class="pagination">';
@@ -167,8 +181,7 @@ class Welcome extends CI_Controller {
 		
 		$cat=$this->input->post('cat');
 		$city=$this->input->post('city');
-		$mode=$this->input->post('mode');
-		$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString);
+		$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString);
 
 		// $educators= $this->CommonMdl->asPerCategory($config["per_page"], $page,'custom_educator', $cat);
 		foreach ($educators as $educator) {

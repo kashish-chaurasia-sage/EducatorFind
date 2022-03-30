@@ -684,12 +684,24 @@
                            </div>
                            <div class="hot-page2-hom-pre-2">
                               <h5><?= $academicVal->edu_name;?></h5>
-                              <span><?= $academicVal->edu_city;?></span>
+                              <span><?= $academicVal->edu_experience;?> years of experience</span>
+                              <!-- <span>Teaching Mode: <?= $academicVal->edu_mode;?></span> -->
+                              <span><?php
+                                                        if ($academicVal->edu_mode == "1") {
+                                                            echo "Teaching Mode: Online";
+                                                        }elseif($academicVal->edu_mode == "2"){
+                                                            echo "Teaching Mode: Offline";
+                                                        }else{
+                                                            echo "Teaching Mode: Hybrid";
+                                                        }
+                                                    ?></span>
+                        
+                              <span><?= $academicVal->edu_address;?></span>
                            </div>
                            <div class="hot-page2-hom-pre-3">
                               <span>3.0</span>
                            </div>
-                           <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($academicVal->edu_name)).'/'.$academicVal->Eid);?>" class="fclick"></a>
+                           <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($academicVal->edu_name)).'/'.$academicVal->educator_id);?>" class="fclick"></a>
                         </li>
                         <!--LISTINGS-->
                         <?php }}else{ echo 'No data found';}?>
@@ -709,12 +721,23 @@
                            </div>
                            <div class="hot-page2-hom-pre-2">
                               <h5><?= $counsellingVal->edu_name;?></h5>
-                              <span><?= $counsellingVal->edu_city;?></span>
+                              <span><?= $counsellingVal->edu_experience;?> years of experience</span>
+                              <!-- <span>Teaching mode: <?= $counsellingVal->edu_mode;?></span> -->
+                              <span><?php
+                                                        if ($counsellingVal->edu_mode == "1") {
+                                                            echo "Teaching Mode: Online";
+                                                        }elseif($counsellingVal->edu_mode == "2"){
+                                                            echo "Teaching Mode: Offline";
+                                                        }else{
+                                                            echo "Teaching Mode: Hybrid";
+                                                        }
+                                                    ?></span>
+                              <span><?= $counsellingVal->edu_address;?></span>
                            </div>
                            <div class="hot-page2-hom-pre-3">
                               <span>3.0</span>
                            </div>
-                           <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($counsellingVal->edu_name)).'/'.$counsellingVal->Eid);?>" class="fclick"></a>
+                           <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($counsellingVal->edu_name)).'/'.$counsellingVal->educator_id);?>" class="fclick"></a>
                         </li>
                         <!--LISTINGS-->
                         <?php }}else{ echo 'No data found';}?>
@@ -733,12 +756,24 @@
                            </div>
                            <div class="hot-page2-hom-pre-2">
                               <h5><?= $trainingVal->edu_name;?></h5>
-                              <span><?= $trainingVal->edu_name;?></span>
+                              <span><?= $trainingVal->edu_experience;?> years of experience</span>
+                              <!-- <span>Teaching mode: <?= $trainingVal->edu_mode;?></span> -->
+                              <span><?php
+                                                        if ($trainingVal->edu_mode == "1") {
+                                                            echo "Teaching Mode: Online";
+                                                        }elseif($trainingVal->edu_mode == "2"){
+                                                            echo "Teaching Mode: Offline";
+                                                        }else{
+                                                            echo "Teaching Mode: Hybrid";
+                                                        }
+                                                    ?></span>
+                              <span><?= $trainingVal->edu_address;?></span>
+                              
                            </div>
                            <div class="hot-page2-hom-pre-3">
                               <span>3.0</span>
                            </div>
-                           <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($trainingVal->edu_name)).'/'.$trainingVal->Eid);?>" class="fclick"></a>
+                           <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($trainingVal->edu_name)).'/'.$trainingVal->educator_id);?>" class="fclick"></a>
                         </li>
                         <?php }}else{ echo 'No data found';}?>
                         <!--LISTINGS-->

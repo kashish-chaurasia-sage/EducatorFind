@@ -57,6 +57,7 @@ class CommonMdl extends CI_Model
 		$query=$this->db->get();
 		return $query->result();
 	}
+
 	
 	public function getliked($tbl,$whr,$liked){
 		$this->db->select('*');
@@ -100,8 +101,9 @@ class CommonMdl extends CI_Model
 			return $query->result();
 	}
 
-	public function asPerFillter($limit, $start,$tbl,$cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString){
-		error_log("Filtered by category ID ---->>>>".json_encode($cat));
+	public function asPerFillter($limit, $start,$tbl,$cat,$city,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString){
+		// echo '<pre>';print_r( $searchString); die;
+
 		$this->db->select('*');
 		$this->db->from('custom_educator e' );
 		$this->db->join('custom_location l', 'e.edu_location_id=l.location_id', 'left');
@@ -209,10 +211,7 @@ class CommonMdl extends CI_Model
 				$this->db->like('es.sub_category_id', $cd);
 			}	
 		}
-		if(!empty($searchString)){
-	
-			$this->db->like('e.search_string', $searchString);
-		}
+		
 				
 		if(!empty($cat) && $cat!="9999"){
 			
@@ -222,11 +221,11 @@ class CommonMdl extends CI_Model
 			
 			$this->db->where('l.city_id', $city);
 		}
-		if(!empty($mode) && $mode!="999999"){
-			
-			$this->db->where('e.mode', $mode);
-		}
 		
+		if(!empty($searchString)){
+	
+			$this->db->like('e.search_string', $searchString);
+		}
 		$this->db->where('status', 1);
 		$this->db->group_by('e.educator_id'); 
 		$this->db->order_by('edu_isfeatured','desc');
@@ -238,9 +237,7 @@ class CommonMdl extends CI_Model
 			$this->db->limit($limit, $start);
 		}
 		$query = $this->db->get();
-		// echo '<pre>';print_r( $this->db); die;
 
-		error_log("QUERY".json_encode( $this->db));
 		return $query->result();
 }
 	public function asPerCategory_old($tbl,$cat){
@@ -269,38 +266,11 @@ class CommonMdl extends CI_Model
 	// }
 
 	public function asPerCategory($limit, $start,$tbl,$cat){
-		error_log("---------------------asPerC--------------------------");
 		$this->db->select('*');
 		$this->db->from('custom_educator e' );
 		$this->db->join('custom_location l', 'e.edu_location_id=l.location_id', 'left');
 		$this->db->join('custom_educator_sub_category es', 'es.educator_id=e.educator_id', 'left');
 		
-		// if(!empty($edu_classArr)){
-		// $this->db->like('educator_class', $edu_classArr);
-		// }
-		// if(!empty($edu_subjectArr)){
-		// $this->db->like('edu_subject',$edu_subjectArr);
-		// }
-
-		// if(!empty($edu_boardArr)){
-		// $this->db->like('edu_board', $edu_boardArr);
-		// }
-		// if(!empty($edu_examArr)){
-		// $this->db->like('edu_exam', $edu_examArr);
-		// }
-		
-		// if(!empty($edu_carrerArr)){
-		// $this->db->like('career_path', $edu_carrerArr);
-		// }
-		// if(!empty($edu_courseArr)){
-		// $this->db->like('prof_course', $edu_courseArr);
-		// }
-		// if(!empty($edu_artArr)){
-		// $this->db->like('art', $edu_artArr);
-		// }
-		// if(!empty($edu_langArr)){
-		// $this->db->like('prof_lang',$edu_langArr);
-		// }
 		$this->db->where('es.category_id', $cat);
 		$this->db->where('e.status', 1);
 		$this->db->order_by('edu_isfeatured','desc');
@@ -310,6 +280,23 @@ class CommonMdl extends CI_Model
 		if(!empty($limit)){
 			$this->db->limit($limit, $start);
 		}
+
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function getTop5Categories($cat){
+		$this->db->select('*');
+		$this->db->from('custom_educator e' );
+		$this->db->join('custom_location l', 'e.edu_location_id=l.location_id', 'left');
+		$this->db->join('custom_educator_sub_category es', 'es.educator_id=e.educator_id', 'left');
+		
+		$this->db->where('es.category_id', $cat);
+		$this->db->where('e.status', 1);
+		$this->db->order_by('edu_experience','desc');
+		$this->db->order_by('edu_name','asc');
+		$this->db->limit(5);
+		
 
 		$query = $this->db->get();
 		return $query->result();

@@ -56,7 +56,7 @@ class Become_educator extends CI_Controller {
             );
 
             $profile_pic = $this->CommonMdl->updateData($ProfileData,['id'=>$this->session->userdata('userId')],'users');
-            error_log("Profile pic sql updation : ".json_encode( $profile_pic));
+            // error_log("Profile pic sql updation : ".json_encode( $profile_pic));
             $this->session->set_userdata('edu_name', $this->input->post('edu_name'));
             $this->session->set_userdata('edu_mobile', $this->input->post('edu_mobile'));
             $this->session->set_userdata('edu_email', $this->input->post('edu_email'));

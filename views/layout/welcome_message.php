@@ -230,12 +230,12 @@
                                              alt="">
                                     </div>
                                     <div>
-                                        <img src="#"
-                                             alt="">
+                                        <!-- <img src="#"
+                                             alt=""> -->
                                         <h4>Academic</h4>
-                                        <div class="list-rat-all">
+                                        <!-- <div class="list-rat-all">
 
-                                        </div>
+                                        </div> -->
                                         
                                     </div>
                                     <a href="<?echo base_url('educator/academic');?>"
@@ -249,13 +249,13 @@
                                              alt="">
                                     </div>
                                     <div>
-                                        <img src=""
-                                             alt="">
+                                        <!-- <img src=""
+                                             alt=""> -->
                                         <h4>Competetive Exam</h4>
-                                        <div class="list-rat-all">
+                                        <!-- <div class="list-rat-all">
 
                                            
-                                        </div>
+                                        </div> -->
                                        
                                     </div>
                                     <a href="<?echo base_url('educator/exam');?>"
@@ -269,13 +269,13 @@
                                              alt="">
                                     </div>
                                     <div>
-                                        <img src=""
-                                             alt="">
+                                        <!-- <img src=""
+                                             alt=""> -->
                                         <h4>Professional</h4>
-                                        <div class="list-rat-all">
+                                        <!-- <div class="list-rat-all">
 
                                             
-                                        </div>
+                                        </div> -->
                                        
                                     </div>
                                     <a href="<?echo base_url('educator/professinoal');?>"
@@ -289,13 +289,13 @@
                                              alt="">
                                     </div>
                                     <div>
-                                        <img src=""
-                                             alt="">
+                                        <!-- <img src=""
+                                             alt=""> -->
                                         <h4>Career Counselling</h4>
-                                        <div class="list-rat-all">
+                                        <!-- <div class="list-rat-all">
 
                                           
-                                        </div>
+                                        </div> -->
                                        
                                     </div>
                                     <a href="<?echo base_url('educator/career');?>"
@@ -309,13 +309,13 @@
                                              alt="">
                                     </div>
                                     <div>
-                                        <img src=""
-                                             alt="">
+                                        <!-- <img src=""
+                                             alt=""> -->
                                         <h4>Art</h4>
-                                        <div class="list-rat-all">
+                                        <!-- <div class="list-rat-all">
 
                                             
-                                        </div>
+                                        </div> -->
                                       
                                     </div>
                                     <a href="<?echo base_url('educator/art');?>"
@@ -529,15 +529,15 @@
                                           
                                             <?php 
 											if(!empty($academic)){
-											foreach($academic as $academicKey =>$academicVal){ ?>                                           <!--LISTINGS-->
+											foreach($academic as $academicVal){ ?>                                           <!--LISTINGS-->
                                             <li>
-                                                <div class="hot-page2-hom-pre-1"><img src="<?=base_url('uploads/'.$academicVal->user_id.'/'.$academicVal->edu_image);?>" alt="">
+                                                <div class="hot-page2-hom-pre-1"><img src="<?=base_url('uploads/'.$academicVal['user_id'].'/'.$academicVal->edu_image);?>" alt="">
                                                 </div>
                                                 <div class="hot-page2-hom-pre-2">
                                                     <h5><?= $academicVal->edu_name;?></h5>
                                                     <span><?= $academicVal->edu_city;?></span>
                                                 </div>
-                                                                                                <a href="<?= base_url('detail/'.url_title($academicVal->edu_name).'/'.$academicVal->Eid);?>" class="fclick"></a>
+                                                <a href="<?= base_url('detail/'.url_title($academicVal->edu_name).'/'.$academicVal->educator_id);?>" class="fclick"></a>
                                             </li>
                                             <!--LISTINGS-->
                                             <?php }}else{ echo 'No data found';}?>

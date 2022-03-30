@@ -131,7 +131,7 @@ public function __construct(){
             $data['edu_course'] = $this->CommonMdl->getResult('edu_course', '*');
             $data['edu_art'] = $this->CommonMdl->getResult('edu_art', '*');
             $data['edu_lang'] = $this->CommonMdl->getResult('edu_lang', '*');
-            error_log("SERVICE FUNCTION data".json_encode($data));
+            // error_log("SERVICE FUNCTION data".json_encode($data));
             $this->load->view('update-become-educator-two',$data);
         }
 	}
@@ -480,8 +480,8 @@ public function __construct(){
             $data['educator_d'] = $educator_details;
             $data['user_id'] = $this->session->userdata('userId');
 			$data['educator'] = $Edudata;
-            error_log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..........");
-            error_log("Offer FUNCTION data>>>".json_encode($educator_d));
+            // error_log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..........");
+            // error_log("Offer FUNCTION data>>>".json_encode($educator_d));
 
 			$this->load->view('update-become-educator-three', $data);
 		}

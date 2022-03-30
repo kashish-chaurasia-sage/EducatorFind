@@ -104,13 +104,13 @@
 <section class=" abou-pg">
    <div class="about-ban">
       <h1>About us</h1>
-      <p>injected humourThere are many variations of passages of Lorem Ipsum available now</p>
+      <p >In this competitive world today, where the best opportunities given are based on your performance
+            </p>
    </div>
    <div class="container">
       <div class="row">
          <div class="about-us text-left">
-            <p >In this competitive world today, where the best opportunities given are based on your performance
-            </p>
+            
             <p>In this competitive world today, where the best opportunities given are based on your performance it is necessary to learn from the best to reach to the top of the mountain. In the years to come, the premier education that we receive from our Educators lays the foundation to a solid and stable professional career and also opens our horizons to new learning.
             </p>
             <p> At Starsboard, we have the best talent on board who will bring that wealth of knowledge to you. They will guide you and advise you on how to crack competitive and challenging tests and programs that are a very integral part of the educational field. These resources are not available to Learners in every location and they may not get the benefits of this education, due to financial reasons or their geographic location which may involve a student having to change city or state to access this learning. However, Starsboard is the solution to their problems because we have a highly knowledgeable and educated Educators and with the help of new methods of learning and innovative technology we will create a path where you will thrive on success, and all you need to do is enroll in our learning platform to achieve your best potential."

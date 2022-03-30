@@ -80,7 +80,7 @@ class Educator extends CI_Controller {
 				$searchString=$this->uri->segment(2);
 
 										
-
+				// echo '<pre>';	print_r($searchString); die;
 				// $this->load->view('educator/index', $data);
 				
 				$data['title']=$searchString.' | Educator | Starsboard';
@@ -135,7 +135,7 @@ class Educator extends CI_Controller {
 					
 				if(!empty($edu_subjectArr)||!empty($edu_classArr)||!empty($edu_boardArr)||!empty($edu_examArr)||!empty($edu_carrerArr)||!empty($edu_courseArr)||!empty($edu_artArr)||!empty($edu_langArr)){
 					
-					$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString);
+					$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString);
 					$data['listed']=$educators;
 					// error_log("Paginated Educators -------------: ".json_Encode($educator));
 					//echo '<pre>';	print_r($data['listed']); die;
@@ -161,10 +161,11 @@ class Educator extends CI_Controller {
 			
 			}else{
 				// $educator= $this->CommonMdl->getliked('tbl_educator','searchString', $searchString);
-				$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$mode,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString);
+				// echo '<pre>';print_r( $searchString); die;
+
+				$educators= $this->CommonMdl->asPerFillter($config["per_page"], $page,'custom_educator', $cat,$city,$edu_classArr,$edu_subjectArr,$edu_boardArr,$edu_examArr,$edu_carrerArr,$edu_courseArr,$edu_artArr,$edu_langArr,$searchString);
 					// $data['listed']=$educator;
-					// echo '<pre>';print_r($educators); die;
-					error_log("Paginated Educators -ELSE------------: ".json_Encode($educators));
+					// echo '<pre>';print_r($searchString); die;
 					foreach ($educators as $educator) {
 						$rating= $this->CommonMdl->getAvgRating($educator->educator_id);
 						if(!empty($rating)){

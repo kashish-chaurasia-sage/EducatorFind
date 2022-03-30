@@ -735,7 +735,8 @@ font-size: 14px;
 												    <li><a href="<?=base_url('educator/educator');?>" class="act" > <img src="<?php echo base_url('assets/public/images/navigation/all.png');?>" style="width: 25px;" title="allEdu">  All Educator</a></li>
                                                     <li><a href="<?=base_url('blog');?>"><img src="<?php echo base_url('assets/public/images/header/blog1.png');?>" style="width: 25px;" title="blogs">  Blogs</a></li>
                                                     <li><a href="<?=base_url('community');?>"><img src="<?php echo base_url('assets/public/images/header/11.png');?>" style="width: 25px;" title="com">  Community</a></li>
-                                                    
+                                                    <li><a href="<?=base_url('nationalacademicscholarship');?>"><img src="<?php echo base_url('assets/public/images/navigation/academic.png');?>" style="width: 25px;" title="com">  Scholarship</a></li>
+
                                                 </ul>
                                                 
                                                 
@@ -965,6 +966,8 @@ font-size: 14px;
                                                     <li><a href="<?=base_url('educator/training');?>"><img src="<?=base_url('assets/public/images/navigation/professionals.png');?>">Professional training</a></li>
                                                     <li><a href="<?=base_url('blog');?>"><img src="<?=base_url('assets/public/images/header/blog1.png');?>">Blogs</a></li>
                                                     <li><a href="<?=base_url('community');?>"><img src="<?=base_url('assets/public/images/header/11.png');?>">Community</a></li>
+                                                    <li><a href="<?=base_url('nationalacademicscholarship');?>"><img src="<?=base_url('assets/public/images/navigation/academic.png');?>">Scholarship</a></li>
+
                                                
                                                    <li><a href="<?php echo base_url('educator/study-abroad');?>">Study abroad</a></li>
 													<li><a href="<?php echo base_url('educator/math');?>">Math</a></li>
@@ -1114,11 +1117,11 @@ font-size: 14px;
                                       <div class="flip-card-inner">
                                         <div class="flip-card-front">
                                           <img src="<?=base_url('assets/public/images/landing/4.png');?>" alt=""class="animation-jump heading">
-                                          <h4>50,000 Students</h4>
+                                          <h4>50,000 Learners</h4>
                                           <a href="">Explore Now</a>
                                         </div>
                                         <div class="flip-card-back">
-                                          <p>50,000 Students have trusted us to get found </p>
+                                          <p>50,000 Learners have trusted us to get found </p>
                                         </div>
                                       </div>
                                     </div>
@@ -1199,7 +1202,8 @@ font-size: 14px;
 												    <li><a href="<?=base_url('educator/educator');?>" class="act" > <img src="<?php echo base_url('assets/public/images/navigation/all.png');?>" style="width: 25px;" title="allEdu">  All Educator</a></li>
                                                     <li><a href="<?=base_url('blog');?>"><img src="<?php echo base_url('assets/public/images/header/blog1.png');?>" style="width: 25px;" title="blogs">  Blogs</a></li>
                                                     <li><a href="<?=base_url('community');?>"><img src="<?php echo base_url('assets/public/images/header/11.png');?>" style="width: 25px;" title="com">  Community</a></li>
-                                                    
+                                                    <li><a href="<?=base_url('nationalacademicscholarship');?>"><img src="<?php echo base_url('assets/public/images/navigation/academic.png');?>" style="width: 25px;" title="com">  Scholarship</a></li>
+
                                                 </ul>
                                                 
                                                 
@@ -1319,6 +1323,8 @@ font-size: 14px;
                                                     <li><a href="<?=base_url('educator/professional');?>"><img height="50" width="50" src="<?=base_url('assets/public/images/navigation/professionals.png');?>">Professional</a></li>
                                                     <li><a href="<?=base_url('blog');?>"><img src="<?=base_url('assets/public/images/header/blog1.png');?>">Blogs</a></li>
                                                     <li><a href="<?=base_url('community');?>"><img src="<?=base_url('assets/public/images/header/11.png');?>">Community</a></li>
+                                                    <li><a href="<?=base_url('nationalacademicscholarship');?>"><img src="<?=base_url('assets/public/images/navigation/academic.png');?>">Scholarship</a></li>
+
                                                   </ul>
                                         </div>
                                     </div>
@@ -1444,11 +1450,11 @@ font-size: 14px;
                                       <div class="flip-card-inner">
                                         <div class="flip-card-front">
                                           <img src="<?=base_url('assets/public/images/landing/4.png');?>" alt=""class="animation-jump heading">
-                                          <h4>50,000 Students</h4>
+                                          <h4>50,000 Learners</h4>
                                           <a href="">Explore Now</a>
                                         </div>
                                         <div class="flip-card-back">
-                                          <p>50,000 Students have trusted us to get found </p>
+                                          <p>50,000 Learners have trusted us to get found </p>
                                         </div>
                                       </div>
                                     </div>

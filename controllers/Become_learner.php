@@ -77,11 +77,7 @@ class Become_learner extends CI_Controller {
             $this->session->set_userdata('lrn_city', $this->input->post('lrn_city'));
             $this->session->set_userdata('lrn_state', $this->input->post('lrn_state'));
             $this->session->set_userdata('lrn_country', $this->input->post('lrn_country'));
-            error_log("STATE : --".json_encode($this->input->post('lrn_state')) );
-            error_log("CITY : --".json_encode($this->input->post('lrn_city')) );
-            error_log("DISTRICT : --".json_encode($this->input->post('lrn_district')) );
-            error_log("PINCODE : --".json_encode($this->input->post('lrn_pincode')) );
-
+            
             $locationInfo =  $this->CommonMdl->getResult('custom_location', '*', ['pincode' => $this->input->post('lrn_pincode')]);
             // error_log("LocationInfo : --".json_encode($locationInfo) );
             $location_id = $locationInfo[0]->location_id;
@@ -152,7 +148,7 @@ class Become_learner extends CI_Controller {
                 $sub_category_id = $sub_category_id .",". implode(",", $this->session->userdata('subjects'));
 
             }
-            error_log("SubcategoryIDs ------> ".json_encode($sub_category_id));
+            // error_log("SubcategoryIDs ------> ".json_encode($sub_category_id));
             $LongJsonInfo = array(
                 'user_id' => $this->session->userdata('userId'),
                 'gender' => $this->input->post('lrn_gender'),
@@ -184,7 +180,7 @@ class Become_learner extends CI_Controller {
                 $insertLearner = $this->CommonMdl->insertRow($LongJsonInfo, 'custom_learner');
                 $LearnerInfo = $this->CommonMdl->getResult('custom_learner', 'learner_id', ['user_id' => $this->session->userdata('userId')]);
 
-                error_log("LearnerInfo".json_encode($LearnerInfo[0]->learner_id));
+                // error_log("LearnerInfo".json_encode($LearnerInfo[0]->learner_id));
                 $LongLearnerJsonInfo = array(
                     'learner_id' => $LearnerInfo[0]->learner_id,
                     'sub_category_id' => $sub_category_id,
@@ -196,7 +192,7 @@ class Become_learner extends CI_Controller {
                 // $this->email->to($to_email);
                 $receipents = array(array("email"=>$to_email,"name"=>$this->input->post('name')));
                 $params["name"] = $userInfo[0]->name;
-                error_log("CATEGORY : >>>>>>>>>>".json_encode($this->session->userdata('category')));
+                // error_log("CATEGORY : >>>>>>>>>>".json_encode($this->session->userdata('category')));
                 $category = $this->session->userdata('category');
                 $categoryString = " ";
                 if (!empty($subject)){
