@@ -42,7 +42,7 @@ class Forgot extends CI_Controller {
                 ) 
             ); 
             $checkLogin = $this->user->getRows($con); 
-            echo '<pre>'; print_r($checkLogin); die;
+            
             if($checkLogin){ 
                     
                 $reset_link=md5(rand());
