@@ -284,7 +284,7 @@ alter table users add user_type enum('educator', 'learner')  DEFAULT 'learner' n
 --  ('Class',1),('Subjects',1),('Boards',1),('Exams',1),('Career',2),('Professional Courses',3),('Art',3);
 
 --------------------------------------------version-2.0------------------------------------------------------------------
--- 1
+
 CREATE TABLE custom_category (
   category_id int(11) not null AUTO_INCREMENT,
   category_name varchar(1024) not null,
@@ -296,7 +296,6 @@ CREATE TABLE custom_category (
   
 );
 
--- 2
 CREATE TABLE custom_sub_category (
   sub_category_id int(11) not null AUTO_INCREMENT,
   sub_category_name varchar(1024) not null,
@@ -309,7 +308,7 @@ CREATE TABLE custom_sub_category (
   
 );
 
--- 3
+
 CREATE TABLE custom_location (
   location_id int(11) not null AUTO_INCREMENT,
   pincode int(11) not null,
@@ -324,7 +323,7 @@ CREATE TABLE custom_location (
   
 );
 
--- 4
+
 CREATE TABLE custom_language (
   language_id int(11) not null AUTO_INCREMENT,
   language_name varchar(1024) not null,
@@ -335,7 +334,7 @@ CREATE TABLE custom_language (
   
 );
 
--- 5
+
 CREATE TABLE custom_educator (
   educator_id int(11) not null AUTO_INCREMENT,
   user_id int(11) not null,
@@ -362,7 +361,6 @@ CREATE TABLE custom_educator (
   
 );
 
--- 6
 CREATE TABLE custom_educator_sub_category (
   edu_sub_id int(11) not null AUTO_INCREMENT,
   educator_id int(11) not null,
@@ -375,7 +373,6 @@ CREATE TABLE custom_educator_sub_category (
   
 );
 
--- 7
 CREATE TABLE custom_educator_offer (
   edu_offer_id int(11) not null AUTO_INCREMENT,
   educator_id int(11) ,
@@ -390,7 +387,7 @@ CREATE TABLE custom_educator_offer (
 
 );
 
--- 8
+
 CREATE TABLE custom_learner (
   learner_id int(11) not null AUTO_INCREMENT,
   user_id int(20) NOT NULL,
@@ -405,7 +402,7 @@ CREATE TABLE custom_learner (
   
 );
 
--- 9
+
 CREATE TABLE custom_learner_sub_category (
   learner_sub_id int(11) not null AUTO_INCREMENT,
   learner_id int(20) NOT NULL,
@@ -416,7 +413,7 @@ CREATE TABLE custom_learner_sub_category (
   
 );
 
--- 10
+
 CREATE TABLE custom_liked (
   liked_id int(11) not null AUTO_INCREMENT,
   educator_id int(20) NOT NULL,
@@ -426,7 +423,7 @@ CREATE TABLE custom_liked (
   
 );
 
--- 11
+
 CREATE TABLE custom_review (
   review_id int(11) not null AUTO_INCREMENT,
   educator_id int(20) NOT NULL,
@@ -439,7 +436,7 @@ CREATE TABLE custom_review (
   
 );
 
---12
+
 CREATE TABLE custom_class (
   class_id int(11) not null AUTO_INCREMENT,
   class_name varchar(1024) not null,
@@ -448,7 +445,7 @@ CREATE TABLE custom_class (
   
 );
 
---13
+
 CREATE TABLE custom_board (
   board_id int(11) not null AUTO_INCREMENT,
   board_name varchar(1024) not null,
@@ -471,7 +468,7 @@ INSERT INTO custom_category(category_name) VALUES
 ,('Language Learning')
 ,('Professional Course');
 
--- custom_class table insertion
+
 INSERT INTO custom_class(class_name) VALUES ('Pre Primary');
 INSERT INTO custom_class(class_name) VALUES ('V - X');
 INSERT INTO custom_class(class_name) VALUES ('XI - XII');
@@ -479,7 +476,7 @@ INSERT INTO custom_class(class_name) VALUES ('Undergraduate');
 INSERT INTO custom_class(class_name) VALUES ('Postgraduate');
 INSERT INTO custom_class(class_name) VALUES ('Other');
 
---custom_board table insertion
+
 INSERT INTO custom_board(board_name) VALUES ('andhra pradesh');
 INSERT INTO custom_board(board_name) VALUES ('CBSE');
 INSERT INTO custom_board(board_name) VALUES ('goa');
@@ -513,7 +510,7 @@ INSERT INTO custom_board(board_name) VALUES ('tripura');
 INSERT INTO custom_board(board_name) VALUES ('uttar pradesh');
 INSERT INTO custom_board(board_name) VALUES ('other');
 
---custom_language insertion
+
 INSERT INTO custom_language(language_name) VALUES ('Bengali');
 INSERT INTO custom_language(language_name) VALUES ('English');
 INSERT INTO custom_language(language_name) VALUES ('French');
@@ -533,7 +530,7 @@ INSERT INTO custom_language(language_name) VALUES ('Tamil');
 INSERT INTO custom_language(language_name) VALUES ('Telugu');
 
 
---custom_sub_category insertion
+
 INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Biology',1);
 INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Chemistry',1);
 INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Commerce',1);
@@ -774,6 +771,6 @@ CREATE TABLE custom_user_notification (
   user_id int(11) not null,
   notification_message varchar(1024) not null,
   date_added datetime not null default now(),
-  PRIMARY KEY (notification_id)
+  PRIMARY KEY (user_notification_id)
   
 );

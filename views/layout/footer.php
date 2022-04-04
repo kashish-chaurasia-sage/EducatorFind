@@ -279,7 +279,7 @@
   
                     function validateSearch() {
 
-                        var url = 'http://localhost/starsboard.in';
+                        var url = 'https://starsboard.in';
                         var tutorsearchBox = $('#searchBox').val().toLowerCase();
                         if (tutorsearchBox == '') {
                            swal("Empty!", "Please enter somethig!", "error");
