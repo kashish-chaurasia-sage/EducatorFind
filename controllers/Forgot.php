@@ -42,9 +42,9 @@ class Forgot extends CI_Controller {
                 ) 
             ); 
             $checkLogin = $this->user->getRows($con); 
-           echo $checkLogin;
+        //    echo $checkLogin));
             if($checkLogin){ 
-                    
+                    error_log("KASHISH");
                 $reset_link=md5(rand());
                 $data = array(
                     'reset_link' => $reset_link,
@@ -59,6 +59,8 @@ class Forgot extends CI_Controller {
                 $receipents = array(array("email"=>$to_email));
                 $params["reset_link"] =$reset_link;
                 $mailResponse = $this->sendMail($receipents, 5, $params);
+               
+                echo '1';
                 // $notificationData = array(
                 //     'user_id' =>  $this->session->userdata('userId'),
                 //     'notification_message' => "Email sent",
@@ -66,8 +68,7 @@ class Forgot extends CI_Controller {
                 // );
 
                 // $insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
-                echo '1';
-    
+
                 // if($this->sendMail($receipents, 5, $params)){
                 //     echo '1';
                 //     // error_log("ECHO 1 !");
@@ -78,7 +79,7 @@ class Forgot extends CI_Controller {
                 // }
             }else{      
                         error_log("Email id does not exits.");
-                        echo 'test'; 
+                        echo 'Email id does not exits.'; 
             } 
         }else{ 
             error_log("Please enter valid email id");
