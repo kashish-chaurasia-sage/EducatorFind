@@ -42,7 +42,7 @@ class Forgot extends CI_Controller {
                 ) 
             ); 
             $checkLogin = $this->user->getRows($con); 
-            error_log("Checked in Error log --->>>>>".json_encode( $checkLogin));
+           echo $checkLogin;
             if($checkLogin){ 
                     
                 $reset_link=md5(rand());
@@ -78,7 +78,7 @@ class Forgot extends CI_Controller {
                 // }
             }else{      
                         error_log("Email id does not exits.");
-                        echo 'Email id does not exits.'; 
+                        echo 'test'; 
             } 
         }else{ 
             error_log("Please enter valid email id");
