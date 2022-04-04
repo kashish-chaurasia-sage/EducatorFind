@@ -22,7 +22,7 @@ class Detail extends CI_Controller {
      		$data['title']=$this->uri->segment(2).' | Educator | Starsboard';
 			$educator_id=$this->uri->segment(3);
 
-			$educator = $this->CommonMdl->getResult('tbl_educator', '*', ['Eid' => $educator_id]);
+			// $educator = $this->CommonMdl->getResult('tbl_educator', '*', ['Eid' => $educator_id]);
 
 			// $longJsonInfo=$educator[0]->LongJsonInfo;
 			// $personInfo = json_decode($longJsonInfo,true);
@@ -32,14 +32,15 @@ class Detail extends CI_Controller {
 						// echo '<pre>';   print_r($isFeatured);die;
 
 			$review=$this->CommonMdl->getReviewFront($educator_id);
+			// echo '<pre>';   print_r($review);die;
 			$total_review=count($review);
 			$average_review = "4";
 			$avg = 3.5;
 			if($total_review != '0'){
 				$average[]='';
 				foreach($review as $key =>$val){
-					if(!empty($val->price_rating) && is_numeric($val->price_rating)){
-					$average[] = $val->price_rating;
+					if(!empty($val->rating) && is_numeric($val->rating)){
+					$average[] = $val->rating;
 					}
 				}
 				$average_review = array_sum($average);
@@ -353,7 +354,22 @@ class Detail extends CI_Controller {
 		$params["message"] =$this->input->post('enquiry_message');
 
 		$mailResponse = $this->sendMail($receipents, 7, $params);
+		$notificationData = array(
+			'user_id' =>  $educator_details[0]->user_id,
+			'notification_message' => "Email sent",
+		   
+		);
 
+		$insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
+		$notificationData = array(
+			'user_id' =>  $educator_details[0]->user_id,
+			'notification_message' => "You got a new Lead!",
+		   
+		);
+
+		$insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
+		
+		
 			if($response){
 				echo $message = '<div class="alert alert-success" role="alert">Your Enquiry Is Submitted Successfully!!!</div>';
 			
@@ -364,30 +380,36 @@ class Detail extends CI_Controller {
 			echo $message = '<div class="alert alert-warning" role="alert">You cannot make enquiry on your own listing!!</div>';
 		
 			}
+			
 			return $message;
 				exit;
 	}
 	
 	public function review(){
 		
-		
-		if(($this->session->userdata('userId')) != ($this->input->post('listing_user_id'))){
+		$educatorInfo= $this->CommonMdl->getResult('custom_educator', '*', ['educator_id' => $this->input->post('listing_educator_id')]);
+
+		if(($this->session->userdata('userId')) !=  $educatorInfo[0]->user_id){
 			
-		$data = array(
-				'listing_educator_id' => trim($this->input->post('listing_educator_id')),
-				'user_id' => trim($this->input->post('listing_user_id')),
-				'price_rating' => $this->input->post('price_rating'),
-				'review_name' => $this->input->post('review_name'),
-				'review_mobile' => $this->input->post('review_mobile'),
-				'review_email' => $this->input->post('review_email'),
-				'review_city' => $this->input->post('review_city'),
-				'review_message' => $this->input->post('review_message'),
-				'review_by_id' => $this->session->userdata('userId')
+			$data = array(
+				'educator_id' => trim($this->input->post('listing_educator_id')),
+				'rating' => $this->input->post('price_rating'),
+				'message' => $this->input->post('review_message'),
+				'user_id' => $this->session->userdata('userId')
 			);
 			
 			$data = $this->security->xss_clean($data);
 			
-			$response =  $this->CommonMdl->insertRow($data,'review');
+			$response =  $this->CommonMdl->insertRow($data,'custom_review');
+
+			$notificationData = array(
+				'user_id' =>  $educatorInfo[0]->user_id,
+				'notification_message' => "Hi, You got a new Review !",
+			   
+			);
+	
+			$insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
+	
            
 			if($response){
 				echo $message = 'Your Review Is Submitted Successfully!!!';
@@ -395,7 +417,7 @@ class Detail extends CI_Controller {
 			}else{
 			echo 	$message = 'Oops!! Something Went Wrong Try Later!!!';
 			}
-			}else{
+		}else{
 			echo '1';
 			}
 		
@@ -474,6 +496,20 @@ Flat Iamage (Whatsapp) -7977476239';
 		$params["message"] =$this->input->post('enquiry_message');
 
 		$mailResponse = $this->sendMail($receipents, 7, $params);
+		$notificationData = array(
+			'user_id' =>  $this->session->userdata('userId'),
+			'notification_message' => "Email sent",
+		   
+		);
+
+		$insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
+		$notificationData = array(
+			'user_id' =>  $this->session->userdata('userId'),
+			'notification_message' => "You got a new Lead!",
+		   
+		);
+
+		$insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
 			if($response){
 				echo $message = 'Your Enquiry has been submiited successfuly!!!';
 			

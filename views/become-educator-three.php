@@ -1,5 +1,5 @@
  <?php $this->load->view('layout/header');?>
-
+ <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <section class=" login-reg">
         <div class="container">
             <div class="row">
@@ -37,7 +37,7 @@
                         <div class="login add-list-off">
 
                             <h4>Any Special offers for Learners</h4>
-                            <label class = "skip">Optional step</label>
+                            <!-- <label class = "skip">Optional step</label> -->
                             <!-- <span class="add-list-add-btn lis-add-off" title="add new offer">+</span>
                             <span class="add-list-rem-btn lis-add-rem" title="remove offer">-</span> -->
                             <form action="<?php echo base_url('become_educator/offer');?>" class="listing_form_3" id="listing_form_3"
@@ -90,7 +90,7 @@
                                                 <div class="form-group">
                                                     <input type="text" name="offer_link"
                                                            class="form-control"
-                                                           placeholder="Your Website or Social Media Page Link (Optional)" value="">
+                                                           placeholder="Demo Lecture - Youtube link" value="">
                                                 </div>
                                             </div>
                                         </div>

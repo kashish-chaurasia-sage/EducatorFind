@@ -150,7 +150,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <input type="text" class="textbox" name="edu_pincode" required="required" id="pincode" placeholder="Enter Pincode*" 
-                                        value="<?= ($this->session->userdata('lrn_location'))? $this->session->userdata('lrn_location'):'';?>"
+                                        value="<?= ($this->session->userdata('edu_pincode'))? $this->session->userdata('edu_pincode'):'';?>"
  
                                         autocomplete="new-password"  onkeyup="get_details()">
                                     </div>
@@ -158,7 +158,7 @@
 
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                    <input type="text" class="textbox" name="lrn_city" id="city" disabled placeholder="City">
+                                    <input type="text" class="textbox" name="edu_city" id="city" disabled placeholder="City">
                                     </div>
                                 </div>
                                 <div class="col-md-4">

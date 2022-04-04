@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <style>
  
 </style>
@@ -11,7 +11,7 @@
 <!-- END --><!-- START -->
 <section class=" abou-pg">
   </br></br>
-<div  class="hom-head" style=" background-image: url('assets/public/images/banner_scholarship.jpg');" ></div>
+<div  class="hom-head" style=" background-image: url('assets/public/images/banner_scholarship.png');" ></div>
    <!-- <div class="about-ban">
       <h1>About us</h1>
       <p >In this competitive world today, where the best opportunities given are based on your performance
@@ -58,8 +58,15 @@
             4. Students will be auto-considered for this scholarship when they complete sign up and update their profile on which this scholarship is applicable. No separate application is needed.</br>
             5. Invite your friends to participate in the scholarship.</br>
             </p>
-                <!-- AddToAny BEGIN -->
-                <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-title="Online applications are invited from the students for the STARSBOARD National Academic Scholarship (SNAS), 2022. 
+               
+
+            <h6><b>Additional Information:</b></h6>
+            <p>
+            This scholarship will be awarded to 1 Student only in 2022.</br>
+            Selection will be done randomly.</br>
+
+            <!-- AddToAny BEGIN -->
+            <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-title="Online applications are invited from the students for the STARSBOARD National Academic Scholarship (SNAS), 2022. 
 
 The STARSBOARD Education is proud to support the initiative by offering STARSBOARD National Academic Scholarship (SNAS) to support students to attain their educational goals and is open to all Academic students.
 
@@ -78,13 +85,6 @@ Know more on :-">
                 </div>
                 <script async src="https://static.addtoany.com/menu/page.js"></script>
             </p>
-           
-
-            <h6><b>Additional Information:</b></h6>
-            <p>
-            This scholarship will be awarded to 1 Student only in 2022.</br>
-            Selection will be done randomly.</br>
-
            
 
             

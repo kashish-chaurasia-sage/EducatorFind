@@ -2,6 +2,7 @@
 <!-- <div class="elfsight-app-72929cdc-cc51-4428-9331-a21f408f4a37"></div> -->
 <!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script> -->
 <!-- <div class="elfsight-app-639714e2-b5f4-422b-a39e-66b1adec129b"></div> -->
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
     <span class="btn-ser-need-ani">Help & Support</span>
 
     <div class="ani-quo-form">
@@ -80,10 +81,10 @@
                                         <h4 style="color: white !important;">The new Accelerating Educational Platform </h4>
                                         <p style="color: white !important;"> Starsboard is a top notch online learning platform that has begun and is rising with every step we take</p>
                                     </div>
-                                    <div class="col-md-3 bb-link">
+                                    <!-- <div class="col-md-3 bb-link">
                                         <a href="<?=base_url('become-educator');?>">Add as Educator</a>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
@@ -227,7 +228,7 @@
                 <!-- END -->
 
                 <!-- START -->
-                <div class="fqui-menu">
+                <!-- <div class="fqui-menu">
                     <ul>
                         <li><a href="<?php echo base_url();?>">Home</a></li>
                         <li><span class="mob-sear">Search</span></li>
@@ -238,7 +239,7 @@
                         <li><a href="">Community</a></li>
                         <li><span class="btn-ser-need-ani">Support</span></li>
                     </ul>
-                </div>
+                </div> -->
                 <!-- END -->
                 <!-- Optional JavaScript -->
                 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

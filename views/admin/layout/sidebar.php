@@ -13,7 +13,7 @@
                         </li>
 						<?php if($user_data[0]->educator == '1'){?>
 						 <li>
-                            <a href="<?php echo base_url('update_become_educator');?>"><img src="<?php echo base_url('assets/public/images/sidebar/dbl3.png');?>" alt=""/>Edit Educator Profile</a>
+                            <!-- <a href="<?php echo base_url('update_become_educator');?>"><img src="<?php echo base_url('assets/public/images/sidebar/dbl3.png');?>" alt=""/>Edit Educator Profile</a> -->
                         </li>
 						<?php }else {?>
                        <li>

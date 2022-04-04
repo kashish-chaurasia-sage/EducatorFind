@@ -320,7 +320,7 @@ class CommonMdl extends CI_Model
 	}
 	
 	public function getReviewAdmin(){
-		$this->db->select('review.*,users.name,tbl_educator.edu_name');
+		$this->db->select('review.*,users.name,tbl_educat.edu_name');
 		$this->db->from('review');
 		$this->db->join('tbl_educator', 'tbl_educator.Eid = review.listing_educator_id','left');
 		$this->db->join('users', 'users.id = review.review_by_id','left');
@@ -329,10 +329,10 @@ class CommonMdl extends CI_Model
 	}
 	
 	public function getReviewFront($educator_id){
-		$this->db->select('review.*,users.name,users.user_image');
-		$this->db->from('review');
-		$this->db->join('users', 'users.id = review.review_by_id','left');
-		$this->db->where('review.listing_educator_id',$educator_id);
+		$this->db->select('custom_review.*,users.name,users.user_image');
+		$this->db->from('custom_review');
+		$this->db->join('users', 'users.id = custom_review.user_id','left');
+		$this->db->where('custom_review.educator_id',$educator_id);
 		$query=$this->db->get();
 		return $query->result();
 	}
@@ -570,5 +570,16 @@ public function selectSum($tbl,$clms='*',$whr=''){
 		return $query->result();
 		
 	}
+
+	function getAllUserNotification($user_id)
+{
+    // global $conn;
+
+    $sql = "SELECT * FROM custom_user_notification where user_id=".$user_id." ORDER BY user_notification_id DESC";
+    // $rs = mysqli_query($conn, $sql);
+	$query = $this->db->query($sql);
+    return  $query->result_array();
+
+}
 	
 }

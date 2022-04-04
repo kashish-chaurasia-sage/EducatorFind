@@ -63,12 +63,12 @@
 
 
             </div>
-            <div class="about-us">
+            <!-- <div class="about-us">
                 <p> In this competitive world today, where the best opportunities given are based on your performance
                     it is necessary to learn from the best to reach to the top of the mountain. In the years to come,
                     the premier education that we receive from our Educators lays the foundation to a solid and stable
                     professional career and also opens our horizons to new learning.</p>
-            </div>
+            </div> -->
 
         </div>
     </div>

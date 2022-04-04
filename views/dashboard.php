@@ -109,8 +109,8 @@
                 </div>
                 <!-- END -->
 
-                <div class="ud-cen-s2">
-                    <h2>Listing Details</h2>
+                <!-- <div class="ud-cen-s2">
+                    <h2>Categories Details</h2>
 					<?php if(empty($educator)){?>
                     <a href="<?php echo base_url('/become_educator');?>" class="db-tit-btn">Add New Listing</a>
 					<?php }else{?>
@@ -167,7 +167,7 @@
                     </table>
 					<?php }?>
                 </div>
-                
+                 -->
                 <div class="ud-cen-s3 ud-cen-s4">
                     <h2>Blog posts</h2>
                     <a href="<?php echo base_url('my-blog/create_blog');?>" class="db-tit-btn">Add new post</a>

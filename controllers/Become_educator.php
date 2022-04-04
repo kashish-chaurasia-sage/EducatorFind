@@ -129,19 +129,19 @@ class Become_educator extends CI_Controller {
 
         }elseif ($this->input->post('edu_per_submit')) {
 
-            $this->session->set_userdata('edu_name', $this->input->post('edu_name'));
-            $this->session->set_userdata('edu_mobile', $this->input->post('edu_mobile'));
-            $this->session->set_userdata('edu_email', $this->input->post('edu_email'));
-            $this->session->set_userdata('edu_whatsapp', $this->input->post('edu_whatsapp'));
-            $this->session->set_userdata('edu_pincode', $this->input->post('edu_pincode'));
-            $this->session->set_userdata('servicecity', $this->input->post('servicecity'));
-            $this->session->set_userdata('description', $this->input->post('description'));
-            $this->session->set_userdata('edu_experience', $this->input->post('edu_experience'));
-            $this->session->set_userdata('edu_mode', $this->input->post('edu_mode'));
-            $this->session->set_userdata('edu_slot', $this->input->post('edu_slot'));
-            $this->session->set_userdata('edu_image', $filename);
-            $this->session->set_userdata('cover_image', $filename_banner);
-            $this->session->set_userdata('edu_dob', $this->input->post('edu_dob'));
+            // $this->session->set_userdata('edu_name', $this->input->post('edu_name'));
+            // $this->session->set_userdata('edu_mobile', $this->input->post('edu_mobile'));
+            // $this->session->set_userdata('edu_email', $this->input->post('edu_email'));
+            // $this->session->set_userdata('edu_whatsapp', $this->input->post('edu_whatsapp'));
+            // $this->session->set_userdata('edu_pincode', $this->input->post('edu_pincode'));
+            // $this->session->set_userdata('servicecity', $this->input->post('servicecity'));
+            // $this->session->set_userdata('description', $this->input->post('description'));
+            // $this->session->set_userdata('edu_experience', $this->input->post('edu_experience'));
+            // $this->session->set_userdata('edu_mode', $this->input->post('edu_mode'));
+            // $this->session->set_userdata('edu_slot', $this->input->post('edu_slot'));
+            // $this->session->set_userdata('edu_image', $filename);
+            // $this->session->set_userdata('cover_image', $filename_banner);
+            // $this->session->set_userdata('edu_dob', $this->input->post('edu_dob'));
 
             redirect('become_educator');
         } else {
@@ -609,6 +609,14 @@ class Become_educator extends CI_Controller {
                     $insertLang = $this->CommonMdl->insertRow($eduLanguageSubCategoryData, 'custom_educator_sub_category');
                 }
 
+                $notificationData = array(
+                    'user_id' =>  $this->session->userdata('userId'),
+                    'notification_message' => "Congrats, You are now a Starsboard educator !",
+                   
+                );
+
+                $insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
+
                 // Email to user here 
                 // $listingLink = '';
                 // $listingLink = base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($this->session->userdata('edu_name')).'/'.$lastEid));
@@ -655,6 +663,14 @@ class Become_educator extends CI_Controller {
                 $params["phone"] =$this->session->userdata('edu_mobile');
                 
                 $mailResponse = $this->sendMail($receipents, 4, $params);
+                $notificationData = array(
+                    'user_id' =>  $this->session->userdata('userId'),
+                    'notification_message' => "Email sent",
+                   
+                );
+
+                $insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
+
                 echo 'You are our now our verified educator';
                
                 // if ($this->email->send()) {
@@ -664,39 +680,39 @@ class Become_educator extends CI_Controller {
             redirect('become_educator/finish');
         } elseif ($this->input->post('edu_per_submit')) {
            
-            $this->session->set_userdata('academic', $this->input->post('academic'));
-            $this->session->set_userdata('class', $this->input->post('class'));
-            $this->session->set_userdata('subject', $this->input->post('subject'));
-            $this->session->set_userdata('board', $this->input->post('board'));            
-            $this->session->set_userdata('lang_academic', $this->input->post('lang_academic'));
-            $this->session->set_userdata('academic_cost', $this->input->post('academic_cost'));
+            // $this->session->set_userdata('academic', $this->input->post('academic'));
+            // $this->session->set_userdata('class', $this->input->post('class'));
+            // $this->session->set_userdata('subject', $this->input->post('subject'));
+            // $this->session->set_userdata('board', $this->input->post('board'));            
+            // $this->session->set_userdata('lang_academic', $this->input->post('lang_academic'));
+            // $this->session->set_userdata('academic_cost', $this->input->post('academic_cost'));
 
 
-            $this->session->set_userdata('exams', $this->input->post('exams'));
-            $this->session->set_userdata('exam', $this->input->post('exam'));
-            $this->session->set_userdata('lang_exam', $this->input->post('lang_exam'));
-            $this->session->set_userdata('exam_cost', $this->input->post('exam_cost'));
+            // $this->session->set_userdata('exams', $this->input->post('exams'));
+            // $this->session->set_userdata('exam', $this->input->post('exam'));
+            // $this->session->set_userdata('lang_exam', $this->input->post('lang_exam'));
+            // $this->session->set_userdata('exam_cost', $this->input->post('exam_cost'));
 
-            $this->session->set_userdata('counselling', $this->input->post('counselling'));
-            $this->session->set_userdata('career_path', $this->input->post('career_path'));
-            $this->session->set_userdata('lang_career', $this->input->post('lang_career'));
-            $this->session->set_userdata('career_cost', $this->input->post('career_cost'));
+            // $this->session->set_userdata('counselling', $this->input->post('counselling'));
+            // $this->session->set_userdata('career_path', $this->input->post('career_path'));
+            // $this->session->set_userdata('lang_career', $this->input->post('lang_career'));
+            // $this->session->set_userdata('career_cost', $this->input->post('career_cost'));
 
-            $this->session->set_userdata('arts', $this->input->post('arts'));
-            $this->session->set_userdata('art', $this->input->post('art'));
-            $this->session->set_userdata('lang_art', $this->input->post('lang_art'));
-            $this->session->set_userdata('art_cost', $this->input->post('art_cost'));
+            // $this->session->set_userdata('arts', $this->input->post('arts'));
+            // $this->session->set_userdata('art', $this->input->post('art'));
+            // $this->session->set_userdata('lang_art', $this->input->post('lang_art'));
+            // $this->session->set_userdata('art_cost', $this->input->post('art_cost'));
 
-            $this->session->set_userdata('languages', $this->input->post('languages'));
-            $this->session->set_userdata('language', $this->input->post('language'));
-            $this->session->set_userdata('lang_language', $this->input->post('lang_language'));
-            $this->session->set_userdata('language_cost', $this->input->post('language_cost'));
+            // $this->session->set_userdata('languages', $this->input->post('languages'));
+            // $this->session->set_userdata('language', $this->input->post('language'));
+            // $this->session->set_userdata('lang_language', $this->input->post('lang_language'));
+            // $this->session->set_userdata('language_cost', $this->input->post('language_cost'));
 
-            $this->session->set_userdata('training', $this->input->post('training'));
-            $this->session->set_userdata('tech_course', $this->input->post('tech_course'));
-            $this->session->set_userdata('art', $this->input->post('art'));
-            $this->session->set_userdata('lang_prof', $this->input->post('lang_prof'));
-            $this->session->set_userdata('prof_cost', $this->input->post('prof_cost'));
+            // $this->session->set_userdata('training', $this->input->post('training'));
+            // $this->session->set_userdata('tech_course', $this->input->post('tech_course'));
+            // $this->session->set_userdata('art', $this->input->post('art'));
+            // $this->session->set_userdata('lang_prof', $this->input->post('lang_prof'));
+            // $this->session->set_userdata('prof_cost', $this->input->post('prof_cost'));
             redirect('become_educator/service');
             
         }else {

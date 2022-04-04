@@ -769,3 +769,11 @@ INSERT INTO custom_sub_category(sub_category_name,category_id) VALUES ('Website 
 
 alter table custom_educator_sub_category add category_id int(11);
 
+CREATE TABLE custom_user_notification (
+  user_notification_id int(11) not null AUTO_INCREMENT,
+  user_id int(11) not null,
+  notification_message varchar(1024) not null,
+  date_added datetime not null default now(),
+  PRIMARY KEY (notification_id)
+  
+);

@@ -77,7 +77,7 @@
                     <li>
                         <div class="cor-2">
                             <h4>Leads & Enquiry</h4>
-                            <h2>Get Quote</h2>
+                            <h2>Send Enquiry</h2>
                             <span>174</span>
                             <p>This count for last month get quote and enquiry you got it.</p>
                             <a href="admin-all-enquiry.php" class="fclick"></a>

@@ -13,6 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="theme-color" content="#76cef1"/>
     <meta property="og:image" content="images/home/7794124691logo-b.png"/>
+    
     <meta name="description"
           content="">
     <meta name="keyword"
@@ -31,11 +32,13 @@
     <link rel="stylesheet" href="<?=base_url('assets/public/css/fonts.css');?>">
     <link rel="stylesheet" href="<?=base_url('assets/public/css/app.min.css');?>">
     <link rel="stylesheet" href="<?=base_url('assets/public/css/animate.css');?>">
+    
 
     <link rel="stylesheet" href="<?=base_url('assets/public/css/owl.theme.default.min.css');?>">
     <link rel="stylesheet" href="<?=base_url('assets/public/css/owl.carousel.min.css');?>">
-    <link rel="shortcut icon" type="image/x-icon" href="https://starsboard.in/assets/public/images/favicon.jpg" />
-   
+    <link rel="shortcut icon" type="image/x-icon" href="http://localhost/starsboard.in/assets/public/images/favicon.jpg" />
+  
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -72,6 +75,7 @@
 </script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7381950378620686"
      crossorigin="anonymous"></script>
+
 </head>
 <style type="">
     .flip-card{
@@ -264,6 +268,10 @@ ul.bl.right-btn {
 @media screen and (max-width: 992px) {
 .bl.right-btn {
     display: none !important;
+}}
+@media screen and (max-width: 57px){
+.all-list-sh .eve-box div:nth-child(2) {
+    padding: 30px;
 }}
 @-webkit-keyframes circle {
     0% {
@@ -685,7 +693,7 @@ font-size: 14px;
     font-weight: 400;
     font-size: 13.5px;
     line-height: 30px;
-    padding: 5px 15px;
+    padding: 3px 3px;
     border-radius: 8px;
     /* background-color: #21218fc7; */
 }
@@ -706,7 +714,7 @@ font-size: 14px;
         <section>
             <div class="str">
               <?php if (!$this->uri->segment(1)): ?>
-            <div  class="hom-head" style=" background-image: url('assets/public/images/bannerO.jpg');" >
+            <div  class="hom-head" style=" background-image: url('assets/public/images/bannerO.jpeg');" >
                 <?php else: ?>
                     <div>
                 <?php endif; ?>
@@ -917,7 +925,7 @@ font-size: 14px;
                                             </ul>
                                         </div>
                                     </div>
-                                    <!--MOBILE MENU-->
+                                    <!-- MOBILE MENU-->
                                     <div class="mob-menu">
                                         <div class="mob-me-ic"><i class="material-icons">menu</i></div>
                                         <div class="mob-me-all">
@@ -934,9 +942,9 @@ font-size: 14px;
                                                     <a href="<?php echo base_url('dashboard');?>" class="db-lact"><img src="<?php echo base_url('assets/public/images/navigation/dbl1.png');?>" alt=""/> My Dashboard</a></li>
                                                 <li>
                                                 
-                                                <li>
+                                                <!-- <li>
                                                     <a href="<?php echo base_url('become_educator');?>" class="tz-lma"><img src="<?php echo base_url('assets/public/images/navigation/dbl3.png');?>" alt=""/> Become Educator</a>
-                                                </li>
+                                                </li> -->
                                                 <li>
                                                     <a href="<?php echo base_url('Lead');?>"><img src="<?php echo base_url('assets/public/images/navigation/dbl14.png');?>" alt=""/>Lead enquiry</a>
                                                 </li>
@@ -995,7 +1003,7 @@ font-size: 14px;
                                             </div>
                                         </div>
                                     </div>
-                                    <!--END MOBILE MENU-->
+                                    <!--END MOBILE MENU -->
                                 </div>
                             </div>
                         </div>
@@ -1177,7 +1185,7 @@ font-size: 14px;
     <section>
         <div class="str">
             <?php if (!$this->uri->segment(1)): ?>
-            <div  class="hom-head" style=" background-image: url(assets/public/images/bannerO.jpg);" >
+            <div  class="hom-head" style=" background-image: url(assets/public/images/bannerO.jpeg);" >
                 <?php else: ?>
                     <div>
                 <?php endif; ?>
@@ -1216,10 +1224,10 @@ font-size: 14px;
                                                 <ul >
                                                 
                                                     <li><a href="<?=base_url('educator/academic');?>"> <img src="<?php echo base_url('assets/public/images/navigation/academic.png');?>" style="width: 25px;" title="academics">Academic</a></li>
-                                                    <li><a href="<?=base_url('educator/academic');?>"><img src="<?php echo base_url('assets/public/images/navigation/language.png');?>" style="width: 25px;" title="blogs"> Language Learning</a></li>
+                                                    <li><a href="<?=base_url('educator/language');?>"><img src="<?php echo base_url('assets/public/images/navigation/language.png');?>" style="width: 25px;" title="blogs"> Language Learning</a></li>
                                                     <li><a href="<?=base_url('educator/training');?>"><img src="<?php echo base_url('assets/public/images/navigation/professionals.png');?>" style="width: 25px;" title="professional"> Professional Traning</a></li>
                                                     <li><a href="<?=base_url('educator/counselling');?>"><img src="<?php echo base_url('assets/public/images/navigation/career.png');?>" style="width: 25px;" title="career"> Career Counselling</a></li>
-                                                    <li><a href="<?=base_url('educator/academic');?>"><img src="<?php echo base_url('assets/public/images/navigation/art.jpg');?>" style="width: 25px;" title="arts"> Arts</a></li>
+                                                    <li><a href="<?=base_url('educator/art');?>"><img src="<?php echo base_url('assets/public/images/navigation/art.jpg');?>" style="width: 25px;" title="arts"> Arts</a></li>
                                                     <li><a href="<?=base_url('educator/exam');?>"> <img src="<?php echo base_url('assets/public/images/navigation/exam.png');?>" style="width: 25px;" title="exams">Exam</a></li>
                                                     
                                                   </ul>
@@ -1308,7 +1316,7 @@ font-size: 14px;
                                         <div class="mv-bus">
                                             <h4></h4>
                                             <ul>
-                                                <li><a href="<?= base_url('become-educator');?>">Beccome Educator</a></li>
+                                                <!-- <li><a href="<?= base_url('become-educator');?>">Beccome Educator</a></li> -->
                                                 <li><a href="<?php echo base_url('login');?>">Sign in</a></li>
                                                 <li><a href="<?php echo base_url('registration');?>">Create an account</a></li>
                                             </ul>
@@ -1323,7 +1331,7 @@ font-size: 14px;
                                                     <li><a href="<?=base_url('educator/professional');?>"><img height="50" width="50" src="<?=base_url('assets/public/images/navigation/professionals.png');?>">Professional</a></li>
                                                     <li><a href="<?=base_url('blog');?>"><img src="<?=base_url('assets/public/images/header/blog1.png');?>">Blogs</a></li>
                                                     <li><a href="<?=base_url('community');?>"><img src="<?=base_url('assets/public/images/header/11.png');?>">Community</a></li>
-                                                    <li><a href="<?=base_url('nationalacademicscholarship');?>"><img src="<?=base_url('assets/public/images/navigation/academic.png');?>">Scholarship</a></li>
+                                                    <li><a href="<?=base_url('nationalacademicscholarship');?>"><img height="50" width="50" src="<?=base_url('assets/public/images/navigation/academic.png');?>">Scholarship</a></li>
 
                                                   </ul>
                                         </div>

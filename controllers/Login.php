@@ -52,7 +52,11 @@ class Login extends CI_Controller {
 					$this->session->set_userdata('username', $checkLogin['name']);
 					$this->session->set_userdata('useremail', $checkLogin['email']);
 					$this->session->set_userdata('usercreated', $checkLogin['created']);
-                    redirect('dashboard'); 
+                    if($checkLogin['user_type'] == "educator" && $checkLogin['educator'] == 0){
+                        redirect('become_educator'); 
+                    }else{
+                        redirect('dashboard'); 
+                    }
                 }else{ 
                     $data['error_msg'] = 'Wrong email or password, please try again.'; 
                 } 

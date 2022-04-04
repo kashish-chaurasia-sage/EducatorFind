@@ -6,6 +6,8 @@
 <link rel="stylesheet/scss" type="text/css"  href="/assets/public/scss/style.scss" />
 <script src="less.js" type="text/javascript"></script>
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <!-- <link rel="stylesheet" type="text/scss" href="/assets/public/scss/style.scss"> -->
 
 
@@ -601,9 +603,10 @@
                                                     
 
                                                 ?>
+                                                
 
                                                 </div>
-                                            
+                                               
                                             <!-- <span class="pho">
                                                 <?php    
                                                     $number=$list->edu_number;
@@ -621,7 +624,7 @@
                                             </span> -->
 
                                             <div class="links">
-                                                <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($list->edu_name)).'/'.$list->educator_id);?>">view more</a>
+                                                <a href="<?= base_url('detail/'.preg_replace('/[[:space:]]+/', '-', strtolower($list->edu_name)).'/'.$list->educator_id);?>">View More</a>
                                                 <a href="Tel: <?= $list->edu_number;?>">Call Now</a>
                                                 <a href="https://wa.me/<?= $list->edu_whatsapp;?>" class="cta cta-rev" target="_blank">WhatsApp</a>
                                             </div>
@@ -639,20 +642,23 @@
                                                 <span class="enq-sav2" data-toggle="tooltip"
                                                 title="">
                                              <span ></span>
-                                             <div class="text-center">
+                                             
+                                            <!-- <div > -->
+                                                
+                                            <!-- </div> -->
+                                            <!-- <div class=""> -->
+                                            <div class="r">
                                                         <!-- <h4>Rating Overview</h4> -->
                                                         <!-- <br> -->
-                                                        <h1 class="rating-number"><?= $list->avg_rating?$list->avg_rating: '3.5';?><small>/5</small></h1>
+                                                        
+                                                        <h1 class="rating-number"><center><?= $list->avg_rating?$list->avg_rating: '3.5';?><small>/5</small></center></h1>
                                                         <div class="rating-stars d-inline-block position-relative mr-2">
                                                             <img src="<?=base_url('assets/public/images/grey-star.svg');?>" alt="">
                                                             <div class="filled-star" style="width:86%"></div>
                                                         </div>
+                                            <!-- </div> -->
                                                         <!-- <div class="text-muted">2,145 ratings</div> -->
                                                 </div>
-                                            <!-- <div > -->
-                                                
-                                            <!-- </div> -->
-                                            
 
                                         </div>
                                         

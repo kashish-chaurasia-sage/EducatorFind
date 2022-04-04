@@ -115,6 +115,20 @@ class My_blog extends CI_Controller {
 		  $params["name"] =$this->session->userdata('name');
 		  $params["blog_name"] =$this->input->post('blog_title');
 		  $mailResponse = $this->sendMail($receipents, 6, $params);
+		  $notificationData = array(
+			'user_id' =>  $this->session->userdata('userId'),
+			'notification_message' => "Your Blog got added.",
+		   
+		);
+
+		$insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
+		  $notificationData = array(
+			'user_id' =>  $this->session->userdata('userId'),
+			'notification_message' => "Email sent",
+		   
+		);
+
+		$insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
 		  redirect('my-blog'); 
 			}		
 		

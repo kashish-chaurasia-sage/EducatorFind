@@ -1,4 +1,5 @@
  <!--LEFT SECTION-->
+ <meta name="viewport" content="width=device-width,initial-scale=1"/>
             <div class="ud-lhs">
                 <div class="ud-lhs-s1">
                     <img src="<?php echo base_url('uploads/'.$user_data[0]->id.'/'.$user_data[0]->user_image);?>" alt="" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';">
@@ -33,7 +34,7 @@
 					
 						if($user_data[0]->educator == '1'){?>
 						 <li>
-                            <a href="<?php echo base_url('update_become_educator');?>"><img src="<?php echo base_url('assets/public/images/sidebar/dbl3.png');?>" alt=""/>Edit Educator Profile</a>
+                            <!-- <a href="<?php echo base_url('update_become_educator');?>"><img src="<?php echo base_url('assets/public/images/sidebar/dbl3.png');?>" alt=""/>Edit Educator Profile</a> -->
                         </li>
 						<?php }else {?>
                        <li>
@@ -71,9 +72,9 @@
                             <a href="<?php echo base_url('notification');?>" class=""><img src="<?php echo base_url('assets/public/images/sidebar/dbl19.png');?>" alt="" />Notifications</a>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <a href="<?php echo base_url('setting');?>" class=""><img src="<?php echo base_url('assets/public/images/sidebar/dbl210.png');?>" alt="" />Setting</a>
-                        </li>
+                        </li> -->
                   <li>
                             <a href="<?php echo base_url('login/logout');?>" class=""><img src="<?php echo base_url('assets/public/images/sidebar/dbl12.png');?>" alt="" />Logout</a>
                         </li>

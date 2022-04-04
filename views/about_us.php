@@ -97,7 +97,12 @@
 .home-pg-gallery{
       padding : 10px 400px 10px 400px
    }
-
+   .abou-pg .abo-memb ul li div h4 {
+    font-size: 16px;
+    font-weight: 700;
+    padding-top: 20px;
+    margin: 20px;
+}
 </style>
 </section>
 <!-- END --><!-- START -->
@@ -160,10 +165,10 @@
          </div> -->
          <div class="how-wrks how-wrks-2">
             <div class="home-tit">
-               <h2><span>Out Team</span></h2>
-               <p>Explore some of the best tips from around the world from our
+               <h2><span>Our Team</span></h2>
+               <!-- <p>Explore some of the best tips from around the world from our
                   partners and friends
-               </p>
+               </p> -->
             </div>
             <div class="how-wrks-inn abo-memb">
                <ul>
@@ -215,7 +220,9 @@
                         </br>
                         <p> She has graduated from NIIT University with BTech, CSE and has been in the field of Computer Programming for more than three years. With the experience she has, Kashish Chaurasia will be a star in the galaxy of StarsBoard .</p>
                         <ul>                                 <li><a href="https://www.facebook.com/kashish.chaurasia.77/"  target="blank"><i style="font-size:24px" class="fa">&#xf09a;</i></a></li>
-                                 <li><a href="https://gitlab.com/kashish10"  target="blank"><i style="font-size:24px" class="fa">&#xf1d3;</i></a></li>
+                                 <!-- <li><a href="https://gitlab.com/kashish10"  target="blank"><i style="font-size:24px" class="fa">&#xf1d3;</i></a></li> -->
+                                 <li><a href="https://www.instagram.com/much_too_much._"  target="blank"><i style="font-size:24px" class="fa">&#xf16d;</i></a></li>
+
                                  <li><a href="https://www.linkedin.com/in/kashish-chaurasia/"   target="blank"><i style="font-size:24px" class="fa">&#xf0e1;</i></a></li>
                            </ul><br>
                      </div>

@@ -63,7 +63,7 @@
          <div class="row">
             <div class="home-tit">
                <h2><span>Join us Now</span></h2>
-               <p>We connect with targeted customers for greater business conversion</p>
+               <p>We connect you with the leading pool of Educational expert</p>
             </div>
             <div class="hom2-hom-ban-main">
                <div class="hom2-hom-ban hom2-hom-ban1">
@@ -81,7 +81,7 @@
                   </ul>
                   <h2>Are you an Educator?</h2>
                   <p>Update your details including services, about, contact details payment options and more. </p>
-                  <a href="<?php echo base_url('login');?>">Register as Educator</a>
+                  <a href="<?php echo base_url('registration');?>">Register as Educator</a>
                </div>
                <div class="hom2-hom-ban hom2-hom-ban1">
                   <ul class="circles">
@@ -228,7 +228,7 @@
                      </div>
                   </li>
                </ul>
-               <a href="educator/educator" class="more">View all services</a>
+               <a href="educator/educator" class="more">View all Educators</a>
             </div>
          </div>
       </div>
@@ -241,7 +241,7 @@
          <div class="hom-mpop-main">
             <div class="home-tit">
                <h2>
-                  <span>Featured Educators</span> in STARSBOARD                     
+                  <span>Featured Educators</span> on STARSBOARD                     
                </h2>
             </div>
             <div class="col-md-6">
@@ -423,7 +423,7 @@
       <div class="container">
          <div class="row">
             <div class="home-tit">
-               <h2><span>Explore City</span> Category                        </h2>
+               <h2><span>Explore</span> More                        </h2>
                <!--                    <p>lacinia viverra lectus. Fusce imperdiet ullamcorper metus eu fringilla.</p>-->
             </div>
             <div class="home-city">
@@ -664,7 +664,7 @@
          <div class="row" style="padding-bottom: 60px;">
             <div class="home-tit">
                <h2>
-                  <span>Top Educators</span> in your city                        
+                  <span>Leading</span> on STARSBOARD                        
                </h2>
                <!-- <p>lacinia viverra lectus. Fusce imperdiet ullamcorper metus eu fringilla.</p> -->
             </div>
@@ -672,7 +672,7 @@
                <!--Top Branding Hotels-->
                <div class="col-md-4">
                   <div class="hot-page2-hom-pre-head">
-                     <h4>Top  <span>Academic</span></h4>
+                     <h4>Leading in  <span>Academic</span></h4>
                   </div>
                   <div class="hot-page2-hom-pre">
                      <ul>
@@ -710,7 +710,7 @@
                </div>
                <div class="col-md-4">
                   <div class="hot-page2-hom-pre-head">
-                     <h4>Top  <span>Arts</span></h4>
+                     <h4>Leading in  <span>Arts</span></h4>
                   </div>
                   <div class="hot-page2-hom-pre">
                      <ul>
@@ -746,7 +746,7 @@
                </div>
                <div class="col-md-4">
                   <div class="hot-page2-hom-pre-head">
-                     <h4>Top  <span> Professional</span></h4>
+                     <h4>Leading in  <span> Professional</span></h4>
                   </div>
                   <div class="hot-page2-hom-pre">
                      <ul>
@@ -815,14 +815,14 @@
                         <div class="menu_social">
                            <!-- <span>3</span> -->
                            <img src="<?=base_url('assets/public/images/about-us/how3.png');?>" alt="">
-                           <h4>Get more students</h4>
+                           <h4>Get more Learners</h4>
                         </div>
                      </li>
                      <li>
                         <div class="menu_social">
                            <!-- <span>4</span> -->
                            <img src="<?=base_url('assets/public/images/about-us/how4.png');?>" alt="">
-                           <h4>Archive your goals</h4>
+                           <h4>Achieve your goals</h4>
                         </div>
                      </li>
                   </ul>

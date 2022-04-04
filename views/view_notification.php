@@ -12,12 +12,17 @@
                 <div class="ud-cen-s2">
             <h2>All Notifications</h2>
             <div class="db-noti">
-                <ul>
+                <!-- <ul>
                                                                 <li>
                             <div><a href="" target="_blank">
                                     </a> start following you                            </div>
                         </li>
                         
+                         <li>
+                        <div>You are now a StarsBoard Educator !.
+                        </div>
+                        <span><?php echo $this->session->userdata('usercreated');?></span>
+                    </li>
 
                     <li>
                         <div>Thank you for creating for an account in "Starsboard"
@@ -31,7 +36,39 @@
                         </div>
                         <span><?php echo $this->session->userdata('usercreated');?></span>
                     </li>
-                </ul>
+                </ul> -->
+                <ul>
+                <?php if($bday_notification ==1){ ?>
+            <li>
+            <div><b><i> <center>Wishing you a very Happy Birthday from Starsboard !</center></i></b>
+            </div>
+         
+        </li>
+        <?php }?>
+        <?php
+            foreach ($notifications as $key => $notificationrow) {
+                ?>
+                <li>
+                        <p><?php echo $notificationrow['notification_message']; ?></p>
+                        <p><?php echo $notificationrow['date_added']; ?></p>
+                    
+                </li>
+                <?php
+            }
+            ?>
+             <li>
+                        <p>Thank you for creating for an account in Starsboard.
+                            portal.
+        </p>
+                        <span><?php echo $this->session->userdata('usercreated');?></span>
+                    </li>
+                    <li>
+                        <p>We heartily welcome to our global business Starsboard.
+                            portal.
+                        <p>
+                        <span><?php echo $this->session->userdata('usercreated');?></span>
+                    </li>
+        </ul>
             </div>
         </div>
     </div>

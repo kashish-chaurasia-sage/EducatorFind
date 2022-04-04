@@ -68,7 +68,7 @@ class Registration extends CI_Controller {
             $mailResponse = $this->sendMail($receipents, 1, $params);
 
         }
-
+       
         //  Send mail 
         //  if($this->email->send()) 
         //  $this->session->set_flashdata("email_sent","Email sent successfully."); 
@@ -94,6 +94,14 @@ class Registration extends CI_Controller {
                         $this->session->set_userdata('useremail', $checkLogin['email']);
                         $this->session->set_userdata('usercreated', $checkLogin['created']);
                         $this->session->set_userdata('user_type', $checkLogin['user_type']);
+                        // $notificationData = array(
+                        //     'user_id' => $checkLogin['id'],
+                        //     'notification_message' => "Congrats, You are successfully registered on Starsboard !",
+                           
+                        // );
+                
+                        // $insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
+                
                         if($checkLogin['user_type'] == "educator"){
                             redirect('become_educator'); 
                         }else{

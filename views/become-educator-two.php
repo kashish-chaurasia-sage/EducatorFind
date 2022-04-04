@@ -406,14 +406,15 @@
                             </ul>
                             <!--FILED START-->
                             <div class="row">
-                            <div class="col-sm-1">
-                                                                  </div>
-                                <div class="col-sm-7">
+                            <!-- <div class="col-sm-1">
+                                                                  </div> -->
+                                <div class="col-6">
                                       <input type="submit" name="edu_per_submit"
                                             class="btn btn-primary" name="Previous" Value="Previous">
                                   
                                 </div>
-                                <div class="col-sm-1">
+                                
+                                <div class="col-2">
                                     <input type="submit" name="edu_ser_submit"
                                             class="btn btn-primary" name="Next" Value="Next, Just the last step !">
                                 </div>

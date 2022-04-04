@@ -58,6 +58,13 @@ class Forgot extends CI_Controller {
                 $receipents = array(array("email"=>$to_email));
                 $params["reset_link"] =$reset_link;
                 $mailResponse = $this->sendMail($receipents, 5, $params);
+                $notificationData = array(
+                    'user_id' =>  $this->session->userdata('userId'),
+                    'notification_message' => "Email sent",
+                   
+                );
+
+                $insertNotification = $this->CommonMdl->insertRow($notificationData, 'custom_user_notification');
                 echo '1';
     
                 // if($this->sendMail($receipents, 5, $params)){

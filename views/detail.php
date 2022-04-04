@@ -5,7 +5,9 @@
  
  
  ?>
-
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
  <link rel="stylesheet" type="text/css" href="/assets/public/css/style.css">
 
@@ -24,9 +26,9 @@
                         </li>
                        
                         <li><a href="#ld-rev"><i class="material-icons">star_half</i> Write Review</a>
-                        </li>
+                        <!-- </li>
 						<li><a href="#claim" data-toggle="modal" data-target="#claim"><i class="material-icons">store</i>Claim business</a>
-                        </li>
+                        </li> -->
                       
                     </ul>
                 </div>
@@ -44,7 +46,7 @@
             <div class="row">
                 <div class="list-det-fix-inn">
                     <div class="list-fix-pro">
-                    <img src="<?=base_url('assets/public/images/bannerPeople.jpg');?>" alt="">
+                    <img src="<?=base_url('assets/public/images/educator_banner.jpeg');?>" alt="">
                     </div>
                     <div class="list-fix-tit">
                         <h3><?php echo $detail['edu_name']; ?></h3>
@@ -60,7 +62,7 @@
     </div>
 <!-- </section>
     <div class="list-bann">
-        <img src="<?=base_url('assets/public/images/bannerPeople.jpg');?>" alt="">
+        <img src="<?=base_url('assets/public/images/educator_banner.jpeg');?>" alt="">
     </div>
 </section> -->
 <!-- <section>
@@ -71,7 +73,7 @@
 </section> -->
 <section>
     <div class="list-bann">
-    <img src="<?=base_url('assets/public/images/bannerPeople.jpg');?>" alt="">
+    <img src="<?=base_url('assets/public/images/educator_banner.jpeg');?>" alt="">
 
     </div>
 </section>
@@ -112,7 +114,8 @@
                            
                     </div> -->
                     <div class="list-rat-all">
-                    <div class="text-center">
+
+                    <div class="r">
                             <!-- <h4>Rating Overview</h4> -->
                             <!-- <br> -->
                             <h1 class="rating-number"><?php echo $average_review ?><small>/5</small></h1>
@@ -136,7 +139,7 @@
                             
                               <li class="ic-mai"><?php 
 							            $email=$educator->edu_email;
-										$maskedEmail=substr($email, 0, 3).'****'.substr($email, strpos($email, "@"));
+										$maskedEmail=substr($email, 0, 0).'******'.substr($email, strpos($email, "@"));
 										echo $maskedEmail;
 							   ?>               
 								</li>
@@ -575,34 +578,112 @@
                         
 
                     </div>
+                    
 					 </div>
-                     <div id="ld-off" class="pglist-bg pglist-off-last pglist-p-com">
+                     <?php
+                     //store the URL into a variable
+$youtube_url =  "https://www.youtube.com/watch?v=7VLDGjny9P0";
+
+if(!empty($offerInfo->offer_link)){
+    $youtube_url = $offerInfo->offer_link;
+}
+
+$shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_-]+)\??/i';
+$longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))([a-zA-Z0-9_-]+)/i';
+
+if (preg_match($longUrlRegex, $youtube_url, $matches)) {
+   $youtube_id = $matches[count($matches) - 1];
+}
+
+if (preg_match($shortUrlRegex, $youtube_url, $matches)) {
+   $youtube_id = $matches[count($matches) - 1];
+}
+// echo  $youtube_url;
+
+// //extract the ID
+// preg_match(
+//         '/[\?\&]v=([^\?\&]+)/',
+//         $youtube_url,
+//         $matches
+//     );
+// //the ID of the YouTube URL: eLl7Y29eC7o
+// if(!empty($matches[1])){
+//     echo "----".$matches[0];
+//     echo "----".$matches[1];
+//     $youtube_id = $matches[1];
+    
+// }else{
+//     $str = "https://youtu.be/";
+// $pattern = $youtube_url;
+// preg_match($pattern, $str, $matches);
+// print_r($matches);
+   
+//     $youtube_id = $matches;
+
+// }
+
+//set a custom width and height
+$width = '640';
+$height = '360';
+  
+//echo the embed code. You can even wrap it in a class
+$demoLink = '<iframe width="' .$width. '" height="'.$height.'" src="//www.youtube.com/embed/'.$youtube_id.'" frameborder="0" allowfullscreen></iframe>';
+   ?>                  
+<section>
+   <div class="edu-mpop-ser" style="background-image: url();background-color: #f1eeeecc;background-blend-mode: overlay;background-position: unset;">
+   <div id="ld-gal" class="pglist-bg pglist-p-com">
                                 <div class="pglist-p-com-ti">
                                     <h3>
-                                        <span>Special</span> Offers                                    </h3></div>
-                                                                    <div class="list-pg-inn-sp">
-                                        <div class="home-list-pop">
-                                            <!--LISTINGS IMAGE-->
-                                            <div class="col-md-3">
-                                            <img src="<?=base_url('uploads/'.$user_id.'/'.$offerInfo->offer_image);?>" alt=""></div>
-                                            <!--LISTINGS: CONTENT-->
-                                            <div class="col-md-9 home-list-pop-desc inn-list-pop-desc list-room-deta"><a href="#!"><h3><?php echo $offerInfo->offer_name?></h3></a>
-                                                <p><?php echo $offerInfo->offer_description?></p>
-                                                                                                    <span class="home-list-pop-rat list-rom-pric"><?php echo "Rs. ".$offerInfo->offer_price ?></span>
-                                                                                                    <div class="list-enqu-btn">
-                                                    <!-- <ul>
-                                                        <li>
-                                                            <a target="_blank" href="https://themeforest.net/item/bizbook-directory-listings-template/25391222?s_rank=1">view more</a>
-                                                        </li>
-                                                        <li><a href="#!" data-toggle="modal" data-target="#quote">Send enquiry</a>
-                                                        </li>
-                                                    </ul> -->
-                                                </div>
+                                        <center><span>Educator   </span> Demo Lecture</center></h3></div>
+                                <div class="home-pg-gallery">
+                                    <div id="demo" class="carousel slide" data-ride="carousel">
+                                        <ul class="carousel-indicators">
+                                                                                                
+                                                                                                                <li data-target="#demo" data-slide-to="4" class="active"></li>
+                                                                                                </ul>
+
+                                        <div class="carousel-inner">
+                                                                                 
+                                                                                      
+                                                                                                        
+                                                      <div class="carousel-item viki active">
+                                                      <?php echo  $demoLink ?>
+                                                               <!-- <iframe width="560" height="315" src="<?php echo $offerInfo->offer_link?$offerInfo->offer_link:"https://www.youtube.com/embed/7VLDGjny9P0";?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+                                                      </div> 
+                                                      
+                                           
+                                                                                </div>
+                                </div>
+                            </div>
+                            
+  
+</section>
+                     
+                    <div id="ld-off" class="pglist-bg pglist-off-last pglist-p-com">
+                        <div class="pglist-p-com-ti">
+                             <h3>
+                                <span>Special</span> Offers                                    </h3></div>
+                            <div class="list-pg-inn-sp">
+                                <div class="home-list-pop">
+                                    <!--LISTINGS IMAGE-->
+                                    <div class="col-md-3">
+                                        <img src="<?=base_url('uploads/'.$user_id.'/'.$offerInfo->offer_image);?>" alt=""></div>
+                                        <!--LISTINGS: CONTENT-->
+                                        <div class="col-md-9 home-list-pop-desc inn-list-pop-desc list-room-deta"><a href="#!"><h3><?php echo $offerInfo->offer_name?></h3></a>
+                                            <p><?php echo $offerInfo->offer_description?></p>
+                                            <span class="home-list-pop-rat list-rom-pric"><?php echo "Rs. ".$offerInfo->offer_price ?></span>
+                                            <div class="list-enqu-btn">
+                                                   
                                             </div>
                                         </div>
                                     </div>
                                     
+                                </div>
+                                
+                                    
                             </div>
+                            
+
                     
                 
             
@@ -765,18 +846,18 @@
                                         <ul>
 										<?php foreach($review as $key =>$val){?>
                                                      <li>
-                                                    <div class="lr-user-wr-img"><img src="<?php echo base_url('uploads/');?><?=$val->review_by_id;?>/<?=$val->user_image;?>" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';" alt="">
+                                                    <div class="lr-user-wr-img"><img src="<?php echo base_url('uploads/');?><?=$val->user_id;?>/<?=$val->user_image;?>" onerror="this.onerror=null;this.src='<?php echo base_url('assets/public/images/no-image.jpg');?>';" alt="">
                                                     </div>
                                                     <div class="lr-user-wr-con">
-                                                        <h6><?= $val->review_name;?></h6>
+                                                        <h6><?= $val->name;?></h6>
                                                         <label class="rat">
-														<?php for ($x = 1; $x <= $val->price_rating; $x++) {?>
+														<?php for ($x = 1; $x <= $val->rating; $x++) {?>
                                                     <i class="material-icons">star</i>
 														<?php } ?>
                                                                 
                                                               </label>
-                                                        <span class="lr-revi-date"><?= $val->created_on;?></span>
-                                                        <p><?= $val->review_message;?></p>
+                                                        <span class="lr-revi-date"><?= $val->date_added;?></span>
+                                                        <p><?= $val->message;?></p>
                                                     </div>
                                                 </li>
 										<?php }?>
@@ -840,7 +921,7 @@
                     <div class="list-rhs-form pglist-bg pglist-p-com">
                     
                         <div class="quote-pop">
-                            <h3><span>Get</span> Quote</h3>
+                            <h3><span>Send</span> Enquiry</h3>
                            <div id="quoteResponseId"></div>
                             <form method="post" name="detail_enquiry_form" id="enquiryForm" action="<?php echo base_url('detail/enquiry');?>">
                                 
@@ -1250,6 +1331,7 @@ if(review_msg == ''){
                            
 	return false;
 }
+
 	e.preventDefault();
     var senddata = $(this).serializeArray();
     var sendto = $(this).attr("action");
@@ -1259,7 +1341,7 @@ if(review_msg == ''){
         type: 'POST',
         data: senddata,
         success: function (data) {
-			if(data=='1'){
+			if(data==1){
 				swal("Error!", "Oops!! Oops!!You cannot write your own listing!!!", "error");
 			}else{
            swal("Success!", data, "success");

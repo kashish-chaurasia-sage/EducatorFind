@@ -53,6 +53,7 @@
         }
     </style>
   <!-- START -->
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <section>
         <div class="str">
             <div class="container">
