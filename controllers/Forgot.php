@@ -42,7 +42,7 @@ class Forgot extends CI_Controller {
                 ) 
             ); 
             $checkLogin = $this->user->getRows($con); 
-            
+            error_log("Checked in Error log --->>>>>".json_encode( $checkLogin));
             if($checkLogin){ 
                     
                 $reset_link=md5(rand());
