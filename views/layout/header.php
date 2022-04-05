@@ -36,7 +36,7 @@
 
     <link rel="stylesheet" href="<?=base_url('assets/public/css/owl.theme.default.min.css');?>">
     <link rel="stylesheet" href="<?=base_url('assets/public/css/owl.carousel.min.css');?>">
-    <link rel="shortcut icon" type="image/x-icon" href="http://localhost/starsboard.in/assets/public/images/favicon.jpg" />
+    <link rel="shortcut icon" type="image/x-icon" href="<?=base_url('assets/public/images/favicon.jpg');?>" />
   
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

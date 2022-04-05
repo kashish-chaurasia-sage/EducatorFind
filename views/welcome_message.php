@@ -1,4 +1,5 @@
 <?php $this->load->view('layout/header');?>
+
 <style>
    @import "https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap";
    /* .hom-head:before{background:#ffffff14} */
