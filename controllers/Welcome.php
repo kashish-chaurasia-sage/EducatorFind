@@ -17,7 +17,7 @@ class Welcome extends CI_Controller {
 			// $data['academic']= $this->CommonMdl->getResult('custom_educator', '*', array('status' => '1'),array('col_name'=>'edu_experience','order'=>'desc'),'5');
 
 			$data['academic']= $this->CommonMdl->getTop5Categories("1");
-			$data['counselling']= $this->CommonMdl->getTop5Categories("3");
+			$data['counselling']= $this->CommonMdl->getTop5Categories("4");
 			$data['training']= $this->CommonMdl->getTop5Categories("6");
 
 		// echo '<pre>';	print_r($data['academic']); die;
