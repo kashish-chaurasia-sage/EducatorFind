@@ -962,9 +962,7 @@ $demoLink = '<iframe width="' .$width. '" height="'.$height.'" src="//www.youtub
                                           placeholder="Enter your query or message"  ></textarea>
                                 </div>
                                 <input type="hidden" id="source">
-                                <?php if(! $this->session->userdata('isUserLoggedIn')){ ?> <button  disabled="disabled"  type="submit" id="detail_enquiry_submit"
-                                                                      name="enquiry_submit"
-                                                                      class="btn btn-primary"> Log In To Submit                                 </button>
+                                <?php if(! $this->session->userdata('isUserLoggedIn')){ ?> <button  id="ckDemo" class="btn btn-primary" disabled> Log In To Submit                                 </button>
 								<?php }else{?>
 								<button  type="submit" id="detail_enquiry_submit"
                                                                       name="enquiry_submit"
@@ -1355,5 +1353,15 @@ if(review_msg == ''){
     });
   });
 });
+</script>
+<script>
+// function myFunction() {
+//   alert("Please Sign In, Before Sending Enquiry!");
+// }
+function showAlert() {
+    if (document.getElementById("ckDemo").disabled) {
+        alert("CheckBox is Disabled");
+    }
+}
 </script>
 	 <?php $this->load->view('layout/footer');?>

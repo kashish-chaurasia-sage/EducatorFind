@@ -126,7 +126,7 @@
                               class="dir-ho-cat">Show All (<?php echo ($math ? $math :'0');?>)</span>
                            </h4>
                         </div>
-                        <a href="<?php echo (base_url('educator/maths'));?>"
+                        <a href="<?php echo (base_url('educator/math'));?>"
                            class="land-pack-grid-btn">View all listings</a>
                      </div>
                   </li>
@@ -140,7 +140,7 @@
                               class="dir-ho-cat">Show All (<?php echo ($kids_coding ? $kids_coding :'0');?>)</span>
                            </h4>
                         </div>
-                        <a href="<?php echo base_url('educator/kids');?>"
+                        <a href="<?php echo base_url('educator/coding');?>"
                            class="land-pack-grid-btn">View all listings</a>
                      </div>
                   </li>
@@ -182,7 +182,7 @@
                               class="dir-ho-cat">Show All (<?php echo ($app ? $app :'0');?>)</span>
                            </h4>
                         </div>
-                        <a href="<?php echo base_url('educator/mobile');?>"
+                        <a href="<?php echo base_url('educator/app');?>"
                            class="land-pack-grid-btn">View all listings</a>
                      </div>
                   </li>
