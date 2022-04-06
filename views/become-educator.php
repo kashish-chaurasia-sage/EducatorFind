@@ -45,15 +45,15 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Profile image</label>
+                                        <label>Profile image*</label>
                                         <input type="file"  accept=".png, .jpg, .jpeg" name="edu_image"
-                                               class="form-control">
+                                               class="form-control"  required="required">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Cover image</label>
-                                        <input type="file"  accept=".png, .jpg, .jpeg" name="cover_image" class="form-control">
+                                        <label>Cover image*</label>
+                                        <input type="file"  accept=".png, .jpg, .jpeg" name="cover_image" class="form-control"  required="required">
                                     </div>
                                 </div>
                             </div>
