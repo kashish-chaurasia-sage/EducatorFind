@@ -41,7 +41,7 @@ class Welcome extends CI_Controller {
 				}
 
 			}
-			$data['isFeaturedB']= $this->CommonMdl->getResult('custom_educator', '*', array('edu_isfeatured' => '0'),array('col_name'=>'educator_id','order'=>'asc'),'5');
+			$data['isFeaturedB']= $this->CommonMdl->getResult('custom_educator', '*', array('edu_isfeatured' => '0'),array('col_name'=>'edu_experience','order'=>'asc'),'5');
 			foreach ($data['isFeaturedB'] as $educator) {
 				$rating= $this->CommonMdl->getAvgRating($educator->educator_id);
 				if(!empty($rating[0]->rating)){
