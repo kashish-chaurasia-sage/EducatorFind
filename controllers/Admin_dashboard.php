@@ -23,7 +23,7 @@ class Admin_dashboard extends CI_Controller {
 			$data['pending_educator']=count($pending_educator);
 			
 			$camebackEducators= $this->CommonMdl->getResult('users', '*', ['educator' => '1','user_type' => 'educator',' created' < '2022-04-04 00:00:00' ]);
-			$data['noncamebackEducators']=count($camebackEducators);
+			$data['camebackEducators']=count($camebackEducators);
 			
 			$user= $this->CommonMdl->getResult('users', '*');
 			$data['user']=count($user);
