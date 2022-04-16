@@ -775,6 +775,6 @@ CREATE TABLE custom_user_notification (
   
 );
 
-SELECT COUNT(id)
+SELECT *
 FROM users
 WHERE created < '2022-04-04 00:00:00' and educator='1'

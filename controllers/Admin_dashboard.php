@@ -22,7 +22,7 @@ class Admin_dashboard extends CI_Controller {
 			// $boardName = $this->CommonMdl->getResult('custom_board', 'board_name', ['board_id' => $val]);
 			$data['pending_educator']=count($pending_educator);
 			
-			$camebackEducators= $this->CommonMdl->getResult('users', '*', ['educator' => '1','user_type' => 'educator','created' < '2022-04-04 00:00:00' ]);
+			$camebackEducators= $this->CommonMdl->getResultcamebackEducators();
 			$data['camebackEducators']=count($camebackEducators);
 			
 			$user= $this->CommonMdl->getResult('users', '*');

@@ -42,7 +42,7 @@ class CommonMdl extends CI_Model
 		return $q->num_rows()?$q->row():'';
 	}
 	public function getResult($tbl,$clms='*',$whr='',$order_by='',$limit=''){
-			
+		error_log("Where >>>>>>>>>>>>>>>>>".json_Encode($whr));
 		$this->db->select($clms);
 		$this->db->from($tbl);
 		if($whr!=''){
@@ -576,6 +576,14 @@ public function selectSum($tbl,$clms='*',$whr=''){
     // global $conn;
 
     $sql = "SELECT * FROM custom_user_notification where user_id=".$user_id." ORDER BY user_notification_id DESC";
+    // $rs = mysqli_query($conn, $sql);
+	$query = $this->db->query($sql);
+    return  $query->result_array();
+
+}
+function getResultcamebackEducators()
+{
+    $sql = "SELECT * FROM users	WHERE created < '2022-04-04 00:00:00' and educator='1' and user_type='educator'";
     // $rs = mysqli_query($conn, $sql);
 	$query = $this->db->query($sql);
     return  $query->result_array();
