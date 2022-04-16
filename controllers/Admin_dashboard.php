@@ -12,16 +12,26 @@ class Admin_dashboard extends CI_Controller {
 	  }
 	public function index()
 	{   
-	    $educator= $this->CommonMdl->getResult('tbl_educator', '*');
+	   		$educator= $this->CommonMdl->getResult('custom_educator', '*');
 			$data['educator']=count($educator);
+
+			$learner= $this->CommonMdl->getResult('custom_learner', '*');
+			$data['learner']=count($learner);
+
+			$pending_educator= $this->CommonMdl->getResult('users', '*', ['educator' => '0','user_type' => 'educator' ]);
+			// $boardName = $this->CommonMdl->getResult('custom_board', 'board_name', ['board_id' => $val]);
+			$data['pending_educator']=count($pending_educator);
+			
+			$noncamebackEducators= $this->CommonMdl->getResult('users', '*', ['educator' => '0','user_type' => 'educator',' created' < '2022-04-04 00:00:00' ]);
+			$data['noncamebackEducators']=count($noncamebackEducators);
 			
 			$user= $this->CommonMdl->getResult('users', '*');
 			$data['user']=count($user);
 			
-				$review= $this->CommonMdl->getResult('review', '*');
+			$review= $this->CommonMdl->getResult('review', '*');
 			$data['review']=count($review);
 			
-				$lead= $this->CommonMdl->getResult('lead', '*');
+			$lead= $this->CommonMdl->getResult('lead', '*');
 			$data['lead']=count($lead);
 			
 			$blog= $this->CommonMdl->getResult('blog', '*');

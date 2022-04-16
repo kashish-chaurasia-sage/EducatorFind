@@ -10,20 +10,23 @@
         <div class="log-bor">&nbsp;</div>
         <span class="udb-inst">Reviews</span>
                 <div class="ud-cen-s2">
-            <h2>All Listings - Received review details</h2>
+               
+            <h2>All Listings - Received review details</h2>	
                         <ul class="nav nav-tabs">
+                        <?php if(!empty($review)){
+							?>
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#received">All Received Reviews</a>
-                </li>
+                    <a class="nav-link " data-toggle="tab" href="#received">All Received Reviews</a>
+                </li><?php }?>
                 <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#sent">All Sent Reviews</a>
+                    <a class="nav-link active" data-toggle="tab" href="#sent">All Sent Reviews</a>
                 </li>
 
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div id="received" class="container tab-pane active"><br>
+                <div id="received" class="container tab-pane "><br>
                     <table class="responsive-table bordered">
                         <thead>
                         <tr>
@@ -67,15 +70,15 @@
                         </tbody>
                     </table>
                 </div>
-                <div id="sent" class="container tab-pane fade"><br>
+                <div id="sent" class="container tab-pane active"><br>
                     <table class="responsive-table bordered">
                         <thead>
                         <tr>
                             <th>No</th>
                             <th>Listing Name</th>
-                            <th>Email</th>
+                            <!-- <th>Email</th>
                             <th>Phone</th>
-                            <th>City</th>
+                            <th>City</th> -->
                             <th>Ratings</th>
                             <th>Message</th>
                         </tr>
@@ -86,20 +89,20 @@
 							?>
                                                     <tr>
                                 <td><?= $i;?></td>
-                                <td><?= $value->review_name;?></td>
-                                <td><?= $value->review_email;?></td>
+                                <td><?= $value->edu_name;?></td>
+                                <!-- <td><?= $value->review_email;?></td>
                                 <td><?= $value->review_mobile;?></td>
-                                <td><?= $value->review_city;?></td>
+                                <td><?= $value->review_city;?></td> -->
                                 <td>
                                     <label class="rat">
 								<?php
-                                   for ($x = 0; $x <= $value->price_rating -1; $x++) { ?>
+                                   for ($x = 0; $x <= $value->rating -1; $x++) { ?>
                                 <i class="material-icons">star</i>
                                   <?php }?>
                                              
 									  </label>
                                 </td>
-                                <td><?= $value->review_message;?></td>
+                                <td><?= $value->message;?></td>
                                
 
                             </tr>
@@ -118,7 +121,7 @@
                     <a href="promote-business">Start now</a>
                 </div>
                 <!--    //Total Point Section Starts-->
-                <div class="ud-rhs-poin">
+                <!-- <div class="ud-rhs-poin">
                     <div class="ud-rhs-poin1">
                         <h4>Your points</h4>
                         <span class="count1">11</span>
@@ -128,10 +131,10 @@
                         <p>Use this poins to promote your listing. <a href="#">Click here</a> for demo</p>
                         <a href="buy-points" class="cta">Buy Points</a>
                     </div>
-                </div>
+                </div> -->
                 <!--    //Total Point Section Ends-->
 
-                <div class="ud-rhs-pay">
+                <!-- <div class="ud-rhs-pay">
                     <div class="ud-rhs-pay-inn">
                         <h3>Payment Information</h3>
                         <ul>
@@ -153,7 +156,7 @@
 
                         <a href="db-payment" class="btn btn2">Pay Now</a>
                     </div>
-                </div>
+                </div> -->
                 <div class="ud-rhs-pay ud-rhs-status">
                     <div class="ud-rhs-pay-inn">
                         <h3>Listing open & close status</h3>

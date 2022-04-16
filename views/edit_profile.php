@@ -107,20 +107,20 @@
                     <a href="promote-business">Start now</a>
                 </div>
                 <!--    //Total Point Section Starts-->
-                <div class="ud-rhs-poin">
+                <!-- <div class="ud-rhs-poin">
                     <div class="ud-rhs-poin1">
                         <h4>Your points</h4>
                         <span class="count1">11</span>
-                    </div>
+                    </div> -->
                     <!-- <div class="ud-rhs-poin2">
                         <h3>Earn more credit points</h3>
                         <p>Use this poins to promote your listing. <a href="#">Click here</a> for demo</p>
                         <a href="buy-points" class="cta">Buy Points</a>
                     </div> -->
-                </div>
+                <!-- </div> -->
                 <!--    //Total Point Section Ends-->
 
-                <div class="ud-rhs-pay">
+                <!-- <div class="ud-rhs-pay">
                     <div class="ud-rhs-pay-inn">
                         <h3>Payment Information</h3>
                         <ul>
@@ -142,7 +142,7 @@
 
                         <a href="db-payment" class="btn btn2">Pay Now</a>
                     </div>
-                </div>
+                </div> -->
                 <div class="ud-rhs-pay ud-rhs-status">
                     <div class="ud-rhs-pay-inn">
                         <h3>Listing open & close status</h3>

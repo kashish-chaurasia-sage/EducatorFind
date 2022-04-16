@@ -18,10 +18,22 @@ class Review extends CI_Controller {
 	// echo '<pre>';   print_r($educator);die;
 	// if(!empty($educator)){
 
-	
-		$data['review']= $this->CommonMdl->getResult('custom_review', '*', array('educator_id' => $educator[0]->educator_id));
-		$data['receivedreview']= $this->CommonMdl->getResult('custom_review', '*', array('user_id' => $this->session->userdata('userId')));
-	    $data['title']='Review | Starsboard ';
+		if(!empty($educator)){
+			$data['review']= $this->CommonMdl->getResult('custom_review', '*', array('educator_id' => $educator[0]->educator_id));
+
+		}
+
+		// $data['review']= $this->CommonMdl->getResult('custom_review', '*', array('educator_id' => $educator[0]->educator_id));
+
+		// $data['receivedreview']
+		$sentReviews= $this->CommonMdl->getResult('custom_review', '*', array('user_id' => $this->session->userdata('userId')));
+
+		$sentReviewEducatorInfo =  $this->CommonMdl->getResult('custom_educator', '*', ['educator_id' => $sentReviews[0]->educator_id]);
+		$sentReviews[0]->edu_name = $sentReviewEducatorInfo[0]->edu_name;
+		// echo '<pre>';   print_r($sentReviews);die;
+
+		$data['receivedreview'] = $sentReviews;
+		$data['title']='Review | Starsboard ';
 		$this->load->view('view_review',$data);
 	}
 	

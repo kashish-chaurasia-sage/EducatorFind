@@ -24,15 +24,39 @@
                         <div>
                             <img src="../images/icon/ic-1.png" alt="">
                             <h2><?php echo $user;?></h2>
-                            <h4>Al Users</h4>
+                            <h4>All Users</h4>
                             <a href="admin-all-users.php" class="fclick"></a>
                         </div>
                     </li>
                     <li>
                         <div>
                             <img src="../images/icon/shop.png" alt="">
+                            <h2><?php echo $learner;?></h2>
+                            <h4>All Learners</h4>
+                            <a href="admin-all-listings.php" class="fclick"></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="../images/icon/shop.png" alt="">
                             <h2><?php echo $educator;?></h2>
-                            <h4>All Educator</h4>
+                            <h4>All Educators</h4>
+                            <a href="admin-all-listings.php" class="fclick"></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="../images/icon/shop.png" alt="">
+                            <h2><?php echo $pending_educator;?></h2>
+                            <h4>Pending Educators</h4>
+                            <a href="admin-all-listings.php" class="fclick"></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div>
+                            <img src="../images/icon/shop.png" alt="">
+                            <h2><?php echo $noncamebackEducators;?></h2>
+                            <h4>v1.0 Non Educators</h4>
                             <a href="admin-all-listings.php" class="fclick"></a>
                         </div>
                     </li>

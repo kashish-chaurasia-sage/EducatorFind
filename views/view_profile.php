@@ -87,7 +87,7 @@
                     <a href="promote-business">Start now</a>
                 </div>
                 <!--    //Total Point Section Starts-->
-                <div class="ud-rhs-poin">
+                <!-- <div class="ud-rhs-poin">
                     <div class="ud-rhs-poin1">
                         <h4>Your points</h4>
                         <span class="count1">11</span>
@@ -97,7 +97,7 @@
                         <p>Use this poins to promote your listing. <a href="#">Click here</a> for demo</p>
                         <a href="buy-points" class="cta">Buy Points</a>
                     </div>
-                </div>
+                </div> -->
                 <!--    //Total Point Section Ends-->
 
                 <!-- <div class="ud-rhs-pay">

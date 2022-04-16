@@ -209,7 +209,7 @@
                         <p>Use this poins to promote your listing. <a href="#">Click here</a> for demo</p>
                         <a href="" class="cta">Buy Points</a>
                     </div> -->
-                </div>
+                <!-- </div> -->
                 <!--    //Total Point Section Ends-->
 
                 <!-- <div class="ud-rhs-pay">

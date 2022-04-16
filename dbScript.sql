@@ -774,3 +774,7 @@ CREATE TABLE custom_user_notification (
   PRIMARY KEY (user_notification_id)
   
 );
+
+SELECT COUNT(id)
+FROM users
+WHERE created < '2022-04-04 00:00:00' and educator='1'

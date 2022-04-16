@@ -157,8 +157,7 @@
                         <li>
                             <a href="tel:<?php echo $educator->edu_number ? $educator->edu_number : '';?>" class="cta cta-call">Call Now</a>
                         </li>
-						
-                        <!-- <li>
+						<!-- <li>
 									
 						 <form class="col" name="liked_form" id="liked_form" method="post" action="<?php echo base_url('detail/liked');?>">
                                                 
@@ -178,9 +177,24 @@
 								
                         </li> -->
 						 <li>
-                                <a href="https://wa.me/+91<?php echo $educator->edu_whatsapp ? $educator->edu_whatsapp : '';?>?text=I'm%20looking%20for%20a%20educator%20I'm%20from%20starsboard" class="cta cta-rev">WhatsApp</a>
-                                <li><span class="share-new-top" data-toggle="modal" data-target="#sharepop"><i class="material-icons">share</i></span></li>
+                         <a href="https://wa.me/+91<?php echo $educator->edu_whatsapp ? $educator->edu_whatsapp : '';?>?text=I'm%20looking%20for%20a%20educator%20I'm%20from%20starsboard" class="cta cta-rev">WhatsApp</a>
+                         <li><span class="share-new-top" data-toggle="modal" data-target="#sharepop"><i class="material-icons">share</i></span></li>
+                         <li>
+                        <div class="a2a_kit a2a_kit_size_32 a2a_default_style" data-a2a-title="Hey, check this starsboard educator's profile : ">
+                
+                <a href="<?php  echo base_url().ltrim($_SERVER['REQUEST_URI'], '/'); ?>"></a>
 
+                <a class="a2a_button_whatsapp"></a>
+                <a class="a2a_button_linkedin"></a>
+                <a class="a2a_button_copy_link"></a>
+                <a class="a2a_button_facebook"></a>
+                <a class="a2a_button_twitter"></a>
+                <a class="a2a_button_facebook_messenger"></a>
+                <a class="a2a_button_telegram"></a>
+                </div>
+                <script async src="https://static.addtoany.com/menu/page.js"></script>
+                            </li>
+                        
                     </ul>
                 </div>
             </div>
