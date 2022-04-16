@@ -55,8 +55,8 @@
                     <li>
                         <div>
                             <img src="../images/icon/shop.png" alt="">
-                            <h2><?php echo $noncamebackEducators;?></h2>
-                            <h4>v1.0 Non Educators</h4>
+                            <h2><?php echo $camebackEducators;?></h2>
+                            <h4>v1.0 Educators</h4>
                             <a href="admin-all-listings.php" class="fclick"></a>
                         </div>
                     </li>
