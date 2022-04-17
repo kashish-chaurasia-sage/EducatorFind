@@ -32,9 +32,9 @@
                         <tr>
                             <th>No</th>
                             <th>User Name</th>
-                            <th>Email</th>
+                            <!-- <th>Email</th>
                             <th>Phone</th>
-                            <th>City</th>
+                            <th>City</th> -->
                             <th>Ratings</th>
                             <th>Message</th>
                            <!-- <th>Delete</th>-->
@@ -46,20 +46,20 @@
 							?>
                                                     <tr>
                                 <td><?= $i;?></td>
-                                <td><?= $value->review_name;?></td>
-                                <td><?= $value->review_email;?></td>
+                                <td><?= $value->learner_name;?></td>
+                                <!-- <td><?= $value->review_email;?></td>
                                 <td><?= $value->review_mobile;?></td>
-                                <td><?= $value->review_city;?></td>
+                                <td><?= $value->review_city;?></td> -->
                                 <td>
                                     <label class="rat">
 								<?php
-                                   for ($x = 0; $x <= $value->price_rating -1; $x++) { ?>
+                                   for ($x = 0; $x <= $value->rating -1; $x++) { ?>
                                 <i class="material-icons">star</i>
                                   <?php }?>
                                              
 									  </label>
                                 </td>
-                                <td><?= $value->review_message;?></td>
+                                <td><?= $value->message;?></td>
 
                                <!-- <td>
                                     <a href=""><span
