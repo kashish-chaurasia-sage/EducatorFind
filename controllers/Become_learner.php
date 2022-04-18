@@ -15,7 +15,7 @@ class Become_learner extends CI_Controller {
         $data=array();
         
      	$data['title']='Starsboard | Become Learner';
-        $data['custom_class'] = $this->CommonMdl->getResult('custom_class', '*');
+        $data['custom_class'] = $this->CommonMdl->getResult('custom_class', '*', ['status' => '1']);
         $data['custom_board'] = $this->CommonMdl->getResult('custom_board', '*');
         $data['subjects'] = $this->CommonMdl->getSubCategorybyCategoryId(1);
         $data['exams'] =$this->CommonMdl->getSubCategorybyCategoryId(2);

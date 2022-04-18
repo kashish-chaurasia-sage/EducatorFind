@@ -30,7 +30,7 @@
                     <table class="responsive-table bordered">
                         <thead>
                         <tr>
-                            <th>No</th>
+                            <!-- <th>No</th> -->
                             <th>User Name</th>
                             <!-- <th>Email</th>
                             <th>Phone</th>
@@ -45,7 +45,7 @@
 							foreach($review as $key => $value){ 
 							?>
                                                     <tr>
-                                <td><?= $i;?></td>
+                                <!-- <td><?= $i;?></td> -->
                                 <td><?= $value->learner_name;?></td>
                                 <!-- <td><?= $value->review_email;?></td>
                                 <td><?= $value->review_mobile;?></td>
@@ -74,7 +74,7 @@
                     <table class="responsive-table bordered">
                         <thead>
                         <tr>
-                            <th>No</th>
+                            <!-- <th>No</th> -->
                             <th>Listing Name</th>
                             <!-- <th>Email</th>
                             <th>Phone</th>
@@ -88,7 +88,7 @@
 							foreach($receivedreview as $key => $value){ 
 							?>
                                                     <tr>
-                                <td><?= $i;?></td>
+                                <!-- <td><?= $i;?></td> -->
                                 <td><?= $value->edu_name;?></td>
                                 <!-- <td><?= $value->review_email;?></td>
                                 <td><?= $value->review_mobile;?></td>

@@ -37,7 +37,7 @@
                 <span class="steps">Learner</span>
                 <div class="log">
                     <div class="login">
-                        <h4>Become Learner Form</h4>
+                        <h4>My Learning Preference</h4>
 						
                         <form action="<?php echo base_url('become_learner');?>" class="listing_form_1" id="listing_form_1"
                               name="listing_form_1" method="post" enctype="multipart/form-data">
@@ -185,7 +185,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                         <div class="form-group">
-                                        <label>Select Your Difficult Subjects :</label>
+                                        <label>What are the difficult subjects :</label>
                                             <select onChange="getSubjects(this.value);"  multiple name="subjects[]"
                                                     id="subject_id" class="chosen-select  form-control"  >
                                                     <!-- class="chosen-select  form-control" -->
@@ -204,7 +204,7 @@
 
                                 <div class="col-md-6">
                                         <div class="form-group">
-                                        <label>Select Your Intrested Competetive Exams :</label>
+                                        <label>Do you want to prepare for any of these Competetive Exams ?</label>
                                             <select onChange="getExam(this.value);" multiple name="exam[]"
                                                     id="exam_id" class="chosen-select  form-control">
                                                     <?php
@@ -225,7 +225,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                             <div class="form-group">
-                                            <label>Select Your Professional Courses :</label>
+                                            <label>Are you interestered in any of these Professional Courses </label>
                                                 <select onChange="getCourse(this.value);" multiple name="course[]"
                                                         id="course_id" class="chosen-select  form-control">
                                                         <?php
@@ -242,7 +242,7 @@
                                     </div>
                                     <div class="col-md-6">
                                             <div class="form-group">
-                                            <label>Select Your Intrested Hobbies :</label>
+                                            <label>Do you Like any of these </label>
                                                 <select onChange="getArt(this.value);" multiple name="art[]"
                                                         id="art_id" class="chosen-select  form-control">
                                                         <?php
@@ -263,7 +263,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                    <label>Select Your Intrested Language Learning :</label>
+                                    <label>Have interest in learning any of these Languages </label>
                                         <select onChange="getLang(this.value);" multiple name="lang[]"
                                                 id="lang_id" class="chosen-select  form-control">
                                                 <?php
@@ -280,7 +280,7 @@
                                         </div>
                                     <div class="col-md-6">
                                             <div class="form-group">
-                                            <label>Select Your Career Counselling :</label>
+                                            <label>Are you interestered in taking Counselling for any of these</label>
                                                 <select onChange="getCarrer(this.value);" multiple name="career[]"
                                                         id="career_id" class="chosen-select  form-control">
                                                         <?php

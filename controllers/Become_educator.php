@@ -146,7 +146,7 @@ class Become_educator extends CI_Controller {
             redirect('become_educator');
         } else {
 
-            $data['custom_class'] = $this->CommonMdl->getResult('custom_class', '*');
+            $data['custom_class'] = $this->CommonMdl->getResult('custom_class', '*', ['status' => '1']);
             $data['custom_board'] = $this->CommonMdl->getResult('custom_board', '*');
             $data['subjects'] = $this->CommonMdl->getSubCategorybyCategoryId(1);
             $data['exams'] =$this->CommonMdl->getSubCategorybyCategoryId(2);
