@@ -120,7 +120,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <input type="number" name="edu_experience" class="form-control" required="required"
+                                        <input type="number" min="0" step = "1" max="80" name="edu_experience" class="form-control" required="required"
                                                value="<?= ($this->session->userdata('edu_experience'))? $this->session->userdata('edu_experience'):'';?>"
                                                placeholder="Total Teaching Expirience (in years)*">
                                     </div>
