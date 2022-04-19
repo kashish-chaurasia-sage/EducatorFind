@@ -23,19 +23,19 @@
                 </tr>
                 </thead>
                 <tbody>
-<?php   if(!empty($lead)){
-                  $i=1; foreach($lead as $key => $value){ ?>
-                      <tr>
-                        <td><?= $i;?></td>
-                        <td><?= $value->enquiry_name;?>  <span><?= $value->created_on;?></span>
-                        </td>
-                        <td><?= $value->enquiry_email;?></td>
-                        <td><?= $value->enquiry_mobile;?></td>
-                        <td><?= $value->enquiry_message;?></td>
-                        <td><a href="" class="db-list-edit">Delete</a></td>
-                    </tr
-             <?php $i++; }}else{echo 'No data found';}?>
-                                    </tbody>
+                    <?php   if(!empty($lead)){
+                        $i=1; foreach($lead as $key => $value){ ?>
+                        <tr>
+                            <td><?= $i;?></td>
+                            <td><?= $value->enquiry_name;?>  <span><?= $value->created_on;?></span>
+                            </td>
+                            <td><?= $value->enquiry_email;?></td>
+                            <td><?= $value->enquiry_mobile;?></td>
+                            <td><?= $value->enquiry_message;?></td>
+                            <td><a href="" class="db-list-edit">Delete</a></td>
+                        </tr
+                    <?php $i++; }}else{echo 'No data found';}?>
+                </tbody>
             </table>
         </div>
     </div>

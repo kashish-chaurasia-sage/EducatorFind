@@ -22,15 +22,20 @@ class Lead extends CI_Controller {
 
 		}else{
 			$data['lead']= $this->CommonMdl->getResult('lead', '*', array('enquiry_by_id' => $this->session->userdata('userId')));
-			$educator = $this->CommonMdl->getResult('custom_educator', '*', ['user_id' => $data['lead'][0]->user_id ]);
-					// echo '<pre>';   print_r(  $educator);die;
+			if(!empty($data['lead'])){
+				$educator = $this->CommonMdl->getResult('custom_educator', '*', ['user_id' => $data['lead'][0]->user_id ]);
+				// echo '<pre>';   print_r(  $educator);die;
 
-			$data['lead'][0]->enquiry_name = $educator[0]->edu_name;
-			$data['lead'][0]->enquiry_email = $educator[0]->edu_email;
-			$data['lead'][0]->enquiry_mobile= $educator[0]->edu_number;
+				$data['lead'][0]->enquiry_name = $educator[0]->edu_name;
+				$data['lead'][0]->enquiry_email = $educator[0]->edu_email;
+				$data['lead'][0]->enquiry_mobile= $educator[0]->edu_number;
+			}
+			
 		}
 		// echo '<pre>';   print_r( $data['lead']);die;
-
+		if(empty($data['leade'])){
+			$data['leade'] ="";
+		}
 	    $data['title']='Lead | Starsboard ';
 	    $this->load->view('view_lead',$data);
 	}
